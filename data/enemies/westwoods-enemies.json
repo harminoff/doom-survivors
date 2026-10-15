@@ -1,0 +1,192 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Westwoods (?action=raw wikitext, retrieved 2026-09-29)",
+    "Statbox Enemy templates of Barm, Squillers, Goldie, Harzia, Gamblin, Ghiavolo, Ghoulette, Gambergar, Toll, Card Sharp, Dandybrine, Mushroulette, Daimon, Knight of Spades, Valentine (retrieved 2026-09-29)",
+    "HARPY, DEVIL1, BOSS_XLDEATH reuse ids/stats from gallo-tower/bone-zone files. Most Westwoods enemy names are unofficial; ids other than the wiki-listed EX_* ones are invented (EX_ prefix)."
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier",
+    "power": "contact damage before Armor",
+    "speed": "wiki MoveSpeed units (140 is a normal bat)",
+    "knockback": "null = wiki gives no value",
+    "hp_x_level": "true means health is multiplied by player level at spawn"
+  },
+  "enemies": {
+    "EX_BARM": {
+      "name": "Barm",
+      "hp": 4,
+      "power": 4,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "EX_SQUILLERS": {
+      "name": "Squillers",
+      "hp": 2,
+      "power": 2,
+      "speed": 700,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "Fixed Direction (crosses the screen, no chasing); HP x Level; wiki ranges hp 1-2, damage 1-2, speed 600-800 (midpoints/upper used)",
+      "hp_x_level": true
+    },
+    "EX_GOLDIE": {
+      "name": "Goldie",
+      "hp": 10,
+      "power": 4,
+      "speed": 160,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "chases player"
+    },
+    "HARPY": {
+      "name": "Harzia",
+      "hp": 25,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "chases player"
+    },
+    "EX_GAMBLIN": {
+      "name": "Gamblin",
+      "hp": 18,
+      "power": 4,
+      "speed": 145,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "chases player; wiki ranges hp 15-20, speed 140-150 (midpoints used)"
+    },
+    "DEVIL1": {
+      "name": "Ghiavolo",
+      "hp": 70,
+      "power": 8,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "reduced knockback"
+    },
+    "EX_GHOULETTE": {
+      "name": "Ghoulette",
+      "hp": 5,
+      "power": 7,
+      "speed": 100,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "chases player"
+    },
+    "EX_GAMBERGAR": {
+      "name": "Gambergar",
+      "hp": 40,
+      "power": 8,
+      "speed": 140,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "chases player"
+    },
+    "EX_TOLL": {
+      "name": "Toll",
+      "hp": 130,
+      "power": 8,
+      "speed": 100,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "chases player"
+    },
+    "EX_CARDSHARP": {
+      "name": "Card Sharp",
+      "hp": 30,
+      "power": 11,
+      "speed": 130,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 8,
+      "special": "chases player; HP x Level; wiki id EX_CARDSHARP",
+      "hp_x_level": true
+    },
+    "EX_DANDYBRINE": {
+      "name": "Dandybrine",
+      "hp": 50,
+      "power": 9,
+      "speed": 160,
+      "knockback": 0,
+      "knockback_max": 0.5,
+      "xp": 30,
+      "special": "boss-type miniboss (Westwoods boss list); HP x Level; wiki id EX_DANDYBRINE; also appears in 17:00/18:00 pools",
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1
+    },
+    "EX_MUSHROULETTE": {
+      "name": "Mushroulette",
+      "hp": 50,
+      "power": 10,
+      "speed": 140,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "Arcana-holder boss (5:00, 10:00); HP x Level",
+      "hp_x_level": true
+    },
+    "EX_DAIMON": {
+      "name": "Daimon",
+      "hp": 100,
+      "power": 20,
+      "speed": 160,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 30,
+      "special": "boss-type miniboss; HP x Level; wiki id EX_DAIMON; also in 18:00 pool",
+      "hp_x_level": true,
+      "resist_freeze": 1.1,
+      "resist_kill": 1,
+      "resist_defang": 1
+    },
+    "EX_KNIGHT_SPADES": {
+      "name": "Knight of Spades",
+      "hp": 475,
+      "power": 25,
+      "speed": 150,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "boss (16:00); wiki ranges hp 250-700, damage 20-30, speed 120-180 (midpoints used); two variants"
+    },
+    "EX_VALENTINE": {
+      "name": "Valentine",
+      "hp": 150,
+      "power": 20,
+      "speed": 120,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "boss (18:00) and 19:00 pool; HP x Level",
+      "hp_x_level": true
+    },
+    "BOSS_XLDEATH": {
+      "name": "The Reaper",
+      "hp": 655350,
+      "power": 65535,
+      "speed": 1200,
+      "knockback": -0.5,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "resist_defang": 1,
+      "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    }
+  }
+}

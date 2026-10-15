@@ -1,0 +1,663 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Carlo_Cart (?action=raw wikitext, retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Timed_Enemy_Spawn",
+    "https://vampire.survivors.wiki/w/Merman",
+    "https://vampire.survivors.wiki/w/Lizard_Rook",
+    "https://vampire.survivors.wiki/w/Lizard_Pawn",
+    "https://vampire.survivors.wiki/w/Lost_Twin",
+    "https://vampire.survivors.wiki/w/Twin_Snakes",
+    "https://vampire.survivors.wiki/w/Twin_Demons",
+    "https://vampire.survivors.wiki/w/Minotaur_Boss",
+    "https://vampire.survivors.wiki/w/Holy_Circuit_Creations",
+    "https://vampire.survivors.wiki/w/The_Trickster",
+    "https://vampire.survivors.wiki/w/The_Stalker",
+    "https://vampire.survivors.wiki/w/The_Drowner",
+    "https://vampire.survivors.wiki/w/The_Maddener",
+    "https://vampire.survivors.wiki/w/The_Blinder",
+    "https://vampire.survivors.wiki/w/Pipeestrello",
+    "https://vampire.survivors.wiki/w/Impefinger",
+    "https://vampire.survivors.wiki/w/Giant_Bat",
+    "https://vampire.survivors.wiki/w/Lionhead"
+  ],
+  "stage": {
+    "id": "CARLOCART",
+    "name": "Carlo Cart",
+    "type": "Bonus",
+    "duration_seconds": 900,
+    "spawn_type": "Standard spawning, but the whole stage scrolls to the right so enemies appear to race alongside the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 20,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.2,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "20% (max 60%)",
+      "destructible_max": 12
+    },
+    "modifiers_note": "Wiki infobox fields; enemy_speed 1.25 is a multiplier. Hyper (x1.5 player speed, 40 starting spawns, +70% greed) and Inverse not needed.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive (Map event page); not restated on the Carlo Cart page.",
+    "spawn_rule": "Per-minute minimum enemy count and spawn interval, as on other stages; bosses are teleported back onto screen.",
+    "stage_items": {
+      "special_pickups": [
+        {
+          "item": "Accelerator",
+          "effect": "+35% scroll and player movement for 5 s without changing the clock"
+        },
+        {
+          "item": "Checkpoint",
+          "effect": "spans the full track width every few minutes; moves missed chests/pickups to the right; +5% Growth, Luck, Greed, Curse, Move Speed, Magnet per checkpoint"
+        }
+      ],
+      "note": "Exact Accelerator/Checkpoint spawn intervals are not stated on the wiki (unknown)."
+    },
+    "destructibles": "Destructibles and dropped items are carried by the scroll, so they must be grabbed while still ahead of the player.",
+    "layout": {
+      "shape": "horizontal_corridor",
+      "size_note": "Endless right-scrolling track built from the bottom area of the Laborratory map: two tilesets looping over the whole map. Track width in world units is not stated on the wiki (unknown); the Checkpoint spans its full vertical extent.",
+      "obstacles": "None described. Straight train/kart tracks; the wiki gives no wall or obstacle density (unknown).",
+      "theme": "Abandoned King Bible underground train station beneath the Laborratory, now a clandestine go-kart racing circuit run by the lizardman King Carlo. Mario-Kart-like: tracks, racing enemies, checkpoint gates, accelerator pads.",
+      "special_mechanics": "CANNOT STOP MOVING: the stage world scrolls to the right at a constant pace independent of player input (to the left in Inverse mode with Visually Invert Stages on). The player is carried along with it and steers within the scroll (the wiki gives no numeric base scroll speed and no exact steering model; treat the scroll as roughly the player's normal move speed, which is 1.25x in Normal mode). Moving against the scroll only cancels it: passed-by items/chests/destructibles drift away and cannot be reached; only a character with about +300% Move Speed can actually move left against it. An Accelerator gives +35% to scroll and player movement for 5 s (clock unaffected); each Checkpoint gives +5% Move Speed (plus Growth/Luck/Greed/Curse/Magnet). The wiki says nothing about what happens at the track edges or walls (gap); assume the player is clamped to the track and simply slides along the edge while still being carried forward. Enemies are tugged slightly by the scroll, which makes them stutter. Dropped items and destructibles are carried by the scroll; Random-Event and character-spawned items (e.g. Santa Ladonna) and the secret-character coffin are NOT carried and stay where spawned. Reapers spawn periodically (one of each type) and chase the player to force forward movement. Checkpoints appear every few minutes across the whole track and move missed chests/pickups to the right. Enemies are 'racing' variants. Map events are Timed Enemy Spawns (one Cart Reaper follows the player for 60 s each at 2:00, 8:00, 9:00, 10:00, 11:00); the four Cart Reapers also appear together as bosses at 14:00. At 15:00 all enemies are cleared and The Reaper spawns; each further minute adds another. Roast Chicken with a Clock in the Middle is disabled."
+    },
+    "notes": "Bonus stage, 15:00. Wiki enemy names are mostly guessed from internal IDs."
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "EX_RACING_FISHMAN_1"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [],
+      "notes": "Racing Merman = Merman 1 (racing) EX_RACING_FISHMAN_1."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "EX_RACING_FISHMAN_1",
+        "BAT3"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "EX_RACING_LIZARD2_3"
+      ]
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "EX_RACING_FISHMAN_1",
+        "EX_RACING_LIZARD1_2"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "stalker",
+          "at": "2:00",
+          "enemy": "EX_CART_TRICKSTER",
+          "amount": 1,
+          "duration_s": 60,
+          "note": "wiki Timed Enemy Spawn (Cart Trickster); same shape as the Stalker event (one enemy follows the player, periodically speeding up), mapped to kind 'stalker'"
+        }
+      ],
+      "bosses": [
+        "EX_RACING_RETRO"
+      ]
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "EX_RACING_LIZARD1_2",
+        "IMP",
+        "EX_RACING_FISHMAN_1"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.25,
+      "events": [],
+      "bosses": [
+        "EX_RACING_BOSS_MIGNO2_5"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "EX_RACING_LIZARD1_2",
+        "EX_RACING_FISHMAN_1",
+        "IMP"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.25,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "EX_RACING_LIZARD2_3",
+        "BAT3"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "EX_RACING_BOSS_MIGNO2_5",
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "EX_RACING_FISHMAN_1",
+        "EX_RACING_LIZARD2_3"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "EX_RACING_FISHMAN_1",
+        "EX_RACING_MERMA1_3",
+        "EX_RACING_LIZARD1_2"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "EX_RACING_BOSS_MERMAN"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "EX_RACING_RETRO",
+        "BAT3"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1.5,
+      "events": [
+        {
+          "type": "stalker",
+          "at": "8:00",
+          "enemy": "EX_CART_STALKER",
+          "amount": 1,
+          "duration_s": 60,
+          "note": "wiki Timed Enemy Spawn (Cart Stalker); same shape as the Stalker event (one enemy follows the player, periodically speeding up), mapped to kind 'stalker'"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "XLBAT",
+        "BAT3",
+        "EX_RACING_RETRO"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "stalker",
+          "at": "9:00",
+          "enemy": "EX_CART_DROWNER",
+          "amount": 1,
+          "duration_s": 60,
+          "note": "wiki Timed Enemy Spawn (Cart Drowner); same shape as the Stalker event (one enemy follows the player, periodically speeding up), mapped to kind 'stalker'"
+        }
+      ],
+      "bosses": [
+        "EX_RACING_BOSS_MIGNO2_5"
+      ]
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "BUER",
+        "BAT3"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "stalker",
+          "at": "10:00",
+          "enemy": "EX_CART_MADDENER",
+          "amount": 1,
+          "duration_s": 60,
+          "note": "wiki Timed Enemy Spawn (Cart Maddener); same shape as the Stalker event (one enemy follows the player, periodically speeding up), mapped to kind 'stalker'"
+        }
+      ],
+      "bosses": [
+        "EX_RACING_BOSS_MIGNO2_5",
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "XLBAT",
+        "BAT3",
+        "BUER"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "stalker",
+          "at": "11:00",
+          "enemy": "EX_CART_BLINDER",
+          "amount": 1,
+          "duration_s": 60,
+          "note": "wiki Timed Enemy Spawn (Cart Blinder); same shape as the Stalker event (one enemy follows the player, periodically speeding up), mapped to kind 'stalker'"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "EX_RACING_RETRO",
+        "EX_RACING_PILE1"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "EX_RACING_BOSS_PILE3"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "EX_RACING_MERMA2_4",
+        "EX_RACING_LIZARD2_3",
+        "EX_RACING_PILE2"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "IMP",
+        "EX_RACING_PILE3"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "EX_CART_TRICKSTER",
+        "EX_CART_STALKER",
+        "EX_CART_DROWNER",
+        "EX_CART_MADDENER"
+      ],
+      "notes": "Wiki lists Racing Impefinger and Racing Lost Twin (EX_RACING_PILE3)."
+    },
+    {
+      "minute": 15,
+      "pool": [],
+      "enemy_min": 5,
+      "spawn_interval_s": 5.0,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "Wiki: all on-screen enemies cleared at 15:00, a Reaper spawns; one more Reaper per minute past 15."
+    }
+  ],
+  "map_events": {
+    "stalker": {
+      "shape": "Timed Enemy Spawn: a Cart Reaper follows the player for 60 s, periodically speeding up then slowing like The Stalker",
+      "hp": 655530,
+      "power": 10,
+      "speed": 300
+    }
+  },
+  "unsupported_events": [],
+  "unsupported_events_note": "None: all five Timed Enemy Spawns are mapped to the 'stalker' kind (same shape). No other map events on this stage.",
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "EX_RACING_LIZARD2_3",
+      "name": "Racing Lizard Rook",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 30
+        },
+        "evo": true,
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 2,
+      "enemy": "EX_RACING_RETRO",
+      "name": "Racing RetroBot",
+      "chest": null,
+      "chest_note": "wiki table lists no treasure for this boss"
+    },
+    {
+      "minute": 3,
+      "enemy": "EX_RACING_BOSS_MIGNO2_5",
+      "name": "Racing Minotaur Champion",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        },
+        "evo": true
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "EX_RACING_BOSS_MIGNO2_5",
+      "name": "Racing Minotaur Champion",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "evo": true
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 3,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 7,
+      "enemy": "EX_RACING_BOSS_MERMAN",
+      "name": "Racing Merman Boss",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        },
+        "evo": true
+      }
+    },
+    {
+      "minute": 9,
+      "enemy": "EX_RACING_BOSS_MIGNO2_5",
+      "name": "Racing Minotaur Champion",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "evo": true
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "EX_RACING_BOSS_MIGNO2_5",
+      "name": "Racing Minotaur Champion",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "evo": true
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 3,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 12,
+      "enemy": "EX_RACING_BOSS_PILE3",
+      "name": "Racing Giant Goat-Horned Shooter",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "evo": true
+      }
+    },
+    {
+      "minute": 14,
+      "enemy": "EX_CART_TRICKSTER",
+      "name": "Cart Trickster",
+      "chest": null,
+      "chest_note": "wiki table lists no treasure for this boss"
+    },
+    {
+      "minute": 14,
+      "enemy": "EX_CART_STALKER",
+      "name": "Cart Stalker",
+      "chest": null,
+      "chest_note": "wiki table lists no treasure for this boss"
+    },
+    {
+      "minute": 14,
+      "enemy": "EX_CART_DROWNER",
+      "name": "Cart Drowner",
+      "chest": null,
+      "chest_note": "wiki table lists no treasure for this boss"
+    },
+    {
+      "minute": 14,
+      "enemy": "EX_CART_MADDENER",
+      "name": "Cart Maddener",
+      "chest": null,
+      "chest_note": "wiki table lists no treasure for this boss"
+    },
+    {
+      "minute": 15,
+      "enemy": "BOSS_XLDEATH",
+      "name": "The Reaper",
+      "chest": null,
+      "chest_note": "wiki table lists no treasure for this boss"
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "15:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards; periodic Reapers of each type also chase the player during the run (wiki)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    },
+    "accelerator": {
+      "effect": "+35% scroll and player speed for 5 s"
+    },
+    "checkpoint": {
+      "effect": "gathers missed chests/pickups to the right; +5% Growth/Luck/Greed/Curse/Move Speed/Magnet"
+    }
+  }
+}

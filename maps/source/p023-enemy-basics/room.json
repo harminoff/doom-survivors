@@ -1,0 +1,25 @@
+{
+  "fixture_id": "P023-ENEMY-BASICS-001",
+  "classification": "SYNTHETIC_ENGINEERING_RUNTIME_HARNESS",
+  "map_name": "MAP09",
+  "purpose": "Run BAT3 movement, contact damage, death, despawn and generation reuse checks",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-128,-128],[128,-128],[128,128],[-128,128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "source_parity": "OPEN_SYNTHETIC_ENGINE_HARNESS",
+  "enemy_fixture": {
+    "identity": "base.enemy.bat3",
+    "source_path": "wiki:Mad_Forest#enemies[0]",
+    "fixture_id": "bat3-basic-v1",
+    "behavior_status": "ENGINEERING_APPROXIMATION"
+  },
+  "camera_matrix": [
+    {"name": "front", "yaw": 0, "pitch": 0, "fov": 90},
+    {"name": "side", "yaw": 90, "pitch": 0, "fov": 90},
+    {"name": "rear", "yaw": 180, "pitch": 0, "fov": 90}
+  ]
+}

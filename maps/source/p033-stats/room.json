@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P033-RESOLVED-STATS-001",
+  "classification": "CONTROLLED_RESOLVED_STAT_AND_PASSIVE_RUNTIME_FIXTURE",
+  "map_name": "MAP19",
+  "purpose": "Exercise qualified passive rank rows, typed stat resolution, explicit eligibility, presentation invariance, and run-save restoration in pinned UZDoom",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-160,-128],[-160,128],[160,128],[160,-128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "QUALIFIED_COMMUNITY_PASSIVE_REPORTS_WITH_ENGINEERING_RESOLUTION_POLICY",
+  "notes": [
+    "MAP19 is a controlled numerical harness, not a source-exact passive catalog or natural drop scenario.",
+    "The build-extracted 26-identity discovery inventory remains MAIN_SHARED_UNRESOLVED; only four qualified effects are implemented and the rest remain explicit unknown backlog.",
+    "Camera cases alter only player yaw, pitch, and FOV; expected logical stat results are held constant."
+  ]
+}

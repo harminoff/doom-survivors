@@ -1,0 +1,335 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Laborratory and linked enemy pages (Statbox Enemy templates, retrieved 2026-09-29)"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier (Mad Forest enemy_health = 1.0)",
+    "power": "contact damage before player Armor",
+    "speed": "wiki MoveSpeed units (player base speed unit is not stated on these pages; treat as relative)",
+    "knockback": "multiplier on weapon knockback (0 = wiki lists 0, i.e. described as semi/fully resistant depending on page text; negative = pulled toward player)",
+    "knockback_max": "wiki 'knockback-max' field",
+    "hp_x_level": "true means health is multiplied by the player's level at spawn time"
+  },
+  "enemies": {
+    "FISHMAN_1": {
+      "name": "Merman 1",
+      "hp": 5,
+      "power": 4,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular enemy"
+    },
+    "EX_FISHMAN_1GREEN": {
+      "name": "Merman (green)",
+      "hp": 9.5,
+      "power": 4,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular enemy"
+    },
+    "MERMA1_3": {
+      "name": "Merman 2",
+      "hp": 70,
+      "power": 8,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "regular enemy"
+    },
+    "MERMA2_4": {
+      "name": "Merman 3 (Elite Merman)",
+      "hp": 150,
+      "power": 8,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "regular enemy"
+    },
+    "BOSS_MERMAN": {
+      "name": "Merman (boss)",
+      "hp": 50,
+      "power": 11,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 40,
+      "special": "boss; HP x player level",
+      "hp_x_level": true
+    },
+    "LIZARD1_2": {
+      "name": "Lizard Pawn",
+      "hp": 15,
+      "power": 6,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "regular enemy"
+    },
+    "LIZARD2_3": {
+      "name": "Lizard Rook",
+      "hp": 120,
+      "power": 7,
+      "speed": 100,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 2.5,
+      "special": "regular enemy"
+    },
+    "MUD": {
+      "name": "Dust Elemental",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "EX_MUD_FASTSWARM": {
+      "name": "Dust Elemental (fast swarm)",
+      "hp": 5,
+      "power": 5,
+      "speed": 700,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Swarm event unit; fixed direction"
+    },
+    "ECTO2": {
+      "name": "Big Musc Musc",
+      "hp": 13,
+      "power": 4,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular enemy; max speed 200; Musc Musc swarm/event unit"
+    },
+    "JELLYFISH": {
+      "name": "Jellyfish (wall)",
+      "hp": 180,
+      "power": 8,
+      "speed": 200,
+      "knockback": 0.2,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "Jellyfish Wall event unit; fixed direction"
+    },
+    "JELLYFISH2_SWARM": {
+      "name": "Jellyfish (swarm)",
+      "hp": 180,
+      "power": 10,
+      "speed": 150,
+      "knockback": 0.2,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "Jellyfish Swarm event unit; fixed direction"
+    },
+    "EX_GYORUNTIN": {
+      "name": "Tri-Blunder",
+      "hp": 250,
+      "power": 10,
+      "speed": 280,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 2.75,
+      "special": "no collision"
+    },
+    "EX_BOSSGYORUNTIN": {
+      "name": "Tri-Blunder (boss)",
+      "hp": 200,
+      "power": 20,
+      "speed": 150,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 30,
+      "special": "boss; HP x player level; no collision",
+      "hp_x_level": true
+    },
+    "EX_BOSSGYORUNTIN_SOLID": {
+      "name": "Tri-Blunder (boss, solid) (Solid Tri-Blunder)",
+      "hp": 100,
+      "power": 20,
+      "speed": 150,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 30,
+      "special": "HP x player level; solid (has collision)",
+      "hp_x_level": true
+    },
+    "EX_GYORUNTIN_SWARM": {
+      "name": "Tri-Blunder (swarm)",
+      "hp": 250,
+      "power": 10,
+      "speed": 600,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 2.75,
+      "special": "Swarm event unit; fixed direction"
+    },
+    "EX_RETROBOT": {
+      "name": "RetroBot",
+      "hp": 300,
+      "power": 11,
+      "speed": 100,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 3.5,
+      "special": "regular enemy"
+    },
+    "EX_TDCCC": {
+      "name": "T-DCCC",
+      "hp": 130,
+      "power": 8,
+      "speed": 200,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 4,
+      "special": "regular enemy"
+    },
+    "EX_CONSTABLEBOT": {
+      "name": "ConstableBot",
+      "hp": 15,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "regular enemy"
+    },
+    "EX_ER2000": {
+      "name": "ER-2000",
+      "hp": 400,
+      "power": 25,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 25,
+      "special": "boss / Arcana holder; wiki lists no HP x Level (unknown)"
+    },
+    "EX_RETROBOT_SWARM": {
+      "name": "RetroBot (swarm)",
+      "hp": 250,
+      "power": 9,
+      "speed": 600,
+      "knockback": 0.5,
+      "knockback_max": 3,
+      "xp": 2.25,
+      "special": "Swarm event unit; fixed direction"
+    },
+    "EX_CONSTABLEBOT_RANGED": {
+      "name": "ConstableBot (ranged) (ConstableBot Gunner)",
+      "hp": 250,
+      "power": 10,
+      "speed": 130,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "Pile Assault unit; shoots a bullet every 0.5 s"
+    },
+    "EX_TDCCC_RANGED": {
+      "name": "T-DCCC (ranged) (T-DCCC Gunner)",
+      "hp": 15,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "Pile Assault unit; shoots a bullet every 0.5 s"
+    },
+    "EX_ER2000_RANGED": {
+      "name": "ER-2000 (ranged) (ER-2000 Gunner)",
+      "hp": 400,
+      "power": 25,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "shoots a bullet every 0.25 s"
+    },
+    "EX_BOUNTYHUNTER": {
+      "name": "Bounty Hunter",
+      "hp": 130,
+      "power": 8,
+      "speed": 200,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "regular enemy and Pile Assault gunner; wiki lists no knockback/xp (gap)"
+    },
+    "EX_APEX": {
+      "name": "Space Hunter",
+      "hp": 300,
+      "power": 15,
+      "speed": 160,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "regular enemy; wiki lists no knockback/xp (gap)"
+    },
+    "BULLET_SM1": {
+      "name": "Bullet 1 (small) (ConstableBot/T-DCCC)",
+      "hp": 1,
+      "power": 20,
+      "speed": 200,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "fixed direction; ignores walls and enemies"
+    },
+    "BULLET_SM1_ER": {
+      "name": "Bullet 2 (small) (ER-2000)",
+      "hp": 1,
+      "power": 5,
+      "speed": 500,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "wiki gives this the same id BULLET_SM1 (likely typo); fixed direction; ignores walls and enemies"
+    },
+    "BOSS_MIGNO2_5": {
+      "name": "Minotaur Boss",
+      "hp": 60,
+      "power": 11,
+      "speed": 200,
+      "knockback": 0.5,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x player level (skill listed on the Minotaur Boss page)"
+    },
+    "BOSS_PILE3": {
+      "name": "Lost Twin (boss) (Giant Goat-Horned Shooter)",
+      "hp": 70,
+      "power": 10,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x player level; stationary shooter"
+    },
+    "BOSS_XLDEATH": {
+      "name": "The Reaper",
+      "hp": 655350,
+      "power": 65535,
+      "speed": 1200,
+      "knockback": -0.5,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "resist_defang": 1,
+      "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    }
+  }
+}

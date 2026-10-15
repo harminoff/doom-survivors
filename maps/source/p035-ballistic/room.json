@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P035-BALLISTIC-MAP21-001",
+  "classification": "CONTROLLED_FOUR_FORM_BALLISTIC_RUNTIME_FIXTURE",
+  "map_name": "MAP21",
+  "purpose": "Run the compiled Axe, Death Spiral, Fire Wand, and Hellfire rank rows and source-plane projectile policies in pinned UZDoom",
+  "room": [[-1024,-768],[-1024,768],[1024,768],[1024,-768]],
+  "landmark": [[-192,-192],[-192,192],[192,192],[192,-192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "BUILD_CAPTURED_IDENTITY_EDGES_PLUS_QUALIFIED_CURRENT_COMMUNITY_REPORTS_AND_ENGINEERING_SOURCE_PLANE_ADAPTER",
+  "notes": [
+    "All weapons, targets, walls, passive ranks, and transformations are controlled fixtures; no natural acquisition is claimed.",
+    "The room validates logical projectiles through the P025 checked-hit authority. Visual proxies do not determine collision.",
+    "Rank and combat reports are current mutable community reports whose applicability to the locked build is unverified. Trajectory constants are engineering approximations."
+  ]
+}

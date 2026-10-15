@@ -1,0 +1,19 @@
+{
+  "fixture_id": "P024-SPATIAL-001",
+  "classification": "REPRODUCIBLE_SYNTHETIC_SPATIAL_INDEX_RUNTIME",
+  "map_name": "MAP10",
+  "purpose": "Compare production CSR broad phase and exact oracle across deterministic worlds and proxy variants",
+  "room": [[-2048,-2048],[-2048,2048],[2048,2048],[2048,-2048]],
+  "landmark": [[-128,-128],[128,-128],[128,128],[-128,128]],
+  "floor": 0,
+  "ceiling": 320,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "OPEN_SYNTHETIC_ENGINEERING_FIXTURE",
+  "notes": [
+    "The logical world is a deterministic engineering fixture, not a source-game cap or timing claim.",
+    "The package invokes DSP024SpatialIndex through DSP024SpatialRuntime on MAP10."
+  ]
+}

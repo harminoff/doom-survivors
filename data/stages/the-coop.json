@@ -1,0 +1,932 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/The_Coop (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Chickenfantry, Cockreliutennant, Chik, Egge, Pol.lo Rosso, Abraxas, Abraxas_Phronesis, Abraxas_Dynamis (Statbox Enemy, retrieved 2026-09-29)",
+    "Map event pages (Coop Egg/Chicken/Roast Chicken/Chik Swarm) do not exist on the wiki (404); swarm amounts/duration are guesses",
+    "pickups, chest_rules and reaper reuse the Dairy Plant file content"
+  ],
+  "stage": {
+    "id": "COOP",
+    "name": "The Coop",
+    "duration_seconds": 1200,
+    "type": "Bonus stage (unlocked by collecting 500 Floor Chickens in total, or the Forbidden Scrolls spell coopwhen)",
+    "spawn_type": "Horizontal: enemies appear from the left and right sides of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 50,
+      "player_speed": 1.35,
+      "enemy_speed": 1,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 0.35,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "80% (max 90%)",
+      "destructible_max": 8
+    },
+    "modifiers": {
+      "xp_bonus_pct": -65,
+      "scaling_note": "Wiki: the game and the stage's enemies speed up significantly as time increases (no numbers given); enemy move speed ranges are listed as min-max in the enemies file."
+    },
+    "modifiers_note": "Wiki infobox: XP x0.35 (-65% XP), player speed x1.35, starting spawns 50, destructibles 80% (max 90%, cap 8). Enemy speed/health/greed/luck blank = x1. Hyper: player x2, enemy speed x1.65, projectile x1.15, greed x1.25, enemy health x2 (not used).",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [],
+      "weapons": [
+        {
+          "item": "Parm Aegis",
+          "position": "available after 1:00 (1 fence away, to the east)"
+        },
+        {
+          "item": "Fire Wand",
+          "position": "available after 5:00 (5 fences away)"
+        }
+      ],
+      "pickups": [
+        {
+          "item": "Floor Chicken"
+        }
+      ],
+      "relics": [
+        {
+          "item": "Roast Chicken with a Clock in the Middle",
+          "position": "end of the stage at 15:00 (after the last fence)"
+        }
+      ]
+    },
+    "special_start_event": "Timer does not start until the player kills the first Chickenfantry (single Chickenfantries run through the area). If none is killed for a minute, an Avatar of Gaea event ends the run (counts as completion, once only; unlocks Gaze of Gaea). Music plays slow until the first kill.",
+    "layout": {
+      "shape": "horizontal_corridor",
+      "size_note": "Long farm strip extending east; a fence opens to the east every 60 s until 15:00 (about 15 fences). Total length not stated on the wiki.",
+      "obstacles": "Fences dividing the strip into sections (one opens per minute, none after 15:00); other obstacles not documented.",
+      "theme": "Farm / chicken coop with a rainbow-tinted horror feel; poultry-rebellion theme (Martes de poncle music).",
+      "special_mechanics": "Timer starts only after the first Chickenfantry is killed. One fence east opens every 60 s until 15:00; Merchant is at the start and runs far east once the timer starts. Stage items: Parm Aegis at the first fence (1:00), Fire Wand at fence 5 (5:00); relic at the end (15:00). Game and enemies speed up over time. XP x0.35. Horizontal spawns (left/right only). Avatar of Gaea run-ending event if no Chickenfantry is killed for 1 minute. Reaper at 20:00."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "COOP_CHICKEN"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "COOP_CHICKEN",
+        "COOP_COCK",
+        "COOP_CHIK",
+        "COOP_EGG"
+      ],
+      "enemy_min": 70,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "COOP_CHICKEN",
+        "COOP_CHIK"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.05,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 2,
+          "at": "2:00",
+          "enemy": "COOP_EGG",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 2,
+          "repeat_delay_s": 10.0,
+          "wiki_name": "Coop Egg Swarm"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "COOP_CHICKEN",
+        "COOP_CHIK"
+      ],
+      "enemy_min": 70,
+      "spawn_interval_s": 0.4,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 3,
+          "at": "3:00",
+          "enemy": "COOP_EGG",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 2,
+          "repeat_delay_s": 10.0,
+          "wiki_name": "Coop Egg Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXAS"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "COOP_CHIK",
+        "COOP_EGG",
+        "COOP_COCK"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.05,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 4,
+          "at": "4:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 5,
+          "repeat_delay_s": 5.0,
+          "wiki_name": "Coop Chicken Swarm"
+        },
+        {
+          "type": "swarm",
+          "minute": 4,
+          "at": "4:00",
+          "enemy": "COOP_ROAST_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 1,
+          "repeat_delay_s": 8.0,
+          "wiki_name": "Coop Roast Chicken Swarm"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "COOP_CHIK",
+        "COOP_EGG",
+        "COOP_COCK"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.25,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 5,
+          "at": "5:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 5.0,
+          "wiki_name": "Coop Chicken Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXAS"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "COOP_EGG",
+        "COOP_COCK",
+        "COOP_CHICKEN"
+      ],
+      "enemy_min": 70,
+      "spawn_interval_s": 0.2,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 6,
+          "at": "6:00",
+          "enemy": "COOP_CHIK",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 5.0,
+          "wiki_name": "Coop Chik Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXAS"
+      ]
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "COOP_ROAST_CHICKEN",
+        "COOP_CHICKEN",
+        "COOP_COCK",
+        "COOP_EGG"
+      ],
+      "enemy_min": 70,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "COOP_COCK"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "COOP_ROAST_CHICKEN",
+        "COOP_COCK",
+        "COOP_CHIK"
+      ],
+      "enemy_min": 90,
+      "spawn_interval_s": 0.05,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 8,
+          "at": "8:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 10.0,
+          "wiki_name": "Coop Chicken Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXAS"
+      ]
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "COOP_CHICKEN"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.05,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 9,
+          "at": "9:00",
+          "enemy": "COOP_EGG",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 6.0,
+          "wiki_name": "Coop Egg Swarm"
+        },
+        {
+          "type": "swarm",
+          "minute": 9,
+          "at": "9:00",
+          "enemy": "COOP_CHIK",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 5,
+          "repeat_delay_s": 10.0,
+          "wiki_name": "Coop Chik Swarm"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "COOP_EGG",
+        "COOP_CHIK",
+        "COOP_ABRAXAS"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 10,
+          "at": "10:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 3,
+          "repeat_delay_s": 10.0,
+          "wiki_name": "Coop Chicken Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXASCROWN"
+      ]
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "COOP_ABRAXAS",
+        "COOP_CHICKEN",
+        "COOP_CHIK"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "COOP_COCK",
+        "COOP_ROAST_CHICKEN"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 12,
+          "at": "12:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 8.0,
+          "wiki_name": "Coop Chicken Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXASCROWN"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "COOP_ABRAXAS",
+        "COOP_CHICKEN"
+      ],
+      "enemy_min": 90,
+      "spawn_interval_s": 0.8,
+      "events": [],
+      "bosses": [
+        "COOP_ABRAXASCROWN"
+      ]
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "COOP_ABRAXAS",
+        "COOP_COCK"
+      ],
+      "enemy_min": 130,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 14,
+          "at": "14:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 8.0,
+          "wiki_name": "Coop Chicken Swarm"
+        },
+        {
+          "type": "swarm",
+          "minute": 14,
+          "at": "14:00",
+          "enemy": "COOP_ROAST_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 3,
+          "repeat_delay_s": 12.0,
+          "wiki_name": "Coop Roast Chicken Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_COCK"
+      ]
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "COOP_CHICKEN",
+        "COOP_COCK"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.8,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 15,
+          "at": "15:00",
+          "enemy": "COOP_ROAST_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 8.0,
+          "wiki_name": "Coop Roast Chicken Swarm"
+        },
+        {
+          "type": "swarm",
+          "minute": 15,
+          "at": "15:00",
+          "enemy": "COOP_EGG",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 3,
+          "repeat_delay_s": 12.0,
+          "wiki_name": "Coop Egg Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXASHALO"
+      ]
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "COOP_ABRAXAS",
+        "COOP_COCK",
+        "COOP_CHICKEN"
+      ],
+      "enemy_min": 160,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "COOP_ABRAXASCROWN"
+      ]
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "COOP_ABRAXAS",
+        "COOP_COCK",
+        "COOP_ABRAXASCROWN"
+      ],
+      "enemy_min": 90,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 17,
+          "at": "17:00",
+          "enemy": "COOP_ROAST_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 8.0,
+          "wiki_name": "Coop Roast Chicken Swarm"
+        },
+        {
+          "type": "swarm",
+          "minute": 17,
+          "at": "17:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 5,
+          "repeat_delay_s": 12.0,
+          "wiki_name": "Coop Chicken Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXASHALO"
+      ]
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "COOP_ABRAXAS",
+        "COOP_ABRAXASCROWN",
+        "COOP_CHIK"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.6,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 18,
+          "at": "18:00",
+          "enemy": "COOP_ROAST_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 10.0,
+          "wiki_name": "Coop Roast Chicken Swarm"
+        },
+        {
+          "type": "swarm",
+          "minute": 18,
+          "at": "18:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 3,
+          "repeat_delay_s": 12.0,
+          "wiki_name": "Coop Chicken Swarm"
+        }
+      ],
+      "bosses": [
+        "COOP_ABRAXASHALO"
+      ]
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "COOP_ABRAXAS",
+        "COOP_ABRAXASCROWN",
+        "COOP_ABRAXASHALO"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 19,
+          "at": "19:00",
+          "enemy": "COOP_CHICKEN",
+          "amount": 30,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "repeats": 4,
+          "repeat_delay_s": 12.0,
+          "wiki_name": "Coop Chicken Swarm"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "At 20:00 the Reaper spawns (stage end), then another every minute after."
+    }
+  ],
+  "map_events": {
+    "swarm": {
+      "enemy": "COOP_CHICKEN/COOP_EGG/COOP_CHIK/COOP_ROAST_CHICKEN",
+      "shape": "Coop <X> Swarm map events mapped to generic 'swarm' (bat-swarm-like crossing group). Wiki gives no amount/duration/shape; amount 30 and duration 10 s are placeholders. 'repeats' = wiki repeat+1 (template shows x(repeat+1)); repeat_delay_s = wiki delay/1000; chance 0 on wiki = guaranteed (100)."
+    }
+  },
+  "unsupported_events": [],
+  "unsupported_events_note": "Only mapped swarms. The special start event (kill first Chickenfantry to start timer; Avatar of Gaea after 1 min) and the eastward fence opening are stage mechanics, not map events. The 4:00 Roast Chicken Swarm has repeat=0 on the wiki (treated as 1 occurrence).",
+  "bosses": [
+    {
+      "minute": 3,
+      "enemy": "COOP_ABRAXAS",
+      "name": "Abraxas",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "COOP_ABRAXAS",
+      "name": "Abraxas",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 6,
+      "enemy": "COOP_ABRAXAS",
+      "name": "Abraxas",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "COOP_COCK",
+      "name": "Cockreliutennant",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 8,
+      "enemy": "COOP_ABRAXAS",
+      "name": "Abraxas",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "COOP_ABRAXASCROWN",
+      "name": "Abraxas Phronesis",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 12,
+      "enemy": "COOP_ABRAXASCROWN",
+      "name": "Abraxas Phronesis",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 13,
+      "enemy": "COOP_ABRAXASCROWN",
+      "name": "Abraxas Phronesis",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 14,
+      "enemy": "COOP_COCK",
+      "name": "Cockreliutennant",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 15,
+      "enemy": "COOP_ABRAXASHALO",
+      "name": "Abraxas Dynamis",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "COOP_ABRAXASCROWN",
+      "name": "Abraxas Phronesis",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 17,
+      "enemy": "COOP_ABRAXASHALO",
+      "name": "Abraxas Dynamis",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 18,
+      "enemy": "COOP_ABRAXASHALO",
+      "name": "Abraxas Dynamis",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLDEATH",
+      "name": "The Reaper"
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "20:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 8,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "80% base (stage, max 90%), multiplied by Luck",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

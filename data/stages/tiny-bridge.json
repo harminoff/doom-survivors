@@ -1,0 +1,798 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Tiny_Bridge (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Reaper_Trainee, Impefinger, Skullone, Ghost, Harzia, Sneaky_Head, Kamaitachi, Tetrabrachia, Skelewing, Giant_Bat, Pipeestrello, Archon_Rame, Gallotrice, Swordian (Statbox Enemy, retrieved 2026-09-29)",
+    "Map event page: Shooting_Star (Monster Rain page not found on the wiki)",
+    "pickups, chest_rules and light_sources reuse the Gallo Tower file content"
+  ],
+  "stage": {
+    "id": "TINYBRIDGE",
+    "name": "Tiny Bridge",
+    "duration_seconds": 1200,
+    "type": "Challenge stage (sixth; unlocked by reaching level 80 in Inverse Gallo Tower, or the Forbidden Scrolls of Morbane spell 'recyclethetower'; hyper mode unlocked by default)",
+    "wiki_internal_id": "TOWERBRIDGE",
+    "spawn_type": "Narrow bridge: enemies mostly approach from the left and right sides in large clusters",
+    "modifiers_normal_mode": {
+      "starting_spawns": 50,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.3,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "7.5% (max 50%)",
+      "destructible_max": 10
+    },
+    "modifiers": {
+      "enemy_health_per_minute": 0.2,
+      "enemy_speed_per_minute": 0.025,
+      "no_item_drops": false,
+      "scaling_note": "Effects text: enemy health multiplier +0.2 per minute and enemy speed multiplier +0.025 per minute (additive). The infobox reads 'enemy-speed per min = +0.25', which contradicts the effects text; 0.025 used as the more plausible value.",
+      "effects": [
+        "Enemies grow stronger over time."
+      ]
+    },
+    "modifiers_note": "Wiki infobox fields; blank luck/projectile fields assumed 1. Hyper mode (x1.9 player/enemy speed, x1.15 projectile speed, greed x1.8, luck x1.1, 50 starting spawns) not needed here.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [],
+      "pickups": [],
+      "weapons": [
+        {
+          "item": "Wings",
+          "position": "left side of the bridge"
+        },
+        {
+          "item": "Vento Sacro",
+          "position": "left side of the bridge"
+        },
+        {
+          "item": "Attractorb",
+          "position": "right side of the bridge"
+        },
+        {
+          "item": "Lightning Ring",
+          "position": "right side of the bridge"
+        }
+      ],
+      "relics": [
+        {
+          "item": "Chaos Altemanna",
+          "position": "far left of the bridge, past Wings and Vento Sacro"
+        }
+      ],
+      "hidden_with_yellow_sign": [],
+      "yellow_sign_note": "The Yellow Sign has no effect on this stage."
+    },
+    "destructibles": "Wiki gives destructible chance 7.5% (max 50%), max 10; type not stated (assume light sources).",
+    "layout": {
+      "shape": "horizontal_corridor",
+      "orientation": "horizontal (east-west): the bridge runs left-right; enemies come from the left and right sides",
+      "width_note": "Width not given numerically; wiki calls it an 'incredibly narrow layout'. Trivia: a well-timed pause while running against the north or south walls lets the player escape the bridge (returning to the map without enemies; 'I AM ALIVE HERE' text far north/south).",
+      "size_note": "Long and narrow horizontal bridge, exact length unknown; weapons on both ends and the Chaos Altemanna relic at the far left end.",
+      "obstacles": "None described; walls along the north and south edges of the bridge.",
+      "theme": "Small stone bridge (music theme Roaring Thunder); stormy setting between two opposing factions that stopped fighting.",
+      "special_mechanics": "Challenge stage. Enemies grow stronger over time: enemy health multiplier +0.2 per minute, enemy speed +0.025 per minute (infobox says +0.25, see modifiers.scaling_note). Item drops are NOT disabled. Stage weapons: Wings and Vento Sacro on the left, Attractorb and Lightning Ring on the right; Chaos Altemanna relic far left. Shooting Star and Monster Rain map events. Yellow Sign has no effect. Reaper at 20:00 clears the screen, one more Reaper per minute after."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "BRIDGE_TRAINEE"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "SKULLINO",
+        "BRIDGE_TRAINEE"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ]
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "IMP",
+        "BRIDGE_TRAINEE"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "IMP"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "IMP",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "GHOST",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN_2"
+      ],
+      "notes": "Monster Rain event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "GHOST",
+        "HARPY"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MEDUSA2_AGGRO",
+        "HARPY"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "MEDUSA2_AGGRO",
+        "BRIDGE_MINION"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "BRIDGE_MINION"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ],
+      "notes": "Monster Rain event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "KALI1",
+        "BRIDGE_MINION"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN_2"
+      ],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "BRIDGE_TETRA"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "SKELEWING_INO",
+        "BRIDGE_TETRA"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "SKELEWING_INO",
+        "BRIDGE_TETRA"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ],
+      "notes": "Monster Rain event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "XLBAT",
+        "BAT3"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "XLBAT",
+        "BRIDGE_ARMOR"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ]
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "BRIDGE_ARMOR"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "BRIDGE_ARMOR",
+        "SKELEWING"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Monster Rain event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "XLCOCKATRICE_GOLD"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSWORDIAN"
+      ],
+      "notes": "Shooting Star event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "XLSWORDIAN_AGGRO"
+      ],
+      "enemy_min": 75,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Monster Rain event fires here (see unsupported_events)."
+    },
+    {
+      "minute": 20,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [],
+      "notes": "All enemies on screen are cleared; The Reaper (BOSS_XLDEATH) spawns, and another Reaper each minute past 20 (see reaper)."
+    }
+  ],
+  "map_events": {
+    "shooting_star": {
+      "shape": "groups of stars land within 'range' (0.1) of the player, 2 s after a marker appears, 30 damage each; amount stars per repeat at interval_s apart"
+    },
+    "monster_rain": {
+      "enemy": "XLSWORDIAN_V",
+      "shape": "Swordian V (speed 400, fixed direction) rain in for 15 s; wiki page not found, shape approximate"
+    },
+    "map_events_note": "No enemy id is attached to Shooting Star so gen_stages.py skips it; Monster Rain is outside EVENT_KIND. Both are listed raw in unsupported_events."
+  },
+  "unsupported_events": [
+    {
+      "type": "shooting_star",
+      "minute": 2,
+      "at": "2:00",
+      "amount": 2,
+      "delay_s": 5,
+      "interval_s": 1,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 4,
+      "at": "4:00",
+      "amount": 4,
+      "delay_s": 5,
+      "interval_s": 1,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "monster_rain",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": "XLSWORDIAN_V",
+      "amount": 12,
+      "duration_s": 15,
+      "wiki_description": "Monster Rain (wiki template: enemy=Swordian, variant=Swordian V): Swordian V (fixed-direction, speed 400) rain in. No dedicated wiki page was found; shape approximate."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 6,
+      "at": "6:00",
+      "amount": 6,
+      "delay_s": 5,
+      "interval_s": 1,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 8,
+      "at": "8:00",
+      "amount": 8,
+      "delay_s": 5,
+      "interval_s": 1,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "monster_rain",
+      "minute": 9,
+      "at": "9:00",
+      "enemy": "XLSWORDIAN_V",
+      "amount": 14,
+      "duration_s": 15,
+      "wiki_description": "Monster Rain (wiki template: enemy=Swordian, variant=Swordian V): Swordian V (fixed-direction, speed 400) rain in. No dedicated wiki page was found; shape approximate."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 10,
+      "at": "10:00",
+      "amount": 10,
+      "delay_s": 5,
+      "interval_s": 0.5,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 12,
+      "at": "12:00",
+      "amount": 12,
+      "delay_s": 5,
+      "interval_s": 0.5,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "monster_rain",
+      "minute": 13,
+      "at": "13:00",
+      "enemy": "XLSWORDIAN_V",
+      "amount": 12,
+      "duration_s": 15,
+      "wiki_description": "Monster Rain (wiki template: enemy=Swordian, variant=Swordian V): Swordian V (fixed-direction, speed 400) rain in. No dedicated wiki page was found; shape approximate."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 14,
+      "at": "14:00",
+      "amount": 14,
+      "delay_s": 5,
+      "interval_s": 0.4,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 16,
+      "at": "16:00",
+      "amount": 16,
+      "delay_s": 5,
+      "interval_s": 0.3,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "monster_rain",
+      "minute": 17,
+      "at": "17:00",
+      "enemy": "XLSWORDIAN_V",
+      "amount": 24,
+      "duration_s": 15,
+      "wiki_description": "Monster Rain (wiki template: enemy=Swordian, variant=Swordian V): Swordian V (fixed-direction, speed 400) rain in. No dedicated wiki page was found; shape approximate."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 18,
+      "at": "18:00",
+      "amount": 18,
+      "delay_s": 5,
+      "interval_s": 0.3,
+      "range": 0.1,
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player (wiki value 0.1)."
+    },
+    {
+      "type": "monster_rain",
+      "minute": 19,
+      "at": "19:00",
+      "enemy": "XLSWORDIAN_V",
+      "amount": 24,
+      "duration_s": 15,
+      "wiki_description": "Monster Rain (wiki template: enemy=Swordian, variant=Swordian V): Swordian V (fixed-direction, speed 400) rain in. No dedicated wiki page was found; shape approximate."
+    }
+  ],
+  "unsupported_events_note": "All events copied raw from the wave table. 'delay_s' is the wiki delay field, 'interval_s' the wiki interval, 'range' the wiki range.",
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 2,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_XLSWORDIAN_2",
+      "name": "Arcana Swordian (Arcana holder)",
+      "chest": {
+        "fallback_level": 1,
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true,
+      "chest_note": "wiki table also lists evo rewards on this chest, but the boss note says it only awards an Arcana"
+    },
+    {
+      "minute": 6,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 9,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward1=evo, reward2=evo, reward3=evo, reward4=evo, reward5=evo",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "BOSS_XLSWORDIAN_2",
+      "name": "Arcana Swordian (Arcana holder)",
+      "chest": {
+        "fallback_level": 1,
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true,
+      "chest_note": "wiki table also lists evo rewards on this chest, but the boss note says it only awards an Arcana"
+    },
+    {
+      "minute": 13,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward1=evo, reward2=evo, reward3=evo, reward4=evo, reward5=evo",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 15,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward1=evo, reward2=evo, reward3=evo, reward4=evo, reward5=evo",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 18,
+      "enemy": "BOSS_XLSWORDIAN",
+      "name": "Colossal Swordian",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward1=evo, reward2=evo, reward3=evo, reward4=evo, reward5=evo",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "Gallo Tower minute-25 Giant Enemy Crab chest lists no level (fallback_level omitted); Drowner (crab summon) chest also exists but is not tabulated. Tier chances copied verbatim from the wave table (tier3=5-item, tier2=3-item, tier1=1-item).",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "20:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "7.5% base (stage), multiplied by Luck, capped at 50%",
+    "spawn_location": "Gallo Tower light-source spawn locations are not stated on the pages read (unknown); copied from the Mad Forest/Inlaid Library files",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

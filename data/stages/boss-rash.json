@@ -1,0 +1,959 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Boss_Rash (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages and redirects fetched via ?action=raw on the same date: Giant Bat, Big Mummy, Werewolf, Mantichana, Succubus (enemy), Archdemon, Giant Skeleton, Skullone, Harzia, Colossal Panther, Merman, Minotaur Boss, Non-Giant Enemy Crab, Archon Ascia, Sword Guardian, Archon Spada, Archon Disco, Archon Rame, Nightshade, Garlic (enemy), Trinacria, Unknown, The Ender, Reaper Trainee, The Stalker, The Drowner, The Trickster, The Maddener, Mimic Season One, Tri-Anchors",
+    "pickups, chest_rules and reaper blocks reuse the Dairy Plant file's content"
+  ],
+  "stage": {
+    "id": "BOSSRASH",
+    "name": "Boss Rash",
+    "duration_seconds": 900,
+    "spawn_type": "Standard: waves approach from all four sides of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 30,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1.5,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "10% (max 50%)",
+      "destructible_max": 5
+    },
+    "modifiers_note": "Wiki infobox fields (wiki stage id RASH; this project uses BOSSRASH). Enemy health x1.5 and it rises by +0.1 every minute with no cap. Hyper mode (+50% gold, +10% luck, 60 starting spawns, x1.25 enemy min, x1.15 projectile speed) not needed. Challenge stage, unlocked by unlocking hyper mode on all 5 normal stages.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [],
+      "pickups": [],
+      "relics": [
+        {
+          "item": "Atlas Gate",
+          "position": "center of the arena at 7:00, only if the Yellow Sign was obtained"
+        }
+      ],
+      "note": "All passives (except Torrona's Box, Parm Aegis, Karoma's Mana), the 4 secret passives, 2 Floor Chickens, 2 Orologions, 1 Nduja Fritta Tanto and 1 Rosary lie outside the arena and are unreachable without Mad Groove; ignored."
+    },
+    "destructibles": "Light sources (drop random pickups); destructible chance 10% (max 50%), max 5.",
+    "pressure_plates": "Two round pressure plates spawn every 30 s mark until 9:30. Blue (hourglass) fast-forwards to the start of the next minute; red (skull) respawns the current wave's bosses (Arcana-holder bosses do not respawn). Plates vanish at the start of the next minute if untriggered.",
+    "layout": {
+      "shape": "enclosed_room",
+      "size_note": "Single enclosed arena (size not stated on the wiki).",
+      "obstacles": "None stated; open arena floor with two pressure plates spawning every 30 s until 9:30.",
+      "theme": "Boss-arena/circus style stage (the monsters want entertainment) built from recycled assets of the base stages.",
+      "special_mechanics": "Two pressure plates every 30 s until 9:30: blue = skip to next minute, red = respawn the current wave's bosses (not Arcana holders). Enemy health x1.5 plus +0.1 per minute, uncapped. Boss waves from Mad Forest, Inlaid Library, Dairy Plant, Gallo Tower, Cappella Magna and Moongolow; the mob pool has minimum 1 enemy (20 from 12:00). Arcana bosses at 5:00 and 10:00."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "BAT3"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_XLBAT",
+        "BOSS_XLMUMMY"
+      ],
+      "notes": "Bosses appear at the start of each minute; the wiki wave table gives enemy minimum 1 and interval 1.0 s (minimum 20 from 12:00)."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "BAT3"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "bat_swarm",
+          "at": "1:15",
+          "enemy": "BATSWARM",
+          "chance_pct": 70,
+          "repeats": 2,
+          "repeat_delay_s": 15
+        }
+      ],
+      "bosses": [
+        "BOSS_WEREWOLF",
+        "BOSS_WEREWOLF2",
+        "BOSS_XLMANTIS",
+        "BOSS_XLFLOWER"
+      ]
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "MUD"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_ECTO",
+        "BOSS_MUD",
+        "BOSS_BUER"
+      ]
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "MEDUSA1"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_XLMEDUSA",
+        "BOSS_MEDUSA1",
+        "BOSS_WITCH2",
+        "BOSS_COUNT2"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "MEDUSA1"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "at": "4:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 1
+        },
+        {
+          "type": "skull_swarm",
+          "at": "4:05",
+          "enemy": "SKULL2_SWARM",
+          "amount": 2
+        },
+        {
+          "type": "skull_swarm",
+          "at": "4:15",
+          "enemy": "SKULL2_SWARM",
+          "amount": 4
+        },
+        {
+          "type": "skull_swarm",
+          "at": "4:25",
+          "enemy": "SKULL2_SWARM",
+          "amount": 8
+        },
+        {
+          "type": "skull_swarm",
+          "at": "4:35",
+          "enemy": "SKULL2_SWARM",
+          "amount": 16
+        }
+      ],
+      "bosses": [
+        "BOSS_COUNT1",
+        "BOSS_SUCCUBUS",
+        "BOSS_XLARCHDEMON"
+      ]
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "SKELETON"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "ghost_swarm",
+          "at": "5:01",
+          "enemy": "GHOSTSWARM",
+          "chance_pct": 70,
+          "repeats": 2,
+          "repeat_delay_s": 1.2
+        }
+      ],
+      "bosses": [
+        "BOSS_SKULL2",
+        "BOSS_XLSKELETON",
+        "BOSS_XLDRAGON1",
+        "BOSS_XLDRAGON2",
+        "BOSS_PILE3"
+      ],
+      "notes": "Giant Goat-Horned Shooter is an Arcana holder: spawns only if Arcanas are enabled; its chest only awards an Arcana."
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "HARPY"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_HARPY",
+        "BOSS_XLCOCKATRICE",
+        "BOSS_PANTHER",
+        "BOSS_XLCHIMERA"
+      ]
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MILK"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "jellyfish_swarm",
+          "at": "7:00",
+          "enemy": "JELLYFISH2_SWARM",
+          "amount": 80,
+          "duration_s": 10
+        }
+      ],
+      "bosses": [
+        "BOSS_MIGNO2_5_L",
+        "BOSS_MERMAN",
+        "BOSS_XLTRITON",
+        "BOSS_XLCRAB",
+        "MOON_BOSS_CRABBINO"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "ARMOR_SWORD"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "dragon_swarm",
+          "at": "8:00",
+          "enemy": "XLDRAGON2_FLAG",
+          "amount": 12,
+          "duration_s": 20
+        },
+        {
+          "type": "dragon_swarm",
+          "at": "8:02",
+          "enemy": "XLDRAGON2_FLAG",
+          "amount": 6,
+          "duration_s": 20,
+          "chance_pct": 60,
+          "repeats": 10,
+          "repeat_delay_s": 2
+        }
+      ],
+      "bosses": [
+        "BOSS_ARMOR1",
+        "BOSS_XLARMOR",
+        "BOSS_XLARMOR1",
+        "BOSS_XLARMOR2",
+        "BOSS_XLARMOR_GREEN"
+      ]
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "MOON_EYE2"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_NIGHTSHADE",
+        "MOON_BOSS_GARLIC",
+        "BOSS_TRINACRIA",
+        "BOSS_EYE2"
+      ]
+    },
+    {
+      "minute": 10,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_ENDER_RASH",
+        "TRAINEE_ANY"
+      ],
+      "notes": "Wiki lists no regular enemies at 10:00. Elite Reaper Trainee is an Arcana holder (chest only awards an Arcana); TRAINEE_ANY used as an approximate id."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "BAT3"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_STALKER_NORMAL",
+        "BOSS_DROWNER_RASH",
+        "BOSS_TRICKSTER_NORMAL",
+        "BOSS_MADDENER_NORMAL"
+      ]
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "BOSS_XLGOLEM1_29",
+        "BOSS_XLGOLEM2_29"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_XLGOLEM1",
+        "BOSS_XLGOLEM2"
+      ],
+      "notes": "Pool 'Massive Golem' x2 = the LV29 Big Golem variants (BOSS_XLGOLEM*_29 in the Dairy Plant file); the bosses are the two Big Golems."
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "BAT3"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_GIANT_MIMIC1",
+        "BOSS_GIANT_MIMIC1",
+        "BOSS_GIANT_MIMIC1"
+      ],
+      "notes": "Giant Mimic x3: BOSS_GIANT_MIMIC1 listed three times."
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "BOSS_DRAGOGION"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_DRAGOGION"
+      ]
+    },
+    {
+      "minute": 15,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "Reaper at 15:00; all enemies on screen are cleared; another Reaper per minute after."
+    }
+  ],
+  "map_events": {},
+  "unsupported_events": [],
+  "unsupported_events_note": "All Boss Rash map events map to existing EVENT_KIND kinds (bat_swarm, skull_swarm, ghost_swarm, jellyfish_swarm, dragon_swarm). The wiki delay and repeat fields are ambiguous: the first delay is taken as an offset from the minute start ('at'), repeat as a count with the delay as spacing (bat swarm 1:15 x2 every 15 s; ghost swarm 5:01 x2 every 1.2 s; dragon swarm second row 8:02 x10 every 2 s). Skull swarm rows are separate events with amounts 1/2/4/8/16 at 4:00/4:05/4:15/4:25/4:35. The wiki gives no amount for bat/ghost swarms (generator defaults apply). Pressure plates are not modelled here.",
+  "bosses": [
+    {
+      "minute": 0,
+      "enemy": "BOSS_XLBAT",
+      "name": "Bat Lord",
+      "chest_note": "wiki lists no treasure for this boss"
+    },
+    {
+      "minute": 0,
+      "enemy": "BOSS_XLMUMMY",
+      "name": "Mummy Lord",
+      "chest_note": "wiki lists no treasure for this boss"
+    },
+    {
+      "minute": 1,
+      "enemy": "BOSS_WEREWOLF",
+      "name": "Werewolf Lord",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 1,
+      "enemy": "BOSS_WEREWOLF2",
+      "name": "Werewolf Boss",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 1,
+      "enemy": "BOSS_XLMANTIS",
+      "name": "Mantichana Lord",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 1,
+      "enemy": "BOSS_XLFLOWER",
+      "name": "Giant Blue Venus",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 2,
+      "enemy": "BOSS_ECTO",
+      "name": "Colossal Musc Musc",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 2,
+      "enemy": "BOSS_MUD",
+      "name": "Colossal Dust Elemental",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 2,
+      "enemy": "BOSS_BUER",
+      "name": "Colossal Lionhead",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_XLMEDUSA",
+      "name": "Queen Medusa",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_MEDUSA1",
+      "name": "Colossal Sneaky Head",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_WITCH2",
+      "name": "Master Witch",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_COUNT2",
+      "name": "Nesufritto",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 4,
+      "enemy": "BOSS_COUNT1",
+      "name": "Hag",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 4,
+      "enemy": "BOSS_SUCCUBUS",
+      "name": "Colossal Succubus",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 4,
+      "enemy": "BOSS_XLARCHDEMON",
+      "name": "Colossal Archdemon",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_SKULL2",
+      "name": "Giant Skull",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_XLSKELETON",
+      "name": "Colossal Skeleton",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_XLDRAGON1",
+      "name": "Colossal Bone Dragon",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_XLDRAGON2",
+      "name": "Colossal Flame Dragon",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_PILE3",
+      "name": "Giant Goat-Horned Shooter",
+      "chest": {
+        "fallback_level": 1,
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 6,
+      "enemy": "BOSS_HARPY",
+      "name": "Colossal Harzia",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 6,
+      "enemy": "BOSS_XLCOCKATRICE",
+      "name": "Colossal Gallotrice",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 6,
+      "enemy": "BOSS_PANTHER",
+      "name": "Colossal Panther",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 6,
+      "enemy": "BOSS_XLCHIMERA",
+      "name": "Colossal Manticore",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_MIGNO2_5_L",
+      "name": "Minotaur Boss",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_MERMAN",
+      "name": "Merman Boss",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_XLTRITON",
+      "name": "King Triton",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_XLCRAB",
+      "name": "Giant Enemy Crab",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 7,
+      "enemy": "MOON_BOSS_CRABBINO",
+      "name": "Giant Crabbino",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 8,
+      "enemy": "BOSS_ARMOR1",
+      "name": "Axe Guardian",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 8,
+      "enemy": "BOSS_XLARMOR",
+      "name": "Sword Guardian",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 8,
+      "enemy": "BOSS_XLARMOR1",
+      "name": "Red Knight Guardian",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 8,
+      "enemy": "BOSS_XLARMOR2",
+      "name": "Shield Guardian",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 8,
+      "enemy": "BOSS_XLARMOR_GREEN",
+      "name": "Colossal Green Knight",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 9,
+      "enemy": "MOON_BOSS_NIGHTSHADE",
+      "name": "Colossal Moon Nightshade",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 9,
+      "enemy": "MOON_BOSS_GARLIC",
+      "name": "Colossal Moon Garlic",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 9,
+      "enemy": "BOSS_TRINACRIA",
+      "name": "Trinacria",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 9,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "BOSS_ENDER_RASH",
+      "name": "The Ender",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "TRAINEE_ANY",
+      "name": "Elite Reaper Trainee",
+      "chest": {
+        "fallback_level": 1,
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 11,
+      "enemy": "BOSS_STALKER_NORMAL",
+      "name": "Stalker",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 11,
+      "enemy": "BOSS_DROWNER_RASH",
+      "name": "Drowner",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 11,
+      "enemy": "BOSS_TRICKSTER_NORMAL",
+      "name": "Trickster",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 11,
+      "enemy": "BOSS_MADDENER_NORMAL",
+      "name": "Maddener",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 12,
+      "enemy": "BOSS_XLGOLEM1",
+      "name": "Big Golem",
+      "chest_note": "no chest on this boss (the wiki lists one chest per minute, attached here to the last-listed boss of the minute)"
+    },
+    {
+      "minute": 12,
+      "enemy": "BOSS_XLGOLEM2",
+      "name": "Big Golem",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 13,
+      "enemy": "BOSS_GIANT_MIMIC1",
+      "name": "Giant Mimic",
+      "chest_note": "wiki lists no treasure for this boss"
+    },
+    {
+      "minute": 13,
+      "enemy": "BOSS_GIANT_MIMIC1",
+      "name": "Giant Mimic",
+      "chest_note": "wiki lists no treasure for this boss"
+    },
+    {
+      "minute": 13,
+      "enemy": "BOSS_GIANT_MIMIC1",
+      "name": "Giant Mimic",
+      "chest_note": "wiki lists no treasure for this boss"
+    },
+    {
+      "minute": 14,
+      "enemy": "BOSS_DRAGOGION",
+      "name": "Dragogion",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 15,
+      "enemy": "BOSS_XLDEATH",
+      "name": "The Reaper",
+      "chest_note": "wiki lists no treasure for this boss"
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "15:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

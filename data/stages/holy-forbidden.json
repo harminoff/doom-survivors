@@ -1,0 +1,148 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Holy_Forbidden (api wikitext, retrieved 2026-10-01)",
+    "Enemy pages: Bell Angel, Eyespin, The Maddener, Moon Trinacria"
+  ],
+  "stage": {
+    "id": "HOLYFORBIDDEN",
+    "name": "Holy Forbidden",
+    "duration_seconds": 120,
+    "type": "Hidden ground (Lunar Eclipse in Moongolow / spell iwanttoseeitagain)",
+    "spawn_type": "Special scripted sequence; no level-ups; loses passives/weapons except starting weapon",
+    "modifiers_normal_mode": {
+      "starting_spawns": 50,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "100% (max 100%)",
+      "destructible_max": 100
+    },
+    "modifiers_note": "Wiki time is 5:00; 2:00 used here per the project brief. Player cannot level up (xp drops are zero).",
+    "stage_items": {
+      "weapons": [],
+      "passives": [],
+      "pickups": [
+        "Rosary"
+      ],
+      "relics": [
+        "Yellow Sign"
+      ],
+      "hidden_with_yellow_sign": []
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "MOON_BAT"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 3.0,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 0,
+          "at": "0:27",
+          "enemy": "MOON_BAT_PROJECTILE",
+          "amount": 56,
+          "duration_s": 21,
+          "note": "Maddener circling strikers: 8 revolutions x 7 every 0.38s"
+        },
+        {
+          "type": "swarm",
+          "minute": 0,
+          "at": "0:52",
+          "enemy": "MOON_SHADE",
+          "amount": 40,
+          "duration_s": 16,
+          "note": "Bombers, 0.4s intervals"
+        }
+      ],
+      "bosses": [],
+      "notes": "Bats until 0:15 then angels; same enemy id."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "MOON_BAT",
+        "MOON_SHADE"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 3.0,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 1,
+          "at": "1:04",
+          "enemy": "MOON_EYE1",
+          "amount": 60,
+          "duration_s": 5
+        },
+        {
+          "type": "swarm",
+          "minute": 1,
+          "at": "1:04",
+          "enemy": "MOON_EYE2",
+          "amount": 40,
+          "duration_s": 5
+        },
+        {
+          "type": "swarm",
+          "minute": 1,
+          "at": "1:04",
+          "enemy": "MOON_EYE3",
+          "amount": 20,
+          "duration_s": 5
+        },
+        {
+          "type": "swarm",
+          "minute": 1,
+          "at": "1:35",
+          "enemy": "MOON_TRINACRIA_X",
+          "amount": 50,
+          "duration_s": 20,
+          "note": "wiki: spawned when reaching the last corner; approximated in time"
+        }
+      ],
+      "bosses": [
+        "BOSS_XLMADDENER"
+      ],
+      "notes": "Eye bombardment 1:12-1:35 is not modeled; the XL Maddener chase starts at 1:35 and is approximated at minute 1."
+    }
+  ],
+  "unsupported_events": [
+    {
+      "type": "eye_bombardment",
+      "wiki_description": "1:12-1:27 Maddener shoots eyes with warning indicators, 15 damage area"
+    },
+    {
+      "type": "maddener_instakill_chase",
+      "wiki_description": "At 1:35 Maddener moves toward player; instant kill on contact"
+    },
+    {
+      "type": "rosary_end",
+      "wiki_description": "Picking up the Rosary at the corridor end clears all enemies and ends the stage after 30s"
+    }
+  ],
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "BOSS_XLMADDENER",
+      "name": "The Maddener XL",
+      "chest": {
+        "type": "none",
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 0
+        }
+      }
+    }
+  ],
+  "notes": "enemy_min 50 and 3.0s interval for bats are wiki values."
+}

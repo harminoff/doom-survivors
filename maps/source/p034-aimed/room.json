@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P034-AIMED-MAP20-001",
+  "classification": "CONTROLLED_FOUR_FORM_AIMED_DIRECTIONAL_RUNTIME_FIXTURE",
+  "map_name": "MAP20",
+  "purpose": "Run compiled Magic Wand, Holy Wand, Knife, and Thousand Edge row data, automatic schedules, target selection, and logical projectile hits in pinned UZDoom",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-192,-128],[-192,128],[192,128],[192,-128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "QUALIFIED_MUTABLE_COMMUNITY_RANK_REPORTS_WITH_ENGINEERING_FIRST_PERSON_ADAPTER",
+  "notes": [
+    "All four weapon forms and three targets are controlled fixtures; this room does not claim natural acquisition or source-exact combat timing.",
+    "Magic Wand and Holy Wand target the nearest live logical enemy; Knife and Thousand Edge use the player's view yaw projected onto the XY plane.",
+    "The runner compares yaw-zero and pitch/FOV-only runs and checks the actual accepted hit records."
+  ]
+}

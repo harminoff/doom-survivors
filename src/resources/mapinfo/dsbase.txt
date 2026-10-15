@@ -1,0 +1,22 @@
+gameinfo
+{
+    PlayerClasses = "DSP021FirstPersonPlayer"
+    StatusBarClass = "DSDiagnosticStatusBar"
+    AddEventHandlers = "DSBootProbe", "DSFirstPersonCameraAdapter", "DSPreliminaryCameraProbe", "DSP014TimingProbe", "DSP015EntityBench", "DSP016RunCarrier", "DSP013AssetGalleryProbe", "DSP016PersistenceProbe", "DSP017MultiplayerProbe", "DSP019Harness", "DSP020Runtime", "DSP021InputAdapter", "DSP021Presentation", "DSP022StageSpawnRuntime", "DSP023BasicEnemyRuntime", "DSP024SpatialRuntime", "DSP025AttackRuntime", "DSP026WhipRuntime", "DSP027ExperienceRuntime", "DSP028LevelUpRuntime", "DSP029RunController", "DSP030VerticalSlice", "DSP031DraftFullRuntime", "DSP032ChestRuntime", "DSP032ChestUiRuntime", "DSP033StatsRuntime", "DSP034AimedRuntime", "DSP035BallisticRuntime", "DSP036ReturningRuntime", "DSP037Map23Runtime", "DSP038Map24Runtime", "DSP039Map25Runtime", "DSP040Map26Runtime", "DSP041BounceRuntime", "DSP042PairedMap28Runtime", "DSShellBoot"
+    BorderFlat = "DSFLOOR"
+    TitlePage = "DSTITLE"
+    TitleTime = 0
+}
+
+DoomEdNums
+{
+    30001 = DSCloseBillboard
+    30002 = DSSolidProp
+    30003 = DSFootPickup
+    30011 = DSP13Enemy
+    30012 = DSP13PlayerIdentity
+    30013 = DSP13Projectile
+    30014 = DSP13GroundAura
+    30015 = DSP13FootPickup
+    30016 = DSP13WorldProp
+}

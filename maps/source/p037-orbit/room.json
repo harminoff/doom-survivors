@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P037-ORBIT-MAP23-001",
+  "classification": "CONTROLLED_TWO_FORM_ORBIT_RUNTIME_FIXTURE",
+  "map_name": "MAP23",
+  "purpose": "Exercise build-census HOLYBOOK/VESPERS rows and controlled source-plane orbit sweeps in pinned UZDoom",
+  "room": [[-1024, -1024], [-1024, 1024], [1024, 1024], [1024, -1024]],
+  "landmark": [[-192, -192], [-192, 192], [192, 192], [192, -192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": { "x": 0, "y": 0, "angle": 0 },
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "BUILD_CAPTURED_HOLYBOOK_TO_VESPERS_EDGE_AND_DURATION_DEPENDENCY_PLUS_CURRENT_REPORTS_AND_FROZEN_ENGINEERING_ORBIT_ADAPTER",
+  "notes": [
+    "Weapon rank, enemies, stats, recipe ingredients and timing are controlled fixtures; no natural acquisition or universal chest-gate claim is made.",
+    "All logical orbit collision uses P024 candidates and P025 checked damage. Rendered members are proxies and cannot determine contacts.",
+    "The locked v1.16.107 applicability of current community rank reports is unverified; exact world units, contact radius, per-member reset ownership and pool cap are labeled adapter behavior."
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Il_Molise (?action=raw wikitext, retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Sad_Molisano, Happy_Molisano, Cute_Molisano, Old_Molisano, Dead_Molisano, Molisano_Grosso, Containers (?action=raw Statbox Enemy templates, retrieved 2026-09-29)",
+    "pickups, chest_rules and reaper blocks reuse the Dairy Plant / Mad Forest file content"
+  ],
+  "stage": {
+    "id": "MOLISE",
+    "name": "Il Molise",
+    "duration_seconds": 900,
+    "spawn_type": "Tiled layout outside the screen; enemies cannot move, so the player must walk to make room for more to spawn",
+    "modifiers_normal_mode": {
+      "starting_spawns": 1,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "30% (max 60%)",
+      "destructible_max": 10
+    },
+    "modifiers_note": "Wiki infobox fields. Bonus stage, first one in the game; time limit 15:00. Hyper mode (+50% gold, +20% luck, x1.6 enemy health, x2 player speed) not needed. Enemy speed multiplier is irrelevant since enemies do not move.",
+    "enemy_cap_rule": "Waves 0-14 keep both enemy minimum and maximum at 500 (spawn interval 0.1 s); from 15:00 the maximum drops (40 at 15, 30, 20, 15, 10, 10, 5 ...), and 21:00 goes to 250.",
+    "spawn_rule": "Enemies spawn only outside the screen in a tiled layout and never move; the player moving reveals free tiles for new spawns.",
+    "stage_items": {
+      "passives": [],
+      "pickups": [],
+      "relics": [],
+      "hidden_with_yellow_sign": [
+        {
+          "item": "Silver Ring",
+          "position": "north of starting area"
+        },
+        {
+          "item": "Metaglio Right",
+          "position": "east of starting area"
+        },
+        {
+          "item": "Gold Ring",
+          "position": "south of starting area"
+        },
+        {
+          "item": "Metaglio Left",
+          "position": "west of starting area"
+        }
+      ],
+      "bat_dragon": "Bat Dragon appears 5-6 tilesets northeast of start only with the Green Eyes Vizard relic (out of scope)."
+    },
+    "destructibles": "Light sources (destructible chance 30%, max 60%, max 10 at once).",
+    "traps": "None listed.",
+    "notes": "Wiki waves 16:00-22:00+ (Reaper each minute, gold pot farming, 21:00 Arcana Dead Molisano boss) are beyond the 15:00 limit and are not included as waves.",
+    "layout": {
+      "shape": "open_field",
+      "size_note": "Large open grassy field, effectively unbounded around the start, kept full of stationary enemies in a tiled grid.",
+      "obstacles": "None described; open map with flowers and grass, no walls. The density of enemies (up to 500 immobile ones) acts as the obstacle field.",
+      "theme": "Bright unspoilt Italian countryside meadow with singing flowers (music: Vempair Survaivors, a Funiculi Funicula remix); joke stage about the region of Molise.",
+      "special_mechanics": "Enemies don't move. ALL Molisano enemies (Sad/Happy/Cute/Old/Dead Molisano and variants: Base, Secco, Bello, Fagiolo, Grosso, Giallo, Rosso, Colonna, Vecchio) and the Molisano Anfora gold pots have MoveSpeed 0; they only deal damage (power 1) when the player touches them. Enemies are placed outside the screen in a tiled layout, so the player must move to make room for more spawns; 500 alive is the target for minutes 0-14. Exceptions: The Reaper (from 15:00) moves and is lethal; the Bat Dragon (only with the Green Eyes Vizard relic) is a separate roaming enemy. O'Sole Meeo takes no damage from Molisano enemies; Celestial Dusting gives them extra health. Molisano Grosso wiki text says only 'cannot move'. Anforas drop a Gold Coin instead of XP. At 15:00 all previous enemies are erased and only sparse gold pots spawn alongside the Reaper. Freeze/Orologion mainly prevents touch damage."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "MOLISANO_BASE"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full)."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "MOLISANO_BASE",
+        "MOLISANO_SECCO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "MOLISANO_SECCO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "MOLISANO_SECCO",
+        "MOLISANO_BELLO",
+        "MOLISANO_BASE"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "MOLISANO_BELLO",
+        "MOLISANO_GROSSO",
+        "MOLISANO_BASE"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "MOLISANO_GROSSO",
+        "MOLISANO_GIALLO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "MOLISANO_GROSSO",
+        "MOLISANO_GIALLO",
+        "MOLISANO_BELLO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MOLISANO_GIALLO",
+        "MOLISANO_ROSSO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "MOLISANO_ROSSO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "MOLISANO_ROSSO",
+        "MOLISANO_FAGIOLO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_VECCHIO"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full)."
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "MOLISANO_FAGIOLO",
+        "MOLISANO_BASE"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA",
+        "MOLISANO_VECCHIO"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "MOLISANO_FAGIOLO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_VECCHIO",
+        "MOLISANO_VECCHIO"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Two Dead Molisano bosses: one regular chest, one Arcana chest (Arcana only if Arcanas enabled)."
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "MOLISANO_COLONNA",
+        "MOLISANO_SECCO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_ANFORA"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists Molisano Anfora (gold pot, drops one Gold Coin, no chest) in the Bosses column this minute."
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "MOLISANO_COLONNA",
+        "MOLISANO_VECCHIO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOLISANO_VECCHIO"
+      ],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full)."
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "MOLISANO_ANFORA",
+        "MOLISANO_BELLO",
+        "MOLISANO_GROSSO",
+        "MOLISANO_GIALLO",
+        "MOLISANO_ROSSO",
+        "MOLISANO_FAGIOLO",
+        "MOLISANO_COLONNA",
+        "MOLISANO_VECCHIO"
+      ],
+      "enemy_min": 500,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki enemy maximum 500 (min = max, so the screen is kept full). Wiki lists all remaining Molisano types plus Anfora (as normal enemies) this minute."
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "MOLISANO_ANFORA"
+      ],
+      "enemy_min": 1,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "Wiki enemy maximum 40 (min 1). Enemies from the previous wave are erased at the start of the minute; only sparse gold pots (Molisano Anfora) spawn, at a declining rate. The Reaper arrives at 15:00 on this bonus stage (not 30:00); another Reaper each minute after 22:00."
+    }
+  ],
+  "map_events": {
+    "map_events_note": "Il Molise has no map events on its wave table."
+  },
+  "unsupported_events": [],
+  "unsupported_events_note": "No map events listed for Il Molise.",
+  "bosses": [
+    {
+      "minute": 9,
+      "enemy": "MOLISANO_VECCHIO",
+      "name": "Dead Molisano",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 2,
+          "1_item": 100
+        },
+        "reward_flags_raw": "reward2=evo, reward3=evo, reward4=evo, reward5=evo"
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "MOLISANO_VECCHIO",
+      "name": "Dead Molisano",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 2,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "MOLISANO_VECCHIO",
+      "name": "Dead Molisano",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 2,
+          "1_item": 100
+        },
+        "reward_flags_raw": "reward2=evo, reward3=evo, reward4=evo, reward5=evo"
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "MOLISANO_VECCHIO",
+      "name": "Dead Molisano (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 13,
+      "enemy": "MOLISANO_VECCHIO",
+      "name": "Dead Molisano",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 2,
+          "1_item": 100
+        },
+        "reward_flags_raw": "reward2=evo, reward3=evo, reward4=evo, reward5=evo"
+      }
+    },
+    {
+      "minute": 21,
+      "enemy": "MOLISANO_VECCHIO",
+      "name": "Dead Molisano (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true,
+      "note": "Wave 21 is past this stage's 15:00 duration; listed for completeness."
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "15:00 on this bonus stage (all on-screen enemies cleared), then one additional Reaper each minute afterwards",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

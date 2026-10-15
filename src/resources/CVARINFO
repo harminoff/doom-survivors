@@ -1,0 +1,275 @@
+// P016 durable store declarations.
+//
+// CVARINFO is the only mechanism in the pinned engine by which a mod can
+// declare an archived cvar. ZScript file scope cannot declare cvars at all.
+// These default to CVAR_MOD|CVAR_ARCHIVE (see d_main.cpp ParseCVarInfo) and
+// must name one of server/user/nosave.
+//
+// The values here are bounded diagnostic markers for the P016 investigation,
+// not the production profile schema.
+
+// These are profile-storage cvars, not networked game settings, so they are
+// declared 'nosave' (CVAR_CONFIG_ONLY). 'server' would route writes through the
+// serverinfo callback path, which is wrong for a local profile store.
+nosave int ds_p016_marker = 0;
+nosave String ds_p016_profile_id = "";
+nosave String ds_p016_payload = "";
+nosave int ds_p016_schema_version = 1;
+
+// P019 in-engine scenario selection. These are test-only controls; the
+// runner supplies them on the command line in an isolated profile.
+nosave String ds_p019_scenario = "hash_replay";
+nosave String ds_p019_input_tape = "spiral-v1";
+nosave int ds_p019_telemetry = 1;
+
+// P020 runtime fixture selection is map-scoped and intentionally not a
+// profile or gameplay authority.
+nosave String ds_p020_mode = "roundtrip";
+
+// P022 camera variants are presentation inputs for the invariant spawn trace.
+// They are intentionally map-scoped test controls and never enter spawn RNG.
+nosave int ds_p022_camera_variant = 0;
+nosave String ds_p022_mode = "normal";
+
+// P023 camera variants change only the first-person presentation pose.  They
+// are deliberately excluded from logical enemy movement and transactions.
+nosave int ds_p023_camera_variant = 0;
+
+// P024 proxy variants are presentation-only checks.  Logical world and
+// query results must remain unchanged for visible, hidden, culled and reverse
+// allocation orders.
+nosave int ds_p024_proxy_variant = 0;
+
+// P025 presentation controls.  They are fixture inputs only; none enters the
+// canonical gameplay stream or attack RNG.
+nosave int ds_p025_camera_variant = 0;
+nosave int ds_p025_effects = 1;
+nosave int ds_p025_telemetry = 1;
+
+// P026 Antonio/Whip presentation and movement variants. These controls are
+// deliberately excluded from the logical lobe oracle.
+nosave int ds_p026_camera_variant = 0;
+nosave int ds_p026_effects = 1;
+nosave int ds_p026_telemetry = 1;
+nosave int ds_p026_body_variant = 0;
+
+// P027 pickup presentation controls. These are excluded from logical state.
+nosave int ds_p027_camera_variant = 0;
+nosave int ds_p027_proxy_variant = 0;
+nosave int ds_p027_indicator = 1;
+
+// P028 level-up fixture controls. demo=1 drives the real modal through a
+// deterministic engine-side tape for repeatable validator runs; demo=0 leaves
+// the first modal open for manual keyboard/mouse evidence.
+nosave String ds_p028_mode = "demo";
+nosave int ds_p028_camera_variant = 0;
+nosave int ds_p028_telemetry = 1;
+
+// P031 controlled profile/test inputs. The Seal payload is profile state;
+// capacity is supplied by an explicit profile/unlock input and defaults to 0.
+nosave String ds_p031_profile_seals = "";
+nosave int ds_p031_seal_capacity = 0;
+nosave String ds_p031_mode = "manual";
+nosave int ds_p031_seed = 730201;
+nosave int ds_p031_rerolls = 0;
+nosave int ds_p031_skips = 0;
+nosave int ds_p031_banishes = 0;
+nosave int ds_p031_luck_milli = 0;
+nosave int ds_p031_fixture_weapon_slots = 0;
+nosave int ds_p031_fixture_passive_slots = 0;
+// Test-only fourth offer candidate.  It is not included in playable content.
+nosave int ds_p031_test_fourth_candidate = 0;
+nosave int ds_p031_telemetry = 1;
+
+// P032 controlled chest and transformation harness. Modes are explicit test
+// inputs; normal MAP18 play uses a Silver source with three reward slots.
+nosave String ds_p032_mode = "manual";
+nosave int ds_p032_telemetry = 1;
+
+// P033 MAP19 numerical/resolution fixture control. This is harness-only.
+nosave String ds_p033_mode = "matrix";
+// P033 MAP16 controlled incoming-damage proof; ignored outside p033 mode.
+nosave int ds_p033_contact_fixture = 0;
+// P033 MAP16 one-shot save-state snapshot request for the save/load harness.
+nosave int ds_p033_save_snapshot_request = 0;
+
+// P034 MAP20 controlled four-form runtime fixture. These do not change
+// ordinary P030/P031 gameplay and are not source inventory controls.
+nosave String ds_p034_mode = "matrix";
+nosave int ds_p034_camera_variant = 0;
+
+// P029 run lifecycle fixture controls and one durable profile payload.  The
+// payload is intentionally a single versioned/hash-checked nosave cvar; mode,
+// camera and telemetry are isolated fixture inputs.
+nosave String ds_p029_profile_payload = "";
+nosave String ds_p029_mode = "demo";
+nosave int ds_p029_camera_variant = 0;
+nosave int ds_p029_telemetry = 1;
+
+// P030 playable entry. The default is manual normal-speed play; accelerated
+// values are isolated harness controls and are never used by the launcher.
+nosave String ds_p030_profile_payload = "";
+nosave String ds_p030_mode = "manual";
+nosave int ds_p030_speed = 1;
+nosave int ds_p030_telemetry = 1;
+// Manual launcher duration override in source tics.  10,500 tics remains the
+// shipped five-minute default; the launcher may opt into a bounded minute.
+nosave int ds_p030_duration_tics = 10500;
+// Opt-in manual input diagnostics. This reports the native UserCmd values and
+// resulting player pose before any modal/teardown clear boundary.
+nosave int ds_p030_input_trace = 0;
+// Harness-only camera proof variants.  The production launcher leaves this at
+// zero; changing it affects presentation pose and the explicitly labelled
+// basis proof only, never the normal run ledger.
+nosave int ds_p030_camera_variant = 0;
+// N2 weapon-dispatcher evidence fixture (docs/contracts/normal-play-
+// integration.md "Weapon dispatcher"). Fixture-only, not the manual
+// default: when 1 under ds_p030_mode manual/soak_n2, grants one of every
+// draftable base weapon at rank 1 through the real AcquireWeapon dispatcher
+// shortly after boot, then ranks each to max through SetWeaponRank over the
+// run, so every dispatcher-routed engine can be exercised in one soak.
+nosave int ds_n2_grant_all = 0;
+// N2 per-engine wall-time profiling probe (this task's item 1). Off by
+// default; when 1, ProcessOwnedWeapons() and the other LogicalTic phases
+// measure their own wall time with MSTimeF() and print one
+// DS_N2_PROFILE_TIC line per logical tic. Diagnostic-only: it never changes
+// hit decisions, ordering, RNG streams or damage, only whether timing lines
+// are printed.
+nosave int ds_n2_profile = 0;
+// N2-W5 evolution/chest evidence fixture (docs/contracts/normal-play-
+// integration.md "Evolutions and chests"). Fixture-only, not the manual
+// default: when 1 under ds_p030_mode manual/soak_n2, shortens the interim
+// chest cadence from 2100 tics (60s, INTERIM_CHEST_CADENCE) to 105 tics so a
+// short soak can exercise every recipe; the fixture MAP16 route additionally
+// grants every recipe's inputs at max rank. Never changes chest ledger
+// rules, recipe eligibility or the dispatcher's EvolveWeapon routing.
+nosave int ds_n2_evolve_fixture = 0;
+// N2-W7 normal-flow soak evidence (docs/contracts/normal-play-integration.md
+// "Evidence (N2 acceptance)" item 2). Off by default, never set by the
+// default manual launcher route. When 1 under ds_p030_mode manual/soak_n2,
+// a labelled deterministic choice policy (N2DraftBotTick/N2DraftBotScore,
+// classification N2_DRAFT_BOT) answers each real level-up modal through the
+// same ApplyChoice acceptance path the player's own UI/network-event input
+// uses (source="N2_DRAFT_BOT" instead of "NETWORK_EVENT"/"PHYSICAL_KEY"):
+// it never bypasses DSP031ApplyOffer/the real offer legality, chest cadence
+// or recipe rules. Policy order: (a) an unowned weapon while ordinary
+// weapon slots remain, (b) an unowned passive some owned weapon's real
+// evolution/union recipe needs, (c) ranking an already-owned weapon toward
+// its max rank, then any remaining offer (including the GOLD/CHICKEN
+// fallback) lowest.
+nosave int ds_n2_draft_bot = 0;
+// N2-W7 soak-only XP acceleration fixture (same evidence item). Off by
+// default (1000 = no change, milli-scale multiplier applied to
+// CollectRunExperience's real amount before it reaches the real P031/P028
+// XP ledger and level-curve thresholds -- it accelerates real XP collection
+// events, it does not grant levels, weapons or draft choices directly).
+// Labelled N2_XP_ACCELERATION_FIXTURE in the log; never set by the default
+// manual launcher route.
+nosave int ds_n2_xp_multiplier_milli = 1000;
+// N2-W8 soak-only autonomous mover (N2_SOAK_MOVER, amended N2 acceptance
+// item 2). Off by default. Each logical/world tic it steers the real
+// player body toward the nearest live XP pickup (fallback: the active
+// interim chest) using the same real P021 body-movement path P032's
+// MAP16 movement tape already exercises (players[0].cmd injection +
+// DSP021FirstPersonPlayer.MovePlayer()) -- it never teleports the player
+// or fabricates position. Paired with ds_n2_draft_bot for soak evidence.
+nosave int ds_n2_soak_mover = 0;
+// N2-W9 manual-route save/load evidence (docs/contracts/normal-play-
+// integration.md "Persistence"/"Evidence" item 3). One-shot save-state
+// snapshot request for the manual/soak_n2 route's save/load harness, same
+// convention as ds_p033_save_snapshot_request/ds_p040_save_snapshot_request.
+// Off by default; never set by the default manual launcher route.
+nosave int ds_n2_save_snapshot_request = 0;
+// P035 controlled ballistic MAP21 fixture. These are test-only controls;
+// they do not alter the normal P030/MAP16 route.
+nosave String ds_p035_mode = "matrix";
+nosave int ds_p035_camera_variant = 0;
+
+// P036 controlled Cross/Heaven Sword MAP22 fixture; no effect on normal runs.
+nosave String ds_p036_mode = "matrix";
+nosave int ds_p036_camera_variant = 0;
+nosave int ds_p036_seed = 360036;
+
+// P037 controlled orbit MAP23 fixture; no effect on normal MAP16 runs.
+nosave String ds_p037_mode = "rotation";
+nosave int ds_p037_camera_variant = 0;
+nosave int ds_p037_seed = 370037;
+
+// P038 controlled ground-field MAP24 fixture; no effect on normal MAP16.
+nosave String ds_p038_mode = "matrix";
+nosave int ds_p038_camera_variant = 0;
+nosave int ds_p038_seed = 380038;
+nosave int ds_p038_vfx = 1;
+
+// P039 controlled Garlic/Soul Eater aura and healing MAP25 fixture; no
+// effect on normal MAP16 runs.
+nosave String ds_p039_mode = "matrix";
+nosave int ds_p039_camera_variant = 0;
+nosave int ds_p039_seed = 390039;
+nosave int ds_p039_vfx = 1;
+
+// P040 controlled logical-screen strike/erasure/global-effect MAP26
+// fixture; no effect on normal MAP16 runs.
+nosave String ds_p040_mode = "matrix";
+nosave int ds_p040_camera_variant = 0;
+nosave int ds_p040_strike_seed = 400401;
+nosave int ds_p040_erase_seed = 400402;
+nosave int ds_p040_luck_milli = 1000;
+nosave int ds_p040_vfx = 1;
+nosave int ds_p040_save_snapshot_request = 0;
+
+// Game shell choices (src/zscript/ui/shell/ShellMenu.zs).  The launcher sets
+// ds_shell_autoopen 1 so the title screen opens the main menu; test runs
+// leave it 0 and start maps directly.
+nosave String ds_character = "antonio";
+nosave String ds_stage = "mad_forest";
+nosave int ds_shell_autoopen = 0;
+nosave String ds_powerups = "";
+// Limit Break: maxed builds get per-weapon stat level-ups (1 = on).
+nosave int ds_limit_break = 0;   // off like the original; automated runs force it on
+// Arcana: a start-of-run pick and Arcana chests from the holder bosses (1 = on).
+nosave int ds_arcana = 1;
+nosave int ds_arcana_start = 0;   // 1 = also offer an Arcana at the start of a manual run (testing aid)
+// Automated runs only: Arcana numbers granted at run start ("5,13,17").
+nosave String ds_arcana_grant = "";
+nosave int ds_debug_die_tic = 0;   // automated runs: end the run in defeat at this tic
+nosave string ds_debug_chest_tics = "";   // automated runs: drop a 1-item chest at the player at these tics
+nosave string ds_debug_shot_tics = "";   // automated runs: save a screenshot at these tics
+nosave int ds_mf_end_tics = 0;   // automated runs: override the stage length (tics)
+nosave String ds_item_grant = "";
+nosave int ds_item_grant_tic = 200;
+// Automated runs: screenshot every N logical tics (0 = off), for art review.
+nosave int ds_shot_interval_tics = 0;
+// Automated runs: place one frozen enemy per sprite archetype in view.
+nosave int ds_art_gallery = 0;
+// Player move speed in milli map units per tic (0 = the built-in 3.0).
+// Console: ds_move_units_milli 4000 to try 4.0.
+nosave int ds_move_units_milli = 0;
+
+// Automated runs only: the draft bot takes this offer id whenever it is offered.
+nosave int ds_n2_bot_prefer = 0;
+// Automated runs only: comma-separated weapon systems acquired at tic 70.
+nosave String ds_n2_grant_ids = "";
+// Camera: 0 first person, 1 third person (chase camera). C toggles it.
+server int ds_aim_assist = 1;   // facing-aimed weapons turn toward the nearest enemy
+server int ds_arrows = 1;   // HUD arrows toward chests and pickups
+server int ds_mode = 0;   // 0 normal, 1 hyper, 2 inverse
+server int ds_camera = 0;
+// Third-person camera tilt in degrees (0-56).
+server float ds_camera_pitch = 26.0;
+// Automated runs only: from tic 100 every stage item and plate is moved onto the player.
+nosave int ds_gm_debug = 0;
+// Test aid: press Retry once on the results screen.
+nosave int ds_debug_retry = 0;
+// The Depths test aid: every 10 s, put the player past the next goal (stairs, Amulet, exit); 2 also takes screenshots; 3 visits a store room, then a spike pit.
+nosave int ds_dg_debug = 0;
+// The Depths: the full map is open (Tab or M during a run; the minimap is always shown).
+nosave int ds_dg_fullmap = 0;
+// Meta progression (lifetime counters, unlocks, collection): see gameplay/meta/Meta.zs.
+nosave String ds_meta = "";
+// 1 unlocks every character and stage (U on the main menu).
+server int ds_unlock_all = 0;
+// Automated runs only: open the shell menu on this page (1 character .. 5 bestiary).
+nosave int ds_shell_page = 0;
+// Automated runs only: screenshot the shell menu this many tics after it opens.
+nosave int ds_shell_shot = 0;

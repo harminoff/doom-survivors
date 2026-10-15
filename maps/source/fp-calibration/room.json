@@ -1,0 +1,30 @@
+{
+  "fixture_id": "P012-FP-CALIBRATION-ROOM-001",
+  "classification": "REPRODUCIBLE_DIAGNOSTIC_ROOM_SPEC",
+  "purpose": "Anchored first-person camera calibration without combat or spawn semantics",
+  "room": [[-512,-512],[-512,512],[512,512],[512,-512]],
+  "landmark": [[180,-64],[308,-64],[308,64],[180,64]],
+  "floor": 0,
+  "ceiling": 128,
+  "light": 224,
+  "player": {"x": -200, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "ADAPTER_WORLD_LOADED",
+  "presentation_fixtures": [
+    {"id": "close_billboard", "class": "DSCloseBillboard", "type": 30001, "x": -104, "y": 0, "z": 0, "angle": 180, "role": "near_and_close_billboard"},
+    {"id": "solid_prop", "class": "DSSolidProp", "type": 30002, "x": -64, "y": -72, "z": 0, "angle": 180, "role": "near_solid_world_prop"},
+    {"id": "foot_pickup", "class": "DSFootPickup", "type": 30003, "x": -128, "y": 20, "z": 0, "angle": 0, "role": "foot_level_pickup_marker"}
+  ],
+  "initial_view": {
+    "fixture_id": "close_billboard",
+    "facing_angle": 0,
+    "forward_axis": "positive_x",
+    "forward_distance": 96,
+    "lateral_offset": 0,
+    "purpose": "near_clipping_probe",
+    "expected_presentation": "centered_from_initial_spawn",
+    "classification": "GENERATED_PLACEHOLDER_DIAGNOSTIC"
+  },
+  "logical_reference_window": {"center": [-200,0], "half_extent": 128, "population": [[-264,-64],[-136,-64],[-264,64],[-136,64]], "excluded": [[-8,0],[-200,-192]]},
+  "calibration_status": "ROOM_SPEC_PRESENT_BUT_SOURCE_LANDMARK_MATCH_OPEN",
+  "notes": ["Room geometry is a diagnostic scaffold; it does not declare source collision or pickup dimensions.", "The P012 probe runner selects this spec through the phase-specific build room route."]
+}

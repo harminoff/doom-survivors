@@ -1,0 +1,924 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Cappella_Magna (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Fake Fallen Cherub, Fake Fallen Cherubbello, Reaper Trainee, Unknown, Tetrabrachia, Succubus (enemy), Archon Spada, Archon Ascia, Archon Fiamma/Oro/Rame, Demon Priest, Demon Beast, Archdemon, Stage Killer, Fallen Cherub/Cherubbello/Throne, Trinacria, The Maddener/Drowner/Stalker/Trickster (retrieved 2026-09-29)",
+    "pickups, chest_rules and reaper blocks reuse the Dairy Plant file's content"
+  ],
+  "stage": {
+    "id": "CAPPELLA",
+    "name": "Cappella Magna",
+    "duration_seconds": 1800,
+    "spawn_type": "Standard: enemies approach from all four sides of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 40,
+      "player_speed": 1.4,
+      "enemy_speed": 1.4,
+      "projectile_speed": 1,
+      "greed": 1.4,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "20% (max 80%)",
+      "destructible_max": 20
+    },
+    "modifiers_note": "Wiki infobox fields; multipliers, not applied to the enemy file speeds. Wiki stage id is CHAPEL; this project uses CAPPELLA. Hyper mode not needed.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [
+        {
+          "item": "Crown",
+          "count": 1,
+          "position": "north of start"
+        },
+        {
+          "item": "Tirajisu",
+          "count": 1,
+          "position": "north of start"
+        },
+        {
+          "item": "Duplicator",
+          "count": 1,
+          "position": "south of start"
+        }
+      ],
+      "pickups": [
+        {
+          "item": "Rosary",
+          "count": 3,
+          "position": "south of start, one tileset apart"
+        }
+      ],
+      "relics": [
+        {
+          "item": "Great Gospel",
+          "position": "awarded for defeating The Ender (out of scope)"
+        }
+      ],
+      "hidden_with_yellow_sign": [
+        {
+          "item": "Metaglio Left/Right",
+          "position": "west of start"
+        },
+        {
+          "item": "Silver Ring/Gold Ring",
+          "position": "east of start"
+        }
+      ],
+      "coffin": {
+        "character": "Zi Assunta Belpaese",
+        "position": "south of start"
+      }
+    },
+    "destructibles": "Stained Glass windows (marked with a cross) spawn at set locations; destroying one explodes in a pillar of light that damages nearby enemies. Also standard light sources.",
+    "traps": "none noted",
+    "special_mechanics": "Stained Glass windows explode in a damaging pillar of light. Reapers of earlier stages act as map events (Maddener 0:00, Drowner 5:00, Stalker 10:00, Trickster 15:00). Yellow Sign / The Ender final fight out of scope.",
+    "layout": {
+      "shape": "other",
+      "size_note": "Large multi-tileset cathedral map (full layout: Tilemap-Cappella Magna on the wiki); exact size not stated, unknown. Items lie north and south of the start, hidden items east/west.",
+      "obstacles": "Architectural cathedral elements (pillars, walls) at moderate density; exact placement unknown.",
+      "theme": "Grand gothic cathedral interior with stained glass, marble and gold, moving background; fallen angels, reapers, archons and demons.",
+      "special_mechanics": "Destructible Stained Glass windows spawn at set locations and explode in a pillar of light damaging nearby enemies; Drowner floods the lower part of the stage from 5:00 (unsupported); Maddener/Trickster reapers unsupported."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "FANGEL1"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [],
+      "notes": "Maddener map event (unsupported) at 0:00 spawns a yellow reaper; enemy sprites change while it is present."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "FANGEL1"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "BOSS_FANGEL3"
+      ],
+      "notes": "Boss Fallen Archangel (BOSS_FANGEL3) at 1:00 is the Fake Fallen Cherubbello boss."
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "FANGEL1",
+        "FANGEL2"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "TRAINEE_Y",
+        "FANGEL1",
+        "FANGEL2"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.25,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ],
+      "notes": "Yellow Reaper Trainee = TRAINEE_Y."
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "TRAINEE_Y",
+        "FANGEL1",
+        "FANGEL2"
+      ],
+      "enemy_min": 25,
+      "spawn_interval_s": 0.25,
+      "events": [],
+      "bosses": [],
+      "notes": "Before defeating the Ender, egg bonuses are removed (not implemented)."
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "TRAINEE_Y",
+        "FANGEL3"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "BOSS_FANGEL3"
+      ],
+      "notes": "Drowner map event (unsupported): blue reaper floods the lower stage, rising slowly."
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "TRAINEE_B",
+        "FANGEL3"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "KALI1",
+        "FANGEL2",
+        "TRAINEE_B"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ],
+      "notes": "Durga = Tetrabrachia 1 (KALI1); Elite Fallen Angel = FANGEL2."
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "KALI2",
+        "TRAINEE_B",
+        "FANGEL2",
+        "TRAINEE"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1.5,
+      "events": [],
+      "bosses": [],
+      "notes": "Kali = Tetrabrachia 2 (KALI2); Gray Reaper Trainee = TRAINEE."
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "SUCCUBUS",
+        "TRAINEE_B"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ]
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "SUCCUBUS",
+        "TRAINEE_B",
+        "KALI2"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "stalker",
+          "minute": 10,
+          "at": "10:00",
+          "enemy": "BOSS_STALKER_NORMAL",
+          "amount": 1,
+          "duration_s": 120,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": [
+        "BOSS_SUCCUBUS"
+      ],
+      "notes": "Chest can evolve up to 3 weapons (reward2/reward3=evo). Stalker map event mapped (green reaper follows the player)."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "ARMOR_SWORD",
+        "TRAINEE_G"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ],
+      "notes": "Colossal Eyeball is the Arcana holder (arcana-only chest)."
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "ARMOR_FIRE",
+        "ARMOR_SWORD"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "ARMOR_FIRE"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "TRAINEE_G",
+        "XLARMOR_GREEN"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki lists Giant Green Knight, approximated as Archon Rame (XLARMOR_GREEN)."
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "XLARMOR_GOLD",
+        "XLARMOR_GREEN"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_XLARMOR_GREEN"
+      ],
+      "notes": "Trickster map event (unsupported): magenta reaper spawning self-destructing fake gems."
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "DEMON",
+        "XLDEMON"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [],
+      "notes": "Demon Priest approximated as DEMON (speed 140); the wiki also lists a fast variant DEMON_FAST (280) whose use is unclear."
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "XLDEMON",
+        "DEMON"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "XLDEMON",
+        "DEMON",
+        "TRAINEE_P"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_ARMOR1"
+      ]
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "XLDEMON",
+        "XLDEMON2"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "XLARCHDEMON",
+        "XLDEMON2",
+        "TRAINEE_P"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLARCHDEMON"
+      ],
+      "notes": "Chest can evolve up to 3 weapons (reward2/reward3=evo)."
+    },
+    {
+      "minute": 21,
+      "pool": [
+        "STAGEKILLER"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.02,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ],
+      "notes": "Colossal Eyeball is the Arcana holder (arcana-only chest)."
+    },
+    {
+      "minute": 22,
+      "pool": [
+        "ANGEL1"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ]
+    },
+    {
+      "minute": 23,
+      "pool": [
+        "ANGEL2"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ]
+    },
+    {
+      "minute": 24,
+      "pool": [
+        "ANGEL3"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ]
+    },
+    {
+      "minute": 25,
+      "pool": [
+        "ANGEL1",
+        "ANGEL2",
+        "ANGEL3"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_TRINACRIA"
+      ],
+      "notes": "Defeating the Trinacria unlocks Hyper mode."
+    },
+    {
+      "minute": 26,
+      "pool": [
+        "STAGEKILLER2"
+      ],
+      "enemy_min": 250,
+      "spawn_interval_s": 0.02,
+      "events": [],
+      "bosses": [],
+      "notes": "Elite Stagekiller = STAGEKILLER2 (HP not listed on the wiki; approximated)."
+    },
+    {
+      "minute": 27,
+      "pool": [
+        "TRINACRIA"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_EYE2"
+      ]
+    },
+    {
+      "minute": 28,
+      "pool": [
+        "BOSS_FANGEL3",
+        "BOSS_SUCCUBUS",
+        "XLARMOR_GREEN",
+        "BOSS_XLARCHDEMON"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki lists the boss-sized Fallen Archangel, Succubus, Archdemon and Archon Rame as normal enemies here."
+    },
+    {
+      "minute": 29,
+      "pool": [
+        "TRAINEE_ANY"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Elite Reaper Trainee = TRAINEE_ANY."
+    },
+    {
+      "minute": 30,
+      "pool": [
+        "TRAINEE_R"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "All on-screen enemies cleared; Reaper spawns, then another each minute."
+    }
+  ],
+  "map_events": {
+    "stalker": {
+      "enemy": "BOSS_STALKER_NORMAL",
+      "shape": "one Stalker follows the player for the event duration (occasionally speeding up)",
+      "hp": 2550,
+      "power": 50
+    },
+    "map_events_note": "Stalker at 10:00 (wiki delay 10 s, duration not stated; 120 s copied from the Dairy Plant entry). Maddener, Drowner and Trickster are unsupported."
+  },
+  "unsupported_events": [
+    {
+      "type": "maddener",
+      "minute": 0,
+      "at": "0:00",
+      "enemy": "BOSS_MADDENER_NORMAL",
+      "amount": 1,
+      "delay_s": 9.6,
+      "wiki_description": "The Maddener: spawns a yellow reaper that follows the player (before the Ender is defeated); some enemies change appearance while it is present."
+    },
+    {
+      "type": "drowner",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": "BOSS_DROWNER_NORMAL",
+      "amount": 1,
+      "wiki_description": "The Drowner: blue reaper floods the lower part of the stage, slowly moving upward; the player takes damage in the water. Gains a notable speed increase at the 10 minute mark."
+    },
+    {
+      "type": "trickster",
+      "minute": 15,
+      "at": "15:00",
+      "enemy": "BOSS_TRICKSTER_NORMAL",
+      "amount": 1,
+      "delay_s": 10,
+      "wiki_description": "The Trickster: magenta reaper that spawns self-destructing fake gems around the player, can stick gems to the player or attack directly."
+    }
+  ],
+  "unsupported_events_note": "Maddener, Drowner and Trickster reaper events have no EVENT_KIND mapping in tools/gen_stages.py; copied raw. The Stalker event is mapped (kind stalker).",
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "BOSS_FANGEL3",
+      "name": "Fallen Archangel (Colossal)",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 30
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_FANGEL3",
+      "name": "Fallen Archangel (Colossal)",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 9,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "BOSS_SUCCUBUS",
+      "name": "Colossal Succubus",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        },
+        "reward_flags_raw": "reward2=evo, reward3=evo"
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 12,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 15,
+      "enemy": "BOSS_XLARMOR_GREEN",
+      "name": "Colossal Green Knight",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 18,
+      "enemy": "BOSS_ARMOR1",
+      "name": "Axe Guardian",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLARCHDEMON",
+      "name": "Colossal Archdemon",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 2,
+          "1_item": 100
+        },
+        "reward_flags_raw": "reward2=evo, reward3=evo"
+      }
+    },
+    {
+      "minute": 21,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 22,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 23,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 30
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 24,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 25,
+      "enemy": "BOSS_TRINACRIA",
+      "name": "Trinacria",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 27,
+      "enemy": "BOSS_EYE2",
+      "name": "Colossal Eyeball",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 30,
+      "enemy": "BOSS_XLDEATH",
+      "name": "The Reaper"
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 20,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 80%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

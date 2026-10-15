@@ -1,0 +1,881 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Laborratory (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Merman, Lizard_Pawn, Lizard_Rook, Dust_Elemental, Musc_Musc, Jellyfish, Tri-Blunder, Holy_Circuit_Creations, Bounty_Hunter, Space_Hunter (Statbox Enemy)",
+    "Map event / weapon pages: Take_Us_Away, Jellyfish_Wall",
+    "pickups, chest_rules and reaper reuse the Bone Zone/Dairy Plant file content"
+  ],
+  "stage": {
+    "id": "LABORRATORY",
+    "name": "Laborratory",
+    "duration_seconds": 1200,
+    "type": "Challenge stage (seventh challenge stage; unlocked with 33 Rosaries or via Forbidden Scrolls of Morbane spell 'divineassault'; hyper mode unlocked by default)",
+    "spawn_type": "Standard: enemies approach from all four sides of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 40,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.2,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "20% (max 60%)",
+      "destructible_max": 12
+    },
+    "modifiers_note": "Wiki infobox: hyper starting spawns 60, player/enemy speed x1.9, projectile speed x1.15, greed x1.7, luck x1.1. Not needed here. No per-minute scaling and no item-drop restriction on this stage (Silver Chests can drop from bosses before 10:00).",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "weapons": [
+        "Cross",
+        "King Bible",
+        "Santa Water",
+        "Santa Javelin",
+        "Arma Dio"
+      ],
+      "passives": [
+        "Clover",
+        "Attractorb",
+        "Spellbinder"
+      ],
+      "pickups": [
+        "Coin Bag",
+        "Vacuum",
+        "Rosary",
+        "Little Clover"
+      ],
+      "relics": [],
+      "hidden_stage_items_no_yellow_sign_needed": [
+        "Silver Ring",
+        "Metaglio Right",
+        "Gold Ring",
+        "Metaglio Left"
+      ],
+      "note": "All obtained from lever flips; the hidden rings/metaglios need no Yellow Sign here."
+    },
+    "destructibles": "Levers act as this stage's destructible-count props (max 12 near the railroad, up to 5 per room); see layout.special_mechanics.",
+    "layout": {
+      "shape": "other",
+      "size_note": "Not stated on the wiki. A compound of a large central room, a Danger room (west) and Electricity room (east) (mirrored when inverse), winding corridors, and a railroad with platform to the south. Treat as a mid-sized enclosed complex, exact size unknown.",
+      "obstacles": "Interior walls of rooms and winding corridors with openings between rooms; train tracks in the south. Dense wall geometry compared with open-field stages; exact layout unknown.",
+      "theme": "Abandoned alchemical workshop/foundry of Santa Ladonna: industrial lab rooms with danger and high-voltage warning signs on the walls, metal corridors, and a railroad platform with a train track south of the start (theme music 'Awe of the Unknown').",
+      "special_mechanics": "LEVERS: stage props that flip when the player walks over them. They spawn off-screen at fixed spots once every 20 s; each room holds at most 5 levers at once, the railroad area up to 12 (the stage destructible max). Spawn rate and how favourable the effect is scale with Luck; Mad Groove does not affect levers. Possible effects (exact weights unknown): CENTRAL ROOM (largest, nearest the start, north of start; south when inverse): weapon Santa Javelin / Arma Dio, OR Metaglio Left / Metaglio Right, OR a swarm of Yellow Reaper Trainees / Trinacria / self-destructing Fallen Cherubbello. DANGER ROOM (west of centre, danger signs; east when inverse): weapon Cross / King Bible, OR passive Clover / Spellbinder, OR a swarm of Jellyfish / Dust Elementals / Musc Muscs. ELECTRICITY ROOM (east of centre, high-voltage signs also on the corridor leading to it; west when inverse): weapon Santa Water, OR Attractorb / Silver Ring / Gold Ring, OR a swarm of Jellyfish / Dust Elementals / Musc Muscs. ANY ROOM: pickups Coin Bag, Vacuum, Rosary or Little Clover. RAILROAD (south: walkway below the rails and the platform by the corridors): levers summon the train 'Take Us Away' from the left, followed by alternating coal/tank cars; it deals 200 damage (scales with Might) to every enemy it hits. TRAP PIZZAS: circular floor plates inside rooms, in front of lever spawn points and in passages; stepping on one triggers a random one of 9 map events (3 Pile Assaults, 2 Jellyfish Walls, 2 RetroBot Swarms, a Musc Musc Swarm, a Jellyfish Swarm; see unsupported_events), 15 s minimum cooldown. Silver Chests can drop from bosses before 10:00. ER-2000 Gunner Arcana holders at 5:00 and 10:00. Reaper at 20:00."
+    }
+  },
+  "map_events": {
+    "swarm": {
+      "enemy": "EX_MUD_FASTSWARM / EX_RETROBOT_SWARM / EX_GYORUNTIN_SWARM / ECTO2 / EX_CONSTABLEBOT",
+      "shape": "cluster of enemies crossing/attacking (fixed direction for the swarm variants)"
+    },
+    "jellyfish_wall": {
+      "enemy": "JELLYFISH",
+      "shape": "ring of 40 jellyfish (default) closes in on and moves away from the player"
+    },
+    "pile_assault": {
+      "enemy": "EX_TDCCC_RANGED / EX_CONSTABLEBOT_RANGED / EX_BOUNTYHUNTER",
+      "shape": "stationary shooters in an ellipsoid ring around the player that fire bullets"
+    },
+    "map_events_note": "Event delay handling: with repeats, delay_s is the spacing between repeats; a delay without repeats is applied to 'at' as a start offset. Wiki Swarm 'Dust Elemental' assumed to be the fast fixed-direction variant (EX_MUD_FASTSWARM)."
+  },
+  "unsupported_events": [
+    {
+      "type": "pile_assault",
+      "trap": true,
+      "enemy": "EX_TDCCC_RANGED",
+      "amount": 20,
+      "duration_s": 5.0,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Pile Assault (T-DCCC Gunner). Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "pile_assault",
+      "trap": true,
+      "enemy": "EX_CONSTABLEBOT_RANGED",
+      "amount": 20,
+      "duration_s": 5.0,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Pile Assault (ConstableBot Gunner). Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "pile_assault",
+      "trap": true,
+      "enemy": "EX_BOUNTYHUNTER",
+      "amount": 20,
+      "duration_s": 5.0,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Pile Assault (Bounty Hunter Gunner). Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "jellyfish_wall",
+      "trap": true,
+      "enemy": "JELLYFISH",
+      "amount": 80,
+      "duration_s": 30,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Jellyfish Wall. Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "jellyfish_wall",
+      "trap": true,
+      "enemy": "JELLYFISH",
+      "amount": 40,
+      "duration_s": 30,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Jellyfish Wall. Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "swarm",
+      "trap": true,
+      "enemy": "EX_RETROBOT_SWARM",
+      "amount": 40,
+      "duration_s": 15,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Swarm (RetroBot swarm). Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "swarm",
+      "trap": true,
+      "enemy": "EX_RETROBOT_SWARM",
+      "amount": 20,
+      "duration_s": 15,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Swarm (RetroBot swarm). Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "musc_musc_swarm",
+      "trap": true,
+      "enemy": "ECTO2",
+      "amount": 200,
+      "duration_s": 20,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Musc Musc Swarm. Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "jellyfish_swarm",
+      "trap": true,
+      "enemy": "JELLYFISH2_SWARM",
+      "amount": 50,
+      "duration_s": 20,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Jellyfish Swarm. Stepping on a trap pizza triggers one of 9 events; 15 s minimum cooldown."
+    },
+    {
+      "type": "lever_train",
+      "enemy": null,
+      "amount": null,
+      "wiki_description": "Take Us Away: a lever near the railroad (south) summons a steam-engine train from the left followed by alternating coal/tank cars; enemies it touches take 200 damage (scales with Might). Player-triggered, no fixed time."
+    },
+    {
+      "type": "lever_swarm",
+      "enemy": "TRAINEE_Y / TRINACRIA / ANGEL2 (Central Room); JELLYFISH2_SWARM / MUD / ECTO2 (Danger and Electricity rooms)",
+      "wiki_description": "Lever outcomes that spawn enemy swarms (see stage.layout.special_mechanics). Player-triggered, no fixed time; Trainee/Trinacria/Cherubbello stats are in other stage files (cappella-magna)."
+    }
+  ],
+  "unsupported_events_note": "All timed wave-table events map to swarm / jellyfish_wall / pile_assault. Lever outcomes and trap pizza events are player-triggered with no fixed time, so they are listed here only.",
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "FISHMAN_1",
+        "EX_FISHMAN_1GREEN"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "FISHMAN_1",
+        "EX_FISHMAN_1GREEN"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 1,
+          "at": "1:00",
+          "enemy": "EX_CONSTABLEBOT",
+          "amount": 10,
+          "duration_s": 5
+        },
+        {
+          "type": "swarm",
+          "minute": 1,
+          "at": "1:00",
+          "enemy": "EX_MUD_FASTSWARM",
+          "amount": 30,
+          "duration_s": 25,
+          "delay_s": 15,
+          "repeats": 3
+        }
+      ],
+      "bosses": [
+        "BOSS_MERMAN"
+      ],
+      "notes": "Wiki lists 'Holy Circuit Creations (ConstableBot)' for the first swarm and 'Dust Elemental' for the second; the Dust Elemental variant is not named, EX_MUD_FASTSWARM assumed. Delay 15 s = repeat spacing (3 repeats)."
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "FISHMAN_1",
+        "LIZARD1_2"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 2,
+          "at": "2:00",
+          "enemy": "EX_MUD_FASTSWARM",
+          "amount": 25,
+          "duration_s": 30,
+          "delay_s": 15,
+          "repeats": 2
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "LIZARD1_2",
+        "MUD",
+        "FISHMAN_1"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.25,
+      "events": [
+        {
+          "type": "jellyfish_wall",
+          "minute": 3,
+          "at": "3:00",
+          "enemy": "JELLYFISH",
+          "amount": 40,
+          "duration_s": 30
+        }
+      ],
+      "bosses": [
+        "EX_BOSSGYORUNTIN"
+      ],
+      "notes": "Jellyfish Wall amount not in table; wiki default of 40 used."
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "LIZARD1_2",
+        "FISHMAN_1",
+        "EX_FISHMAN_1GREEN"
+      ],
+      "enemy_min": 25,
+      "spawn_interval_s": 0.25,
+      "events": [
+        {
+          "type": "pile_assault",
+          "minute": 4,
+          "at": "4:00",
+          "enemy": "EX_TDCCC_RANGED",
+          "amount": 25,
+          "duration_s": 30,
+          "chance_pct": 50
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "LIZARD2_3",
+        "MUD"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "pile_assault",
+          "minute": 5,
+          "at": "5:00",
+          "enemy": "EX_CONSTABLEBOT_RANGED",
+          "amount": 20,
+          "duration_s": 60
+        },
+        {
+          "type": "pile_assault",
+          "minute": 5,
+          "at": "5:30",
+          "enemy": "EX_CONSTABLEBOT_RANGED",
+          "amount": 20,
+          "duration_s": 30
+        }
+      ],
+      "bosses": [
+        "EX_BOSSGYORUNTIN",
+        "EX_ER2000"
+      ],
+      "notes": "Second Pile Assault delay 30 s applied as start offset (5:30). Pile Assault units are the ranged Gunner variants. ER-2000 Gunner is the Arcana holder."
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "EX_FISHMAN_1GREEN",
+        "LIZARD2_3"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 6,
+          "at": "6:30",
+          "enemy": "EX_MUD_FASTSWARM",
+          "amount": 50
+        }
+      ],
+      "bosses": [],
+      "notes": "Swarm delay 30 s applied as start offset (6:30). No duration given; gen default applies."
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MERMA1_3",
+        "LIZARD1_2",
+        "FISHMAN_1"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "jellyfish_wall",
+          "minute": 7,
+          "at": "7:00",
+          "enemy": "JELLYFISH",
+          "amount": 40,
+          "duration_s": 30,
+          "chance_pct": 80
+        },
+        {
+          "type": "jellyfish_wall",
+          "minute": 7,
+          "at": "7:02",
+          "enemy": "JELLYFISH",
+          "amount": 40,
+          "duration_s": 30,
+          "chance_pct": 80
+        }
+      ],
+      "bosses": [
+        "BOSS_MERMAN"
+      ],
+      "notes": "Second wall delay 2 s applied as start offset (7:02)."
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "EX_BOUNTYHUNTER",
+        "EX_TDCCC",
+        "MUD"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1.5,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 8,
+          "at": "8:30",
+          "enemy": "ECTO2",
+          "amount": 50,
+          "duration_s": 30
+        }
+      ],
+      "bosses": [],
+      "notes": "Swarm delay 30 s applied as start offset (8:30). Wiki 'Big Musc Musc' variant -> ECTO2."
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "EX_CONSTABLEBOT",
+        "MUD"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 9,
+          "at": "9:00",
+          "enemy": "EX_RETROBOT_SWARM",
+          "amount": 50,
+          "duration_s": 15
+        },
+        {
+          "type": "swarm",
+          "minute": 9,
+          "at": "9:15",
+          "enemy": "EX_RETROBOT_SWARM",
+          "amount": 50,
+          "duration_s": 15
+        }
+      ],
+      "bosses": [
+        "BOSS_MERMAN"
+      ],
+      "notes": "Second RetroBot swarm delay 15 s applied as start offset (9:15)."
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "EX_CONSTABLEBOT",
+        "MUD"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 10,
+          "at": "10:00",
+          "enemy": "EX_RETROBOT_SWARM",
+          "amount": 25,
+          "duration_s": 15,
+          "chance_pct": 50,
+          "delay_s": 5,
+          "repeats": 6
+        },
+        {
+          "type": "pile_assault",
+          "minute": 10,
+          "at": "10:00",
+          "enemy": "EX_BOUNTYHUNTER",
+          "amount": 10,
+          "duration_s": 20,
+          "chance_pct": 50,
+          "delay_s": 10,
+          "repeats": 4
+        }
+      ],
+      "bosses": [
+        "EX_ER2000"
+      ],
+      "notes": "Bounty Hunter Gunner has no separate ranged statbox; EX_BOUNTYHUNTER reused. Pile Assault interval 0.7 s. ER-2000 Gunner is the Arcana holder."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "EX_BOUNTYHUNTER",
+        "EX_TDCCC"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "minute": 11,
+          "at": "11:00",
+          "enemy": "EX_GYORUNTIN_SWARM",
+          "amount": 10,
+          "duration_s": 30,
+          "delay_s": 10,
+          "repeats": 4
+        }
+      ],
+      "bosses": [
+        "BOSS_MIGNO2_5"
+      ],
+      "notes": "Boss is the 'Minotaur Champion' sprite; BOSS_MIGNO2_5 (Dairy Plant Minotaur Boss) reused."
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "EX_BOUNTYHUNTER",
+        "MERMA2_4"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "pile_assault",
+          "minute": 12,
+          "at": "12:00",
+          "enemy": "EX_BOUNTYHUNTER",
+          "amount": 10,
+          "duration_s": 20,
+          "chance_pct": 50,
+          "delay_s": 10,
+          "repeats": 3
+        },
+        {
+          "type": "swarm",
+          "minute": 12,
+          "at": "12:00",
+          "enemy": "EX_GYORUNTIN_SWARM",
+          "amount": 10,
+          "duration_s": 30,
+          "delay_s": 5,
+          "repeats": 10
+        }
+      ],
+      "bosses": [
+        "BOSS_PILE3"
+      ],
+      "notes": "Boss is the Giant Goat-Horned Shooter; BOSS_PILE3 reused."
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "MERMA2_4",
+        "LIZARD2_3",
+        "LIZARD1_2"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "MERMA2_4",
+        "EX_RETROBOT"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "EX_APEX",
+        "EX_RETROBOT"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "EX_RETROBOT"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "EX_ER2000"
+      ]
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "EX_APEX",
+        "EX_GYORUNTIN"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "EX_APEX",
+        "EX_GYORUNTIN"
+      ],
+      "enemy_min": 90,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "jellyfish_wall",
+          "minute": 18,
+          "at": "18:12",
+          "enemy": "JELLYFISH",
+          "amount": 40,
+          "duration_s": 30,
+          "chance_pct": 80
+        },
+        {
+          "type": "jellyfish_wall",
+          "minute": 18,
+          "at": "18:14",
+          "enemy": "JELLYFISH",
+          "amount": 40,
+          "duration_s": 30,
+          "chance_pct": 80
+        }
+      ],
+      "bosses": [
+        "EX_BOSSGYORUNTIN"
+      ],
+      "notes": "Second/first wall delays 12 s and 14 s applied as start offsets (18:12, 18:14)."
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "EX_BOSSGYORUNTIN_SOLID"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "jellyfish_wall",
+          "minute": 19,
+          "at": "19:00",
+          "enemy": "JELLYFISH",
+          "amount": 50,
+          "duration_s": 10,
+          "chance_pct": 80
+        },
+        {
+          "type": "jellyfish_wall",
+          "minute": 19,
+          "at": "19:00",
+          "enemy": "JELLYFISH",
+          "amount": 50,
+          "duration_s": 10,
+          "chance_pct": 80,
+          "delay_s": 10,
+          "repeats": 2
+        }
+      ],
+      "bosses": [],
+      "notes": "Wave pool is 'Solid Tri-Blunder' (EX_BOSSGYORUNTIN_SOLID; wiki gives HP x Level and boss stats)."
+    },
+    {
+      "minute": 20,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "20:00: all enemies on screen cleared and The Reaper spawns; another Reaper each minute after."
+    }
+  ],
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "BOSS_MERMAN",
+      "name": "Merman Boss",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0.5,
+          "3_item": 1,
+          "1_item": 60
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 3,
+      "enemy": "EX_BOSSGYORUNTIN",
+      "name": "Tri-Blunder Boss",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "EX_BOSSGYORUNTIN",
+      "name": "Tri-Blunder Boss",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "EX_ER2000",
+      "name": "ER-2000 Gunner (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_MERMAN",
+      "name": "Merman Boss",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 9,
+      "enemy": "BOSS_MERMAN",
+      "name": "Merman Boss",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "EX_ER2000",
+      "name": "ER-2000 Gunner (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 11,
+      "enemy": "BOSS_MIGNO2_5",
+      "name": "Minotaur Champion",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 12,
+      "enemy": "BOSS_PILE3",
+      "name": "Giant Goat-Horned Shooter",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "EX_ER2000",
+      "name": "ER-2000",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 18,
+      "enemy": "EX_BOSSGYORUNTIN",
+      "name": "Tri-Blunder Boss",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    }
+  ],
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "20:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 12,
+    "spawn_attempt_interval_s": 0.5,
+    "spawn_chance": "20% base (stage, max 60%), multiplied by Luck",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Standard light source drops; on this stage the destructible-count props are levers (see layout.special_mechanics)."
+  },
+  "pickups": {
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    }
+  },
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  }
+}

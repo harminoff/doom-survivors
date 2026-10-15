@@ -1,0 +1,21 @@
+{
+  "fixture_id": "P031-INVENTORY-DRAFT-001",
+  "classification": "CONTROLLED_INVENTORY_AND_DRAFT_RUNTIME_FIXTURE",
+  "map_name": "MAP17",
+  "purpose": "Exercise the P031 Seal profile panel and full-draft authority in pinned UZDoom",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-160,-128],[-160,128],[160,128],[160,-128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "CONTROLLED_ENGINEERING_FIXTURE_WITH_RESTRICTED_PLAYABLE_CATALOG",
+  "obstacle_case": {"landmark_walls": "blocking", "logical_wall_filter": false},
+  "notes": [
+    "The Seal panel is the player-usable pre-run path; capacity is supplied by the explicit profile/unlock input and defaults to zero.",
+    "The only ordinary selectable content is the qualified WHIP, POWER and ARMOR subset; an optional fourth candidate is labelled test-only.",
+    "This chamber proves menu and inventory authority behavior; it is not a replacement for MAP16 concurrent-arsenal evidence."
+  ]
+}

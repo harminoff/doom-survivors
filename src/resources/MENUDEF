@@ -1,0 +1,6 @@
+// The game shell (src/zscript/ui/shell/ShellMenu.zs) draws and drives the
+// whole main menu: title, character select and stage select.
+ListMenu "MainMenu"
+{
+    Class "DSShellMenu"
+}

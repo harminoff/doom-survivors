@@ -1,0 +1,690 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Whiteout (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Miragellos, Madd-Onna, Menta_Elemental, Bambaman, Kizzune, Ghost, Pipeestrello (Statbox Enemy / Infobox Bestiary, retrieved 2026-09-29)",
+    "Diamond Maze has no wiki page (404); only the wave table entries were used",
+    "pickups, chest_rules and reaper reuse the Dairy Plant file content"
+  ],
+  "stage": {
+    "id": "WHITEOUT",
+    "name": "Whiteout",
+    "duration_seconds": 1200,
+    "type": "Bonus stage (third; unlocked by collecting 20 Orologions in total). Released 19 Oct 2023 (patch 1.7.0).",
+    "spawn_type": "Standard: enemies appear from all four directions of the player (a solid structure at the screen edge blocks spawns from that direction)",
+    "modifiers_normal_mode": {
+      "starting_spawns": 40,
+      "player_speed": 1.35,
+      "enemy_speed": 1,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "80% (max 90%)",
+      "destructible_max": 10
+    },
+    "modifiers_note": "Wiki infobox gives only player speed x1.35 (hyper x2, greed x1.25) and destructible 80%/90%/10; other fields are defaults (starting_spawns 40 is an assumption copied from Dairy Plant; enemy_* assumed 1). Hyper mode unlocked by default; not needed here.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [
+        {
+          "item": "Glass Fandango",
+          "count": 1,
+          "position": "on the map (position not given)"
+        },
+        {
+          "item": "Skull O'Maniac",
+          "count": 1,
+          "position": "on the map (position not given)"
+        },
+        {
+          "item": "Spinach",
+          "count": 1,
+          "position": "on the map (position not given)"
+        },
+        {
+          "item": "Wings",
+          "count": 1,
+          "position": "on the map (position not given)"
+        },
+        {
+          "item": "Sorbetto (added in patch 1.13)",
+          "count": 1,
+          "position": "on the map (position not given)"
+        }
+      ],
+      "relics": [
+        {
+          "item": "Antidote",
+          "position": "south of starting area"
+        }
+      ]
+    },
+    "effects": "Enemies are slow and weak to fire weapons (fire-damage tag shown on fire weapons in level-up).",
+    "layout": {
+      "shape": "other",
+      "size_note": "Not stated on the wiki; a 'great glacier' (assume a large open snowfield, exact size unknown).",
+      "obstacles": "Unknown; wiki gives none. Light sources (80% spawn chance, max 10) are the only destructibles noted; Diamond Maze events form maze-like diamond formations.",
+      "theme": "Arctic glacier under a slow constant snowstorm with mirages (music 'Remedy in the Snow'): white/blue snowfield, ghostly Miragellos, snowmen, ice golems and a nine-tailed fox.",
+      "special_mechanics": "Enemies are slow and weak to fire weapons (fire weapons deal extra damage). Slow constant snowstorm. Kizzune is heavily slowed by snow and hates fire. Silver Bat bosses at 7:00 and 14:00 carry Arcanas (only when Arcanas enabled). Diamond Maze map events at 2:00, 5:00, 8:00, 11:00, 14:00, 17:00, 19:00 (unsupported). The Reaper arrives at 20:00. Player speed x1.35."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 15,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [],
+      "notes": "Miragellos has 4 sprite variants (skull, skull 2, blue flame, white Dust Elemental); only MIRAGELLOS and MIRAGELLOS_2 are separated in the wave table."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "MIRAGELLOS",
+        "MIRAGELLOS_2"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [],
+      "notes": "Wave lists Miragellos twice plus Miragellos-2; unique ids used."
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.25,
+      "events": [],
+      "bosses": [
+        "BAT5"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "GHOST",
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "MADDONNA"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "MADDONNA",
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BAT5"
+      ]
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MADDONNA",
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BAT5"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "MIRAGELLOS",
+        "MIRAGELLOS_2"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "EX_GOLEM_SNOW",
+        "MIRAGELLOS_2"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BAT5"
+      ],
+      "notes": "Wiki lists Menta Elemental (Snow/Ice not specified); EX_GOLEM_SNOW used."
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "MADDONNA"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "EX_GOLEM_SNOW",
+        "GHOST",
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BAT5"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "EX_GOLEM_SNOW"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "EX_GOLEM_SNOW",
+        "EX_GOLEM_ICE"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BAT5"
+      ],
+      "notes": "Wiki lists Menta Elemental twice; both variants (snow, ice) used."
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "KIZZUNE"
+      ]
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "MIRAGELLOS"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "KIZZUNE"
+      ]
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "EX_SNOWMAN_HAUNTED"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "EX_SNOWMAN_HAUNTED",
+        "EX_SNOWMAN_HAUNTED2"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BAT5"
+      ]
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "EX_SNOWMAN_HAUNTED3"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "20:00 row: no enemies, minimum 1, interval 10; The Reaper listed as boss."
+    }
+  ],
+  "map_events": {
+    "map_events_note": "No supported map-event kinds on this stage; only Diamond Maze (unsupported)."
+  },
+  "unsupported_events": [
+    {
+      "type": "diamond_maze",
+      "minute": 2,
+      "at": "2:00",
+      "enemy": null,
+      "amount": null,
+      "duration_s": null,
+      "chance_pct": 0,
+      "wiki_description": "Map event 'Diamond Maze' (chance=0, repeat=0, delay=0 in the wave table; per the map-event rule a 0/blank chance is guaranteed). No dedicated wiki page (404); exact shape unknown."
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": null,
+      "amount": null,
+      "duration_s": null,
+      "chance_pct": 0,
+      "wiki_description": "Map event 'Diamond Maze' (chance=0, repeat=0, delay=0 in the wave table; per the map-event rule a 0/blank chance is guaranteed). No dedicated wiki page (404); exact shape unknown."
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 8,
+      "at": "8:00",
+      "enemy": null,
+      "amount": null,
+      "duration_s": null,
+      "chance_pct": 0,
+      "wiki_description": "Map event 'Diamond Maze' (chance=0, repeat=0, delay=0 in the wave table; per the map-event rule a 0/blank chance is guaranteed). No dedicated wiki page (404); exact shape unknown."
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 11,
+      "at": "11:00",
+      "enemy": null,
+      "amount": null,
+      "duration_s": null,
+      "chance_pct": 0,
+      "wiki_description": "Map event 'Diamond Maze' (chance=0, repeat=0, delay=0 in the wave table; per the map-event rule a 0/blank chance is guaranteed). No dedicated wiki page (404); exact shape unknown."
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 14,
+      "at": "14:00",
+      "enemy": null,
+      "amount": null,
+      "duration_s": null,
+      "chance_pct": 0,
+      "wiki_description": "Map event 'Diamond Maze' (chance=0, repeat=0, delay=0 in the wave table; per the map-event rule a 0/blank chance is guaranteed). No dedicated wiki page (404); exact shape unknown."
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 17,
+      "at": "17:00",
+      "enemy": null,
+      "amount": null,
+      "duration_s": null,
+      "chance_pct": 0,
+      "wiki_description": "Map event 'Diamond Maze' (chance=0, repeat=0, delay=0 in the wave table; per the map-event rule a 0/blank chance is guaranteed). No dedicated wiki page (404); exact shape unknown."
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 19,
+      "at": "19:00",
+      "enemy": null,
+      "amount": null,
+      "duration_s": null,
+      "chance_pct": 0,
+      "wiki_description": "Map event 'Diamond Maze' (chance=0, repeat=0, delay=0 in the wave table; per the map-event rule a 0/blank chance is guaranteed). No dedicated wiki page (404); exact shape unknown."
+    }
+  ],
+  "unsupported_events_note": "Diamond Maze recurs at 2:00, 5:00, 8:00, 11:00, 14:00, 17:00 and 19:00 with no enemy/amount/duration on the wiki.",
+  "bosses": [
+    {
+      "minute": 3,
+      "enemy": "BAT5",
+      "name": "Pipeestrello 5 (Silver Bat)",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 6,
+      "enemy": "BAT5",
+      "name": "Pipeestrello 5 (Silver Bat)",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "BAT5",
+      "name": "Pipeestrello 5 (Silver Bat) (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        },
+        "reward_flags_raw": "reward1=Arcana; tier chances listed as ?"
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 9,
+      "enemy": "BAT5",
+      "name": "Pipeestrello 5 (Silver Bat)",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 12,
+      "enemy": "BAT5",
+      "name": "Pipeestrello 5 (Silver Bat)",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 14,
+      "enemy": "BAT5",
+      "name": "Pipeestrello 5 (Silver Bat) (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        },
+        "reward_flags_raw": "reward1=Arcana; tier chances listed as ?"
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 15,
+      "enemy": "KIZZUNE",
+      "name": "Kizzune",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "KIZZUNE",
+      "name": "Kizzune",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 18,
+      "enemy": "BAT5",
+      "name": "Pipeestrello 5 (Silver Bat)",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLDEATH",
+      "name": "The Reaper",
+      "chest": {
+        "chance_pct": {},
+        "note": "Reaper at 20:00 (wave table Bosses column); no treasure"
+      }
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "20:00 (listed in wave table), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "80% base (stage, max 90%), multiplied by Luck",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

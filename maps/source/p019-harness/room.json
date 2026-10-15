@@ -1,0 +1,14 @@
+{
+  "fixture_id": "P019-HARNESS-001",
+  "classification": "SYNTHETIC_ENGINEERING_RUNTIME_HARNESS",
+  "map_name": "MAP05",
+  "purpose": "Run deterministic in-engine state, input and telemetry scenarios",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[240,-64],[368,-64],[368,64],[240,64]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "source_parity": "OPEN_SYNTHETIC_ENGINE_HARNESS"
+}

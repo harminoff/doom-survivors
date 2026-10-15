@@ -1,0 +1,19 @@
+{
+  "fixture_id": "P015-ENTITY-BENCH-001",
+  "classification": "REPRODUCIBLE_SYNTHETIC_ENTITY_BENCHMARK",
+  "map_name": "MAP04",
+  "purpose": "Measure horde, projectile, collision and pickup feasibility at declared synthetic stress points",
+  "room": [[-1024,-1024],[-1024,1024],[1024,1024],[1024,-1024]],
+  "landmark": [[420,-160],[548,-160],[548,160],[420,160]],
+  "floor": 0,
+  "ceiling": 320,
+  "light": 224,
+  "player": {"x": -880, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "OPEN_SYNTHETIC_BENCHMARK",
+  "notes": [
+    "Benchmark-only synthetic fixture. Counts are engineering stress points, not source-game caps.",
+    "The render proxy pool is bounded independently of the logical population."
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "denominator_status": "DENOMINATOR_UNKNOWN",
+  "expected_sets_with_unknown_payload": [
+    {
+      "later_phase": "P087-P089",
+      "name": "character_enemy_sprite_sets",
+      "owner": "asset-research",
+      "status": "IDENTITY_REFERENCES_ONLY"
+    },
+    {
+      "later_phase": "P087-P089",
+      "name": "weapon_animation_sets",
+      "owner": "asset-research",
+      "status": "IDENTITY_REFERENCES_ONLY"
+    },
+    {
+      "later_phase": "P013-P087",
+      "name": "icons_and_menu_art",
+      "owner": "asset-research",
+      "status": "UNKNOWN"
+    },
+    {
+      "later_phase": "P013-P089",
+      "name": "sound_events_and_sfx",
+      "owner": "audio-research",
+      "status": "UNKNOWN"
+    },
+    {
+      "later_phase": "P089",
+      "name": "music_loop_points_and_playback_routes",
+      "owner": "audio-research",
+      "status": "IDENTITY_ONLY_SEMANTICS_UNKNOWN"
+    },
+    {
+      "later_phase": "P090",
+      "name": "fonts_and_glyph_ranges",
+      "owner": "localization-research",
+      "status": "UNKNOWN"
+    }
+  ],
+  "observed_identity_sets": [
+    {
+      "count": 137,
+      "ids": [
+        "-01-bubble.png",
+        "2insatiable.png",
+        "ArmorIron.png",
+        "Axe.png",
+        "Bone.png",
+        "Book2.png",
+        "Candelabra.png",
+        "Carnage.png",
+        "CartWheel.png",
+        "Cat.png",
+        "Cat_counter.png",
+        "Cherry.png",
+        "Clover.png",
+        "CoinGold.png",
+        "Cross.png",
+        "Crown.png",
+        "Curse.png",
+        "Diamond2.png",
+        "EX_AMMO1.png",
+        "EX_AMMO2.png",
+        "EX_AMMO_COUNTER.png",
+        "EmblemEye.png",
+        "Garlic.png",
+        "Gauntlet.png",
+        "GemBlue.png",
+        "Guns.png",
+        "Guns2.png",
+        "Guns2_counter.png",
+        "Guns3.png",
+        "Guns_counter.png",
+        "HeartBlack.png",
+        "HeartRuby.png",
+        "HeavenSword.png",
+        "Hellfire.png",
+        "HolyBook.png",
+        "HolyWater.png",
+        "Knife.png",
+        "Knife2.png",
+        "Lancet.png",
+        "Laurel.png",
+        "Leaf.png",
+        "LighningRing.png",
+        "Mask.png",
+        "Nft1.png",
+        "OrbGlow.png",
+        "OrbOrange.png",
+        "Pentagram.png",
+        "Pentagram2.png",
+        "Ring.png",
+        "Scythe.png",
+        "Silf1.png",
+        "Silf1_counter.png",
+        "Silf2.png",
+        "Silf2_counter.png",
+        "Silf3.png",
+        "SkillIcon_1.png",
+        "SkillIcon_2.png",
+        "Song.png",
+        "Song2.png",
+        "SpearIce.png",
+        "SpearIce2.png",
+        "Thunderloop.png",
+        "Tiramisu.png",
+        "UnholyBook.png",
+        "WandFire.png",
+        "WandHoly.png",
+        "WandHoly2.png",
+        "Water2.png",
+        "Whip.png",
+        "Whip2.png",
+        "Whip3.png",
+        "Whip4.png",
+        "Wing.png",
+        "acquazzone.png",
+        "animaMortaccio.png",
+        "animaOsole.png",
+        "animaRamba.png",
+        "animaYattaCavallo.png",
+        "armadio.png",
+        "batt1.png",
+        "batt2.png",
+        "bracelet1.png",
+        "bracelet2.png",
+        "bracelet3.png",
+        "bsleft.png",
+        "bsright.png",
+        "candybox.png",
+        "candybox2.png",
+        "cape.png",
+        "cateye.png",
+        "dominion.png",
+        "dummyBarrel.png",
+        "dummyBlood.png",
+        "dummyCart.png",
+        "dummyDivine.png",
+        "dummyFire.png",
+        "dummyIce.png",
+        "dummyMMoon.png",
+        "dummySarabande.png",
+        "dummyWJB.png",
+        "dummyWindow.png",
+        "dummyYell.png",
+        "flame1.png",
+        "flame3.png",
+        "flower.png",
+        "goldring.png",
+        "icon_gazeofgaea.png",
+        "icon_shawlofgaea.png",
+        "jubilee.png",
+        "kyrastone.png",
+        "larobba.png",
+        "magistone.png",
+        "parma.png",
+        "penshin1.png",
+        "penshin2.png",
+        "penshin3.png",
+        "penshin4.png",
+        "penshin6.png",
+        "penshin7.png",
+        "penshin_selector.png",
+        "penshin_union.png",
+        "phaser.png",
+        "phaser2.png",
+        "portal.png",
+        "silverring.png",
+        "sjavelin.png",
+        "sjavelin2.png",
+        "sjavelinCounter.png",
+        "solesolution.png",
+        "sorbetto.png",
+        "tetraforce.png",
+        "torrone.png",
+        "trapano.png",
+        "trapano2.png",
+        "unearthlybolt1.png",
+        "unearthlybolt2.png",
+        "victory1.png"
+      ],
+      "name": "weapon_frame_names",
+      "pack_membership": "UNKNOWN",
+      "reachability": "UNKNOWN",
+      "source_ids": [
+        "src.p006.resources-assets"
+      ],
+      "status": "RETAINED_SHARED_REGISTRY_CANDIDATES_IDENTITY_ONLY"
+    },
+    {
+      "count": 47,
+      "name": "music_registry",
+      "pack_membership": "UNKNOWN",
+      "reachability": "UNKNOWN",
+      "source_ids": [
+        "src.p009.resources-assets"
+      ],
+      "status": "RETAINED_SHARED_REGISTRY_CANDIDATES_IDENTITY_ONLY"
+    },
+    {
+      "count": 17,
+      "name": "hit_vfx_candidates",
+      "pack_membership": "UNKNOWN",
+      "reachability": "UNKNOWN",
+      "source_ids": [
+        "src.p007.resources-assets"
+      ],
+      "status": "RETAINED_SHARED_REGISTRY_CANDIDATES_IDENTITY_ONLY"
+    },
+    {
+      "count": 52,
+      "name": "world_object_candidates",
+      "pack_membership": "UNKNOWN",
+      "reachability": "UNKNOWN",
+      "source_ids": [
+        "src.p009.resources-assets"
+      ],
+      "status": "RETAINED_SHARED_REGISTRY_CANDIDATES_IDENTITY_ONLY"
+    }
+  ],
+  "permissions": {
+    "original_asset_access": "UNKNOWN",
+    "original_asset_redistribution_permission": "UNKNOWN",
+    "raw_assets_in_tracked_artifacts": false
+  },
+  "reference_build": "1.16.107",
+  "schema_version": 1,
+  "scope": "retained installed shared-registry identity and asset-reference candidates; base/free pack membership is unresolved and raw proprietary assets are excluded",
+  "source_methods": [
+    {
+      "method": "build-matched identity metadata",
+      "source_ids": [
+        "src.p006.resources-assets",
+        "src.p007.resources-assets",
+        "src.p008.resources-assets",
+        "src.p009.resources-assets"
+      ]
+    },
+    {
+      "method": "official update description",
+      "source_ids": [
+        "src.p010.online.steam-115"
+      ]
+    }
+  ],
+  "steam_build": "25016043"
+}

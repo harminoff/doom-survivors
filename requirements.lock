@@ -1,0 +1,3 @@
+# Host Python is pinned in toolchain/lock.json.
+# Initial build, bootstrap and validation tools use the Python standard library only.
+# No third-party Python packages are required.

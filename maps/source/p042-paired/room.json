@@ -1,0 +1,19 @@
+{
+  "fixture_id": "P042-PAIRED-MAP28-001",
+  "classification": "CONTROLLED_PAIRED_UNION_AND_CHAIN_RUNTIME_FIXTURE_SKELETON",
+  "map_name": "MAP28",
+  "purpose": "Narrow-scope skeleton: compile and print every DSP042PairedRows rank row (boot mode) and drive the real DSP032TransformationGraph Bracelet->Bi-Bracelet->Tri-Bracelet chain (recipes 204/205) mirrored into the DSP042Paired firing schedule via DSP042EvolveInPlace (chain mode) in pinned UZDoom. Union acceptance items (A01-A04) and every other paired-unions.md item are out of scope for this skeleton.",
+  "room": [[-1024, -1024], [-1024, 1024], [1024, 1024], [1024, -1024]],
+  "landmark": [[-192, -192], [-192, 192], [192, 192], [192, -192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": { "x": 0, "y": 0, "angle": 0 },
+  "presentation_fixture_ownership": "MAP28_LOGICAL_PAIRED_RUNTIME",
+  "presentation_fixtures": [],
+  "source_parity": "ONLINE_REPORTED_CURRENT_ROW_DATA_PLUS_LEAD_FROZEN_ENGINEERING_SLOT_TRANSACTION",
+  "notes": [
+    "Weapon ranks, chest subtype, transaction ids and target placement are controlled fixtures; no source-exact profile or natural-acquisition claim is made.",
+    "This skeleton implements exactly two modes (boot, chain); every other docs/contracts/paired-unions.md acceptance item (unions A01-A04, camera/window invariance, save/load, pause, MAP16 route) is unimplemented research backlog, not a passed check."
+  ]
+}

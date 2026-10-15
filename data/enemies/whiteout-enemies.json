@@ -1,0 +1,133 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Whiteout (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Miragellos, Madd-Onna, Menta_Elemental, Bambaman, Kizzune, Ghost, Pipeestrello (Statbox Enemy / Infobox Bestiary, retrieved 2026-09-29)"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier (Mad Forest enemy_health = 1.0)",
+    "power": "contact damage before player Armor",
+    "speed": "wiki MoveSpeed units (player base speed unit is not stated on these pages; treat as relative)",
+    "knockback": "multiplier on weapon knockback (0 = wiki lists 0, i.e. described as semi/fully resistant depending on page text; negative = pulled toward player)",
+    "knockback_max": "wiki 'knockback-max' field",
+    "hp_x_level": "true means health is multiplied by the player's level at spawn time"
+  },
+  "enemies": {
+    "MIRAGELLOS": {
+      "name": "Miragellos (skull variant)",
+      "hp": 10,
+      "power": 7.5,
+      "speed": 250,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "regular enemy; wiki ranges HP 5-15, damage 5-10, speed 100-400 (midpoints used); weak to fire"
+    },
+    "MIRAGELLOS_2": {
+      "name": "Miragellos (variant 2)",
+      "hp": 10,
+      "power": 7.5,
+      "speed": 250,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "regular enemy; same wiki stat ranges as Miragellos; weak to fire"
+    },
+    "MADDONNA": {
+      "name": "Madd-Onna",
+      "hp": 78,
+      "power": 10,
+      "speed": 100,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "regular enemy; wiki HP 5-150 (midpoint used), damage 10, speed 100; weak to fire"
+    },
+    "EX_GOLEM_SNOW": {
+      "name": "Menta Elemental (Snow)",
+      "hp": 180,
+      "power": 14,
+      "speed": 130,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": 2,
+      "special": "regular enemy; weak to fire"
+    },
+    "EX_GOLEM_ICE": {
+      "name": "Menta Elemental (Ice)",
+      "hp": 270,
+      "power": 10,
+      "speed": 140,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": 2.5,
+      "special": "regular enemy; weak to fire"
+    },
+    "EX_SNOWMAN_HAUNTED": {
+      "name": "Bambaman (Normal)",
+      "hp": 300,
+      "power": 80,
+      "speed": 20,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "regular enemy; bestiary infobox says damage 20 speed 80 but Statbox says damage 80 speed 20 (Statbox used)"
+    },
+    "EX_SNOWMAN_HAUNTED2": {
+      "name": "Bambaman (XL, variant 2)",
+      "hp": 500,
+      "power": 80,
+      "speed": 20,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "regular enemy; larger variant"
+    },
+    "EX_SNOWMAN_HAUNTED3": {
+      "name": "Bambaman (XL, variant 3)",
+      "hp": 500,
+      "power": 80,
+      "speed": 20,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "regular enemy; larger variant"
+    },
+    "KIZZUNE": {
+      "name": "Kizzune",
+      "hp": 250,
+      "power": 25,
+      "speed": 100,
+      "knockback": null,
+      "knockback_max": null,
+      "xp": null,
+      "special": "boss; HP x player level; resists freeze, rosary, debuff and knockback; heavily slowed by snow, hates fire",
+      "hp_x_level": true
+    },
+    "BAT5": {
+      "name": "Pipeestrello 5 (Silver Bat)",
+      "hp": 50,
+      "power": 10,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x player level; Silver Bat, also Arcana holder at 7:00 and 14:00 in Whiteout"
+    },
+    "GHOST": {
+      "name": "Ghost 1",
+      "hp": 10,
+      "power": 5,
+      "speed": 200,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1.5,
+      "special": "page text: semi-resistant to knockback; spawns 2 units at a time in minute 13"
+    }
+  },
+  "unknowns": [
+    "Miragellos, Madd-Onna and Kizzune pages give no internal id; MIRAGELLOS, MIRAGELLOS_2, MADDONNA and KIZZUNE are invented ids.",
+    "Miragellos/Madd-Onna stats are wiki ranges (HP 5-15 / 5-150, damage 5-10, speed 100-400); midpoints are approximations.",
+    "XP and knockback are not given for several enemies (null)."
+  ]
+}

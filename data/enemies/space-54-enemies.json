@@ -1,0 +1,143 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Space_54",
+    "Enemy pages Musc_Musc, Moon_Duck, Moon_Rabbit, Space_Pickle, Space_Ant_Onion, ECMASlime, Gala_Invader, Sinistronz (?action=raw, retrieved 2026-09-29)"
+  ],
+  "field_notes": {
+    "hp": "wiki max health before stage multiplier",
+    "speed": "wiki MoveSpeed units (140 = normal bat)"
+  },
+  "unknowns": "Many Space 54 enemies have ranges or '?' on the wiki; midpoints/assumptions noted per enemy. Knockback/xp not listed (1 assumed).",
+  "enemies": {
+    "ECTO1": {
+      "name": "Musc Musc",
+      "hp": 1,
+      "power": 2,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular enemy; max speed 200"
+    },
+    "ECTO2": {
+      "name": "Big Musc Musc",
+      "hp": 13,
+      "power": 4,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular enemy; max speed 200"
+    },
+    "EX_DUCK_SWARM": {
+      "name": "Moon Duck",
+      "hp": 10,
+      "power": 5,
+      "speed": 300,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Fixed Direction (event enemy); wiki speed 250-350"
+    },
+    "EX_RABBIT_SWARM": {
+      "name": "Moon Rabbit",
+      "hp": 10,
+      "power": 5,
+      "speed": 450,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Fixed Direction (event enemy); wiki speed 250-700, mid value used"
+    },
+    "SPACE_PICKLE": {
+      "name": "Space Pickle",
+      "hp": 18,
+      "power": 1,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular; wiki hp 15-20, speed 120-160 (midpoints); no internal id on wiki (invented)"
+    },
+    "SPACE_ANT_ONION": {
+      "name": "Space Ant Onion",
+      "hp": 70,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "normal variant; wiki range hp 70-150, speed 100-140, per-variant values '?': low end assumed; id invented"
+    },
+    "SPACE_ANT_ONION_2": {
+      "name": "Space Ant Onion (Big-brained)",
+      "hp": 150,
+      "power": 10,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "big-brained variant; high end of wiki range assumed; id invented"
+    },
+    "ECMASLIME_1": {
+      "name": "ECMASlime (Normal)",
+      "hp": 120,
+      "power": 5,
+      "speed": 80,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular; id invented"
+    },
+    "ECMASLIME_2": {
+      "name": "ECMASlime (Large)",
+      "hp": 300,
+      "power": 12,
+      "speed": 120,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "wiki stats '?': interpolated between Normal and XL; splits into 2 Normal on death; id invented"
+    },
+    "ECMASLIME_3": {
+      "name": "Extra Large ECMASlime",
+      "hp": 480,
+      "power": 20,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "boss; splits into 2 Large on death; id invented"
+    },
+    "EX_BATSPACE_D": {
+      "name": "Blue-winged Gala Invader",
+      "hp": 5,
+      "power": 3,
+      "speed": 400,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats '?' on wiki; wiki range hp 1-10, power 1-5, speed 140-700 (midpoints); event enemy, fixed direction"
+    },
+    "EX_CUBE_HITS_STERILE": {
+      "name": "Sinistronz",
+      "hp": 50,
+      "power": 10,
+      "speed": 150,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "resistant to Freeze, Rosary, Debuff and Knockback; wiki speed 0-300 (midpoint used)"
+    },
+    "MEDUSA1": {
+      "name": "Sneaky Head",
+      "hp": 1,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Floaty + Fixed Direction; used by Medusa Swarm event (same as inlaid-library MEDUSA1)"
+    }
+  }
+}

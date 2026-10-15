@@ -1,0 +1,57 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Eudaimonia_Machine",
+    "https://vampire.survivors.wiki/w/The_Directer (Statbox Enemy, retrieved 2026-10-01)"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn",
+    "power": "contact damage",
+    "speed": "wiki MoveSpeed units",
+    "knockback": "knockback multiplier",
+    "knockback_max": "wiki knockback-max",
+    "hp_x_level": "health scaled by player level"
+  },
+  "notes": "DIRECTER health is -1 on the wiki (scripted phases); hp 30000, power 20 and speed 0 are guessed.",
+  "enemies": {
+    "DIRECTER": {
+      "name": "The Directer",
+      "hp": 30000,
+      "power": 20,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "final boss; guessed hp, wiki lists -1"
+    },
+    "D_MASK_SUN": {
+      "name": "Aspect of Sun",
+      "hp": 20,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "stationary Directer aspect"
+    },
+    "D_MASK_MOON": {
+      "name": "Aspect of Moon",
+      "hp": 20,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "stationary Directer aspect"
+    },
+    "D_MASK_CITY": {
+      "name": "Aspect of City",
+      "hp": 20,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "stationary Directer aspect"
+    }
+  }
+}

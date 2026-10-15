@@ -1,0 +1,100 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Room_1665 and the eight linked enemy pages (retrieved 2026-09-29)"
+  ],
+  "field_notes": {
+    "hp": "low end of wiki range, before HP x Level",
+    "power": "low end of wiki damage range",
+    "speed": "low end of wiki speed range (140 = normal bat)",
+    "knockback": "not on wiki (null)",
+    "xp": "not on wiki (null)",
+    "hp_x_level": "true: health multiplied by player level"
+  },
+  "enemies": {
+    "DEVIL_HP_1": {
+      "name": "Ska'sa Ka'sos",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "wiki ranges: hp 5-50, damage 5-9; 8 sprite variants; base = low end"
+    },
+    "DEVIL_HP_7": {
+      "name": "Juda R'kasso",
+      "hp": 35,
+      "power": 8,
+      "speed": 120,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "wiki ranges: hp 35-50, damage 8-20, speed 120-140; base = low end"
+    },
+    "DEVIL_HP_11": {
+      "name": "Foo'Ori Darkasso",
+      "hp": 50,
+      "power": 9,
+      "speed": 140,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "wiki ranges: hp 50-60, damage 9-20, speed 140-180; base = low end"
+    },
+    "DARKASSO_SHENDI": {
+      "name": "Shendi Darkasso",
+      "hp": 50,
+      "power": 10,
+      "speed": 140,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "id not on wiki (invented)"
+    },
+    "DARKASSO_SPHONDATO": {
+      "name": "Sphon'Dato Darkasso",
+      "hp": 50,
+      "power": 10,
+      "speed": 100,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "wiki ranges: hp 50-100, damage 10-40, speed 100-140; id invented"
+    },
+    "DARKASSO_ELLEVETEH": {
+      "name": "Eh'Lleve-Teh Darkasso",
+      "hp": 50,
+      "power": 11,
+      "speed": 120,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "wiki ranges: hp 50-80, damage 11-20, speed 120-140; id invented"
+    },
+    "DARKASSO_LEVATEE": {
+      "name": "Levatee Darkasso",
+      "hp": 50,
+      "power": 10,
+      "speed": 200,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "Fixed Direction; blue and green variants; id invented"
+    },
+    "DARKASSO_LEVARSEE": {
+      "name": "Levarsee Darkasso",
+      "hp": 100,
+      "power": 15,
+      "speed": 150,
+      "knockback": null,
+      "xp": null,
+      "hp_x_level": true,
+      "special": "resists Freeze, Rosary, Debuff; can also spawn via Moonlight Bolero (VI), dropping a Dark Treasure Chest; id invented"
+    }
+  },
+  "unknowns": [
+    "No wave/boss table on wiki; knockback and xp missing for all enemies.",
+    "Hp/damage/speed are ranges on the wiki; only the low end is stored.",
+    "Ids other than DEVIL_HP_1/7/11 are invented."
+  ]
+}

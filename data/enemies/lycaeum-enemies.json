@@ -1,0 +1,158 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/The_Lycaeum and enemy pages (Statbox Enemy templates), retrieved 2026-09-29"
+  ],
+  "field_notes": {
+    "hp": "wiki max health before stage multiplier",
+    "speed": "wiki MoveSpeed units (140 = normal bat)",
+    "hp_x_level": "health multiplied by player level at spawn"
+  },
+  "enemies": {
+    "EX_SEAANGEL": {
+      "name": "Deep Angellette",
+      "hp": 3,
+      "power": 4,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1
+    },
+    "EX_SEAHAM": {
+      "name": "Sea Ham",
+      "hp": 10,
+      "power": 4,
+      "speed": 100,
+      "special": "wiki lists no id/knockback/xp; id invented"
+    },
+    "EX_SEASLUG": {
+      "name": "Deep Sluge",
+      "hp": 10,
+      "power": 4,
+      "speed": 100,
+      "knockback": 0.8,
+      "knockback_max": 3,
+      "xp": 1
+    },
+    "EX_LEAFYSEAHORSE_01": {
+      "name": "Sea Spinach",
+      "hp": 12,
+      "power": 10,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1
+    },
+    "EX_LEAFYSEAHORSE_02": {
+      "name": "Sea Spinach 2",
+      "hp": 16,
+      "power": 10,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1
+    },
+    "EX_AHUIZOTL": {
+      "name": "Awizotl",
+      "hp": 250,
+      "power": 10,
+      "speed": 180,
+      "knockback": 0.5,
+      "knockback_max": 3,
+      "xp": 3
+    },
+    "EX_BUKAVAC": {
+      "name": "Buklavaca",
+      "hp": 150,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2
+    },
+    "EX_OLMO": {
+      "name": "Olmo",
+      "hp": 300,
+      "power": 11,
+      "speed": 140,
+      "special": "wiki lists no id/knockback/xp; id invented"
+    },
+    "EX_ENYPNASTYS": {
+      "name": "Enypnastys",
+      "hp": 50,
+      "power": 10,
+      "speed": 150,
+      "hp_x_level": true,
+      "special": "jellyfish; also spawns as a normal enemy at 18:00; id invented"
+    },
+    "EX_BOSS_ENYPNASTYS": {
+      "name": "Enypnastys (boss)",
+      "hp": 50,
+      "power": 10,
+      "speed": 150,
+      "xp": 50,
+      "hp_x_level": true,
+      "special": "boss at 3,5,8,10,12; stats assumed equal to the normal Enypnastys; id invented"
+    },
+    "EX_BOSS_SEASPHYNX": {
+      "name": "Deep Sphynx",
+      "hp": 600,
+      "power": 20,
+      "speed": 200,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 50,
+      "hp_x_level": true,
+      "special": "boss at 15:00 and 17:00"
+    },
+    "EX_BOSS_ARCANA_SALMON": {
+      "name": "Ex Arcana Salmon",
+      "hp": 2000,
+      "power": 20,
+      "speed": 140,
+      "special": "Arcana-holder boss (6:00, 13:00); no wiki page or stats found; values unknown (use a mid boss's stats) | Stats are a project placeholder (no wiki stats): Glowing Bat-like Arcana holder, HP x level.",
+      "xp": 30,
+      "hp_x_level": true
+    },
+    "EX_ICHTHYOCENTAUR_01": {
+      "name": "Itchiocentaur 1",
+      "hp": 70,
+      "power": 8,
+      "speed": 150,
+      "special": "wiki gives 70-150 HP and 8-10 damage across 5 variants (sprites 1-5); per-variant values interpolated linearly; one shared wiki id EX_ICHTHYOCENTAUR_01"
+    },
+    "EX_ICHTHYOCENTAUR_02": {
+      "name": "Itchiocentaur 2",
+      "hp": 90,
+      "power": 8,
+      "speed": 150,
+      "special": "wiki gives 70-150 HP and 8-10 damage across 5 variants (sprites 1-5); per-variant values interpolated linearly; one shared wiki id EX_ICHTHYOCENTAUR_01"
+    },
+    "EX_ICHTHYOCENTAUR_03": {
+      "name": "Itchiocentaur 3",
+      "hp": 110,
+      "power": 9,
+      "speed": 150,
+      "special": "wiki gives 70-150 HP and 8-10 damage across 5 variants (sprites 1-5); per-variant values interpolated linearly; one shared wiki id EX_ICHTHYOCENTAUR_01"
+    },
+    "EX_ICHTHYOCENTAUR_04": {
+      "name": "Itchiocentaur 4",
+      "hp": 130,
+      "power": 9,
+      "speed": 150,
+      "special": "wiki gives 70-150 HP and 8-10 damage across 5 variants (sprites 1-5); per-variant values interpolated linearly; one shared wiki id EX_ICHTHYOCENTAUR_01"
+    },
+    "EX_ICHTHYOCENTAUR_05": {
+      "name": "Itchiocentaur 5",
+      "hp": 150,
+      "power": 10,
+      "speed": 150,
+      "special": "wiki gives 70-150 HP and 8-10 damage across 5 variants (sprites 1-5); per-variant values interpolated linearly; one shared wiki id EX_ICHTHYOCENTAUR_01"
+    }
+  },
+  "unknowns": [
+    "Ex Arcana Salmon stats missing on the wiki.",
+    "Itchiocentaur per-variant HP/damage are interpolated from the 70-150 / 8-10 ranges.",
+    "Sea Ham, Olmo, Enypnastys have no wiki internal id; invented.",
+    "Tritont (XLTRITON) already defined in dairy-plant-enemies.json; Tritont-2 treated as the same enemy."
+  ]
+}

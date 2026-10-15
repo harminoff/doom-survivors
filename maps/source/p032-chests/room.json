@@ -1,0 +1,21 @@
+{
+  "fixture_id": "P032-CHEST-TRANSFORM-001",
+  "classification": "CONTROLLED_CHEST_REWARD_AND_TRANSFORMATION_RUNTIME_FIXTURE",
+  "map_name": "MAP18",
+  "purpose": "Exercise spawn-frozen chest provenance, body proximity, reward queues, and atomic transformations in pinned UZDoom",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-160,-128],[-160,128],[160,128],[160,-128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 180},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "CONTROLLED_ENGINEERING_FIXTURE_WITH_SOURCE_REPORTED_WHIP_RECIPE_SHAPE",
+  "obstacle_case": {"landmark_walls": "blocking", "logical_wall_filter": false},
+  "notes": [
+    "MAP18 uses controlled chest source records; subtype and transformation eligibility freeze at spawn.",
+    "Only Whip rank 8 plus Hollow Heart to Bloody Tear is named as a source-reported recipe; MAP18 transaction inventory is explicitly controlled and does not claim combat integration.",
+    "All other recipe shapes and chest rewards are controlled fixtures, not claims about the complete source catalog."
+  ]
+}

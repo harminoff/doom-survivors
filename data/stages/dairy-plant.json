@@ -1,0 +1,1274 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Dairy_Plant (?action=raw wikitext, retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Pile_Assault (retrieved 2026-09-29; event described on the Dairy Plant table only)",
+    "https://vampire.survivors.wiki/w/Jellyfish_Wall (retrieved 2026-09-29; event described on the Dairy Plant table only)",
+    "https://vampire.survivors.wiki/w/Jellyfish_Swarm (retrieved 2026-09-29; event described on the Dairy Plant table only)",
+    "https://vampire.survivors.wiki/w/Minotaur_Rush (retrieved 2026-09-29; event described on the Dairy Plant table only)",
+    "https://vampire.survivors.wiki/w/Swarm (retrieved 2026-09-29; event described on the Dairy Plant table only)",
+    "https://vampire.survivors.wiki/w/The_Stalker (retrieved 2026-09-29; event described on the Dairy Plant table only)",
+    "https://vampire.survivors.wiki/w/Musc_Musc_Swarm (retrieved 2026-09-29; event described on the Dairy Plant table only)",
+    "pickups, chest_rules and reaper blocks reuse the Mad Forest file's content (Treasure_Chest, The_Reaper, Floor_Chicken etc., retrieved 2026-09-28 there)"
+  ],
+  "stage": {
+    "id": "PLANT",
+    "name": "Dairy Plant",
+    "duration_seconds": 1800,
+    "spawn_type": "Standard: enemies appear from all four directions of the player (a solid structure at the screen edge blocks spawns from that direction)",
+    "modifiers_normal_mode": {
+      "starting_spawns": 40,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.2,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "20% (max 60%)",
+      "destructible_max": 10
+    },
+    "modifiers_note": "Wiki infobox fields; enemy_speed 1.25 is a multiplier (not applied to the enemy file speeds). Hyper mode (+50% gold, +10% luck, x1.9 player speed) and Inverse mode not needed here. Wiki stage id is WAREHOUSE; this project uses PLANT.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [
+        {
+          "item": "Attractorb",
+          "count": 1,
+          "position": "4 tilesets northwest of start"
+        },
+        {
+          "item": "Armor",
+          "count": 1,
+          "position": "2 tilesets northeast of start"
+        },
+        {
+          "item": "Wings",
+          "count": 1,
+          "position": "2 tilesets southwest of start"
+        },
+        {
+          "item": "Candelabrador",
+          "count": 1,
+          "position": "4 tilesets southeast of start"
+        }
+      ],
+      "pickups": [
+        {
+          "item": "Green Experience Gem",
+          "count": 1,
+          "position": "barrel right of the player at start; 5 XP"
+        },
+        {
+          "item": "Vacuum",
+          "count": "up to 3, all guaranteed",
+          "position": "by the wall above the player at start; 2 tilesets south; 4 tilesets south"
+        }
+      ],
+      "relics": [
+        {
+          "item": "Milky Way Map",
+          "position": "3 tilesets south of start (guarded by 6 patrol Sword Guardians)"
+        },
+        {
+          "item": "Ars Gouda",
+          "position": "6 tilesets south of start (guarded by 6 patrol Sword Guardians)"
+        }
+      ],
+      "hidden_with_yellow_sign": [
+        {
+          "item": "Silver Ring",
+          "position": "7 tilesets north"
+        },
+        {
+          "item": "Metaglio Right",
+          "position": "7 tilesets east"
+        },
+        {
+          "item": "Gold Ring",
+          "position": "7 tilesets south"
+        },
+        {
+          "item": "Metaglio Left",
+          "position": "7 tilesets west"
+        }
+      ],
+      "coffin": {
+        "character": "Poppea Pecorina",
+        "position": "3 tilesets southeast of start (guarded by 60 patrol Sword Guardians)"
+      },
+      "tileset_size_note": "Tileset size in world units not stated on the page (unknown)."
+    },
+    "destructibles": "Light sources (lamp posts, drop random pickups) and Dairy Carts (appear on rails; once damaged enough they launch at high speed along the rail, hitting enemies). Dairy Cart stats not read (unknown).",
+    "traps": "Trap pizzas (circular plates on the ground) trigger a random map event from 9 options when stepped on; 20 s minimum cooldown. See unsupported_events entries with trap=true."
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "FISHMAN_1"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "FISHMAN_1"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "LIZARD2_3"
+      ]
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "FISHMAN_1",
+        "LIZARD1_2"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "LIZARD1_2",
+        "MILK",
+        "FISHMAN_1"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.25,
+      "events": [],
+      "bosses": [
+        "BOSS_MIGNO2_5"
+      ],
+      "notes": "Wiki lists Lizard Pawn, Milk Elemental and Merman; Merman approximated as FISHMAN_1."
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "LIZARD1_2",
+        "FISHMAN_1",
+        "MILK"
+      ],
+      "enemy_min": 25,
+      "spawn_interval_s": 0.25,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "LIZARD2_3",
+        "MILK2"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_MIGNO2_5"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "FISHMAN_1",
+        "LIZARD2_3"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MERMA1_3",
+        "LIZARD1_2",
+        "FISHMAN_1"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_MERMAN"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "SKELENIN1",
+        "SKELETON"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "MIGNO1_5",
+        "MILK2"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_MIGNO2_5"
+      ]
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "MIGNO1_5",
+        "PILE2",
+        "MILK2"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_MIGNO2_5_L"
+      ],
+      "notes": "Wiki lists Minotaur, Twin Demons, Sturdy Milk Elemental. The 10:00 chest can evolve up to 3 weapons (reward2/reward3=evo)."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "SKELENIN1",
+        "SKELETON"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ],
+      "notes": "Glowing Bat (BAT4) is the Arcana-holder boss at 11:00 and 21:00 (see bosses); not in the regular pool."
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "SKELENIN2",
+        "PILE1",
+        "PILE2"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "BOSS_PILE3"
+      ],
+      "notes": "Wiki lists Elite Skeleton Ninja, Twin Snakes, Twin Demons."
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "MERMA2_4",
+        "LIZARD2_3",
+        "LIZARD1_2"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Elite Merman = MERMA2_4 (Merman 3)."
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "MERMA2_4",
+        "GOLEM1"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "ARMOR_6",
+        "GOLEM1",
+        "PILE3"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "GOLEM1",
+        "ARMORSPEAR_6"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_XLTRITON"
+      ]
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "ARMORSPEAR_6",
+        "MIGNO3_5"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "ARMOR_6",
+        "MIGNO3_5"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_ARMOR1"
+      ]
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "ARMORSPEAR_6",
+        "XLTRITON"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "XLGOLEM1",
+        "XLTRITON",
+        "JELLYFISH2"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLGOLEM2"
+      ],
+      "notes": "Wiki lists Big Golem, Tritont, Jellyfish. The 20:00 chest can evolve up to 3 weapons."
+    },
+    {
+      "minute": 21,
+      "pool": [
+        "SKELENIN1",
+        "SKELENIN2",
+        "SKELEWING",
+        "PILE3"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 22,
+      "pool": [
+        "GOLEM1"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLGOLEM1"
+      ]
+    },
+    {
+      "minute": 23,
+      "pool": [
+        "MIGNO1_5",
+        "MIGNO3_5"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_MIGNO2_5_L"
+      ]
+    },
+    {
+      "minute": 24,
+      "pool": [
+        "ARMOR_6",
+        "ARMORSPEAR_6",
+        "GOLEM1"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "XLARMOR_SWORD"
+      ]
+    },
+    {
+      "minute": 25,
+      "pool": [
+        "XLARMOR_SWORD"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLARMOR"
+      ],
+      "notes": "Defeating the Sword Guardian unlocks hyper mode (not needed here)."
+    },
+    {
+      "minute": 26,
+      "pool": [
+        "XLCOCKATRICE",
+        "MIGNO3_5"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 27,
+      "pool": [
+        "XLCOCKATRICE",
+        "XLARMOR_SWORD"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCOCKATRICE"
+      ]
+    },
+    {
+      "minute": 28,
+      "pool": [
+        "BOSS_MERMAN",
+        "BOSS_MIGNO2_5_L"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "The wiki's 28:00 wave uses the Merman Boss and large Minotaur Boss variants as regular enemies."
+    },
+    {
+      "minute": 29,
+      "pool": [
+        "BOSS_XLGOLEM1_29",
+        "BOSS_XLGOLEM2_29"
+      ],
+      "enemy_min": 10,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "The wiki's 29:00 wave uses the Massive Golem (Big Golem LV29 variants) as regular enemies."
+    },
+    {
+      "minute": 30,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "At 30:00 all enemies on screen are cleared; Reaper spawns, then another every minute after."
+    }
+  ],
+  "map_events": {
+    "stalker": {
+      "enemy": "BOSS_STALKER_NORMAL",
+      "shape": "one Stalker follows the player for the event duration (120 s at 0:00 and 8:00, 60 s at 12:00)",
+      "hp": 2550,
+      "power": 50
+    },
+    "pile_assault": {
+      "enemy": "PILE1/PILE2/PILE3",
+      "shape": "group of stationary shooters (speed 0) in an ellipsoid ring around the player that fire bullets"
+    },
+    "jellyfish_wall": {
+      "enemy": "JELLYFISH",
+      "shape": "ring of jellyfish around the player that closes in and moves away; fixed direction"
+    },
+    "minotaur_rush": {
+      "enemy": "MIGNO_3_5SWARM",
+      "shape": "cluster of fast Mignotaurs (speed 600) travelling in a straight line"
+    },
+    "jellyfish_swarm": {
+      "enemy": "JELLYFISH2_SWARM",
+      "shape": "cluster of jellyfish (speed 150) travelling in a straight line"
+    },
+    "swarm": {
+      "enemy": "MILK / MILK2 / SKELETON",
+      "shape": "cluster of enemies attacking the player"
+    },
+    "map_events_note": "Shapes are from the Dairy Plant table descriptions only; individual event pages were not verified (approximate)."
+  },
+  "unsupported_events": [
+    {
+      "type": "stalker",
+      "minute": 0,
+      "at": "0:00",
+      "enemy": "BOSS_STALKER_NORMAL",
+      "amount": 1,
+      "duration_s": 120,
+      "chance_pct": 1,
+      "wiki_description": "The Stalker: spawns a green Reaper (The Stalker) that follows the player for the event duration."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 1,
+      "at": "1:00",
+      "enemy": "PILE1",
+      "amount": 20,
+      "duration_s": 5,
+      "wiki_description": "Pile Assault: spawns a group of stationary shooters that fire bullets in an ellipsoid ring around the player."
+    },
+    {
+      "type": "swarm",
+      "minute": 1,
+      "at": "1:00",
+      "enemy": "MILK",
+      "amount": 25,
+      "duration_s": 30,
+      "delay_s": 15,
+      "repeats": 3,
+      "wiki_description": "Swarm: spawns a cluster of enemies to attack the player."
+    },
+    {
+      "type": "swarm",
+      "minute": 2,
+      "at": "2:00",
+      "enemy": "MILK",
+      "amount": 25,
+      "duration_s": 30,
+      "delay_s": 15,
+      "repeats": 2,
+      "wiki_description": "Swarm: spawns a cluster of enemies to attack the player."
+    },
+    {
+      "type": "jellyfish_wall",
+      "minute": 3,
+      "at": "3:00",
+      "enemy": "JELLYFISH",
+      "amount": 80,
+      "duration_s": 30,
+      "wiki_description": "Jellyfish Wall: spawns a group of jellyfish in an ellipsoid ring around the player; the ring closes in and moves away in turn."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 4,
+      "at": "4:00",
+      "enemy": "PILE1",
+      "amount": 20,
+      "duration_s": 5,
+      "chance_pct": 50,
+      "wiki_description": "Pile Assault: spawns a group of stationary shooters that fire bullets in an ellipsoid ring around the player."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": "PILE1",
+      "amount": 20,
+      "duration_s": 60,
+      "wiki_description": "Pile Assault: spawns a group of stationary shooters that fire bullets in an ellipsoid ring around the player."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": "PILE1",
+      "amount": 20,
+      "duration_s": 30,
+      "delay_s": 30,
+      "wiki_description": "Pile Assault: spawns a group of stationary shooters that fire bullets in an ellipsoid ring around the player."
+    },
+    {
+      "type": "swarm",
+      "minute": 6,
+      "at": "6:00",
+      "enemy": "MILK2",
+      "amount": 50,
+      "duration_s": 30,
+      "delay_s": 30,
+      "wiki_description": "Swarm: spawns a cluster of enemies to attack the player."
+    },
+    {
+      "type": "jellyfish_wall",
+      "minute": 7,
+      "at": "7:00",
+      "enemy": "JELLYFISH",
+      "amount": 40,
+      "duration_s": 30,
+      "wiki_description": "Jellyfish Wall: spawns a group of jellyfish in an ellipsoid ring around the player; the ring closes in and moves away in turn."
+    },
+    {
+      "type": "jellyfish_wall",
+      "minute": 7,
+      "at": "7:00",
+      "enemy": "JELLYFISH",
+      "amount": 40,
+      "duration_s": 30,
+      "delay_s": 2,
+      "chance_pct": 80,
+      "wiki_description": "Jellyfish Wall: spawns a group of jellyfish in an ellipsoid ring around the player; the ring closes in and moves away in turn."
+    },
+    {
+      "type": "stalker",
+      "minute": 8,
+      "at": "8:00",
+      "enemy": "BOSS_STALKER_NORMAL",
+      "duration_s": 120,
+      "chance_pct": 30,
+      "wiki_description": "The Stalker: spawns a green Reaper (The Stalker) that follows the player for the event duration."
+    },
+    {
+      "type": "swarm",
+      "minute": 8,
+      "at": "8:00",
+      "enemy": "SKELETON",
+      "amount": 50,
+      "duration_s": 30,
+      "delay_s": 30,
+      "wiki_description": "Swarm: spawns a cluster of enemies to attack the player."
+    },
+    {
+      "type": "minotaur_rush",
+      "minute": 9,
+      "at": "9:00",
+      "enemy": "MIGNO_3_5SWARM",
+      "amount": 50,
+      "wiki_description": "Minotaur Rush: a cluster of fast Mignotaurs travels in a straight line across the map."
+    },
+    {
+      "type": "minotaur_rush",
+      "minute": 9,
+      "at": "9:00",
+      "enemy": "MIGNO_3_5SWARM",
+      "amount": 50,
+      "duration_s": 15,
+      "delay_s": 16,
+      "chance_pct": 60,
+      "wiki_description": "Minotaur Rush: a cluster of fast Mignotaurs travels in a straight line across the map."
+    },
+    {
+      "type": "minotaur_rush",
+      "minute": 10,
+      "at": "10:00",
+      "enemy": "MIGNO_3_5SWARM",
+      "amount": 25,
+      "duration_s": 15,
+      "delay_s": 5,
+      "chance_pct": 50,
+      "repeats": 6,
+      "wiki_description": "Minotaur Rush: a cluster of fast Mignotaurs travels in a straight line across the map."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 10,
+      "at": "10:00",
+      "enemy": "PILE2",
+      "amount": 10,
+      "duration_s": 20,
+      "delay_s": 10,
+      "chance_pct": 50,
+      "repeats": 4,
+      "wiki_description": "Pile Assault: spawns a group of stationary shooters that fire bullets in an ellipsoid ring around the player."
+    },
+    {
+      "type": "swarm",
+      "minute": 11,
+      "at": "11:00",
+      "enemy": "SKELETON",
+      "amount": 50,
+      "duration_s": 30,
+      "delay_s": 10,
+      "repeats": 4,
+      "wiki_description": "Swarm: spawns a cluster of enemies to attack the player."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 12,
+      "at": "12:00",
+      "enemy": "PILE3",
+      "amount": 10,
+      "duration_s": 20,
+      "delay_s": 10,
+      "chance_pct": 50,
+      "repeats": 3,
+      "wiki_description": "Pile Assault: spawns a group of stationary shooters that fire bullets in an ellipsoid ring around the player."
+    },
+    {
+      "type": "stalker",
+      "minute": 12,
+      "at": "12:00",
+      "enemy": "BOSS_STALKER_NORMAL",
+      "amount": 1,
+      "duration_s": 60,
+      "chance_pct": 30,
+      "wiki_description": "The Stalker: spawns a green Reaper (The Stalker) that follows the player for the event duration."
+    },
+    {
+      "type": "swarm",
+      "minute": 12,
+      "at": "12:00",
+      "enemy": "SKELETON",
+      "amount": 50,
+      "duration_s": 30,
+      "delay_s": 5,
+      "repeats": 10,
+      "wiki_description": "Swarm: spawns a cluster of enemies to attack the player."
+    },
+    {
+      "type": "jellyfish_wall",
+      "minute": 18,
+      "at": "18:00",
+      "enemy": "JELLYFISH",
+      "amount": 40,
+      "duration_s": 30,
+      "delay_s": 12,
+      "chance_pct": 80,
+      "wiki_description": "Jellyfish Wall: spawns a group of jellyfish in an ellipsoid ring around the player; the ring closes in and moves away in turn."
+    },
+    {
+      "type": "jellyfish_wall",
+      "minute": 18,
+      "at": "18:00",
+      "enemy": "JELLYFISH",
+      "amount": 40,
+      "duration_s": 30,
+      "delay_s": 14,
+      "chance_pct": 80,
+      "wiki_description": "Jellyfish Wall: spawns a group of jellyfish in an ellipsoid ring around the player; the ring closes in and moves away in turn."
+    },
+    {
+      "type": "jellyfish_swarm",
+      "minute": 19,
+      "at": "19:00",
+      "enemy": "JELLYFISH2_SWARM",
+      "amount": 50,
+      "duration_s": 10,
+      "chance_pct": 80,
+      "wiki_description": "Jellyfish Swarm: a cluster of jellyfish slowly travels in a straight line across the map."
+    },
+    {
+      "type": "jellyfish_swarm",
+      "minute": 19,
+      "at": "19:00",
+      "enemy": "JELLYFISH2_SWARM",
+      "amount": 50,
+      "duration_s": 10,
+      "delay_s": 10,
+      "chance_pct": 80,
+      "repeats": 2,
+      "wiki_description": "Jellyfish Swarm: a cluster of jellyfish slowly travels in a straight line across the map."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 20,
+      "at": "20:00",
+      "enemy": "PILE2",
+      "amount": 20,
+      "duration_s": 30,
+      "delay_s": 5,
+      "chance_pct": 80,
+      "repeats": 6,
+      "wiki_description": "Pile Assault: spawns a group of stationary shooters that fire bullets in an ellipsoid ring around the player."
+    },
+    {
+      "type": "minotaur_rush",
+      "minute": 23,
+      "at": "23:00",
+      "enemy": "MIGNO_3_5SWARM",
+      "amount": 25,
+      "duration_s": 10,
+      "chance_pct": 60,
+      "wiki_description": "Minotaur Rush: a cluster of fast Mignotaurs travels in a straight line across the map."
+    },
+    {
+      "type": "minotaur_rush",
+      "minute": 23,
+      "at": "23:00",
+      "enemy": "MIGNO_3_5SWARM",
+      "amount": 25,
+      "duration_s": 10,
+      "delay_s": 5,
+      "chance_pct": 60,
+      "repeats": 5,
+      "wiki_description": "Minotaur Rush: a cluster of fast Mignotaurs travels in a straight line across the map."
+    },
+    {
+      "type": "pile_assault",
+      "trap": true,
+      "enemy": "PILE1",
+      "amount": 40,
+      "duration_s": 5.0,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Pile Assault (Twin Snakes), range 0.7. Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "pile_assault",
+      "trap": true,
+      "enemy": "PILE2",
+      "amount": 30,
+      "duration_s": 5.0,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Pile Assault (Twin Demons), range 0.7. Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "pile_assault",
+      "trap": true,
+      "enemy": "PILE3",
+      "amount": 20,
+      "duration_s": 5.0,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Pile Assault (Lost Twin), range 0.7. Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "jellyfish_wall",
+      "trap": true,
+      "enemy": "JELLYFISH",
+      "amount": 50,
+      "duration_s": 30,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Jellyfish Wall (Wall Jellyfish). Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "jellyfish_wall",
+      "trap": true,
+      "enemy": "JELLYFISH",
+      "amount": 40,
+      "duration_s": 30,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Jellyfish Wall (Wall Jellyfish). Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "minotaur_rush",
+      "trap": true,
+      "enemy": "MIGNO_3_5SWARM",
+      "amount": 40,
+      "duration_s": 10,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Minotaur Rush (Rushing Mignotaur). Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "minotaur_rush",
+      "trap": true,
+      "enemy": "MIGNO_3_5SWARM",
+      "amount": 20,
+      "duration_s": 10,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Minotaur Rush (Rushing Mignotaur). Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "musc_musc_swarm",
+      "trap": true,
+      "enemy": "ECTO2",
+      "amount": 200,
+      "duration_s": 20,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Musc Musc Swarm (Big Musc Musc). Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    },
+    {
+      "type": "jellyfish_swarm",
+      "trap": true,
+      "enemy": "JELLYFISH2_SWARM",
+      "amount": 50,
+      "duration_s": 20,
+      "wiki_description": "Trap pizza event (player-triggered, no fixed time): Jellyfish Swarm (Swarm Jellyfish). Stepping on a trap pizza triggers one of 9 events; 20 s minimum cooldown."
+    }
+  ],
+  "unsupported_events_note": "Every Dairy Plant map-event type (stalker, pile_assault, swarm, jellyfish_wall, minotaur_rush, jellyfish_swarm, musc_musc_swarm) is outside gen_stages.py EVENT_KIND, so none are mapped; all are copied raw from the wave/trap tables. Candidate future mappings: jellyfish_wall ~ medusa_wall, jellyfish_swarm ~ medusa_swarm. 'at' is the wave minute start; delay_s is the wiki 'delay' field and repeats the wiki 'repeat' field (whether delay is an offset within the minute or a repeat delay is ambiguous on the wiki). Trap events have no 'at' (player-triggered), so the generator skips them. The wiki names Twin Snakes for the 1:00 Pile Assault.",
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "LIZARD2_3",
+      "name": "Lizard Rook",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 30
+        }
+      }
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_MIGNO2_5",
+      "name": "Minotaur Boss",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_MIGNO2_5",
+      "name": "Minotaur Boss",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_MERMAN",
+      "name": "Merman Boss",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 9,
+      "enemy": "BOSS_MIGNO2_5",
+      "name": "Minotaur Boss",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "BOSS_MIGNO2_5_L",
+      "name": "Minotaur Boss (large)",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 12,
+      "enemy": "BOSS_PILE3",
+      "name": "Giant Goat-Horned Shooter",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "BOSS_XLTRITON",
+      "name": "King Triton",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 18,
+      "enemy": "BOSS_ARMOR1",
+      "name": "Axe Guardian",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLGOLEM2",
+      "name": "Big Golem",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 2,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 21,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 22,
+      "enemy": "BOSS_XLGOLEM1",
+      "name": "Big Golem",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 23,
+      "enemy": "BOSS_MIGNO2_5_L",
+      "name": "Minotaur Boss (large)",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 30
+        }
+      }
+    },
+    {
+      "minute": 24,
+      "enemy": "XLARMOR_SWORD",
+      "name": "Giant Armored Knight"
+    },
+    {
+      "minute": 25,
+      "enemy": "BOSS_XLARMOR",
+      "name": "Sword Guardian",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 27,
+      "enemy": "BOSS_XLCOCKATRICE",
+      "name": "Colossal Gallotrice",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

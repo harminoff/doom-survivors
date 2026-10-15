@@ -1,0 +1,26 @@
+# Contained local toolchain and generated outputs
+/.venv/
+/toolchain/downloads/
+/toolchain/runtime/
+/third_party/
+/build/
+/dist/
+__pycache__/
+*.py[cod]
+
+# Private reference installations, captures, profiles and credentials
+/reference-private/
+/.local/
+.env
+.env.*
+!.env.example
+*.dmp
+
+# Runtime evidence is private by default; only curated text acceptance records enter Git.
+/evidence/**
+!/evidence/**/
+!/evidence/**/acceptance.md
+!/evidence/**/README.md
+
+# Local CodeGraph index (a cache, rebuilt on demand)
+/.codegraph/

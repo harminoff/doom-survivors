@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "phase": "P013",
+  "classification": "P013_GENERATED_REPRESENTATIVE_ASSETS",
+  "reference_build": "1.16.107",
+  "rights_note": "All seven outputs are project-generated in-repo placeholders by OpenAI Codex for Doom Survivors; no proprietary raw asset or copied pixels was used, and redistribution terms remain unspecified.",
+  "conversion": {
+    "tool": "tools/assetpipe/build_representative.py",
+    "version": "p013-representative-v1",
+    "seed": 13013,
+    "filter": "none",
+    "color_type": "RGBA",
+    "nearest_sampling": true
+  },
+  "contact_sheet": {
+    "path": "generated/contact-sheets/p013-representative.png",
+    "sha256": "de2d53f4c700d8efa3446722a504bbd0108b50ed2067ead2b7465a16f4ec84ee"
+  },
+  "assets": [
+    {
+      "id": "enemy_directional",
+      "kind": "enemy",
+      "classification": "GENERATED_PLACEHOLDER",
+      "source": {
+        "status": "UNRESOLVED_SOURCE_IDENTITY",
+        "creator": "OpenAI Codex for Doom Survivors",
+        "created_date": "2026-09-11",
+        "note": "Procedurally generated in-repo placeholder; no proprietary raw asset or copied pixels were used."
+      },
+      "rights": {
+        "route": "PROJECT_GENERATED_IN_REPO",
+        "raw_proprietary_asset": false,
+        "redistribution": "PROJECT_TERMS_UNSPECIFIED"
+      },
+      "dimensions": [
+        48,
+        64
+      ],
+      "pivot": [
+        24,
+        56
+      ],
+      "scale": 1.0,
+      "aliases": [
+        "P13E"
+      ],
+      "frame_names": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8"
+      ],
+      "frame_tics": 4,
+      "transparency": "RGBA_ALPHA_ZERO",
+      "direction_policy": "EIGHT_DIRECTIONAL_SPRITE",
+      "collision_class": "ENGINEERING_ENEMY_BODY_PLACEHOLDER",
+      "outputs": [
+        {
+          "path": "generated/sprites/P13EA1.png",
+          "sha256": "6cf7587e32d6af70d92059c8f124e7dd9b33bc67baa993c63219dc5d00765eb0",
+          "frame": "A1"
+        },
+        {
+          "path": "generated/sprites/P13EA2.png",
+          "sha256": "468475bf21540283e98fde7c66860c4f3385258abae116cbe91f2ef74e5b1e9e",
+          "frame": "A2"
+        },
+        {
+          "path": "generated/sprites/P13EA3.png",
+          "sha256": "0a2fdd19abaad97fea4b5867dee74e2d1af8b243b9bb89a0f05539d7817673ea",
+          "frame": "A3"
+        },
+        {
+          "path": "generated/sprites/P13EA4.png",
+          "sha256": "3391b02766d27cdc1d08cd3b1659945e01af7fac09264ad9820a6efaa85fe7ab",
+          "frame": "A4"
+        },
+        {
+          "path": "generated/sprites/P13EA5.png",
+          "sha256": "d47072516f74f50cfe81e2c975d6967bf5c16b5453c8a4ab1e9cc77fbff8c3ee",
+          "frame": "A5"
+        },
+        {
+          "path": "generated/sprites/P13EA6.png",
+          "sha256": "a893cbebe854dcd4fe4d78b1d20e63654db7631580b373199c71674691a62735",
+          "frame": "A6"
+        },
+        {
+          "path": "generated/sprites/P13EA7.png",
+          "sha256": "9a17e1610191a419014c9209a4cfc34f3eb1dead171d0fe7d8b4689b23a74a97",
+          "frame": "A7"
+        },
+        {
+          "path": "generated/sprites/P13EA8.png",
+          "sha256": "434dd3f7d86bf8c2c67f66ec83c0659fb5d0c35c9f0197807f80f63fb5a1585a",
+          "frame": "A8"
+        }
+      ]
+    },
+    {
+      "id": "player_identity",
+      "kind": "player",
+      "classification": "GENERATED_PLACEHOLDER",
+      "source": {
+        "status": "UNRESOLVED_SOURCE_IDENTITY",
+        "creator": "OpenAI Codex for Doom Survivors",
+        "created_date": "2026-09-11",
+        "note": "Procedurally generated in-repo placeholder; no proprietary raw asset or copied pixels were used."
+      },
+      "rights": {
+        "route": "PROJECT_GENERATED_IN_REPO",
+        "raw_proprietary_asset": false,
+        "redistribution": "PROJECT_TERMS_UNSPECIFIED"
+      },
+      "dimensions": [
+        48,
+        64
+      ],
+      "pivot": [
+        24,
+        60
+      ],
+      "scale": 1.0,
+      "aliases": [
+        "P13P"
+      ],
+      "frame_names": [
+        "A0"
+      ],
+      "frame_tics": -1,
+      "transparency": "RGBA_ALPHA_ZERO",
+      "direction_policy": "FRONT_BILLBOARD_PLACEHOLDER",
+      "collision_class": "ENGINEERING_PLAYER_BODY_PLACEHOLDER",
+      "outputs": [
+        {
+          "path": "generated/sprites/P13PA0.png",
+          "sha256": "59d107a4cb5b62828c11a4cc7689f9099c294b012ff3c7e900f3ff44a0dfcc76",
+          "frame": "A0"
+        }
+      ]
+    },
+    {
+      "id": "projectile",
+      "kind": "projectile",
+      "classification": "GENERATED_PLACEHOLDER",
+      "source": {
+        "status": "UNRESOLVED_SOURCE_IDENTITY",
+        "creator": "OpenAI Codex for Doom Survivors",
+        "created_date": "2026-09-11",
+        "note": "Procedurally generated in-repo placeholder; no proprietary raw asset or copied pixels were used."
+      },
+      "rights": {
+        "route": "PROJECT_GENERATED_IN_REPO",
+        "raw_proprietary_asset": false,
+        "redistribution": "PROJECT_TERMS_UNSPECIFIED"
+      },
+      "dimensions": [
+        16,
+        16
+      ],
+      "pivot": [
+        8,
+        8
+      ],
+      "scale": 1.0,
+      "aliases": [
+        "P13R"
+      ],
+      "frame_names": [
+        "A0"
+      ],
+      "frame_tics": 1,
+      "transparency": "RGBA_ALPHA_ZERO",
+      "direction_policy": "BILLBOARD_PLACEHOLDER",
+      "collision_class": "ENGINEERING_PROJECTILE_PLACEHOLDER",
+      "outputs": [
+        {
+          "path": "generated/sprites/P13RA0.png",
+          "sha256": "b46cb611c5885fe9e703875b151c05d6218dffbb7f01bea7d2de38cf6c05c969",
+          "frame": "A0"
+        }
+      ]
+    },
+    {
+      "id": "ground_aura",
+      "kind": "ground_effect",
+      "classification": "GENERATED_PLACEHOLDER",
+      "source": {
+        "status": "UNRESOLVED_SOURCE_IDENTITY",
+        "creator": "OpenAI Codex for Doom Survivors",
+        "created_date": "2026-09-11",
+        "note": "Procedurally generated in-repo placeholder; no proprietary raw asset or copied pixels were used."
+      },
+      "rights": {
+        "route": "PROJECT_GENERATED_IN_REPO",
+        "raw_proprietary_asset": false,
+        "redistribution": "PROJECT_TERMS_UNSPECIFIED"
+      },
+      "dimensions": [
+        96,
+        32
+      ],
+      "pivot": [
+        48,
+        16
+      ],
+      "scale": 1.0,
+      "aliases": [
+        "P13AURA",
+        "P13A"
+      ],
+      "frame_names": [
+        "A0"
+      ],
+      "frame_tics": 2,
+      "transparency": "RGBA_ALPHA_ZERO",
+      "direction_policy": "GROUND_ALIGNED_EFFECT",
+      "collision_class": "ENGINEERING_AREA_EFFECT_PLACEHOLDER",
+      "outputs": [
+        {
+          "path": "generated/textures/P13AURA.png",
+          "sha256": "d0d7fefc12a005926368c92a5a6f2a77a959495322fdd3eced8845fddfe80583",
+          "frame": "A0"
+        },
+        {
+          "path": "generated/sprites/P13AA0.png",
+          "sha256": "31b9c4f441dd20f1742dee83e5bcfc592637250a73941fa205d04b233ebbd859",
+          "frame": "A0"
+        }
+      ]
+    },
+    {
+      "id": "foot_pickup",
+      "kind": "pickup",
+      "classification": "GENERATED_PLACEHOLDER",
+      "source": {
+        "status": "UNRESOLVED_SOURCE_IDENTITY",
+        "creator": "OpenAI Codex for Doom Survivors",
+        "created_date": "2026-09-11",
+        "note": "Procedurally generated in-repo placeholder; no proprietary raw asset or copied pixels were used."
+      },
+      "rights": {
+        "route": "PROJECT_GENERATED_IN_REPO",
+        "raw_proprietary_asset": false,
+        "redistribution": "PROJECT_TERMS_UNSPECIFIED"
+      },
+      "dimensions": [
+        24,
+        16
+      ],
+      "pivot": [
+        12,
+        16
+      ],
+      "scale": 1.0,
+      "aliases": [
+        "P13K"
+      ],
+      "frame_names": [
+        "A0"
+      ],
+      "frame_tics": 4,
+      "transparency": "RGBA_ALPHA_ZERO",
+      "direction_policy": "BILLBOARD_PLACEHOLDER",
+      "collision_class": "ENGINEERING_PICKUP_PLACEHOLDER",
+      "outputs": [
+        {
+          "path": "generated/sprites/P13KA0.png",
+          "sha256": "0aeb80f72d497a6fa9f27b57b31ad4eb1db21c99ec97eb20f8f0e1317c1bef9f",
+          "frame": "A0"
+        }
+      ]
+    },
+    {
+      "id": "world_prop",
+      "kind": "world_prop",
+      "classification": "GENERATED_PLACEHOLDER",
+      "source": {
+        "status": "UNRESOLVED_SOURCE_IDENTITY",
+        "creator": "OpenAI Codex for Doom Survivors",
+        "created_date": "2026-09-11",
+        "note": "Procedurally generated in-repo placeholder; no proprietary raw asset or copied pixels were used."
+      },
+      "rights": {
+        "route": "PROJECT_GENERATED_IN_REPO",
+        "raw_proprietary_asset": false,
+        "redistribution": "PROJECT_TERMS_UNSPECIFIED"
+      },
+      "dimensions": [
+        64,
+        96
+      ],
+      "pivot": [
+        32,
+        96
+      ],
+      "scale": 1.0,
+      "aliases": [
+        "P13W"
+      ],
+      "frame_names": [
+        "A0"
+      ],
+      "frame_tics": -1,
+      "transparency": "RGBA_ALPHA_ZERO",
+      "direction_policy": "BILLBOARD_PLACEHOLDER",
+      "collision_class": "ENGINEERING_WORLD_PROP_PLACEHOLDER",
+      "outputs": [
+        {
+          "path": "generated/sprites/P13WA0.png",
+          "sha256": "87d8f193d0d822ac52427735caaca88b9a67f0651aa3aab269fdfd9526ded82c",
+          "frame": "A0"
+        }
+      ]
+    },
+    {
+      "id": "ui_icon",
+      "kind": "ui",
+      "classification": "GENERATED_PLACEHOLDER",
+      "source": {
+        "status": "UNRESOLVED_SOURCE_IDENTITY",
+        "creator": "OpenAI Codex for Doom Survivors",
+        "created_date": "2026-09-11",
+        "note": "Procedurally generated in-repo placeholder; no proprietary raw asset or copied pixels were used."
+      },
+      "rights": {
+        "route": "PROJECT_GENERATED_IN_REPO",
+        "raw_proprietary_asset": false,
+        "redistribution": "PROJECT_TERMS_UNSPECIFIED"
+      },
+      "dimensions": [
+        32,
+        32
+      ],
+      "pivot": [
+        16,
+        16
+      ],
+      "scale": 1.0,
+      "aliases": [
+        "P13ICON"
+      ],
+      "frame_names": [
+        "A0"
+      ],
+      "frame_tics": -1,
+      "transparency": "RGBA_ALPHA_ZERO",
+      "direction_policy": "SCREEN_ALIGNED_ICON",
+      "collision_class": "ENGINEERING_PRESENTATION_ONLY",
+      "outputs": [
+        {
+          "path": "generated/ui/P13ICON.png",
+          "sha256": "5049c27849066d334eca03df56bf0996ec05c3852f0471d547f8c78f342997f2",
+          "frame": "A0"
+        }
+      ]
+    }
+  ]
+}

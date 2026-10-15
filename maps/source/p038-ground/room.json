@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P038-GROUND-MAP24-001",
+  "classification": "CONTROLLED_TWO_FORM_GROUND_FIELD_RUNTIME_FIXTURE",
+  "map_name": "MAP24",
+  "purpose": "Exercise build-census HOLYWATER/BORA records and controlled bottle-to-field runtime behavior in pinned UZDoom",
+  "room": [[-1024, -1024], [-1024, 1024], [1024, 1024], [1024, -1024]],
+  "landmark": [[-192, -192], [-192, 192], [192, 192], [192, -192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": { "x": 0, "y": 0, "angle": 0 },
+  "presentation_fixture_ownership": "MAP24_LOGICAL_GROUND_RUNTIME",
+  "presentation_fixtures": [],
+  "source_parity": "BUILD_CAPTURED_HOLYWATER_TO_BORA_EDGE_AND_MAGNET_DEPENDENCY_PLUS_CURRENT_REPORTS_AND_FROZEN_ENGINEERING_GROUND_ADAPTER",
+  "notes": [
+    "Weapon rank, targets, P033 stat inputs, ingredient rank, emission timing and movement modifiers are controlled fixtures; no source-exact profile or natural-acquisition claim is made.",
+    "All bottle travel, field deposit, growth, placement and hit tests use source-plane logical state; actors/decorations are presentation only.",
+    "Current online rank values are qualified reports retrieved 2026-09-23 with applicability to locked v1.16.107 unverified; exact field geometry and pool-overflow policy remain engineering fixtures."
+  ]
+}

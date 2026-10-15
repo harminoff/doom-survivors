@@ -1,0 +1,1126 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/The_Bone_Zone (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Skullino, Skeleton, Skulorosso, Scarleton, Twin_Skulls, Twin_Demons, Lost_Twin, Skeleton_Panther, Skeleton_Ninja, Skelewing, Skullone, Giant_Skeleton, Skeletone, Glowing_Skeleton, Dragon_Shrimp, The_Stalker, The_Drowner, Sketamari (Statbox Enemy, retrieved 2026-09-29)",
+    "Map event pages: Skull_Swarm, Skeleton_Stream, Skull_Pile_Pile",
+    "pickups, chest_rules and reaper reuse the Dairy Plant/Mad Forest file content"
+  ],
+  "stage": {
+    "id": "BONEZONE",
+    "name": "The Bone Zone",
+    "duration_seconds": 1800,
+    "type": "Challenge stage (second challenge stage; unlocked by hyper mode on 3 normal stages, or the Forbidden Scrolls of Morbane)",
+    "spawn_type": "Standard: enemies approach from all four sides of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 30,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.5,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "40% (max 40%)",
+      "destructible_max": 10
+    },
+    "modifiers": {
+      "no_item_drops": true,
+      "enemy_health_per_minute": 0.3,
+      "enemy_speed_per_minute": 0.05,
+      "scaling_note": "Every minute enemy health and speed multipliers increase by +0.3 and +0.05 respectively (additive), without a cap; additive with Inverse Mode.",
+      "effects": [
+        "No item drops (light sources only drop Gold Coins, Small Coin Bags and Survarots).",
+        "Enemies grow stronger over time."
+      ]
+    },
+    "modifiers_note": "Wiki infobox: enemy_speed x1.25 (+0.05/min), enemy_health x1 (+0.3/min), greed x1.5. Hyper: starting spawns 60, player/enemy speed x1.9, projectile speed x1.15, greed x2, enemy min x1.25. Not needed here.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [],
+      "pickups": [],
+      "relics": [
+        {
+          "item": "Forbidden Scrolls of Morbane",
+          "position": "Defeat Sketamari (10,800 HP, speed 220, damage 40) 5 tilesets due south of start, moving back and forth horizontally"
+        }
+      ],
+      "hidden_with_yellow_sign": [
+        {
+          "item": "Silver Ring",
+          "position": "north of start"
+        },
+        {
+          "item": "Metaglio Right",
+          "position": "east of start"
+        },
+        {
+          "item": "Gold Ring",
+          "position": "south of start"
+        },
+        {
+          "item": "Metaglio Left",
+          "position": "west of start"
+        }
+      ]
+    },
+    "destructibles": "Light sources only (spawn attempts twice as often; drop only Gold Coins, Small Coin Bags, Survarots).",
+    "layout": {
+      "shape": "other",
+      "size_note": "Not stated on the wiki page. Sketamari patrols 5 tilesets each side, 5 tilesets south of start; hidden items lie in the four cardinal directions, so treat as a roughly square arena (exact size unknown).",
+      "obstacles": "Unknown; wiki gives no obstacle details (light sources only). Assume sparse.",
+      "theme": "Calcified bone cavern: a dark cave of skeletons and skulls (wiki: 'calcified carnage where the dead go to live'; music based on Castlevania's Skeleton Cave theme; earlier a detuned Dairy Plant theme).",
+      "special_mechanics": "Challenge stage. NO ITEM DROPS: light sources only drop Gold Coins, Small Coin Bags and Survarots. Enemies grow stronger over time: each minute the enemy health multiplier rises by +0.3 and the enemy speed multiplier by +0.05 (additive, uncapped). Greed x1.5. Hidden Sketamari mini-boss south of start drops the Forbidden Scrolls of Morbane (needs Yellow Sign). Guaranteed The Stalker at 10:00 and The Drowner (floods lower map) at 20:00. Reaper at 30:00."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "SKULLINO"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "SKULLINO",
+        "SKELETON"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 1,
+          "at": "1:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 2,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "SKULOROSSO",
+        "SKELETON"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 2,
+          "at": "2:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 4,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "SKELETON"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 3,
+          "at": "3:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 8,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "SKELETON",
+        "SKELANGUE"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 4,
+          "at": "4:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 16,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "SKELETON",
+        "PILE4"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 5,
+          "at": "5:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 32,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "SKULLINO",
+        "SKULLNOAURA"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 6,
+          "at": "6:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 32,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "SKELETON",
+        "PILE2"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 7,
+          "at": "7:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 32,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": [],
+      "notes": "Wiki: Skeleton (x4) and Horned Pile Shooter (Twin Demons)."
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "SKELETON",
+        "SKELEPANTHER"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 8,
+          "at": "8:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 20,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": [
+        "SKELEGLOW"
+      ],
+      "notes": "Wiki: Skeleton (x4)."
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "SKELETON"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [
+        {
+          "type": "skull_swarm",
+          "minute": 9,
+          "at": "9:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 32,
+          "duration_s": 15,
+          "chance_pct": 100
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "SKELETON",
+        "SKELENIN_ZONE"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "stalker",
+          "minute": 10,
+          "at": "10:00",
+          "enemy": "BOSS_XLSTALKER",
+          "amount": 1,
+          "duration_s": 60,
+          "chance_pct": 100,
+          "note": "Guaranteed at 10:00; 20% lower move speed before time bonuses."
+        }
+      ],
+      "bosses": [
+        "BOSS_XLSKELETON"
+      ],
+      "notes": "Wiki: Skeleton (x4)."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "SKELETON",
+        "SKULLINO"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_SKULL2"
+      ]
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "SKULLNOAURA",
+        "PILE4"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 12,
+          "at": "12:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "interval_s": 5,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream)."
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "SKULLNOAURA",
+        "SKELEPANTHER"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 13,
+          "at": "13:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "interval_s": 2.5,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream)."
+        }
+      ],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "SKULLNOAURA"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 14,
+          "at": "14:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 10,
+          "chance_pct": 100,
+          "interval_s": 1.25,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream)."
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "SKULLNOAURA",
+        "SKULOROSSO"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 15,
+          "at": "15:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 0,
+          "interval_s": 1.25,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 15,
+          "at": "15:05",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 5.1,
+          "interval_s": 0.625,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 15,
+          "at": "15:11",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 11,
+          "interval_s": 0.42,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        }
+      ],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "SKULLNOAURA",
+        "SKELENIN_ZONE"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 16,
+          "at": "16:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 0,
+          "interval_s": 1.25,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 16,
+          "at": "16:05",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 5.1,
+          "interval_s": 0.625,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 16,
+          "at": "16:11",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 11,
+          "interval_s": 0.42,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "SKULLNOAURA",
+        "SKELEPANTHER"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 17,
+          "at": "17:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 0,
+          "interval_s": 1.25,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 17,
+          "at": "17:05",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 5.1,
+          "interval_s": 0.625,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 17,
+          "at": "17:11",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 11,
+          "interval_s": 0.42,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        }
+      ],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "SKULLNOAURA",
+        "SKULOROSSO"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 18,
+          "at": "18:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 0,
+          "interval_s": 1.25,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 18,
+          "at": "18:05",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 5.1,
+          "interval_s": 0.625,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 18,
+          "at": "18:11",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 11,
+          "interval_s": 0.42,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "SKULLNOAURA"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "dragon_stream",
+          "minute": 19,
+          "at": "19:00",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 0,
+          "interval_s": 1.25,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 19,
+          "at": "19:05",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 5.1,
+          "interval_s": 0.625,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        },
+        {
+          "type": "dragon_stream",
+          "minute": 19,
+          "at": "19:11",
+          "enemy": "XLDRAGON3_FLAG",
+          "amount": 12,
+          "duration_s": 5,
+          "chance_pct": 100,
+          "delay_s": 11,
+          "interval_s": 0.42,
+          "note": "Skeleton Stream: groups of Dragon Shrimp 3 (flag) cross horizontally, alternating left/right, one group every interval_s until duration ends; mapped to dragon_stream (same shape as Gallo Tower's Dragon Stream). Staggered: wiki delay is a start offset; encoded as a later 'at'."
+        }
+      ],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "SKULLNOAURA"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLSKELETON"
+      ]
+    },
+    {
+      "minute": 21,
+      "pool": [
+        "SKELETON",
+        "SKELENIN_ZONE"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_SKULL2"
+      ]
+    },
+    {
+      "minute": 22,
+      "pool": [
+        "SKELANGUE",
+        "SKULOROSSO"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "pile_assault",
+          "minute": 22,
+          "at": "22:00",
+          "enemy": "PILE4",
+          "amount": 24,
+          "duration_s": 30,
+          "chance_pct": 100,
+          "repeats": 1,
+          "repeat_delay_s": 10,
+          "wiki_repeat": 0,
+          "note": "Skull Pile Pile: two columns of 12 Skull Piles (PILE4) on both sides of the player; mapped to pile_assault shape. Wiki 'repeat' value assumed to mean extra repeats (repeats = repeat+1); duration and repeat delay are not stated (duration_s 30 and repeat_delay_s 10 are guesses)."
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 23,
+      "pool": [
+        "PILE3",
+        "SKELANGUE"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 24,
+      "pool": [
+        "SKELANGUE",
+        "SKELEWING_ZONE"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [
+        {
+          "type": "pile_assault",
+          "minute": 24,
+          "at": "24:00",
+          "enemy": "PILE4",
+          "amount": 24,
+          "duration_s": 30,
+          "chance_pct": 100,
+          "repeats": 2,
+          "repeat_delay_s": 10,
+          "wiki_repeat": 1,
+          "note": "Skull Pile Pile: two columns of 12 Skull Piles (PILE4) on both sides of the player; mapped to pile_assault shape. Wiki 'repeat' value assumed to mean extra repeats (repeats = repeat+1); duration and repeat delay are not stated (duration_s 30 and repeat_delay_s 10 are guesses)."
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 25,
+      "pool": [
+        "SKELEWING_ZONE"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 26,
+      "pool": [
+        "XLSKELETON"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "pile_assault",
+          "minute": 26,
+          "at": "26:00",
+          "enemy": "PILE4",
+          "amount": 24,
+          "duration_s": 30,
+          "chance_pct": 100,
+          "repeats": 3,
+          "repeat_delay_s": 10,
+          "wiki_repeat": 2,
+          "note": "Skull Pile Pile: two columns of 12 Skull Piles (PILE4) on both sides of the player; mapped to pile_assault shape. Wiki 'repeat' value assumed to mean extra repeats (repeats = repeat+1); duration and repeat delay are not stated (duration_s 30 and repeat_delay_s 10 are guesses)."
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 27,
+      "pool": [
+        "XLSKELETON",
+        "SKULLINO"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 28,
+      "pool": [
+        "XLSKELETON"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "SKELEGLOW"
+      ]
+    },
+    {
+      "minute": 29,
+      "pool": [
+        "SKELETONE"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 30,
+      "pool": [],
+      "enemy_min": 0,
+      "spawn_interval_s": 0,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "30:00+: all enemies cleared and The Reaper spawns; another Reaper each further minute."
+    }
+  ],
+  "map_events": {
+    "skull_swarm": {
+      "enemy": "SKULL2_SWARM",
+      "shape": "fixed-direction cluster of Skullones beelining through screen centre, no collision, 15 s"
+    },
+    "dragon_stream": {
+      "enemy": "XLDRAGON3_FLAG",
+      "shape": "Skeleton Stream: groups of serpentine Dragon Shrimp 3 cross horizontally, alternating sides"
+    },
+    "stalker": {
+      "enemy": "BOSS_XLSTALKER",
+      "shape": "one Stalker follows the player 60 s"
+    },
+    "pile_assault": {
+      "enemy": "PILE4",
+      "shape": "Skull Pile Pile: two columns of 12 stationary shooters either side of player"
+    },
+    "map_events_note": "Event 'at' is the wave-minute start; Skull Swarm amounts are from the wave table (8:00 lists 20 though the Skull Swarm page says 32)."
+  },
+  "unsupported_events": [
+    {
+      "type": "drowner",
+      "minute": 20,
+      "at": "20:00",
+      "enemy": "BOSS_XLDROWNER",
+      "amount": 1,
+      "duration_s": 60,
+      "chance_pct": 100,
+      "wiki_description": "The Drowner: guaranteed at 20:00, lasts 1 minute; floods the lower part of the map dealing 20 damage per tick."
+    }
+  ],
+  "unsupported_events_note": "The Drowner (20:00) has no matching EVENT_KIND (floods the lower map). Everything else maps to existing kinds.",
+  "bosses": [
+    {
+      "minute": 3,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "reward_flags_raw": "reward1=weapon"
+      }
+    },
+    {
+      "minute": 8,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        },
+        "fallback_level": 1,
+        "reward_flags_raw": "reward1=weapon"
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "BOSS_XLSKELETON",
+      "name": "Colossal Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward4=weapon, reward5=weapon"
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "BOSS_SKULL2",
+      "name": "Giant Skull (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 13,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 15,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 17,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 19,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLSKELETON",
+      "name": "Colossal Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo"
+      },
+      "note": "Can exceptionally evolve up to 3 weapons if a higher tier chest with enough rewards is received."
+    },
+    {
+      "minute": 21,
+      "enemy": "BOSS_SKULL2",
+      "name": "Giant Skull (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 23,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 25,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 27,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 28,
+      "enemy": "SKELEGLOW",
+      "name": "Glowing Skeleton",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 0.5,
+    "spawn_chance": "40% base (stage, max 40%), multiplied by Luck; wiki: light sources attempt to spawn twice as often",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "The Bone Zone: light sources only drop Gold Coins, Small Coin Bags and Survarots (Survarot only for characters who can find them; not modelled). No other item drops."
+  },
+  "pickups": {
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    }
+  }
+}

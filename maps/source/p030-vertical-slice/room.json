@@ -1,0 +1,21 @@
+{
+  "fixture_id": "P030-VERTICAL-SLICE-001",
+  "classification": "PLAYABLE_ENGINEERING_VERTICAL_SLICE",
+  "map_name": "MAP16",
+  "purpose": "Normal-speed five-minute FOREST-inspired first-person Antonio and Whip survival loop",
+  "room": [[-768,-512],[768,-512],[768,512],[-768,512]],
+  "landmark": [[-512,192],[-320,192],[-320,-192],[-512,-192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "source_parity": "ENGINEERING_VERTICAL_SLICE_APPROXIMATION",
+  "obstacle_case": {"landmark_walls": "blocking_visual_arena", "logical_wall_filter": false},
+  "stage_identity": "FOREST",
+  "opening_enemy": "BAT3",
+  "notes": [
+    "FOREST and BAT3 identity plus raw minute rows are qualified locked-build metadata; cadence, caps, geometry, enemy stats and pickup motion are engineering approximations.",
+    "All art is generated diagnostic art and no proprietary Vampire Survivors assets enter the package."
+  ]
+}

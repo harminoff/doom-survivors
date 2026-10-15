@@ -1,0 +1,204 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Mazerella (retrieved 2026-09-29)",
+    "Statbox Enemy templates of: Torino_(enemy), Joyatauro, AccumulaTori, Milk_Elemental, Harzia, Minotaur, Minotaur_Boss, Sneaky_Head, Lionhead, Manticore, Archon_Disco; existing entries copied from dairy-plant/gallo-tower/inlaid-library/bone-zone files"
+  ],
+  "field_notes": "hp/power/speed are wiki units; *_max are upper bounds where the wiki gives a range.",
+  "enemies": {
+    "MILK": {
+      "name": "Milk Elemental",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular enemy; Swarm event unit at 1:00/2:00"
+    },
+    "MIGNO1_5": {
+      "name": "Minotaur",
+      "hp": 250,
+      "power": 10,
+      "speed": 130,
+      "knockback": 0.5,
+      "knockback_max": 3,
+      "xp": 2.75,
+      "special": "regular enemy"
+    },
+    "MIGNO_3_5SWARM": {
+      "name": "Mignotaur (rush)",
+      "hp": 250,
+      "power": 9,
+      "speed": 600,
+      "knockback": 0.5,
+      "knockback_max": 3,
+      "xp": 2.25,
+      "special": "Minotaur Rush event unit; fixed direction"
+    },
+    "BOSS_MIGNO2_5": {
+      "name": "Minotaur Boss",
+      "hp": 60,
+      "power": 11,
+      "speed": 200,
+      "knockback": 0.5,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x player level (skill listed on the Minotaur Boss page)"
+    },
+    "BOSS_MIGNO2_5_L": {
+      "name": "Minotaur Boss (large)",
+      "hp": 50,
+      "power": 11,
+      "speed": 180,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x player level; also a regular enemy at 28:00"
+    },
+    "HARPY": {
+      "name": "Harzia",
+      "hp": 25,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "chases player"
+    },
+    "XLCHIMERA": {
+      "name": "Manticore",
+      "hp": 700,
+      "power": 15,
+      "speed": 140,
+      "knockback": 0,
+      "knockback_max": 2,
+      "xp": 3,
+      "special": "reduced knockback"
+    },
+    "XLARMOR2": {
+      "name": "Archon Disco",
+      "hp": 500,
+      "power": 20,
+      "speed": 200,
+      "knockback": 1.5,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "takes increased knockback"
+    },
+    "BOSS_XLCHIMERA": {
+      "name": "Colossal Manticore",
+      "hp": 200,
+      "power": 20,
+      "speed": 180,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 50,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "special": "boss",
+      "hp_x_level": true
+    },
+    "BOSS_XLARMOR2": {
+      "name": "Archon Disco (boss) (Shield Guardian)",
+      "hp": 150,
+      "power": 20,
+      "speed": 160,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 30,
+      "hp_x_level": true,
+      "resist_freeze": 1.1,
+      "special": "boss; reduced knockback; resistant to freeze"
+    },
+    "MEDUSA1": {
+      "name": "Sneaky Head",
+      "hp": 1,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Floaty + Fixed Direction: moves horizontally in a wavy pattern, does not home; wiki max speed 340 (not modelled); used by Medusa Wall/Swarm events"
+    },
+    "MEDUSA2": {
+      "name": "Big Sneaky Head",
+      "hp": 25,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "Floaty + Fixed Direction; also used for the wave-table entry 'Medusa Head' at 14:00 (that link points at another stage's enemy; the sprite is Big Sneaky Head, so this is an approximation)"
+    },
+    "BOSS_BUER": {
+      "name": "Colossal Lionhead (boss)",
+      "hp": 50,
+      "power": 10,
+      "speed": 170,
+      "knockback": 1,
+      "knockback_max": 1,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss, HP x player level"
+    },
+    "BOSS_XLDEATH": {
+      "name": "The Reaper",
+      "hp": 655350,
+      "power": 65535,
+      "speed": 1200,
+      "knockback": -0.5,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "resist_defang": 1,
+      "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    },
+    "EX_TORINO": {
+      "name": "Torino",
+      "hp": 8,
+      "hp_max": 250,
+      "power": 1,
+      "power_max": 10,
+      "speed": 110,
+      "speed_max": 150,
+      "knockback": null,
+      "xp": null,
+      "special": "Wiki gives ranges (sprites 1-3 = forms scaling between); charges the player."
+    },
+    "EX_JOYATAURO": {
+      "name": "Joyatauro",
+      "hp": 25,
+      "hp_max": 250,
+      "power": 6,
+      "power_max": 10,
+      "speed": 115,
+      "speed_max": 150,
+      "knockback": null,
+      "xp": null,
+      "special": "Torino evolution (lv16 form); wiki ranges; charges the player."
+    },
+    "EX_MEANATAUR": {
+      "name": "AccumulaTori",
+      "hp": 60,
+      "hp_max": 250,
+      "power": 8,
+      "power_max": 10,
+      "speed": 120,
+      "speed_max": 140,
+      "knockback": 0.1,
+      "knockback_max": 1,
+      "xp": 3,
+      "special": "Torino evolution (lv36 form); wiki ranges; charges the player."
+    }
+  },
+  "unknowns": [
+    "Torino/Joyatauro have blank knockback and xp on the wiki.",
+    "Which Milk Elemental variant Mazerella uses is unconfirmed (wiki todo comment)."
+  ]
+}

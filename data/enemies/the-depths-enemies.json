@@ -1,0 +1,380 @@
+{
+ "sources": [
+  "Copied from data/enemies/inlaid-library-enemies.json (enemy types are global; first definition wins)."
+ ],
+ "field_notes": {
+  "hp": "max health at spawn before stage multiplier (Mad Forest enemy_health = 1.0)",
+  "power": "contact damage before player Armor",
+  "speed": "wiki MoveSpeed units (player base speed unit is not stated on these pages; treat as relative)",
+  "knockback": "multiplier on weapon knockback (0 = wiki lists 0, i.e. described as semi/fully resistant depending on page text; negative = pulled toward player)",
+  "knockback_max": "wiki 'knockback-max' field",
+  "hp_x_level": "true means health is multiplied by the player's level at spawn time"
+ },
+ "enemies": {
+  "BAT4": {
+   "name": "Pipeestrello 4 (Glowing Bat)",
+   "hp": 50,
+   "power": 10,
+   "speed": 140,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 30,
+   "hp_x_level": true,
+   "special": "boss; HP x player level; Arcana-holder variant spawns at 11:00 and 21:00 only when Arcanas enabled; also appears as a regular enemy in minutes 28-29"
+  },
+  "BAT5": {
+   "name": "Pipeestrello 5 (Silver Bat)",
+   "hp": 50,
+   "power": 10,
+   "speed": 140,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 30,
+   "hp_x_level": true,
+   "special": "boss; HP x player level; also regular enemy in minute 29"
+  },
+  "BATSWARM": {
+   "name": "Pipeestrello (swarm)",
+   "hp": 1,
+   "power": 1,
+   "speed": 700,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 1,
+   "special": "Fixed Direction: moves in a straight line, does not target the player, pushes other enemies; immune to defang"
+  },
+  "GHOST": {
+   "name": "Ghost 1",
+   "hp": 10,
+   "power": 5,
+   "speed": 200,
+   "knockback": 0,
+   "knockback_max": 3,
+   "xp": 1.5,
+   "special": "page text: semi-resistant to knockback; spawns 2 units at a time in minute 13"
+  },
+  "XLBAT": {
+   "name": "Giant Bat",
+   "hp": 270,
+   "power": 10,
+   "speed": 140,
+   "knockback": 0.1,
+   "knockback_max": 3,
+   "xp": 2.5,
+   "special": "semi-resistant to knockback; upper wing area has no collision (passes partly through walls/enemies); wiki gives no internal id for the normal variant (id null); the 8:00 boss instance uses the same statbox (boss-specific stats unknown)",
+   "id_note": "internal id unknown"
+  },
+  "BOSS_XLMUMMY": {
+   "name": "Big Mummy (boss) (Giant Mummy)",
+   "hp": 250,
+   "power": 20,
+   "speed": 80,
+   "knockback": 0,
+   "knockback_max": 1,
+   "xp": 25,
+   "hp_x_level": true,
+   "scale": 1.5,
+   "resist_freeze": 1.1,
+   "special": "boss, HP x player level"
+  },
+  "BOSS_XLDEATH": {
+   "name": "The Reaper",
+   "hp": 655350,
+   "power": 65535,
+   "speed": 1200,
+   "knockback": -0.5,
+   "knockback_max": 0,
+   "xp": 0,
+   "hp_x_level": true,
+   "resist_freeze": 1,
+   "resist_kill": 1,
+   "resist_debuff": 1,
+   "resist_defang": 1,
+   "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+  },
+  "MUD": {
+   "name": "Dust Elemental",
+   "hp": 5,
+   "power": 5,
+   "speed": 140,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 1,
+   "special": "chases player; wiki statbox id MUD"
+  },
+  "ECTO1": {
+   "name": "Musc Musc",
+   "hp": 1,
+   "power": 2,
+   "speed": 160,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 1,
+   "special": "regular enemy"
+  },
+  "ECTO2": {
+   "name": "Big Musc Musc",
+   "hp": 13,
+   "power": 4,
+   "speed": 160,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 1,
+   "special": "regular enemy"
+  },
+  "MUMMY": {
+   "name": "Mummy",
+   "hp": 15,
+   "power": 3,
+   "speed": 140,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 2,
+   "special": "regular enemy"
+  },
+  "DULL0": {
+   "name": "Testa di Mano 1",
+   "hp": 35,
+   "power": 8,
+   "speed": 100,
+   "knockback": 0.3,
+   "knockback_max": 3,
+   "xp": 1,
+   "special": "reduced knockback; used for the wave tables' plain 'Testa di Mano' entries (wiki lists 3 variants and the wave table does not say which; DULL0 is an approximation choice)"
+  },
+  "DULL1": {
+   "name": "Testa di Mano 2 (Elite Dullahan)",
+   "hp": 70,
+   "power": 8,
+   "speed": 100,
+   "knockback": 0.3,
+   "knockback_max": 3,
+   "xp": 2,
+   "special": "reduced knockback; 'Elite Dullahan' redirects to Testa di Mano 2"
+  },
+  "MEDUSA1": {
+   "name": "Sneaky Head",
+   "hp": 1,
+   "power": 1,
+   "speed": 240,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 1,
+   "special": "Floaty + Fixed Direction: moves horizontally in a wavy pattern, does not home; wiki max speed 340 (not modelled); used by Medusa Wall/Swarm events"
+  },
+  "MEDUSA1_FAST": {
+   "name": "Fast Sneaky Head",
+   "hp": 1,
+   "power": 1,
+   "speed": 600,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 1,
+   "special": "Floaty + Fixed Direction; used by Medusa Wall/Swarm events only"
+  },
+  "MEDUSA2": {
+   "name": "Big Sneaky Head",
+   "hp": 25,
+   "power": 1,
+   "speed": 240,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 2,
+   "special": "Floaty + Fixed Direction; also used for the wave-table entry 'Medusa Head' at 14:00 (that link points at another stage's enemy; the sprite is Big Sneaky Head, so this is an approximation)"
+  },
+  "MEDUSA2_FAST": {
+   "name": "Fast Big Sneaky Head",
+   "hp": 25,
+   "power": 1,
+   "speed": 600,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 2,
+   "special": "Floaty + Fixed Direction; Medusa Wall/Swarm events only"
+  },
+  "MEDUSA2_AGGRO": {
+   "name": "Aggressive Big Sneaky Head",
+   "hp": 25,
+   "power": 1,
+   "speed": 240,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 2,
+   "special": "chases the player like a normal enemy (no fixed direction)"
+  },
+  "BUER": {
+   "name": "Lionhead",
+   "hp": 3,
+   "power": 3,
+   "speed": 200,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 2,
+   "hp_x_level": true,
+   "special": "HP x player level"
+  },
+  "WITCH1": {
+   "name": "Undead Witch (Apprentice Witch)",
+   "hp": 220,
+   "power": 14,
+   "speed": 130,
+   "knockback": 0.8,
+   "knockback_max": 3,
+   "xp": 3,
+   "special": "'Apprentice Witch' redirects to Undead Witch (WITCH1)"
+  },
+  "WITCH2": {
+   "name": "Undead Sassy Witch",
+   "hp": 500,
+   "power": 20,
+   "speed": 200,
+   "knockback": 1.5,
+   "knockback_max": 3,
+   "xp": 3,
+   "special": "regular enemy"
+  },
+  "SKULL2_SCALING": {
+   "name": "Skullone (scaling) (Glowing Skull)",
+   "hp": 6.5,
+   "power": 14,
+   "speed": 140,
+   "knockback": 0,
+   "knockback_max": 3,
+   "xp": 2,
+   "hp_x_level": true,
+   "special": "HP x player level; 'Glowing Skull' redirects to Skullone (scaling)"
+  },
+  "SKULL2_SWARM": {
+   "name": "Skullone (swarm)",
+   "hp": 25,
+   "power": 3,
+   "speed": 700,
+   "knockback": 0,
+   "knockback_max": 3,
+   "xp": 2,
+   "special": "Fixed Direction: beelines across the screen at high speed, no collision with other enemies; used by the unsupported skull_swarm event"
+  },
+  "XLMEDUSA": {
+   "name": "Merdusa (Giant Medusa)",
+   "hp": 800,
+   "power": 15,
+   "speed": 150,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 3,
+   "special": "regular enemy; 'Giant Medusa' redirects to Merdusa"
+  },
+  "SHADERED": {
+   "name": "Sig.ra Rossi (Red Shade)",
+   "hp": 11,
+   "power": 3,
+   "speed": 330,
+   "knockback": 1,
+   "knockback_max": 3,
+   "xp": 2,
+   "hp_x_level": true,
+   "special": "chases the player at high speed, self-destructs after a couple of seconds for high damage; HP x player level; used by the unsupported shade_bomb event"
+  },
+  "BOSS_ECTO": {
+   "name": "Colossal Musc Musc (boss)",
+   "hp": 50,
+   "power": 10,
+   "speed": 170,
+   "knockback": 1,
+   "knockback_max": 1,
+   "xp": 30,
+   "hp_x_level": true,
+   "special": "boss, HP x player level"
+  },
+  "BOSS_BUER": {
+   "name": "Colossal Lionhead (boss)",
+   "hp": 50,
+   "power": 10,
+   "speed": 170,
+   "knockback": 1,
+   "knockback_max": 1,
+   "xp": 30,
+   "hp_x_level": true,
+   "special": "boss, HP x player level"
+  },
+  "BOSS_MEDUSA1": {
+   "name": "Colossal Sneaky Head (boss)",
+   "hp": 40,
+   "power": 10,
+   "speed": 170,
+   "knockback": 1,
+   "knockback_max": 1,
+   "xp": 30,
+   "hp_x_level": true,
+   "special": "boss, HP x player level; also a regular enemy in minute 28"
+  },
+  "BOSS_MUD": {
+   "name": "Colossal Dust Elemental (boss)",
+   "hp": 50,
+   "power": 10,
+   "speed": 170,
+   "knockback": 1,
+   "knockback_max": 1,
+   "xp": 30,
+   "hp_x_level": true,
+   "special": "boss, HP x player level; also a regular enemy in minute 29"
+  },
+  "BOSS_XLMEDUSA": {
+   "name": "Queen Medusa (Merdusa boss)",
+   "hp": 150,
+   "power": 20,
+   "speed": 160,
+   "knockback": 0.5,
+   "knockback_max": 1,
+   "xp": 30,
+   "hp_x_level": true,
+   "resist_freeze": 1.1,
+   "special": "boss, HP x player level; partially resistant to freeze"
+  },
+  "BOSS_WITCH2": {
+   "name": "Master Witch (Undead Sassy Witch boss)",
+   "hp": 150,
+   "power": 30,
+   "speed": 200,
+   "knockback": 0.6,
+   "knockback_max": 1,
+   "xp": 3,
+   "resist_freeze": 1.1,
+   "special": "boss; the wiki statbox does not list HP x Level for this one"
+  },
+  "BOSS_COUNT2": {
+   "name": "Nesuferit (Nesufritto)",
+   "hp": 200,
+   "power": 30,
+   "speed": 160,
+   "knockback": 0,
+   "knockback_max": 1,
+   "xp": 50,
+   "hp_x_level": true,
+   "resist_freeze": 1,
+   "special": "boss, HP x player level; chest can evolve up to 3 weapons"
+  },
+  "BOSS_COUNT1": {
+   "name": "Hag",
+   "hp": 250,
+   "power": 30,
+   "speed": 210,
+   "knockback": 0,
+   "knockback_max": 1,
+   "xp": 50,
+   "hp_x_level": true,
+   "resist_freeze": 1.1,
+   "special": "boss, HP x player level; first kill unlocks Hyper Inlaid Library"
+  }
+ },
+ "unknowns": [
+  "Wiki gives HP x Level as a multiplier but not the exact formula (assumed hp * playerLevel, same as Mad Forest).",
+  "Speed unit vs player MoveSpeed unit not stated; the Inlaid Library enemy_speed modifier x1.25 is NOT baked into these speed values.",
+  "Wave-table 'Testa di Mano' does not say which of the 3 variants; DULL0 for plain and DULL1 for 'Elite Dullahan' (redirect). DULL2 (Testa di Mano 3, hp 150) is not used.",
+  "Wave-table 'Medusa Head' (14:00) links to another stage's enemy but shows the Big Sneaky Head sprite; approximated as MEDUSA2 (already in that wave's pool under its own name).",
+  "Wiki lists no scale for Library bosses; 'scale' is only present on the reused BOSS_XLMUMMY entry from Mad Forest.",
+  "Giant Mummy bosses at 3:00 and 5:00 use the BOSS_XLMUMMY statbox reused from Mad Forest.",
+  "'Small Medusa Head' (mentioned on the Medusa Wall page) has no stats on the pages read (unknown).",
+  "Giant Bat (XLBAT) statbox is the Mad Forest one (wiki gives no internal id for the normal variant)."
+ ]
+}

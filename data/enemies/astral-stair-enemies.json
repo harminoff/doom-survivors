@@ -1,0 +1,211 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Astral_Stair and linked enemy pages (Statbox Enemy, retrieved 2026-09-29)"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier (Mad Forest enemy_health = 1.0)",
+    "power": "contact damage before player Armor",
+    "speed": "wiki MoveSpeed units (player base speed unit is not stated on these pages; treat as relative)",
+    "knockback": "multiplier on weapon knockback (0 = wiki lists 0, i.e. described as semi/fully resistant depending on page text; negative = pulled toward player)",
+    "knockback_max": "wiki 'knockback-max' field",
+    "hp_x_level": "true means health is multiplied by the player's level at spawn time"
+  },
+  "enemies": {
+    "STARDUST_ELEMENTAL": {
+      "name": "Astral Elemental",
+      "hp": 10,
+      "power": 1,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "STARDUST_MUMMY": {
+      "name": "Astral Mummy",
+      "hp": 20,
+      "power": 3,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "chases player"
+    },
+    "STARDUST_SKULL": {
+      "name": "Astral Skull",
+      "hp": 30,
+      "power": 6,
+      "speed": 160,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "chases player"
+    },
+    "STARDUST_GHOUL": {
+      "name": "Astral Ghoul (assumed for 'Stardust Ghost')",
+      "hp": 40,
+      "power": 7,
+      "speed": 160,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "wave sprite 'STARDUST GHOST' has no page; Astral Ghoul stats assumed"
+    },
+    "STARDUST_XLMUMMY": {
+      "name": "Astral Big Mummy",
+      "hp": 80,
+      "power": 10,
+      "speed": 180,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "chases player"
+    },
+    "STARDUST_GOLEM": {
+      "name": "Astral Golem",
+      "hp": 120,
+      "power": 8,
+      "speed": 180,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "chases player"
+    },
+    "STARDUST_MUD": {
+      "name": "Dust Elemental (Undead Stars)",
+      "hp": 12.5,
+      "power": 1,
+      "speed": 110,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "STARDUST_HEAD": {
+      "name": "Head (Undead Stars)",
+      "hp": 10,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.2,
+      "knockback_max": 1,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "STARDUST_EYES": {
+      "name": "Mudman (Undead Stars eyes)",
+      "hp": 8,
+      "power": 6,
+      "speed": 100,
+      "knockback": 0.2,
+      "knockback_max": 1,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "STARDUST_CLOAK": {
+      "name": "Astral Curtain",
+      "hp": 240,
+      "power": 10,
+      "speed": 180,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "chases player"
+    },
+    "HEMO": {
+      "name": "Blood Moss",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "STARDUST_JOE": {
+      "name": "Lord Ghost",
+      "hp": 50,
+      "power": 10,
+      "speed": 120,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 5,
+      "special": "boss; HP x Level; resists freeze/rosary/debuff/knockback",
+      "hp_x_level": true
+    },
+    "COSMIC_EGG": {
+      "name": "Cosmic Egg",
+      "hp": 200,
+      "power": 10,
+      "speed": 80,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 30,
+      "special": "boss/normal at 19:00; HP x Level; casts Infinite Corridor (halves player HP); resists freeze/rosary/debuff/knockback",
+      "hp_x_level": true
+    },
+    "MEDUSA1_FAST": {
+      "name": "Fast Sneaky Head",
+      "hp": 1,
+      "power": 1,
+      "speed": 600,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Floaty + Fixed Direction; used by Medusa Wall/Swarm events only"
+    },
+    "MEDUSA1": {
+      "name": "Sneaky Head",
+      "hp": 1,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Floaty + Fixed Direction: moves horizontally in a wavy pattern, does not home; wiki max speed 340 (not modelled); used by Medusa Wall/Swarm events"
+    },
+    "SHADERED": {
+      "name": "Sig.ra Rossi (Red Shade)",
+      "hp": 11,
+      "power": 3,
+      "speed": 330,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "hp_x_level": true,
+      "special": "chases the player at high speed, self-destructs after a couple of seconds for high damage; HP x player level; used by the unsupported shade_bomb event"
+    },
+    "BOSS_XLMUMMY": {
+      "name": "Big Mummy (boss) (Giant Mummy)",
+      "hp": 250,
+      "power": 20,
+      "speed": 80,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 25,
+      "hp_x_level": true,
+      "scale": 1.5,
+      "resist_freeze": 1.1,
+      "special": "boss, HP x player level"
+    },
+    "BOSS_XLDEATH": {
+      "name": "The Reaper",
+      "hp": 655350,
+      "power": 65535,
+      "speed": 1200,
+      "knockback": -0.5,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "resist_defang": 1,
+      "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    }
+  },
+  "unknowns": [
+    "Wave-table sprite names map to Astral variants by guess: Astral Elemental->STARDUST_ELEMENTAL, Mummy->STARDUST_MUMMY, Skullino->STARDUST_SKULL, Stardust Ghost->STARDUST_GHOUL (no page), Big Mummy->STARDUST_XLMUMMY, Big Golem->STARDUST_GOLEM, Mudman->STARDUST_EYES, Undead Stars->STARDUST_MUD/STARDUST_HEAD.",
+    "Astral Stair adds +0.1 enemy health and +0.1 enemy speed multiplier per minute.",
+    "Red/blue colour-matching damage rule not modelled in data."
+  ]
+}

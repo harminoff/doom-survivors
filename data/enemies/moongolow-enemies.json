@@ -1,0 +1,164 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Moongolow and enemy pages (Statbox Enemy templates), retrieved 2026-09-29"
+  ],
+  "field_notes": {
+    "hp": "wiki max health before stage multiplier",
+    "speed": "wiki MoveSpeed units (140 = normal bat)",
+    "hp_x_level": "health multiplied by player level at spawn"
+  },
+  "enemies": {
+    "MOON_JELLYFISH": {
+      "name": "Moon Jellyfish",
+      "hp": 1,
+      "power": 3,
+      "speed": 120,
+      "knockback": 0.2,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Fixed Direction: crosses screen vertically in a wavy pattern"
+    },
+    "MEDUSA1_MOON": {
+      "name": "Moongolow Sneaky Head",
+      "hp": 1,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Floaty, Fixed Direction: crosses screen horizontally in a wavy pattern; max speed 340; no collision with enemies; wiki lists no internal id (MEDUSA1_MOON invented)"
+    },
+    "MOON_SNEK": {
+      "name": "Serpentvine",
+      "hp": 1,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1
+    },
+    "MOON_SNEK_GREEN": {
+      "name": "Green Moon Snake",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1
+    },
+    "MOON_SNEK_RED": {
+      "name": "Red Moon Snake",
+      "hp": 30,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2
+    },
+    "MOON_CRABBINO": {
+      "name": "Crabbino",
+      "hp": 5,
+      "power": 5,
+      "speed": 120,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "Fixed Direction",
+      "hp_x_level": true
+    },
+    "MOON_GHOST": {
+      "name": "Moon Ghost",
+      "hp": 10,
+      "power": 5,
+      "speed": 200,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1.5
+    },
+    "SIGRA_BLU": {
+      "name": "Sig.ra Blu (Blue Moon Shade)",
+      "hp": 30,
+      "power": 5,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "no collision; wiki lists no internal id (SIGRA_BLU invented)"
+    },
+    "MOON_FISHMAN": {
+      "name": "Moon Merman",
+      "hp": 80,
+      "power": 4,
+      "speed": 120,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 3
+    },
+    "MOON_NIGHTSHADE": {
+      "name": "Moon Nightshade",
+      "hp": 350,
+      "power": 14,
+      "speed": 80,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 3
+    },
+    "MOON_GARLIC": {
+      "name": "Moon Garlic",
+      "hp": 350,
+      "power": 14,
+      "speed": 80,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 3
+    },
+    "MOON_BOSS_CRABBINO": {
+      "name": "Giant Crabbino",
+      "hp": 50,
+      "power": 5,
+      "speed": 120,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 3,
+      "hp_x_level": true,
+      "special": "boss; HP x level"
+    },
+    "MOON_BOSS_NIGHTSHADE": {
+      "name": "Colossal Moon Nightshade",
+      "hp": 200,
+      "power": 20,
+      "speed": 80,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x level; drops a regular chest"
+    },
+    "MOON_BOSS_GARLIC": {
+      "name": "Colossal Moon Garlic",
+      "hp": 200,
+      "power": 20,
+      "speed": 80,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x level; 11:00 copy is an Arcana holder (only when Arcanas enabled)"
+    },
+    "MOON_MASK1": {
+      "name": "Moon Guardian (Moongolow Atlantean 1)",
+      "hp": 20000,
+      "power": 30,
+      "speed": 200,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "boss-like; drops a Golden Egg on death; 3 spawn at 14:00 (wiki lists variants MOON_MASK1-5, all same stats; MASK1 used for all three)"
+    }
+  },
+  "unknowns": [
+    "Eclipse-variant enemies (Small Eyeball, Eyeball, Giant Eyeball, Moon Trinacria) not fetched or included.",
+    "Moon Anfora stats not on the wiki page read.",
+    "Moon Ghost/Sig.ra Blu/Sneaky Head ids for Moongolow are not given as internal ids; invented as noted."
+  ]
+}

@@ -1,0 +1,431 @@
+include "mapinfo/dsbase.txt"
+include "mapinfo/decor.txt"
+skill diagnostic
+{
+    name = "Diagnostic"
+    defaultskill
+    // Map things carry skill1-5 flags; without a spawn filter none spawn.
+    SpawnFilter = 3
+}
+clearepisodes
+episode MAP16
+{
+    name = "Mad Forest"
+}
+episode MAP30
+{
+    name = "Inlaid Library"
+}
+episode MAP31
+{
+    name = "Dairy Plant"
+}
+episode MAP32
+{
+    name = "Gallo Tower"
+}
+episode MAP33
+{
+    name = "Cappella Magna"
+}
+episode MAP34
+{
+    name = "Green Acres"
+}
+episode MAP35
+{
+    name = "The Bone Zone"
+}
+episode MAP36
+{
+    name = "Il Molise"
+}
+episode MAP37
+{
+    name = "Moongolow"
+}
+episode MAP38
+{
+    name = "Boss Rash"
+}
+episode MAP39
+{
+    name = "Whiteout"
+}
+episode MAP40
+{
+    name = "The Lycaeum"
+}
+episode MAP41
+{
+    name = "The Coop"
+}
+episode MAP42
+{
+    name = "Space 54"
+}
+episode MAP43
+{
+    name = "Laborratory"
+}
+episode MAP44
+{
+    name = "Westwoods"
+}
+episode MAP45
+{
+    name = "Bat Country"
+}
+episode MAP46
+{
+    name = "Astral Stair"
+}
+episode MAP47
+{
+    name = "Mazerella"
+}
+episode MAP48
+{
+    name = "Tiny Bridge"
+}
+episode MAP49
+{
+    name = "Carlo Cart"
+}
+episode MAP50
+{
+    name = "Room 1665"
+}
+episode MAP51
+{
+    name = "Holy Forbidden"
+}
+episode MAP52
+{
+    name = "Eudaimonia Machine"
+}
+episode MAP53
+{
+    name = "The Depths"
+}
+defaultmap
+{
+    nojump
+    nocrouch
+    nointermission
+}
+map MAP01 "First-person calibration chamber"
+{
+    levelnum = 1
+    next = "MAP01"
+}
+map MAP02 "P013 representative asset gallery"
+{
+    levelnum = 2
+    next = "MAP02"
+}
+map MAP03 "P014 timing probe"
+{
+    levelnum = 3
+    next = "MAP03"
+}
+map MAP04 "P015 entity benchmark"
+{
+    levelnum = 4
+    next = "MAP04"
+}
+map MAP05 "P019 deterministic runtime harness"
+{
+    levelnum = 5
+    next = "MAP05"
+}
+map MAP06 "P020 logical entity lifecycle and run-save fixture"
+{
+    levelnum = 6
+    next = "MAP06"
+}
+map MAP07 "P021 first-person movement and input ownership"
+{
+    levelnum = 7
+    next = "MAP07"
+}
+map MAP08 "P022 stage clocks and spawn admission"
+{
+    levelnum = 8
+    next = "MAP08"
+}
+map MAP09 "P023 basic enemies and contact damage"
+{
+    levelnum = 9
+    next = "MAP09"
+}
+map MAP10 "P024 production spatial index"
+{
+    levelnum = 10
+    next = "MAP10"
+}
+map MAP11 "P025 shared attacks and status transactions"
+{
+    levelnum = 11
+    next = "MAP11"
+}
+map MAP12 "P026 Antonio and Whip"
+{
+    levelnum = 12
+    next = "MAP12"
+}
+map MAP13 "P027 experience pickups"
+{
+    levelnum = 13
+    next = "MAP13"
+}
+map MAP14 "P028 level-up restricted draft"
+{
+    levelnum = 14
+    next = "MAP14"
+}
+map MAP15 "P029 run lifecycle and results"
+{
+    levelnum = 15
+    next = "MAP15"
+}
+map MAP30 "Inlaid Library"
+{
+    levelnum = 30
+    next = "MAP30"
+    fade = "1c1418"
+    music = "DSLIBRA"
+}
+map MAP31 "Dairy Plant"
+{
+    levelnum = 31
+    next = "MAP31"
+    fade = "b07888"
+    music = "DSDAIRY"
+    sky1 = "SDUSK"
+}
+map MAP32 "Gallo Tower"
+{
+    levelnum = 32
+    next = "MAP32"
+    fade = "1a2244"
+    music = "DSGALLO"
+    sky1 = "SSPACE"
+}
+map MAP33 "Cappella Magna"
+{
+    levelnum = 33
+    next = "MAP33"
+    fade = "1c1418"
+    music = "DSGOTHC"
+    sky1 = "SDUSK"
+}
+map MAP34 "Green Acres"
+{
+    levelnum = 34
+    next = "MAP34"
+    fade = "a8cdef"
+    music = "DSFIELD"
+    sky1 = "SDAY"
+}
+map MAP35 "The Bone Zone"
+{
+    levelnum = 35
+    next = "MAP35"
+    fade = "4a1418"
+    music = "DSBATTL"
+    sky1 = "SBLOOD"
+}
+map MAP36 "Il Molise"
+{
+    levelnum = 36
+    next = "MAP36"
+    fade = "a8cdef"
+    music = "DSFIELD"
+    sky1 = "SDAY"
+}
+map MAP37 "Moongolow"
+{
+    levelnum = 37
+    next = "MAP37"
+    fade = "1a2244"
+    music = "DSNIGHT"
+    sky1 = "SNIGHT"
+}
+map MAP38 "Boss Rash"
+{
+    levelnum = 38
+    next = "MAP38"
+    fade = "4a1418"
+    music = "DSBATTL"
+}
+map MAP39 "Whiteout"
+{
+    levelnum = 39
+    next = "MAP39"
+    fade = "d8e0ec"
+    music = "DSFROST"
+    sky1 = "SSNOWSKY"
+}
+map MAP40 "The Lycaeum"
+{
+    levelnum = 40
+    next = "MAP40"
+    fade = "1c1418"
+    music = "DSLIBRA"
+}
+map MAP41 "The Coop"
+{
+    levelnum = 41
+    next = "MAP41"
+    fade = "a8cdef"
+    music = "DSFIELD"
+    sky1 = "SDAY"
+}
+map MAP42 "Space 54"
+{
+    levelnum = 42
+    next = "MAP42"
+    fade = "120a28"
+    music = "DSCOSMC"
+    sky1 = "SSPACE"
+}
+map MAP43 "Laborratory"
+{
+    levelnum = 43
+    next = "MAP43"
+    fade = "1c1418"
+    music = "DSLIBRA"
+}
+map MAP44 "Westwoods"
+{
+    levelnum = 44
+    next = "MAP44"
+    fade = "b07888"
+    music = "DSFIELD"
+    sky1 = "SDUSK"
+}
+map MAP45 "Bat Country"
+{
+    levelnum = 45
+    next = "MAP45"
+    fade = "b07888"
+    music = "DSNIGHT"
+    sky1 = "SDUSK"
+}
+map MAP46 "Astral Stair"
+{
+    levelnum = 46
+    next = "MAP46"
+    fade = "120a28"
+    music = "DSCOSMC"
+}
+map MAP47 "Mazerella"
+{
+    levelnum = 47
+    next = "MAP47"
+    fade = "a8cdef"
+    music = "DSFIELD"
+}
+map MAP48 "Tiny Bridge"
+{
+    levelnum = 48
+    next = "MAP48"
+    fade = "a8cdef"
+    music = "DSFIELD"
+    sky1 = "SDAY"
+}
+map MAP49 "Carlo Cart"
+{
+    levelnum = 49
+    next = "MAP49"
+    fade = "a8cdef"
+    music = "DSFIELD"
+    sky1 = "SDAY"
+}
+map MAP50 "Room 1665"
+{
+    levelnum = 50
+    next = "MAP50"
+    fade = "1c1418"
+    music = "DSGOTHC"
+}
+map MAP51 "Holy Forbidden"
+{
+    levelnum = 51
+    next = "MAP51"
+    fade = "281018"
+    music = "DSGOTHC"
+}
+map MAP52 "Eudaimonia Machine"
+{
+    levelnum = 52
+    next = "MAP52"
+    fade = "120a28"
+    music = "DSCOSMC"
+}
+map MAP53 "The Depths"
+{
+    levelnum = 53
+    next = "MAP53"
+    fade = "050404"
+    music = "DSDEPTH"
+}
+map MAP16 "Mad Forest"
+{
+    levelnum = 16
+    next = "MAP16"
+    fade = "3f6664"
+    sky1 = "SFOREST"
+    music = "DSFOREST"
+}
+map MAP17 "P031 inventory and level-up draft"
+{
+    levelnum = 17
+    next = "MAP17"
+}
+map MAP18 "P032 chest reward and transformation harness"
+{
+    levelnum = 18
+    next = "MAP18"
+}
+map MAP19 "P033 resolved stat and passive harness"
+{
+    levelnum = 19
+    next = "MAP19"
+}
+map MAP20 "P034 aimed and directional weapon harness"
+{
+    levelnum = 20
+    next = "MAP20"
+}
+map MAP21 "P035 ballistic projectile harness"
+{
+    levelnum = 21
+    next = "MAP21"
+}
+map MAP22 "P036 returning projectile harness"
+{
+    levelnum = 22
+    next = "MAP22"
+}
+map MAP23 "P037 orbit and persistent perimeter harness"
+{
+    levelnum = 23
+    next = "MAP23"
+}
+map MAP24 "P038 placed and moving ground-field harness"
+{
+    levelnum = 24
+    next = "MAP24"
+}
+map MAP25 "P039 Garlic and Soul Eater aura and healing harness"
+{
+    levelnum = 25
+    next = "MAP25"
+}
+map MAP26 "P040 logical-screen strike, erasure and global-effect harness"
+{
+    levelnum = 26
+    next = "MAP26"
+}

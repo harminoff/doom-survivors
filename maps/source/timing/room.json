@@ -1,0 +1,14 @@
+{
+  "fixture_id": "P014-TIMING-001",
+  "classification": "REPRODUCIBLE_SYNTHETIC_TIMING_PROBE",
+  "map_name": "MAP03",
+  "purpose": "Measure independent rational clocks at the pinned engine boundary",
+  "room": [[-512,-512],[-512,512],[512,512],[512,-512]],
+  "landmark": [[180,-64],[308,-64],[308,64],[180,64]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": -320, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "source_parity": "OPEN_SYNTHETIC_FIXTURE"
+}

@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P027-EXPERIENCE-PICKUPS-001",
+  "classification": "PRODUCTION_XP_STORE_RUNTIME_VERTICAL_SLICE",
+  "map_name": "MAP13",
+  "purpose": "Exercise P023/P026 death XP requests through the P027 store with source-plane collection, attraction, merge, conservation, save and rebase",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-128,-128],[-128,128],[128,128],[128,-128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "BUILD_EXTRACTED_GEM_IDENTITY_WITH_APPROXIMATE_PICKUP_RULES",
+  "obstacle_case": {"landmark_walls": "blocking", "logical_wall_filter": false},
+  "notes": [
+    "Logical gem records are created only from DSP027ExperienceRuntime death requests.",
+    "Landmark walls are a visible presentation fixture; XP queries intentionally use source-plane circles and ignore the camera."
+  ]
+}

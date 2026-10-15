@@ -1,0 +1,1348 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Eudaimonia_Machine (api wikitext, retrieved 2026-10-01)",
+    "https://vampire.survivors.wiki/w/The_Directer"
+  ],
+  "stage": {
+    "id": "EUDAIMONIA",
+    "name": "Eudaimonia Machine",
+    "duration_seconds": 5940,
+    "type": "Special final stage (unlocked by all standard relics)",
+    "spawn_type": "No wiki wave data; scripted Directer encounter",
+    "modifiers_normal_mode": {
+      "starting_spawns": 0,
+      "player_speed": 1.5,
+      "enemy_speed": 1,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "7.5% (max 50%)",
+      "destructible_max": 10
+    },
+    "modifiers_note": "Wiki infobox lists only dchance 7.5% (max 50%), dmax 10, player-speed x1.5; other modifiers default.",
+    "stage_items": {
+      "weapons": [],
+      "passives": [],
+      "pickups": [],
+      "relics": [
+        "Gracia's Mirror",
+        "Seventh Trumpet"
+      ],
+      "hidden_with_yellow_sign": []
+    }
+  },
+  "approximation_note": "The wiki documents no waves: no enemies spawn and the player walks up to The Directer. Waves here are a placeholder ramp through enemies reused from other stages; the last pool loops for later minutes. The Directer boss appears at minute 1.",
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "BAT1"
+      ],
+      "enemy_min": 5,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki: no enemies at run start; this trickle is a gameplay placeholder."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "BAT1",
+        "BAT2"
+      ],
+      "enemy_min": 15,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "BAT1",
+        "BAT2",
+        "ZOMBIE",
+        "SKELETON"
+      ],
+      "enemy_min": 22,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "BAT3",
+        "GHOST",
+        "MUDMAN1",
+        "SKELETON"
+      ],
+      "enemy_min": 23,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "BAT3",
+        "GHOST",
+        "MUDMAN1",
+        "SKELETON"
+      ],
+      "enemy_min": 24,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "BAT3",
+        "GHOST",
+        "MUDMAN1",
+        "SKELETON"
+      ],
+      "enemy_min": 25,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "BAT4",
+        "MUDMAN2",
+        "WEREWOLF",
+        "GHOST"
+      ],
+      "enemy_min": 26,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "BAT4",
+        "MUDMAN2",
+        "WEREWOLF",
+        "GHOST"
+      ],
+      "enemy_min": 27,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "BAT4",
+        "MUDMAN2",
+        "WEREWOLF",
+        "GHOST"
+      ],
+      "enemy_min": 28,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "FANGEL1",
+        "FANGEL2",
+        "FANGEL3",
+        "TRAINEE"
+      ],
+      "enemy_min": 29,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "FANGEL1",
+        "FANGEL2",
+        "FANGEL3",
+        "TRAINEE"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "FANGEL1",
+        "FANGEL2",
+        "FANGEL3",
+        "TRAINEE"
+      ],
+      "enemy_min": 31,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "BAT4",
+        "XLBAT",
+        "MUMMY",
+        "DULL1",
+        "ECTO2"
+      ],
+      "enemy_min": 32,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "BAT4",
+        "XLBAT",
+        "MUMMY",
+        "DULL1",
+        "ECTO2"
+      ],
+      "enemy_min": 33,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "BAT4",
+        "XLBAT",
+        "MUMMY",
+        "DULL1",
+        "ECTO2"
+      ],
+      "enemy_min": 34,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "BAT5",
+        "MERMA2_4",
+        "MIGNO1_5",
+        "LIZARD2_3"
+      ],
+      "enemy_min": 35,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "BAT5",
+        "MERMA2_4",
+        "MIGNO1_5",
+        "LIZARD2_3"
+      ],
+      "enemy_min": 36,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "BAT5",
+        "MERMA2_4",
+        "MIGNO1_5",
+        "LIZARD2_3"
+      ],
+      "enemy_min": 37,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 38,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 39,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 21,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 41,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 22,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 42,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 23,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 43,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 24,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 44,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 25,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 45,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 26,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 46,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 27,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 47,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 28,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 48,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 29,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 49,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 30,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 31,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 51,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 32,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 52,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 33,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 53,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 34,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 54,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 35,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 55,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 36,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 56,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 37,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 57,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 38,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 58,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 39,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 59,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 40,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 41,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 61,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 42,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 62,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 43,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 63,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 44,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 64,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 45,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 65,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 46,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 66,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 47,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 67,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 48,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 68,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 49,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 69,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 50,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 70,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 51,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 71,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 52,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 72,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 53,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 73,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 54,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 74,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 55,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 75,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 56,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 76,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 57,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 77,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 58,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 78,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 59,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 79,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 60,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 61,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 81,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 62,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 82,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 63,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 83,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 64,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 84,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 65,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 85,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 66,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 86,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 67,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 87,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 68,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 88,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 69,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 89,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 70,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 90,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 71,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 91,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 72,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 92,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 73,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 93,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 74,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 94,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 75,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 95,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 76,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 96,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 77,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 97,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 78,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 98,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 79,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 99,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 80,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 81,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 101,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 82,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 102,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 83,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 103,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 84,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 104,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 85,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 105,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 86,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 106,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 87,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 107,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 88,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 108,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 89,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 109,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 90,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 110,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 91,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 111,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 92,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 112,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 93,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 113,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 94,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 114,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 95,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 115,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 96,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 116,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 97,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 117,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 98,
+      "pool": [
+        "DEVIL1",
+        "IMP",
+        "HARPY",
+        "SKULL2_EASY"
+      ],
+      "enemy_min": 118,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    }
+  ],
+  "unsupported_events": [
+    {
+      "type": "directer_dialogue",
+      "wiki_description": "Conversation choice and Directer phases are scripted, not modeled"
+    }
+  ],
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "DIRECTER",
+      "name": "The Directer",
+      "chest": {
+        "type": "none",
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 0
+        }
+      }
+    }
+  ],
+  "notes": "Light sources cannot drop Nduja, Orologion, Little Clover or Gilded Clover here."
+}

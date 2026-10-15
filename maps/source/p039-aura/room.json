@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P039-AURA-MAP25-001",
+  "classification": "CONTROLLED_AURA_AND_HEALING_AUTHORITY_RUNTIME_FIXTURE",
+  "map_name": "MAP25",
+  "purpose": "Exercise the Garlic/Soul Eater aura authority and the shared P039 healing authority in pinned UZDoom",
+  "room": [[-1024, -1024], [-1024, 1024], [1024, 1024], [1024, -1024]],
+  "landmark": [[-192, -192], [-192, 192], [192, 192], [192, -192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": { "x": 0, "y": 0, "angle": 0 },
+  "presentation_fixture_ownership": "MAP25_LOGICAL_AURA_RUNTIME",
+  "presentation_fixtures": [],
+  "source_parity": "BUILD_CENSUS_GARLIC_TO_SOUL_EATER_EDGE_PLUS_CURRENT_REPORTS_AND_FROZEN_ENGINEERING_AURA_ADAPTER",
+  "notes": [
+    "Weapon rank, targets, P033 stat inputs, dependency presence and movement/transform timing are controlled fixtures; no source-exact profile or natural-acquisition claim is made.",
+    "All aura targeting, ledger, debuff, growth, Little Heart and healing-authority transactions use source-plane logical state; actors/decorations (including the presentation ring) are presentation only.",
+    "Current online rank values are qualified reports retrieved 2026-09-27 with applicability to locked v1.16.107 unverified; exact aura geometry, freeze-resistance baseline and heart lifetime remain engineering fixtures."
+  ]
+}

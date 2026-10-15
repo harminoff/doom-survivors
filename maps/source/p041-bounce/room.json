@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P041-BOUNCE-MAP27-001",
+  "classification": "CONTROLLED_LOGICAL_RICOCHET_AND_BOUNDARY_RUNTIME_FIXTURE",
+  "map_name": "MAP27",
+  "purpose": "Exercise the Runetracer/NO FUTURE, Bone, Cherry Bomb and Carrello ricochet authority: moving logical-reference-v1 boundary, swept multi-reflection with corner rule, logical walls, pierce-vs-enemy-bounce policy, per-pair hit delays, Cherry deceleration/explosion and NO FUTURE player-hit explosions in pinned UZDoom",
+  "room": [[-1024, -1024], [-1024, 1024], [1024, 1024], [1024, -1024]],
+  "landmark": [[-192, -192], [-192, 192], [192, 192], [192, -192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": { "x": 0, "y": 0, "angle": 0 },
+  "presentation_fixture_ownership": "MAP27_LOGICAL_BOUNCE_RUNTIME",
+  "presentation_fixtures": [],
+  "source_parity": "ONLINE_REPORTED_CURRENT_RUNETRACER_NO_FUTURE_BONE_CHERRY_CARRELLO_PLUS_FROZEN_ENGINEERING_ADAPTER",
+  "notes": [
+    "Weapon ranks, wall placement, contact events and NO FUTURE dependency (Armor) are controlled fixtures; no source-exact profile or natural-acquisition claim is made.",
+    "The logical-reference-v1 boundary is recomputed each accepted logical tic from the current logical player position (+/-128 units); monitor size, aspect ratio, render resolution, FOV and camera yaw/pitch are never inputs per docs/contracts/bounce-projectiles.md.",
+    "Current online rank values are qualified reports retrieved 2026-09-27 with applicability to locked v1.16.107 unverified; initial direction rules, exact projectile sizes, Bone/Cherry/Carrello pierce and hitbox delays, Carrello's duration, the Cherry deceleration curve and the exact screen rectangle/corner rules remain labelled engineering fixtures per the contract's Unknowns section."
+  ]
+}

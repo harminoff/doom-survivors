@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P029-RUN-LIFECYCLE-001",
+  "classification": "PRODUCTION_RUN_LIFECYCLE_RESULTS_RUNTIME",
+  "map_name": "MAP15",
+  "purpose": "Exercise one shared-controller run through active, level-up pause, exact-zero ending, immutable results, retry and durable reward commit",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-160,-128],[-160,128],[160,128],[160,-128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "ENGINEERING_VERTICAL_SLICE_APPROXIMATION",
+  "obstacle_case": {"landmark_walls": "blocking", "logical_wall_filter": false},
+  "notes": [
+    "The restricted Antonio/Whip starter, one enemy and one currency per accepted kill are bounded engineering fixtures for P029.",
+    "The results overlay reads an immutable snapshot published by play scope; UI retry intent crosses the existing event boundary."
+  ]
+}

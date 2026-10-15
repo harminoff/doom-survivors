@@ -1,0 +1,94 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Holy_Forbidden",
+    "https://vampire.survivors.wiki/w/Bell_Angel",
+    "https://vampire.survivors.wiki/w/Eyespin",
+    "https://vampire.survivors.wiki/w/Moon_Trinacria",
+    "https://vampire.survivors.wiki/w/The_Maddener (Statbox Enemy, retrieved 2026-10-01)"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn",
+    "power": "contact damage",
+    "speed": "wiki MoveSpeed units",
+    "knockback": "knockback multiplier",
+    "knockback_max": "wiki knockback-max",
+    "hp_x_level": "health scaled by player level"
+  },
+  "notes": "MOON_EYE2 (Eyespin) is reused from boss-rash-enemies.json. The wiki gives the stage 5:00 but this build uses a 2:00 run.",
+  "enemies": {
+    "MOON_BAT": {
+      "name": "Fake Fallen Cherub (forbidden)",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 0,
+      "special": "bat/angel, spawns throughout"
+    },
+    "MOON_BAT_PROJECTILE": {
+      "name": "Bell Angel Striker",
+      "hp": 15,
+      "power": 3,
+      "speed": 900,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 0,
+      "special": "charging straight line, ignores collision"
+    },
+    "MOON_SHADE": {
+      "name": "Bell Angel Bomber",
+      "hp": 11,
+      "power": 3,
+      "speed": 330,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "self-destruct 2s after spawn, 50 damage"
+    },
+    "MOON_EYE1": {
+      "name": "Eyespin small",
+      "hp": 18,
+      "power": 10,
+      "speed": 150,
+      "knockback": 0.2,
+      "knockback_max": 2,
+      "xp": 3,
+      "special": "does not collide with enemies",
+      "hp_x_level": true
+    },
+    "MOON_EYE3": {
+      "name": "Eyespin large",
+      "hp": 50,
+      "power": 15,
+      "speed": 150,
+      "knockback": 0,
+      "knockback_max": 2,
+      "xp": 9,
+      "special": "does not collide with enemies",
+      "hp_x_level": true
+    },
+    "MOON_TRINACRIA_X": {
+      "name": "Trinacria X",
+      "hp": 300,
+      "power": 5,
+      "speed": 150,
+      "knockback": 0,
+      "knockback_max": 2,
+      "xp": 1,
+      "special": "spawned in numbers near the corridor end",
+      "hp_x_level": true
+    },
+    "BOSS_XLMADDENER": {
+      "name": "The Maddener XL",
+      "hp": 655350,
+      "power": 50,
+      "speed": 300,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "special": "unkillable chaser; kills on contact",
+      "hp_x_level": true
+    }
+  }
+}

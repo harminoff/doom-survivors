@@ -1,0 +1,118 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Il_Molise and Molisano enemy pages (Statbox Enemy, retrieved 2026-09-29)"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier",
+    "power": "contact damage",
+    "speed": "wiki MoveSpeed; 0 = immobile",
+    "knockback": "wiki knockback 0",
+    "knockback_max": "wiki 'knockback-max' field"
+  },
+  "enemies": {
+    "MOLISANO_BASE": {
+      "name": "Sad Molisano 1",
+      "hp": 4,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting"
+    },
+    "MOLISANO_SECCO": {
+      "name": "Sad Molisano 2 (Secco)",
+      "hp": 10,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting"
+    },
+    "MOLISANO_BELLO": {
+      "name": "Cute Molisano 1 (Bello)",
+      "hp": 10,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting"
+    },
+    "MOLISANO_FAGIOLO": {
+      "name": "Cute Molisano 2 (Fagiolo)",
+      "hp": 40,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting"
+    },
+    "MOLISANO_GROSSO": {
+      "name": "Molisano Grosso",
+      "hp": 20,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile (cannot move)"
+    },
+    "MOLISANO_GIALLO": {
+      "name": "Happy Molisano 1 (Giallo)",
+      "hp": 4,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting"
+    },
+    "MOLISANO_ROSSO": {
+      "name": "Happy Molisano 2 (Rosso)",
+      "hp": 30,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting"
+    },
+    "MOLISANO_COLONNA": {
+      "name": "Old Molisano (Colonna)",
+      "hp": 50,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting"
+    },
+    "MOLISANO_VECCHIO": {
+      "name": "Dead Molisano (Vecchio)",
+      "hp": 60,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "immobile; damages only on player contact; O'Sole Meeo immune to its damage; gains HP from Celestial Dusting; boss at 9:00, 10:00, 11:00 (x2), 13:00 and 21:00 (Arcana holder), normal enemy at 13:00-14:00"
+    },
+    "MOLISANO_ANFORA": {
+      "name": "Molisano Anfora",
+      "hp": 60,
+      "power": 1,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 0,
+      "special": "gold pot: immobile, no XP, drops one Gold Coin when killed; takes no knockback"
+    }
+  },
+  "unknowns": [
+    "Wave sprites were mapped to Molisano variants using the Appearances tables on the enemy pages (assumed).",
+    "The Reaper (BOSS_XLDEATH) is defined in dairy-plant-enemies.json."
+  ]
+}

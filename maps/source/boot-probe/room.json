@@ -1,0 +1,10 @@
+{
+  "classification": "original_engineering_fixture",
+  "source_game_values": false,
+  "room": [[-512, -512], [-512, 512], [512, 512], [512, -512]],
+  "landmark": [[180, -64], [308, -64], [308, 64], [180, 64]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": -200, "y": 0, "angle": 0}
+}

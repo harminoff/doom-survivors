@@ -1,0 +1,52 @@
+{
+  "fixture_id": "P013-ASSET-GALLERY-001",
+  "classification": "REPRODUCIBLE_GENERATED_ASSET_GALLERY",
+  "map_name": "MAP02",
+  "purpose": "First-person representative asset review with source-collision overlays",
+  "room": [[-512,-512],[-512,512],[512,512],[512,-512]],
+  "landmark": [[220,-96],[348,-96],[348,96],[220,96]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": -320, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "ADAPTER_WORLD_LOADED",
+  "presentation_fixtures": [
+    {"id": "enemy_near", "asset_id": "enemy_directional", "class": "DSP13Enemy", "type": 30011, "x": -208, "y": 0, "z": 0, "angle": 0, "role": "near_enemy"},
+    {"id": "enemy_far", "asset_id": "enemy_directional", "class": "DSP13Enemy", "type": 30011, "x": 96, "y": 0, "z": 0, "angle": 180, "role": "far_enemy"},
+    {"id": "player_identity", "asset_id": "player_identity", "class": "DSP13PlayerIdentity", "type": 30012, "x": -224, "y": -96, "z": 0, "angle": 0, "role": "player_identity_presentation"},
+    {"id": "projectile", "asset_id": "projectile", "class": "DSP13Projectile", "type": 30013, "x": -152, "y": -48, "z": 48, "angle": 0, "role": "projectile_near_enemy"},
+    {"id": "projectile_mid", "asset_id": "projectile", "class": "DSP13Projectile", "type": 30013, "x": -152, "y": 48, "z": 56, "angle": 0, "role": "projectile_dense_effects_sample"},
+    {"id": "projectile_high", "asset_id": "projectile", "class": "DSP13Projectile", "type": 30013, "x": -96, "y": 0, "z": 72, "angle": 0, "role": "projectile_dense_effects_sample"},
+    {"id": "ground_aura", "asset_id": "ground_aura", "class": "DSP13GroundAura", "type": 30014, "x": -88, "y": 64, "z": 0, "angle": 0, "role": "dense_effects_sample"},
+    {"id": "ground_aura_left", "asset_id": "ground_aura", "class": "DSP13GroundAura", "type": 30014, "x": -88, "y": -64, "z": 0, "angle": 0, "role": "dense_effects_sample"},
+    {"id": "ground_aura_mid", "asset_id": "ground_aura", "class": "DSP13GroundAura", "type": 30014, "x": -40, "y": 64, "z": 0, "angle": 0, "role": "dense_effects_sample"},
+    {"id": "foot_pickup", "asset_id": "foot_pickup", "class": "DSP13FootPickup", "type": 30015, "x": -120, "y": 32, "z": 0, "angle": 0, "role": "foot_level_pickup"},
+    {"id": "world_prop", "asset_id": "world_prop", "class": "DSP13WorldProp", "type": 30016, "x": -16, "y": -96, "z": 0, "angle": 0, "role": "occluding_source_like_prop"}
+  ],
+  "collision_overlay": [
+    {"fixture_id": "enemy_near", "engineering_reference_shape": {"radius": 16, "height": 40, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "enemy_far", "engineering_reference_shape": {"radius": 16, "height": 40, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "player_identity", "engineering_reference_shape": {"radius": 16, "height": 56, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "projectile", "engineering_reference_shape": {"radius": 4, "height": 4, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "projectile_mid", "engineering_reference_shape": {"radius": 4, "height": 4, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "projectile_high", "engineering_reference_shape": {"radius": 4, "height": 4, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "ground_aura", "engineering_reference_shape": {"radius": 48, "height": 0, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "ground_aura_left", "engineering_reference_shape": {"radius": 48, "height": 0, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "ground_aura_mid", "engineering_reference_shape": {"radius": 48, "height": 0, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "foot_pickup", "engineering_reference_shape": {"radius": 8, "height": 8, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false},
+    {"fixture_id": "world_prop", "engineering_reference_shape": {"radius": 24, "height": 96, "status": "ENGINEERING_PLACEHOLDER_NOT_SOURCE"}, "presentation_blocking": false, "presentation_interaction": false}
+  ],
+  "gallery_cases": [
+    {"name": "walk_0", "position": [-304, 0, 0], "face_yaw": 0, "pitch": 0, "fov": 90, "target": [-208, 0]},
+    {"name": "walk_45", "position": [-276, -68, 0], "face_yaw": 45, "pitch": 0, "fov": 90, "target": [-208, 0]},
+    {"name": "walk_90", "position": [-208, -96, 0], "face_yaw": 90, "pitch": 0, "fov": 90, "target": [-208, 0]},
+    {"name": "walk_135", "position": [-140, -68, 0], "face_yaw": 135, "pitch": 0, "fov": 90, "target": [-208, 0]},
+    {"name": "walk_180", "position": [-112, 0, 0], "face_yaw": 180, "pitch": 0, "fov": 90, "target": [-208, 0]},
+    {"name": "walk_225", "position": [-140, 68, 0], "face_yaw": 225, "pitch": 0, "fov": 90, "target": [-208, 0]},
+    {"name": "walk_270", "position": [-208, 96, 0], "face_yaw": 270, "pitch": 0, "fov": 90, "target": [-208, 0]},
+    {"name": "walk_315", "position": [-276, 68, 0], "face_yaw": 315, "pitch": 0, "fov": 90, "target": [-208, 0]}
+  ],
+  "layout_requirements": ["near", "far", "overlap", "occluding", "dense_effects", "walkaround_360"],
+  "source_parity": "OPEN_GENERATED_PLACEHOLDER_GALLERY",
+  "notes": ["All displayed actors are visual probes with NOBLOCKMAP and NOINTERACTION; presentation actors add no solid, blocking or interaction behavior.", "The engineering reference shapes are placeholders for test coverage only; source collision dimensions remain UNKNOWN and are not asserted.", "The eight walk cases use a 96-unit ring around the near enemy and face its center; dense effects contain three aura and three projectile instances."]
+}

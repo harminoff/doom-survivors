@@ -1,0 +1,280 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/The_Bone_Zone and linked enemy pages (Statbox Enemy templates, retrieved 2026-09-29)"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier (Mad Forest enemy_health = 1.0)",
+    "power": "contact damage before player Armor",
+    "speed": "wiki MoveSpeed units (player base speed unit is not stated on these pages; treat as relative)",
+    "knockback": "multiplier on weapon knockback (0 = wiki lists 0, i.e. described as semi/fully resistant depending on page text; negative = pulled toward player)",
+    "knockback_max": "wiki 'knockback-max' field",
+    "hp_x_level": "true means health is multiplied by the player's level at spawn time"
+  },
+  "enemies": {
+    "SKULLINO": {
+      "name": "Skullino",
+      "hp": 6,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "SKULOROSSO": {
+      "name": "Skulorosso",
+      "hp": 10,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player"
+    },
+    "SKELETON": {
+      "name": "Skeleton",
+      "hp": 15,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "chases player; wave 'x4' entries mean four times as many"
+    },
+    "SKELANGUE": {
+      "name": "Scarleton",
+      "hp": 15,
+      "power": 5,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player; 3 lives per the Gallo Tower file"
+    },
+    "PILE4": {
+      "name": "Twin Skulls (Skull Pile)",
+      "hp": 20,
+      "power": 10,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 2,
+      "special": "stationary shooter; shoots BULLET_2 every second"
+    },
+    "PILE2": {
+      "name": "Twin Demons (Horned Pile Shooter)",
+      "hp": 150,
+      "power": 10,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 1.75,
+      "special": "stationary shooter; shoots BULLET_2 every 1.5 s"
+    },
+    "PILE3": {
+      "name": "Lost Twin (Goat-Horned Shooter)",
+      "hp": 180,
+      "power": 10,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 2,
+      "special": "stationary shooter; shoots BULLET_3 every second"
+    },
+    "BULLET_2": {
+      "name": "Bullet 2",
+      "hp": 1,
+      "power": 25,
+      "speed": 250,
+      "knockback": 1,
+      "knockback_max": 1,
+      "xp": 0,
+      "special": "projectile; fixed direction"
+    },
+    "BULLET_3": {
+      "name": "Bullet (Lost Twin)",
+      "hp": 1,
+      "power": 40,
+      "speed": 300,
+      "knockback": 1,
+      "knockback_max": 1,
+      "xp": 0,
+      "special": "projectile; fixed direction"
+    },
+    "SKULLNOAURA": {
+      "name": "Skullone (Skull)",
+      "hp": 30,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "chases player"
+    },
+    "SKELEPANTHER": {
+      "name": "Skeleton Panther",
+      "hp": 50,
+      "power": 10,
+      "speed": 140,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "chases player"
+    },
+    "SKELENIN_ZONE": {
+      "name": "Skeleton Ninja (zone)",
+      "hp": 80,
+      "power": 8,
+      "speed": 190,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "regular enemy"
+    },
+    "SKELEWING_ZONE": {
+      "name": "Skelewing (zone)",
+      "hp": 130,
+      "power": 14,
+      "speed": 130,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 4,
+      "special": "reduced knockback"
+    },
+    "XLSKELETON": {
+      "name": "Giant Skeleton",
+      "hp": 210,
+      "power": 20,
+      "speed": 80,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 6,
+      "special": "large slow enemy"
+    },
+    "SKELETONE": {
+      "name": "Skeletone",
+      "hp": 7,
+      "power": 20,
+      "speed": 100,
+      "knockback": 0.05,
+      "knockback_max": 1,
+      "xp": 25,
+      "hp_x_level": true,
+      "special": "29:00 wave"
+    },
+    "SKULL2_SWARM": {
+      "name": "Skullone (swarm)",
+      "hp": 25,
+      "power": 3,
+      "speed": 700,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "Skull Swarm event unit; fixed direction, no collision"
+    },
+    "XLDRAGON3_FLAG": {
+      "name": "Dragon Shrimp 3 (flag)",
+      "hp": 20,
+      "power": 6,
+      "speed": 400,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 2,
+      "hp_x_level": true,
+      "special": "Skeleton Stream event enemy; fixed horizontal direction"
+    },
+    "SKELEGLOW": {
+      "name": "Glowing Skeleton",
+      "hp": 50,
+      "power": 10,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss (chest carrier)"
+    },
+    "BOSS_XLSKELETON": {
+      "name": "Colossal Skeleton (Giant Skeleton boss)",
+      "hp": 100,
+      "power": 30,
+      "speed": 100,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 50,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "special": "boss"
+    },
+    "BOSS_SKULL2": {
+      "name": "Giant Skull (Skullone boss)",
+      "hp": 50,
+      "power": 10,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; Arcana holder at 11:00 and 21:00"
+    },
+    "BOSS_XLSTALKER": {
+      "name": "The Stalker XL",
+      "hp": 655350,
+      "power": 50,
+      "speed": 300,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 2,
+      "resist_debuff": 1,
+      "special": "Stalker map event at 10:00: follows the player 60 s, 20% lower move speed before time bonuses"
+    },
+    "BOSS_XLDROWNER": {
+      "name": "The Drowner XL",
+      "hp": 655350,
+      "power": 50,
+      "speed": 300,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 50,
+      "hp_x_level": true,
+      "resist_freeze": 2,
+      "resist_debuff": 1,
+      "special": "Drowner map event at 20:00 (unsupported event)"
+    },
+    "SKETAMARI": {
+      "name": "Sketamari",
+      "hp": 10800,
+      "power": 40,
+      "speed": 220,
+      "knockback": 1,
+      "knockback_max": 1,
+      "xp": 100,
+      "resist_freeze": 1.1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "special": "hidden mini-boss south of start; drops Forbidden Scrolls of Morbane; not in waves"
+    },
+    "BOSS_XLDEATH": {
+      "name": "The Reaper",
+      "hp": 655350,
+      "power": 65535,
+      "speed": 1200,
+      "knockback": -0.5,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "resist_defang": 1,
+      "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    }
+  },
+  "unknowns": [
+    "Wave-table names are made up by the wiki; ids come from Statbox Enemy pages.",
+    "Base stats shown; The Bone Zone adds +0.3 enemy health and +0.05 enemy speed multiplier per minute.",
+    "Bullet fire rates: Skull Pile 1/s, Horned Pile Shooter 1.5/s, Lost Twin 1/s."
+  ]
+}

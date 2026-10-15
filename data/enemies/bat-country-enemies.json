@@ -1,0 +1,153 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Pipeestrello, Giant_Bat, LV128_Golden_Bat, Diamond (Statbox Enemy, retrieved 2026-09-29)"
+  ],
+  "enemies": {
+    "EX_SCALING_BAT1": {
+      "name": "Pipeestrello 1 (scaling)",
+      "hp": 1,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player; health/speed scale with time on Bat Country"
+    },
+    "EX_SCALING_BAT2": {
+      "name": "Pipeestrello 2 (scaling)",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player; scales with time"
+    },
+    "EX_SCALING_BAT3": {
+      "name": "Pipeestrello 3 (scaling)",
+      "hp": 11,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player; scales with time"
+    },
+    "EX_SCALING_BAT3_YELLOW": {
+      "name": "Pipeestrello 3 (yellow)",
+      "hp": 40,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "chases player; scales with time"
+    },
+    "EX_SCALING_BAT3_GREEN": {
+      "name": "Pipeestrello 3 (green)",
+      "hp": 70,
+      "power": 8,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "chases player; scales with time"
+    },
+    "EX_SCALING_BAT3_PURPLE": {
+      "name": "Pipeestrello 3 (purple)",
+      "hp": 100,
+      "power": 11,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "chases player; scales with time"
+    },
+    "EX_AXE_BAT3": {
+      "name": "Pipeestrello 3 (bouncing)",
+      "hp": 5,
+      "power": 5,
+      "speed": 300,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "Monster Dance event only at 0:00; bounces"
+    },
+    "EX_SCALING_XLBAT": {
+      "name": "Giant Bat (scaling)",
+      "hp": 270,
+      "power": 10,
+      "speed": 140,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "semi-resistant to knockback; scales with time"
+    },
+    "EX_SCALING_XXLBAT": {
+      "name": "LV128 Golden Bat (scaling)",
+      "hp": 500,
+      "power": 12,
+      "speed": 140,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 10,
+      "special": "normal enemy at 19:00; scales with time"
+    },
+    "XXLBAT": {
+      "name": "LV128 Golden Bat",
+      "hp": 1280,
+      "power": 10,
+      "speed": 140,
+      "knockback": 0.1,
+      "knockback_max": 3,
+      "xp": 10,
+      "special": "Arcana-holder boss at 5:00 and 10:00 (Arcanas enabled only)"
+    },
+    "BAT4": {
+      "name": "Pipeestrello 4 (Glowing Bat)",
+      "hp": 50,
+      "power": 10,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 30,
+      "special": "boss; HP x player level; Bat Country regular boss",
+      "hp_x_level": true
+    },
+    "EX_DIAMOND": {
+      "name": "Diamond",
+      "hp": 50,
+      "power": 30,
+      "speed": 0,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 5,
+      "special": "event only; cannot move; no knockback; 4 hits kills (colour changes); drops Gold Coins and pickups"
+    },
+    "EX_DIAMOND_AXE": {
+      "name": "Diamond (bouncing)",
+      "hp": 50,
+      "power": 10,
+      "speed": 300,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 5,
+      "special": "event only (Monster Dance); bounces up from bottom of screen; drops Gold Coins and pickups"
+    },
+    "BOSS_XLDEATH": {
+      "name": "The Reaper",
+      "hp": 655350,
+      "power": 65535,
+      "speed": 1200,
+      "knockback": -0.5,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "resist_defang": 1,
+      "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    }
+  }
+}

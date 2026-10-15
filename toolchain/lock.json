@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "uzdoom": {
+    "version": "5.0.1",
+    "release_api": "https://api.github.com/repos/UZDoom/UZDoom/releases/tags/5.0.1",
+    "release_published_at": "2026-09-05T17:33:10Z",
+    "asset": {
+      "name": "Windows-UZDoom-Release-x86_64.zip",
+      "download_path": "toolchain/downloads/Windows-UZDoom-Release-x86_64.zip",
+      "publisher_sha256": "abc39ceea3d266d471e1b5db860c8e29edba4e7ebefc3ba60a9abec13138ef74",
+      "observed_sha256": "abc39ceea3d266d471e1b5db860c8e29edba4e7ebefc3ba60a9abec13138ef74",
+      "url": "https://github.com/UZDoom/UZDoom/releases/download/5.0.1/Windows-UZDoom-Release-x86_64.zip"
+    },
+    "executable": {
+      "sha256": "1c76e2d1ddb3031c028a97af186f61239af7dab851cfec7748634233986b1f49",
+      "path": "toolchain/runtime/uzdoom-5.0.1/uzdoom.exe"
+    },
+    "support_files": [
+      {
+        "sha256": "78426d26182b9d9b57e926e2e2fda7f4bac37c3c2cef99ffc28e61ae0bfa44e6",
+        "path": "toolchain/runtime/uzdoom-5.0.1/brightmaps.pk3"
+      },
+      {
+        "sha256": "3e90b1e13007fb97c29d4a6f819519f1065892495c259961913317402a779514",
+        "path": "toolchain/runtime/uzdoom-5.0.1/fm_banks/GENMIDI.GS.wopl"
+      },
+      {
+        "sha256": "488327960374b95dcc302e5586622a62fc21bdda7082f92a40258002ed267f40",
+        "path": "toolchain/runtime/uzdoom-5.0.1/fm_banks/gs-by-papiezak-and-sneakernets.wopn"
+      },
+      {
+        "sha256": "dbe0ce0ed020ae7defa763e8f9875e40bfca5bf62e8385fca1f5f431f0a53657",
+        "path": "toolchain/runtime/uzdoom-5.0.1/game_support.pk3"
+      },
+      {
+        "sha256": "1308b8bdade95b0d09e67f9d39828e88c10273f57f207242a0c84605b246b9c6",
+        "path": "toolchain/runtime/uzdoom-5.0.1/game_widescreen_gfx.pk3"
+      },
+      {
+        "sha256": "013d0c68b56c46637d0bf338cddbd2fb0f417bdce1127e49b9706bff2fcd64a6",
+        "path": "toolchain/runtime/uzdoom-5.0.1/libcurl-x64.dll"
+      },
+      {
+        "sha256": "ec8f62b3faf67cf752e9473a1dccfee52c33a7b960d648b6bbdb4674dea6921b",
+        "path": "toolchain/runtime/uzdoom-5.0.1/licenses.zip"
+      },
+      {
+        "sha256": "c23e80d6d4deadbc344ff5a708d8b79673f4bad68d5e06daece3875eb77134c7",
+        "path": "toolchain/runtime/uzdoom-5.0.1/lights.pk3"
+      },
+      {
+        "sha256": "4e3bd2de8e1485110eaebef8e1239471f73d608773831c323bf528e05645655e",
+        "path": "toolchain/runtime/uzdoom-5.0.1/sndfile.dll"
+      },
+      {
+        "sha256": "4e2d830d2a3aa85bf17033aa50745e7c1a8bb11ae350fe14fedd2a1292a6e0e8",
+        "path": "toolchain/runtime/uzdoom-5.0.1/soft_oal.dll"
+      },
+      {
+        "sha256": "a9058609b07c1f0e0c1f420e76c2e80ba78136e6173e836caab51ffb13e552f1",
+        "path": "toolchain/runtime/uzdoom-5.0.1/soundfonts/uzdoom.sf2"
+      },
+      {
+        "sha256": "38f64560133dd59f7905eb5d1b185a9346adfeaf2e8c31d9193d241b5cdac4a3",
+        "path": "toolchain/runtime/uzdoom-5.0.1/updater.exe"
+      },
+      {
+        "sha256": "f1a1d319b7e2c5db49b67fce737c2cc02a252dbbd11b2a4dffdef252968eb82a",
+        "path": "toolchain/runtime/uzdoom-5.0.1/uzdoom.pk3"
+      }
+    ],
+    "source": {
+      "path": "third_party/UZDoom",
+      "commit": "b92a83674b76c295a51c2ca21ee9b3085526fecb",
+      "tag": "5.0.1",
+      "url": "https://github.com/UZDoom/UZDoom.git"
+    }
+  },
+  "python": {
+    "version": "3.11.6",
+    "venv_path": ".venv"
+  }
+}

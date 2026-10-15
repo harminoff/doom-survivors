@@ -1,0 +1,8 @@
+IWAD
+{
+    Name = "Doom Survivors"
+    Autoname = "DoomSurvivors.Diagnostic"
+    Game = "Doom"
+    Config = "DoomSurvivors"
+    MustContain = "DSBOOT"
+}

@@ -1,0 +1,112 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/The_Coop and the enemy pages (Statbox Enemy), retrieved 2026-09-29"
+  ],
+  "field_notes": {
+    "hp": "midpoint where the wiki gives a range",
+    "power": "midpoint where the wiki gives a range",
+    "speed": "lower bound of the wiki move-speed range (upper bound reached as the stage speeds up)",
+    "xp": "wiki gives none; approximated by tier"
+  },
+  "enemies": {
+    "COOP_CHICKEN": {
+      "name": "Chickenfantry",
+      "hp": 7,
+      "power": 6,
+      "speed": 300,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular; wiki damage 5-7, move speed 300-800 (speeds up over time); first one killed starts the timer"
+    },
+    "COOP_COCK": {
+      "name": "Cockreliutennant",
+      "hp": 14,
+      "power": 7,
+      "speed": 250,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "regular and boss (7:00, 14:00); wiki HP 14-15, move speed 250-800"
+    },
+    "COOP_CHIK": {
+      "name": "Chik",
+      "hp": 5,
+      "power": 4,
+      "speed": 280,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular; move speed 280-800"
+    },
+    "COOP_EGG": {
+      "name": "Egge",
+      "hp": 3,
+      "power": 3,
+      "speed": 220,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "regular; move speed 220-800"
+    },
+    "COOP_ROAST_CHICKEN": {
+      "name": "Pol.lo Rosso",
+      "hp": 11,
+      "power": 9,
+      "speed": 130,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "regular; move speed 130-700"
+    },
+    "COOP_ABRAXAS": {
+      "name": "Abraxas",
+      "hp": 65,
+      "power": 15,
+      "speed": 220,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 5,
+      "special": "boss (3:00-8:00) then regular; wiki HP 60-70, damage 12-18, move speed 220-700"
+    },
+    "COOP_ABRAXASCROWN": {
+      "name": "Abraxas Phronesis",
+      "hp": 160,
+      "power": 23,
+      "speed": 220,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 10,
+      "special": "boss (10:00-16:00) then regular; wiki HP 120-200, damage 16-30, move speed 220-700"
+    },
+    "COOP_ABRAXASHALO": {
+      "name": "Abraxas Dynamis",
+      "hp": 215,
+      "power": 28,
+      "speed": 220,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 15,
+      "special": "boss (15:00-18:00) then regular; wiki HP 180-250, damage 16-40, move speed 220-700"
+    },
+    "BOSS_XLDEATH": {
+      "name": "The Reaper",
+      "hp": 655350,
+      "power": 65535,
+      "speed": 1200,
+      "knockback": -0.5,
+      "knockback_max": 0,
+      "xp": 0,
+      "hp_x_level": true,
+      "resist_freeze": 1,
+      "resist_kill": 1,
+      "resist_debuff": 1,
+      "resist_defang": 1,
+      "special": "spawns 20:00 in this stage and each minute after; rushes player; contact deals lethal damage"
+    }
+  },
+  "unknowns": [
+    "XP and knockback not listed on the wiki (guessed).",
+    "Stage/enemy speed-up over time has no numbers on the wiki."
+  ]
+}

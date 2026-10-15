@@ -1,0 +1,790 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Bat_Country (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Pipeestrello, Giant_Bat, LV128_Golden_Bat, Diamond (Statbox Enemy)",
+    "pickups, chest_rules and reaper reuse the Dairy Plant file content; Reaper at 20:00 per wiki table"
+  ],
+  "stage": {
+    "id": "BATCOUNTRY",
+    "name": "Bat Country",
+    "duration_seconds": 1200,
+    "type": "Challenge stage (fourth challenge stage; unlocked by reaching level 80 in Inverse Mad Forest, or the Forbidden Scrolls of Morbane spell 'recycletheforest')",
+    "spawn_type": "Standard: enemies approach from all four sides of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 0,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.3,
+      "luck": 1,
+      "xp": 0.25,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "1% (max 50%)",
+      "destructible_max": 10
+    },
+    "modifiers": {
+      "no_item_drops": false,
+      "enemy_health_per_minute": 0.2,
+      "enemy_speed_per_minute": 0.0125,
+      "scaling_note": "DISCREPANCY on the wiki page: infobox says enemy-health per min +0.2 and enemy-speed per min +0.25; the Effects text says max health +10%/min and movement speed +1.25%/min. Used health +0.2 (infobox) and speed +0.0125 (text; the infobox +0.25 would give x6 speed by 20:00). Both likely need playtest tuning.",
+      "effects": [
+        "Enemies grow stronger over time.",
+        "-75% XP.",
+        "Orologion and Nduja Fritta Tanto cannot drop from light sources."
+      ],
+      "excluded_light_source_drops": [
+        "OROLOGION",
+        "NFT"
+      ]
+    },
+    "modifiers_note": "Wiki infobox: player/enemy speed x1.25, greed x1.3, xp -75%, destructible chance 1% (max 50%), dmax 10, starting spawns 0. Hyper: speed x1.9, projectile x1.15, greed x1.8, luck x1.1. Not needed here.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [],
+      "pickups": [],
+      "relics": [
+        {
+          "item": "Apoplexy",
+          "position": "centre of a Diamond square, appears 9:00 for one minute"
+        },
+        {
+          "item": "Chaos Malachite",
+          "position": "centre of a Diamond square, appears 18:00 for one minute"
+        }
+      ],
+      "gold_rings": "Nine Gold Rings NE of start after both relics; nearby triggers 9 Sun Atlanteans"
+    },
+    "destructibles": "Light sources; Orologion and Nduja cannot drop.",
+    "layout": {
+      "shape": "open_field",
+      "size_note": "Not stated on the wiki page (size unknown); treat as a large open scrolling field.",
+      "obstacles": "None stated on the wiki; assume none/sparse. Relics appear at the centre of a large square of Diamonds.",
+      "theme": "Green Hill Zone-style (Sonic the Hedgehog) grassy zone, music 'Mighty Illusion'; bats everywhere.",
+      "special_mechanics": "Challenge stage. -75% XP (xp x0.25). Enemies grow stronger over time (health and speed rise every minute). Orologion and Nduja Fritta Tanto cannot drop from light sources. Waves are all bats. Map events are Diamond formations (Monster Dance bouncing Diamonds, Diamond Road/Square/Maze static formations; Diamonds have 50 HP, change colour per hit, die after 4 hits, drop coins/pickups). Relics: Apoplexy at 9:00 and Chaos Malachite at 18:00 in the centre of a Diamond square for 1 minute. Nine Gold Rings NE of start (after both relics) spawn 9 Sun Atlanteans. Yellow Sign has no effect. Arcana bosses (LV128 Golden Bat) at 5:00 and 10:00. Reaper at 20:00."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "EX_SCALING_BAT1"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 9,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "EX_SCALING_BAT1",
+        "EX_SCALING_BAT2"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 9,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "EX_SCALING_BAT1",
+        "EX_SCALING_BAT2",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 8,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 7,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "EX_SCALING_BAT3",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 6,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "EX_SCALING_BAT3",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 5,
+      "events": [],
+      "bosses": [
+        "XXLBAT"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "EX_SCALING_BAT3",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 4,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "EX_SCALING_BAT3",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 3,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "EX_SCALING_BAT3_YELLOW",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 2,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "EX_SCALING_BAT3_YELLOW"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "EX_SCALING_BAT3_GREEN",
+        "EX_SCALING_BAT3_YELLOW"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "XXLBAT"
+      ]
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "EX_SCALING_BAT3_GREEN"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.4,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "EX_SCALING_BAT3_PURPLE",
+        "EX_SCALING_BAT3_GREEN"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "EX_SCALING_BAT3_PURPLE"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.2,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "EX_SCALING_XLBAT",
+        "EX_SCALING_BAT3_PURPLE"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "EX_SCALING_XLBAT",
+        "EX_SCALING_BAT1",
+        "EX_SCALING_BAT2",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "EX_SCALING_XLBAT",
+        "EX_SCALING_BAT3_PURPLE",
+        "EX_SCALING_BAT3_PURPLE",
+        "EX_SCALING_BAT3_GREEN",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "EX_SCALING_XLBAT"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "EX_SCALING_XLBAT",
+        "EX_SCALING_BAT3_PURPLE",
+        "EX_SCALING_BAT3_GREEN",
+        "EX_SCALING_BAT3"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ]
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "EX_SCALING_XXLBAT"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ]
+    }
+  ],
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "no_chest_listed": true
+    },
+    {
+      "minute": 2,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "no_chest_listed": true
+    },
+    {
+      "minute": 3,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "XXLBAT",
+      "name": "LV128 Golden Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "evo": true,
+        "reward_flags_raw": "reward1=arcana, reward2=evo, reward3=evo",
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 6,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "no_chest_listed": true
+    },
+    {
+      "minute": 9,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward1..reward5=evo",
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "XXLBAT",
+      "name": "LV128 Golden Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "evo": true,
+        "reward_flags_raw": "reward1=arcana, reward2=evo, reward3=evo",
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 12,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward1..reward5=evo",
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 13,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "no_chest_listed": true
+    },
+    {
+      "minute": 15,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward1..reward5=evo",
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 18,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward1..reward5=evo",
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    }
+  ],
+  "map_events": {
+    "note": "Diamond events are not in gen_stages.py EVENT_KIND; all listed in unsupported_events. Shapes inferred from names and the Diamond page only."
+  },
+  "unsupported_events": [
+    {
+      "type": "monster_dance",
+      "minute": 0,
+      "at": "0:00",
+      "enemy": "EX_AXE_BAT3",
+      "amount": 24,
+      "duration_s": 10,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance with bouncing Pipeestrello 3 bats"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 1,
+      "at": "1:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 12,
+      "duration_s": 10,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 2,
+      "at": "2:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 24,
+      "duration_s": 10,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "diamond_road",
+      "minute": 3,
+      "at": "3:00",
+      "enemy": "EX_DIAMOND",
+      "duration_s": 30,
+      "chance_pct": 100,
+      "wiki_description": "Diamond Road: stationary Diamonds in a road formation"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 4,
+      "at": "4:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 12,
+      "duration_s": 10,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "diamond_square",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": "EX_DIAMOND",
+      "duration_s": 30,
+      "chance_pct": 100,
+      "wiki_description": "Diamond Square: box of stationary Diamonds around the player"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 6,
+      "at": "6:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 6,
+      "duration_s": 10,
+      "repeats": 5,
+      "wiki_repeat_field": 4,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 7,
+      "at": "7:00",
+      "enemy": "EX_DIAMOND",
+      "duration_s": 60,
+      "chance_pct": 100,
+      "wiki_description": "Diamond Maze: maze formation of stationary Diamonds"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 10,
+      "at": "10:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 12,
+      "duration_s": 10,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 11,
+      "at": "11:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 12,
+      "duration_s": 10,
+      "repeats": 3,
+      "wiki_repeat_field": 2,
+      "delay_s": 15,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "diamond_road",
+      "minute": 12,
+      "at": "12:00",
+      "enemy": "EX_DIAMOND",
+      "duration_s": 30,
+      "chance_pct": 100,
+      "wiki_description": "Diamond Road: stationary Diamonds in a road formation"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 13,
+      "at": "13:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 12,
+      "duration_s": 10,
+      "repeats": 4,
+      "wiki_repeat_field": 3,
+      "delay_s": 10,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "diamond_square",
+      "minute": 14,
+      "at": "14:00",
+      "enemy": "EX_DIAMOND",
+      "duration_s": 30,
+      "chance_pct": 100,
+      "wiki_description": "Diamond Square: box of stationary Diamonds around the player"
+    },
+    {
+      "type": "monster_dance",
+      "minute": 15,
+      "at": "15:00",
+      "enemy": "EX_DIAMOND_AXE",
+      "amount": 24,
+      "duration_s": 10,
+      "repeats": 4,
+      "wiki_repeat_field": 3,
+      "delay_s": 10,
+      "chance_pct": 100,
+      "wiki_description": "Monster Dance: Diamonds (bouncing variant) bounce up from the bottom of the screen"
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 16,
+      "at": "16:00",
+      "enemy": "EX_DIAMOND",
+      "duration_s": 60,
+      "chance_pct": 100,
+      "wiki_description": "Diamond Maze: maze formation of stationary Diamonds"
+    }
+  ],
+  "unsupported_events_note": "Wiki 'delay' = seconds between repeats; 'repeat' = extra repeats (wiki_repeat_field), 'repeats' = total occurrences. No chance given (100%). Events fire at the wave minute start.",
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "1% base (stage), max 50%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table.",
+    "stage_note": "Orologion and Nduja Fritta Tanto removed for Bat Country."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  },
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "notes": [
+    "Treasure template tier3/tier2/tier1 mapped to 5_item/3_item/1_item chances (1/10/100).",
+    "Bosses at minutes 1,2,7,13 (Glowing Bat) list no treasure. Glowing Bat = BAT4 (HP x Level). Golden Bat arcana bosses only if Arcanas enabled.",
+    "(x2) pool entries are repeated ids in the pool ('Spawns in 2 units').",
+    "Minute 20 wave: no enemies, Reaper spawns (all enemies cleared; another every minute after)."
+  ]
+}

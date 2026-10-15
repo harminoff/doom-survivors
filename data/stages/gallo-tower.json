@@ -1,0 +1,1293 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Gallo_Tower (?action=raw wikitext, retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Shooting_Star (retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Dragon_Swarm (retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Dragon_Stream (retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Pile_Assault (retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/The_Drowner (retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Map_event",
+    "https://vampire.survivors.wiki/w/Treasure_Chest (retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/The_Reaper (retrieved 2026-09-29)",
+    "enemy stats: see data/enemies/gallo-tower-enemies.json sources",
+    "pickups, chest_rules, light_sources and reaper blocks reuse the Mad Forest/Inlaid Library files content (Treasure_Chest, The_Reaper, Light_source etc., retrieved 2026-09-28/29 there)"
+  ],
+  "stage": {
+    "id": "TOWER",
+    "name": "Gallo Tower",
+    "duration_seconds": 1800,
+    "spawn_type": "Vertical tower: the stage's vertical layout makes enemies mostly spawn above and below the screen",
+    "modifiers_normal_mode": {
+      "starting_spawns": 50,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.3,
+      "luck": 0,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "7.5% (max 50%)",
+      "destructible_max": 10
+    },
+    "modifiers_note": "Wiki infobox fields; enemy_speed 1.25 is a multiplier (not applied to the enemy file speeds); blank infobox fields (projectile_speed, luck, enemy_health, enemy_min) assumed 1/0/1/1 like the other stages. Hyper mode (+80% gold, +10% luck, x1.9 player speed, x1.9 enemy speed, x1.15 projectile speed, x1.25 enemy min, 60 starting spawns) not needed here.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [
+        {
+          "item": "Bracer",
+          "count": 1,
+          "position": "north of starting area"
+        },
+        {
+          "item": "Spellbinder",
+          "count": 1,
+          "position": "south of starting area"
+        }
+      ],
+      "pickups": [],
+      "relics": [
+        {
+          "item": "Randomazzo",
+          "position": "north of starting area"
+        },
+        {
+          "item": "Sorceress' Tears",
+          "position": "south of starting area"
+        }
+      ],
+      "hidden_with_yellow_sign": [
+        {
+          "item": "Silver Ring",
+          "position": "north of starting area"
+        },
+        {
+          "item": "Metaglio Left",
+          "position": "north of starting area"
+        },
+        {
+          "item": "Gold Ring",
+          "position": "south of starting area"
+        },
+        {
+          "item": "Metaglio Right",
+          "position": "south of starting area"
+        }
+      ],
+      "coffin": {
+        "character": "Concetta Caciotta",
+        "position": "secret room reached through a magic mirror (with floating runes) south-west of the coffin on the left side of the tower"
+      },
+      "unlock_note": "Stage unlocks by reaching level 60 in Dairy Plant; reaching level 80 in Gallo Tower with inverse mode unlocks Tiny Bridge."
+    },
+    "destructibles": "Wiki page gives destructible chance 7.5% (max 50%), max 10; the type of destructible (light sources, torches, etc.) is not stated on the Gallo Tower page (unknown).",
+    "special_mechanics": "Floor pressure-plate traps (small red circles; 20 s cooldown) trigger a random map event of 7 options (Poltergeist Roulette/Swarm, Impefinger Swarm); a magic mirror leads to a secret room with the coffin. No conveyor/gravity mechanics on the wiki page."
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "SKULLINO"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 3,
+      "events": [],
+      "bosses": [],
+      "notes": "Shooting Star events fire here (see unsupported_events)."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "SKULLINO",
+        "SKULOROSSO"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 3,
+      "events": [],
+      "bosses": [
+        "SKELANGUE"
+      ],
+      "notes": "Scarletons have 3 lives."
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "SKULLINO",
+        "BAT3"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 4,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "SKELANGUE"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 4,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "SKULLINO",
+        "SKELETON"
+      ],
+      "enemy_min": 110,
+      "spawn_interval_s": 4,
+      "events": [],
+      "bosses": [
+        "XLMAGIO"
+      ]
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "SKULL2_EASY",
+        "SKELANGUE"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 4,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "DULL0",
+        "SKULOROSSO"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 2,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "DEVIL1",
+        "BAT6",
+        "BAT3"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 2,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "SKULOROSSO",
+        "GHOST2"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "BOSS_SKULL2"
+      ]
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "DULL0",
+        "GHOST2"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "IMP"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_HARPY"
+      ],
+      "notes": "Chest can exceptionally evolve up to 3 weapons if a higher tier chest with more rewards is received."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "HARPYV",
+        "XLDRAGON1"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 2,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ],
+      "notes": "Glowing Bat is an Arcana holder; only spawns if Arcanas are enabled and its chest awards only an Arcana."
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "HARPYV",
+        "DEVIL1"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "HARPY",
+        "DEVIL1"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDRAGON1"
+      ]
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "DULL0",
+        "HARPYV",
+        "GHOST2"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ]
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "HARPY"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_GALLO"
+      ],
+      "notes": "Gallo has a lancet-like beam attack that does not deal damage but briefly slows the player."
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "XLMAGIO"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ]
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "XLMAGIO",
+        "XLDRAGON2"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.8,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "SKELEWING_INO",
+        "XLDRAGON2"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLARMOR2"
+      ]
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "SKELANGUE"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "XLDRAGON1",
+        "DULL0"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDRAGON2"
+      ],
+      "notes": "Chest can exceptionally evolve up to 3 weapons if a higher tier chest with more rewards is received."
+    },
+    {
+      "minute": 21,
+      "pool": [
+        "XLARMOR1"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ],
+      "notes": "Glowing Bat is an Arcana holder; only spawns if Arcanas are enabled and its chest awards only an Arcana."
+    },
+    {
+      "minute": 22,
+      "pool": [
+        "XLARMOR1",
+        "XLARMOR2"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ]
+    },
+    {
+      "minute": 23,
+      "pool": [
+        "XLCOCKATRICE",
+        "HARPY"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCOCKATRICE"
+      ]
+    },
+    {
+      "minute": 24,
+      "pool": [
+        "XLCHIMERA"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 25,
+      "pool": [
+        "SKULOROSSO"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCRAB"
+      ],
+      "notes": "Defeating the Giant Enemy Crab unlocks Hyper Gallo Tower; the crab can summon a Drowner that can also drop a chest."
+    },
+    {
+      "minute": 26,
+      "pool": [
+        "XLGOLEM3"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCOCKATRICE"
+      ]
+    },
+    {
+      "minute": 27,
+      "pool": [
+        "XLGOLEM4",
+        "XLCHIMERA"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCHIMERA"
+      ]
+    },
+    {
+      "minute": 28,
+      "pool": [
+        "XLGOLEM3",
+        "XLGOLEM4"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCHIMERA"
+      ]
+    },
+    {
+      "minute": 29,
+      "pool": [
+        "BOSS_XLDRAGON1",
+        "BOSS_XLDRAGON2"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [],
+      "notes": "Enemies column lists Colossal Bone Dragon / Colossal Flame Dragon as normal enemies; approximated as BOSS_XLDRAGON1/2 in the pool."
+    },
+    {
+      "minute": 30,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH",
+        "BOSS_XLDROWNER"
+      ],
+      "notes": "At 30:00 all enemies on screen are cleared; Reaper and the unkillable Drowner XL spawn, then another Reaper every minute after."
+    }
+  ],
+  "map_events": {},
+  "unsupported_events": [
+    {
+      "type": "shooting_star",
+      "minute": 0,
+      "at": "0:00",
+      "amount": 2,
+      "delay_s": 5,
+      "interval_s": 1,
+      "range": "1 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 2,
+      "at": "2:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 1,
+      "duration_s": 30,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 2,
+      "at": "2:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 3,
+      "duration_s": 30,
+      "delay_s": 5,
+      "chance_pct": 70,
+      "repeats": 4,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 4,
+      "at": "4:00",
+      "amount": 2,
+      "delay_s": 5,
+      "chance_pct": 50,
+      "interval_s": 1,
+      "range": "1 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 4,
+      "at": "4:00",
+      "amount": 2,
+      "delay_s": 10,
+      "chance_pct": 50,
+      "repeats": 2,
+      "interval_s": 1,
+      "range": "1 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 12,
+      "duration_s": 30,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 5,
+      "at": "5:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 12,
+      "duration_s": 30,
+      "delay_s": 5,
+      "chance_pct": 70,
+      "repeats": 5,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_stream",
+      "minute": 6,
+      "at": "6:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 5,
+      "duration_s": 60,
+      "delay_s": 10,
+      "chance_pct": 70,
+      "interval_s": 1.33,
+      "wiki_description": "Dragon Stream: periodically spawns groups of serpentine Dragon Shrimps travelling horizontally at the selected location until the event ends; spawns alternate between the left and right side."
+    },
+    {
+      "type": "dragon_stream",
+      "minute": 7,
+      "at": "7:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 5,
+      "duration_s": 60,
+      "delay_s": 5,
+      "chance_pct": 70,
+      "interval_s": 1.33,
+      "wiki_description": "Dragon Stream: periodically spawns groups of serpentine Dragon Shrimps travelling horizontally at the selected location until the event ends; spawns alternate between the left and right side."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 9,
+      "at": "9:00",
+      "enemy": "XLMAGIO",
+      "amount": 12,
+      "duration_s": 30,
+      "delay_s": 20,
+      "chance_pct": 80,
+      "range": "0.4",
+      "wiki_description": "Pile Assault: summons a ring of enemies around the player that shoot bullets at regular intervals; 'range' is the spawn distance relative to the player (higher = farther)."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 10,
+      "at": "10:00",
+      "enemy": "XLMAGIO",
+      "amount": 6,
+      "duration_s": 30,
+      "delay_s": 10,
+      "wiki_description": "Pile Assault: summons a ring of enemies around the player that shoot bullets at regular intervals; 'range' is the spawn distance relative to the player (higher = farther)."
+    },
+    {
+      "type": "pile_assault",
+      "minute": 10,
+      "at": "10:00",
+      "enemy": "XLMAGIO",
+      "amount": 6,
+      "duration_s": 30,
+      "delay_s": 20,
+      "chance_pct": 60,
+      "wiki_description": "Pile Assault: summons a ring of enemies around the player that shoot bullets at regular intervals; 'range' is the spawn distance relative to the player (higher = farther)."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 12,
+      "at": "12:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 12,
+      "duration_s": 30,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 12,
+      "at": "12:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 12,
+      "duration_s": 20,
+      "delay_s": 5,
+      "chance_pct": 70,
+      "repeats": 5,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_stream",
+      "minute": 15,
+      "at": "15:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 5,
+      "duration_s": 60,
+      "interval_s": 1,
+      "wiki_description": "Dragon Stream: periodically spawns groups of serpentine Dragon Shrimps travelling horizontally at the selected location until the event ends; spawns alternate between the left and right side."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 15,
+      "at": "15:00",
+      "amount": 12,
+      "interval_s": 0.1,
+      "range": "0.5 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 15,
+      "at": "15:00",
+      "amount": 3,
+      "delay_s": 5,
+      "chance_pct": 50,
+      "repeats": 6,
+      "interval_s": 0.1,
+      "range": "1 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 16,
+      "at": "16:00",
+      "enemy": "XLDRAGON2_FLAG",
+      "amount": 12,
+      "duration_s": 30,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 16,
+      "at": "16:00",
+      "enemy": "XLDRAGON2_FLAG",
+      "amount": 6,
+      "duration_s": 30,
+      "delay_s": 13,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 16,
+      "at": "16:00",
+      "enemy": "XLDRAGON2_FLAG",
+      "amount": 3,
+      "duration_s": 20,
+      "delay_s": 2,
+      "chance_pct": 90,
+      "repeats": 12,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 22,
+      "at": "22:00",
+      "amount": 3,
+      "delay_s": 2,
+      "repeats": 25,
+      "interval_s": 0.1,
+      "range": "1 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 27,
+      "at": "27:00",
+      "enemy": "XLDRAGON2_FLAG",
+      "amount": 12,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 27,
+      "at": "27:00",
+      "enemy": "XLDRAGON2_FLAG",
+      "amount": 6,
+      "duration_s": 20,
+      "delay_s": 2,
+      "chance_pct": 90,
+      "repeats": 10,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 29,
+      "at": "29:00",
+      "enemy": "XLDRAGON2_FLAG",
+      "amount": 12,
+      "duration_s": 30,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 29,
+      "at": "29:00",
+      "enemy": "XLDRAGON2_FLAG",
+      "amount": 2,
+      "duration_s": 20,
+      "delay_s": 1.1,
+      "chance_pct": 90,
+      "repeats": 50,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "dragon_swarm",
+      "minute": 29,
+      "at": "29:00",
+      "enemy": "XLDRAGON1_FLAG",
+      "amount": 2,
+      "duration_s": 20,
+      "delay_s": 1,
+      "repeats": 50,
+      "wiki_description": "Dragon Swarm: spawns groups of serpentine (flag) Dragon Shrimps that travel horizontally across the map."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 30,
+      "at": "30:00",
+      "amount": 1,
+      "interval_s": 0.1,
+      "range": "1 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 30,
+      "at": "30:00",
+      "amount": 5,
+      "delay_s": 0.2,
+      "repeats": null,
+      "repeats_raw": "Infinite",
+      "interval_s": 0,
+      "range": "0.5 (max)",
+      "wiki_description": "Shooting Star: rains groups of falling stars towards the player; each star lands 2 s after a marker appears, dealing 30 damage in the area. 'amount' stars per repeat, 'interval_s' between stars, 'range' = max distance from the player."
+    },
+    {
+      "type": "poltergeist_roulette",
+      "trap": true,
+      "enemy": "POLTER_DEST",
+      "amount": 50,
+      "duration_s": 30,
+      "range": "1",
+      "wiki_description": "Trap: stepping on a small red floor circle triggers an unavoidable map event chosen at random from 7 predetermined options (20 s cooldown per trap). Poltergeists explode for 50 damage 2 s after the player gets close; Roulette Poltergeists cannot move."
+    },
+    {
+      "type": "poltergeist_roulette",
+      "trap": true,
+      "enemy": "POLTER_DEST",
+      "amount": 100,
+      "duration_s": 30,
+      "range": "2",
+      "wiki_description": "Trap: stepping on a small red floor circle triggers an unavoidable map event chosen at random from 7 predetermined options (20 s cooldown per trap). Poltergeists explode for 50 damage 2 s after the player gets close; Roulette Poltergeists cannot move."
+    },
+    {
+      "type": "poltergeist_roulette",
+      "trap": true,
+      "enemy": "POLTER_DEST",
+      "amount": 50,
+      "duration_s": 30,
+      "range": "2",
+      "wiki_description": "Trap: stepping on a small red floor circle triggers an unavoidable map event chosen at random from 7 predetermined options (20 s cooldown per trap). Poltergeists explode for 50 damage 2 s after the player gets close; Roulette Poltergeists cannot move."
+    },
+    {
+      "type": "poltergeist_roulette",
+      "trap": true,
+      "enemy": "POLTER_DEST",
+      "amount": 50,
+      "duration_s": 30,
+      "range": "2 (duplicate of previous entry in the wiki list)",
+      "wiki_description": "Trap: stepping on a small red floor circle triggers an unavoidable map event chosen at random from 7 predetermined options (20 s cooldown per trap). Poltergeists explode for 50 damage 2 s after the player gets close; Roulette Poltergeists cannot move."
+    },
+    {
+      "type": "poltergeist_swarm",
+      "trap": true,
+      "enemy": "POLTER",
+      "amount": 20,
+      "duration_s": 30,
+      "range": "0.7",
+      "wiki_description": "Trap: stepping on a small red floor circle triggers an unavoidable map event chosen at random from 7 predetermined options (20 s cooldown per trap). Poltergeists explode for 50 damage 2 s after the player gets close; Roulette Poltergeists cannot move."
+    },
+    {
+      "type": "poltergeist_swarm",
+      "trap": true,
+      "enemy": "POLTER",
+      "amount": 60,
+      "duration_s": 30,
+      "range": "0.7",
+      "wiki_description": "Trap: stepping on a small red floor circle triggers an unavoidable map event chosen at random from 7 predetermined options (20 s cooldown per trap). Poltergeists explode for 50 damage 2 s after the player gets close; Roulette Poltergeists cannot move."
+    },
+    {
+      "type": "impefinger_swarm",
+      "trap": true,
+      "enemy": "IMP",
+      "amount": 20,
+      "duration_s": 30,
+      "range": "0.7",
+      "wiki_description": "Trap: stepping on a small red floor circle triggers an unavoidable map event chosen at random from 7 predetermined options (20 s cooldown per trap)."
+    }
+  ],
+  "unsupported_events_note": "Gallo Tower has no bat/ghost/flower/medusa/shade/skull swarm events, so no event maps to the generator's EVENT_KIND. All wave-table map events (shooting_star, dragon_swarm, dragon_stream, pile_assault) are listed here raw, followed by the 7 floor-trap events (trap:true, no 'at'). 'at' is the wave minute start; delay_s is the wiki 'delay' field (whether it is an offset within the minute or a repeat delay is ambiguous on the wiki); repeats is the wiki 'repeat' value; interval_s/range are the wiki fields. Dragon Swarm/Stream use the '(flag)' Dragon Shrimp variants (XLDRAGON1_FLAG/XLDRAGON2_FLAG).",
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "SKELANGUE",
+      "name": "Scarleton",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 3,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 4,
+      "enemy": "XLMAGIO",
+      "name": "Undead Mage",
+      "chest_note": "wiki lists no treasure for this boss (no chest)"
+    },
+    {
+      "minute": 5,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "reward": "weapon",
+        "chance_pct": {
+          "5_item": 5,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 8,
+      "enemy": "BOSS_SKULL2",
+      "name": "Giant Skullone",
+      "chest": {
+        "fallback_level": 2,
+        "reward": "weapon",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "BOSS_HARPY",
+      "name": "Colossal Harpy",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo, reward4=weapon, reward5=weapon",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "fallback_level": 1,
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 12,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 13,
+      "enemy": "BOSS_XLDRAGON1",
+      "name": "Colossal Bone Dragon",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 14,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 15,
+      "enemy": "BOSS_GALLO",
+      "name": "Gallo",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 18,
+      "enemy": "BOSS_XLARMOR2",
+      "name": "Shield Guardian",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLDRAGON2",
+      "name": "Colossal Flame Dragon",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward4=evo, reward5=evo",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 21,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "fallback_level": 1,
+        "type": "arcana",
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 22,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 23,
+      "enemy": "BOSS_XLCOCKATRICE",
+      "name": "Colossal Gallotrice",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 25,
+      "enemy": "BOSS_XLCRAB",
+      "name": "Giant Enemy Crab",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo, reward4=evo, reward5=evo",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level_note": "wiki treasure template gives no level; fallback_level omitted (unknown)"
+      }
+    },
+    {
+      "minute": 26,
+      "enemy": "BOSS_XLCOCKATRICE",
+      "name": "Colossal Gallotrice",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 27,
+      "enemy": "BOSS_XLCHIMERA",
+      "name": "Colossal Manticore",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 28,
+      "enemy": "BOSS_XLCHIMERA",
+      "name": "Colossal Manticore",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 30,
+      "enemy": "BOSS_XLDROWNER",
+      "name": "The Drowner XL",
+      "note": "summoned in the 30:00 wave; cannot be defeated (wiki)"
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "Gallo Tower minute-25 Giant Enemy Crab chest lists no level (fallback_level omitted); Drowner (crab summon) chest also exists but is not tabulated. Tier chances copied verbatim from the wave table (tier3=5-item, tier2=3-item, tier1=1-item).",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "7.5% base (stage), multiplied by Luck, capped at 50%",
+    "spawn_location": "Gallo Tower light-source spawn locations are not stated on the pages read (unknown); copied from the Mad Forest/Inlaid Library files",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

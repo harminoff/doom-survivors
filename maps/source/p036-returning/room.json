@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P036-RETURNING-MAP22-001",
+  "classification": "CONTROLLED_TWO_FORM_RETURNING_RUNTIME_FIXTURE",
+  "map_name": "MAP22",
+  "purpose": "Run the build-census Cross and Heaven Sword rows and controlled outbound/reverse paths in pinned UZDoom",
+  "room": [[-1024, -768], [-1024, 768], [1024, 768], [1024, -768]],
+  "landmark": [[-192, -192], [-192, 192], [192, 192], [192, -192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": { "x": 0, "y": 0, "angle": 0 },
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "BUILD_CAPTURED_CROSS_TO_HEAVEN_SWORD_EDGE_PLUS_QUALIFIED_CURRENT_COMMUNITY_REPORTS_AND_ENGINEERING_RETURNING_ADAPTER",
+  "notes": [
+    "Weapons, targets, movement, passive ranks, and transformations are controlled fixtures; no natural acquisition is claimed.",
+    "All logical attack legs, hit history, target choices, and crit rolls go through the P025 checked-hit authority. Rendering proxies do not determine collision.",
+    "Mutable community report values are not verified for the locked cutoff; return distances, finite expiry, and one hit per target per leg are engineering adapter fixtures."
+  ]
+}

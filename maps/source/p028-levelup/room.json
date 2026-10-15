@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P028-LEVELUP-RESTRICTED-DRAFT-001",
+  "classification": "PRODUCTION_LEVELUP_MODAL_RUNTIME_VERTICAL_SLICE",
+  "map_name": "MAP14",
+  "purpose": "Exercise P027 milliunit threshold collection, two queued restricted drafts, real modal pause/input and shared upgrade effects",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-160,-128],[-160,128],[160,128],[160,-128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "ONLINE_REPORTED_THRESHOLDS_WITH_RESTRICTED_DEVELOPMENT_POOL",
+  "obstacle_case": {"landmark_walls": "blocking", "logical_wall_filter": false},
+  "notes": [
+    "The first modal is intentionally visible at startup. demo mode drives the same in-engine input transaction for repeatable validator runs; manual mode is required for physical evidence.",
+    "XP and upgrades are owned by the P028 logical progression adapter; renderer and native actors cannot author grants or RNG."
+  ]
+}

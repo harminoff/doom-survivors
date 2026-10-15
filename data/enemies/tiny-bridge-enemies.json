@@ -1,0 +1,116 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Tiny_Bridge (retrieved 2026-09-29)",
+    "Enemy pages: Reaper_Trainee, Tetrabrachia, Archon_Rame, Kamaitachi, Gallotrice, Swordian (Statbox Enemy, retrieved 2026-09-29)",
+    "Enemies already in other data/enemies files (IMP, SKULLINO, SKULL2_EASY, GHOST, HARPY, MEDUSA2_AGGRO, KALI1, SKELEWING, SKELEWING_INO, XLBAT, BAT3, BOSS_XLDEATH) are not repeated here."
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier (Mad Forest enemy_health = 1.0)",
+    "power": "contact damage before player Armor",
+    "speed": "wiki MoveSpeed units (player base speed unit is not stated on these pages; treat as relative)",
+    "knockback": "multiplier on weapon knockback (0 = wiki lists 0, i.e. described as semi/fully resistant depending on page text; negative = pulled toward player)",
+    "knockback_max": "wiki 'knockback-max' field",
+    "hp_x_level": "true means health is multiplied by the player's level at spawn time"
+  },
+  "enemies": {
+    "BRIDGE_TRAINEE": {
+      "name": "Reaper Trainee (bridge)",
+      "hp": 5,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "chases player; the Reaper Trainee page also lists a yellow variant TRAINEE_Y with the same stats"
+    },
+    "BRIDGE_TETRA": {
+      "name": "Tetrabrachia (bridge)",
+      "hp": 150,
+      "power": 8,
+      "speed": 200,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "regular enemy; same stats as Tetrabrachia 2 (KALI2)"
+    },
+    "BRIDGE_ARMOR": {
+      "name": "Archon Rame (bridge)",
+      "hp": 200,
+      "power": 15,
+      "speed": 140,
+      "knockback": 0,
+      "knockback_max": 2,
+      "xp": 2.5,
+      "special": "regular enemy; wave table calls it Archon Rame/Oro (bridge)"
+    },
+    "BRIDGE_MINION": {
+      "name": "Bridge Minion (Kamaitachi variant)",
+      "hp": 70,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "reduced knockback; wave table calls it Kamaitachi/Bridge Minion"
+    },
+    "XLCOCKATRICE_GOLD": {
+      "name": "Golden Gallotrice",
+      "hp": 600,
+      "power": 15,
+      "speed": 140,
+      "knockback": 0,
+      "knockback_max": 2,
+      "xp": 3,
+      "special": "reduced knockback; Tiny Bridge only"
+    },
+    "XLSWORDIAN_V": {
+      "name": "Swordian V",
+      "hp": 700,
+      "power": 15,
+      "speed": 400,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 5,
+      "special": "Monster Rain enemy; fixed direction, floaty"
+    },
+    "XLSWORDIAN_AGGRO": {
+      "name": "Swordian (aggro)",
+      "hp": 700,
+      "power": 20,
+      "speed": 120,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 5,
+      "special": "regular enemy chasing the player"
+    },
+    "BOSS_XLSWORDIAN": {
+      "name": "Colossal Swordian",
+      "hp": 100,
+      "power": 20,
+      "speed": 170,
+      "knockback": 0.1,
+      "knockback_max": 1,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x player level"
+    },
+    "BOSS_XLSWORDIAN_2": {
+      "name": "Arcana Swordian",
+      "hp": 100,
+      "power": 20,
+      "speed": 170,
+      "knockback": 0.1,
+      "knockback_max": 1,
+      "xp": 30,
+      "hp_x_level": true,
+      "special": "boss; HP x player level; Arcana holder, only spawns if Arcanas are enabled"
+    }
+  },
+  "unknowns": [
+    "Wave 10 'Tetrabrachia' mapped to KALI1 (the Tetrabrachia page lists Tiny Bridge 10:00 under Tetrabrachia 1).",
+    "Wave 0-2 'Reaper Trainee (bridge)' uses BRIDGE_TRAINEE (5 HP, speed 140).",
+    "Wave-table names are 'mostly made up based on internal IDs' (wiki note).",
+    "Giant Bat (normal) has no internal id on the wiki; existing XLBAT reused.",
+    "Swordian V has no dedicated Monster Rain wiki page."
+  ]
+}

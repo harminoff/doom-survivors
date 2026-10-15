@@ -1,0 +1,1309 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Green_Acres (?action=raw wikitext, retrieved 2026-09-29; page has no wave table, only 'random enemy waves from normal stages')",
+    "waves/bosses/events are copied per minute from data/stages/{mad-forest,inlaid-library,dairy-plant,gallo-tower}.json, chosen with a fixed seed (20220130)",
+    "Cappella Magna is also in the wiki's source list but has no data file in this repo, so it is not sampled",
+    "pickups, chest_rules and reaper blocks reuse the Dairy Plant file's content"
+  ],
+  "stage": {
+    "id": "ACRES",
+    "name": "Green Acres",
+    "duration_seconds": 1800,
+    "spawn_type": "Standard: enemies appear around the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 30,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1.5,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "10% (max 50%)",
+      "destructible_max": 10
+    },
+    "modifiers_note": "Wiki infobox: challenge stage, +50% enemy health, enemy_speed 1.25 is a multiplier (not applied to enemy file speeds). Hyper mode (x1.9 speeds, +50% gold, +10% luck, x1.25 enemy min) not needed. Wiki id GREENACRES; this project uses ACRES. Stage is unlocked via Hyper mode on 2 normal stages.",
+    "challenge_modifiers": [
+      "+50% enemy health (x1.5)",
+      "random enemy waves from normal stages (one source stage per minute)"
+    ],
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "wave_source_per_minute": {
+      "0": "inlaid-library",
+      "1": "inlaid-library",
+      "2": "mad-forest",
+      "3": "gallo-tower",
+      "4": "inlaid-library",
+      "5": "inlaid-library",
+      "6": "dairy-plant",
+      "7": "dairy-plant",
+      "8": "dairy-plant",
+      "9": "gallo-tower",
+      "10": "dairy-plant",
+      "11": "dairy-plant",
+      "12": "inlaid-library",
+      "13": "inlaid-library",
+      "14": "gallo-tower",
+      "15": "dairy-plant",
+      "16": "mad-forest",
+      "17": "mad-forest",
+      "18": "gallo-tower",
+      "19": "dairy-plant",
+      "20": "inlaid-library",
+      "21": "mad-forest",
+      "22": "inlaid-library",
+      "23": "dairy-plant",
+      "24": "inlaid-library",
+      "25": "gallo-tower",
+      "26": "gallo-tower",
+      "27": "dairy-plant",
+      "28": "inlaid-library",
+      "29": "gallo-tower",
+      "30": "gallo-tower"
+    },
+    "stage_items": {
+      "passives": [],
+      "pickups": [],
+      "relics": [
+        {
+          "item": "Magic Banger",
+          "position": "north east of start"
+        }
+      ],
+      "hidden_with_yellow_sign": [
+        {
+          "item": "Silver Ring",
+          "position": "north of start"
+        },
+        {
+          "item": "Metaglio Right",
+          "position": "east of start"
+        },
+        {
+          "item": "Gold Ring",
+          "position": "south of start"
+        },
+        {
+          "item": "Metaglio Left",
+          "position": "west of start"
+        }
+      ],
+      "note": "Positions only described by direction; distances unknown. Milky Way Map shows the hidden items."
+    },
+    "destructibles": "Light sources (drop random pickups); 10% base spawn chance, max 50%, up to 10 at once.",
+    "layout": {
+      "shape": "other",
+      "size_note": "Not stated on the wiki (only a full tilemap image exists); size unknown. Assume a moderately large bounded area with the player starting near the centre.",
+      "obstacles": "Unknown; the wiki gives no obstacle description. Suggest sparse scattered obstacles (a few pillars/fences) with open lanes.",
+      "theme": "Wiki gives no visual description beyond 'No Mortals Allowed' theme track; the name and description suggest a green farmland/meadow realm (poultry reference). Design choice, not wiki-stated.",
+      "special_mechanics": "Challenge stage: +50% enemy health (x1.5) and random enemy waves taken from normal stages (a different normal stage's wave table each minute). Enemy speed x1.25, player speed x1.25. Contains the Magic Banger relic (north east of start) and the 4 Yellow Sign hidden items (N/E/S/W of start)."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "MUD"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 3.0,
+      "events": [
+        {
+          "type": "shade_bomb",
+          "at": "0:00",
+          "enemy": "SHADERED",
+          "amount": 1,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 0.1
+        }
+      ],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 0."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "MUD"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 3.0,
+      "events": [],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 1."
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "BAT1",
+        "BAT2",
+        "BAT3"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "bat_swarm",
+          "at": "2:05",
+          "chance_pct": null,
+          "repeats": 2,
+          "repeat_delay_s": 5
+        }
+      ],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies mad-forest minute 2."
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "SKELANGUE"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 4,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 3."
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "MUD",
+        "MUMMY"
+      ],
+      "enemy_min": 110,
+      "spawn_interval_s": 4.0,
+      "events": [],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 4."
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "MUMMY"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 4.0,
+      "events": [
+        {
+          "type": "medusa_wall",
+          "at": "5:00",
+          "enemy": "MEDUSA1_FAST",
+          "amount": 12,
+          "source_stage": "inlaid-library"
+        },
+        {
+          "type": "medusa_swarm",
+          "at": "5:00",
+          "enemy": "MEDUSA1",
+          "amount": 12,
+          "chance_pct": 70,
+          "repeats": 5,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 5
+        }
+      ],
+      "bosses": [
+        "BOSS_XLMUMMY"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 5."
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "FISHMAN_1",
+        "LIZARD2_3"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "at": "6:00",
+          "enemy": "MILK2",
+          "amount": 50,
+          "duration_s": 30,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 30
+        }
+      ],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 6."
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MERMA1_3",
+        "LIZARD1_2",
+        "FISHMAN_1"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "jellyfish_wall",
+          "at": "7:00",
+          "enemy": "JELLYFISH",
+          "amount": 40,
+          "duration_s": 30,
+          "source_stage": "dairy-plant"
+        },
+        {
+          "type": "jellyfish_wall",
+          "at": "7:00",
+          "enemy": "JELLYFISH",
+          "amount": 40,
+          "duration_s": 30,
+          "chance_pct": 80,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 2
+        }
+      ],
+      "bosses": [
+        "BOSS_MERMAN"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 7."
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "SKELENIN1",
+        "SKELETON"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1.5,
+      "events": [
+        {
+          "type": "stalker",
+          "at": "8:00",
+          "enemy": "BOSS_STALKER_NORMAL",
+          "duration_s": 120,
+          "chance_pct": 30,
+          "source_stage": "dairy-plant"
+        },
+        {
+          "type": "swarm",
+          "at": "8:00",
+          "enemy": "SKELETON",
+          "amount": 50,
+          "duration_s": 30,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 30
+        }
+      ],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 8."
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "DULL0",
+        "GHOST2"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "pile_assault",
+          "at": "9:00",
+          "enemy": "XLMAGIO",
+          "amount": 12,
+          "duration_s": 30,
+          "chance_pct": 80,
+          "range": "0.4",
+          "source_stage": "gallo-tower",
+          "repeat_delay_s": 20
+        }
+      ],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 9."
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "MIGNO1_5",
+        "PILE2",
+        "MILK2"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "minotaur_rush",
+          "at": "10:00",
+          "enemy": "MIGNO_3_5SWARM",
+          "amount": 25,
+          "duration_s": 15,
+          "chance_pct": 50,
+          "repeats": 6,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 5
+        },
+        {
+          "type": "pile_assault",
+          "at": "10:00",
+          "enemy": "PILE2",
+          "amount": 10,
+          "duration_s": 20,
+          "chance_pct": 50,
+          "repeats": 4,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 10
+        }
+      ],
+      "bosses": [
+        "BOSS_MIGNO2_5_L"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 10. Wiki lists Minotaur, Twin Demons, Sturdy Milk Elemental. The 10:00 chest can evolve up to 3 weapons (reward2/reward3=evo)."
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "SKELENIN1",
+        "SKELETON"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "swarm",
+          "at": "11:00",
+          "enemy": "SKELETON",
+          "amount": 50,
+          "duration_s": 30,
+          "repeats": 4,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 10
+        }
+      ],
+      "bosses": [
+        "BAT4"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 11. Glowing Bat (BAT4) is the Arcana-holder boss at 11:00 and 21:00 (see bosses); not in the regular pool."
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "MEDUSA2",
+        "DULL0"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "medusa_swarm",
+          "at": "12:00",
+          "enemy": "MEDUSA1_FAST",
+          "amount": 12,
+          "source_stage": "inlaid-library"
+        },
+        {
+          "type": "medusa_wall",
+          "at": "12:00",
+          "enemy": "MEDUSA1",
+          "amount": 12,
+          "chance_pct": 70,
+          "repeats": 5,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 5
+        }
+      ],
+      "bosses": [
+        "BAT4"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 12."
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "MUMMY",
+        "DULL0"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "BOSS_MUD"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 13."
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "DULL0",
+        "HARPYV",
+        "GHOST2"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "DEVIL3"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 14."
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "ARMOR_6",
+        "GOLEM1",
+        "PILE3"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 15."
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "XLMANTIS",
+        "MUDMAN1",
+        "MUDMAN2"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BAT4"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies mad-forest minute 16."
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "XLMUMMY"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies mad-forest minute 17."
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "SKELEWING_INO",
+        "XLDRAGON2"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLARMOR2"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 18."
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "ARMORSPEAR_6",
+        "XLTRITON"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 0.5,
+      "events": [
+        {
+          "type": "jellyfish_swarm",
+          "at": "19:00",
+          "enemy": "JELLYFISH2_SWARM",
+          "amount": 50,
+          "duration_s": 10,
+          "chance_pct": 80,
+          "source_stage": "dairy-plant"
+        },
+        {
+          "type": "jellyfish_swarm",
+          "at": "19:00",
+          "enemy": "JELLYFISH2_SWARM",
+          "amount": 50,
+          "duration_s": 10,
+          "chance_pct": 80,
+          "repeats": 2,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 10
+        }
+      ],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 19."
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "BUER",
+        "DULL1"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [
+        {
+          "type": "shade_bomb",
+          "at": "20:00",
+          "enemy": "SHADERED",
+          "amount": 2,
+          "chance_pct": 50,
+          "repeats": 25,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 4
+        },
+        {
+          "type": "skull_swarm",
+          "at": "20:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 1,
+          "source_stage": "inlaid-library"
+        },
+        {
+          "type": "skull_swarm",
+          "at": "20:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 2,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 5
+        },
+        {
+          "type": "skull_swarm",
+          "at": "20:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 4,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 15
+        },
+        {
+          "type": "skull_swarm",
+          "at": "20:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 8,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 25
+        },
+        {
+          "type": "skull_swarm",
+          "at": "20:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 16,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 35
+        },
+        {
+          "type": "skull_swarm",
+          "at": "20:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 32,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 45
+        },
+        {
+          "type": "skull_swarm",
+          "at": "20:00",
+          "enemy": "SKULL2_SWARM",
+          "amount": 32,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 55
+        }
+      ],
+      "bosses": [
+        "BOSS_COUNT2"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 20."
+    },
+    {
+      "minute": 21,
+      "pool": [
+        "FLOWER"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "XLFLOWER",
+        "BAT4"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies mad-forest minute 21. Glowing Bat boss is an Arcana holder (Arcanas enabled only); Venus boss has no chest listed."
+    },
+    {
+      "minute": 22,
+      "pool": [
+        "WITCH2",
+        "BUER"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1.0,
+      "events": [
+        {
+          "type": "shade_bomb",
+          "at": "22:00",
+          "enemy": "SHADERED",
+          "amount": 3,
+          "chance_pct": 50,
+          "repeats": 25,
+          "source_stage": "inlaid-library",
+          "repeat_delay_s": 2
+        }
+      ],
+      "bosses": [
+        "BAT4"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 22."
+    },
+    {
+      "minute": 23,
+      "pool": [
+        "MIGNO1_5",
+        "MIGNO3_5"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [
+        {
+          "type": "minotaur_rush",
+          "at": "23:00",
+          "enemy": "MIGNO_3_5SWARM",
+          "amount": 25,
+          "duration_s": 10,
+          "chance_pct": 60,
+          "source_stage": "dairy-plant"
+        },
+        {
+          "type": "minotaur_rush",
+          "at": "23:00",
+          "enemy": "MIGNO_3_5SWARM",
+          "amount": 25,
+          "duration_s": 10,
+          "chance_pct": 60,
+          "repeats": 5,
+          "source_stage": "dairy-plant",
+          "repeat_delay_s": 5
+        }
+      ],
+      "bosses": [
+        "BOSS_MIGNO2_5_L"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 23."
+    },
+    {
+      "minute": 24,
+      "pool": [
+        "WITCH2"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 24."
+    },
+    {
+      "minute": 25,
+      "pool": [
+        "SKULOROSSO"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCRAB"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 25. Defeating the Giant Enemy Crab unlocks Hyper Gallo Tower; the crab can summon a Drowner that can also drop a chest."
+    },
+    {
+      "minute": 26,
+      "pool": [
+        "XLGOLEM3"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCOCKATRICE"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 26."
+    },
+    {
+      "minute": 27,
+      "pool": [
+        "XLCOCKATRICE",
+        "XLARMOR_SWORD"
+      ],
+      "enemy_min": 150,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLCOCKATRICE"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies dairy-plant minute 27."
+    },
+    {
+      "minute": 28,
+      "pool": [
+        "WITCH1",
+        "BOSS_MEDUSA1"
+      ],
+      "enemy_min": 250,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "BOSS_XLMEDUSA"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies inlaid-library minute 28."
+    },
+    {
+      "minute": 29,
+      "pool": [
+        "BOSS_XLDRAGON1",
+        "BOSS_XLDRAGON2"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 1,
+      "events": [
+        {
+          "type": "dragon_swarm",
+          "at": "29:00",
+          "enemy": "XLDRAGON2_FLAG",
+          "amount": 12,
+          "duration_s": 30,
+          "source_stage": "gallo-tower"
+        },
+        {
+          "type": "dragon_swarm",
+          "at": "29:00",
+          "enemy": "XLDRAGON2_FLAG",
+          "amount": 2,
+          "duration_s": 20,
+          "chance_pct": 90,
+          "repeats": 50,
+          "source_stage": "gallo-tower",
+          "repeat_delay_s": 1.1
+        },
+        {
+          "type": "dragon_swarm",
+          "at": "29:00",
+          "enemy": "XLDRAGON1_FLAG",
+          "amount": 2,
+          "duration_s": 20,
+          "repeats": 50,
+          "source_stage": "gallo-tower",
+          "repeat_delay_s": 1
+        }
+      ],
+      "bosses": [],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 29. Enemies column lists Colossal Bone Dragon / Colossal Flame Dragon as normal enemies; approximated as BOSS_XLDRAGON1/2 in the pool."
+    },
+    {
+      "minute": 30,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [
+        {
+          "type": "shooting_star",
+          "at": "30:00",
+          "amount": 1,
+          "interval_s": 0.1,
+          "range": "1 (max)",
+          "source_stage": "gallo-tower"
+        },
+        {
+          "type": "shooting_star",
+          "at": "30:00",
+          "amount": 5,
+          "repeats": null,
+          "repeats_raw": "Infinite",
+          "interval_s": 0,
+          "range": "0.5 (max)",
+          "source_stage": "gallo-tower",
+          "repeat_delay_s": 0.2
+        }
+      ],
+      "bosses": [
+        "BOSS_XLDEATH",
+        "BOSS_XLDROWNER"
+      ],
+      "notes": "Green Acres has no fixed wave table on the wiki (random waves from normal stages); this minute copies gallo-tower minute 30. At 30:00 all enemies on screen are cleared; Reaper and the unkillable Drowner XL spawn, then another Reaper every minute after."
+    }
+  ],
+  "map_events": {
+    "bat_swarm": {
+      "enemy": "BATSWARM",
+      "shape": "swarm: 50 bats moving in a fixed direction in a straight line across the map (not targeting the player), pushing other enemies; immune to defang",
+      "count_per_spawn": 50,
+      "enemy_speed": 700,
+      "hp": 1,
+      "power": 1
+    },
+    "stalker": {
+      "enemy": "BOSS_STALKER_NORMAL",
+      "shape": "one Stalker follows the player for the event duration (120 s at 0:00 and 8:00, 60 s at 12:00)",
+      "hp": 2550,
+      "power": 50
+    },
+    "pile_assault": {
+      "enemy": "PILE1/PILE2/PILE3",
+      "shape": "group of stationary shooters (speed 0) in an ellipsoid ring around the player that fire bullets"
+    },
+    "jellyfish_wall": {
+      "enemy": "JELLYFISH",
+      "shape": "ring of jellyfish around the player that closes in and moves away; fixed direction"
+    },
+    "minotaur_rush": {
+      "enemy": "MIGNO_3_5SWARM",
+      "shape": "cluster of fast Mignotaurs (speed 600) travelling in a straight line"
+    },
+    "jellyfish_swarm": {
+      "enemy": "JELLYFISH2_SWARM",
+      "shape": "cluster of jellyfish (speed 150) travelling in a straight line"
+    },
+    "swarm": {
+      "enemy": "MILK / MILK2 / SKELETON",
+      "shape": "cluster of enemies attacking the player"
+    }
+  },
+  "unsupported_events": [],
+  "unsupported_events_note": "Events with a mappable type were moved into the waves' events lists (same kind names as EVENT_KIND); remaining entries have no usable 'at'/type.",
+  "bosses": [
+    {
+      "minute": 3,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      },
+      "source_stage": "gallo-tower"
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_XLMUMMY",
+      "name": "Giant Mummy",
+      "chest": {
+        "fallback_level": 1,
+        "reward": "weapon",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      },
+      "source_stage": "inlaid-library"
+    },
+    {
+      "minute": 7,
+      "enemy": "BOSS_MERMAN",
+      "name": "Merman Boss",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "source_stage": "dairy-plant"
+    },
+    {
+      "minute": 10,
+      "enemy": "BOSS_MIGNO2_5_L",
+      "name": "Minotaur Boss (large)",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
+        }
+      },
+      "source_stage": "dairy-plant"
+    },
+    {
+      "minute": 11,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true,
+      "source_stage": "dairy-plant"
+    },
+    {
+      "minute": 12,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      },
+      "source_stage": "inlaid-library"
+    },
+    {
+      "minute": 13,
+      "enemy": "BOSS_MUD",
+      "name": "Colossal Dust Elemental",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      },
+      "source_stage": "inlaid-library"
+    },
+    {
+      "minute": 14,
+      "enemy": "DEVIL3",
+      "name": "Elite Devil",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      },
+      "source_stage": "gallo-tower"
+    },
+    {
+      "minute": 16,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 50
+        }
+      },
+      "source_stage": "mad-forest"
+    },
+    {
+      "minute": 18,
+      "enemy": "BOSS_XLARMOR2",
+      "name": "Shield Guardian",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "source_stage": "gallo-tower"
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_COUNT2",
+      "name": "Nesuferit",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo",
+        "evolves_up_to": 3,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "source_stage": "inlaid-library"
+    },
+    {
+      "minute": 21,
+      "enemy": "XLFLOWER",
+      "name": "Venus",
+      "chest": null,
+      "source_stage": "mad-forest"
+    },
+    {
+      "minute": 21,
+      "enemy": "BAT4",
+      "name": "Glowing Bat (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true,
+      "source_stage": "mad-forest"
+    },
+    {
+      "minute": 22,
+      "enemy": "BAT4",
+      "name": "Glowing Bat",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "source_stage": "inlaid-library"
+    },
+    {
+      "minute": 23,
+      "enemy": "BOSS_MIGNO2_5_L",
+      "name": "Minotaur Boss (large)",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 30
+        }
+      },
+      "source_stage": "dairy-plant"
+    },
+    {
+      "minute": 25,
+      "enemy": "BOSS_XLCRAB",
+      "name": "Giant Enemy Crab",
+      "chest": {
+        "evo": true,
+        "reward_flags_raw": "reward2=evo, reward3=evo, reward4=evo, reward5=evo",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level_note": "wiki treasure template gives no level; fallback_level omitted (unknown)"
+      },
+      "source_stage": "gallo-tower"
+    },
+    {
+      "minute": 26,
+      "enemy": "BOSS_XLCOCKATRICE",
+      "name": "Colossal Gallotrice",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        }
+      },
+      "source_stage": "gallo-tower"
+    },
+    {
+      "minute": 27,
+      "enemy": "BOSS_XLCOCKATRICE",
+      "name": "Colossal Gallotrice",
+      "chest": {
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "source_stage": "dairy-plant"
+    },
+    {
+      "minute": 28,
+      "enemy": "BOSS_XLMEDUSA",
+      "name": "Queen Medusa",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      },
+      "source_stage": "inlaid-library"
+    },
+    {
+      "minute": 30,
+      "enemy": "BOSS_XLDROWNER",
+      "name": "The Drowner XL",
+      "note": "summoned in the 30:00 wave; cannot be defeated (wiki)",
+      "source_stage": "gallo-tower"
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

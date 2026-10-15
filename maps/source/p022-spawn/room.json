@@ -1,0 +1,16 @@
+{
+  "fixture_id": "P022-SPAWN-001",
+  "classification": "SYNTHETIC_ENGINEERING_RUNTIME_HARNESS",
+  "map_name": "MAP08",
+  "purpose": "Run stage clock, deterministic spawn placement and admission accounting checks",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-128,-128],[128,-128],[128,128],[-128,128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "source_parity": "OPEN_SYNTHETIC_ENGINE_HARNESS",
+  "logical_reference_region": {"id": "logical-reference-v1", "width": 256, "height": 256, "center": [0, 0]},
+  "spawn_band": {"shape": "outer-rectangle-minus-reference-rectangle", "half_extent": 160, "boundary": "inclusive_outer_exclusive_inner"}
+}

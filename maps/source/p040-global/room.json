@@ -1,0 +1,20 @@
+{
+  "fixture_id": "P040-GLOBAL-MAP26-001",
+  "classification": "CONTROLLED_LOGICAL_SCREEN_STRIKE_ERASURE_AND_GLOBAL_EFFECT_RUNTIME_FIXTURE",
+  "map_name": "MAP26",
+  "purpose": "Exercise the Lightning Ring/Thunder Loop strike authority and the Pentagram/Gorgeous Moon erasure authority in pinned UZDoom",
+  "room": [[-1024, -1024], [-1024, 1024], [1024, 1024], [1024, -1024]],
+  "landmark": [[-192, -192], [-192, 192], [192, 192], [192, -192]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": { "x": 0, "y": 0, "angle": 0 },
+  "presentation_fixture_ownership": "MAP26_LOGICAL_GLOBAL_RUNTIME",
+  "presentation_fixtures": [],
+  "source_parity": "ONLINE_REPORTED_CURRENT_LIGHTNING_TO_THUNDER_LOOP_AND_PENTAGRAM_TO_GORGEOUS_MOON_PLUS_FROZEN_ENGINEERING_ADAPTER",
+  "notes": [
+    "Weapon rank, targets, P033 stat inputs (Duplicator/Crown), dependency presence and transform timing are controlled fixtures; no source-exact profile or natural-acquisition claim is made.",
+    "Region, strike, erasure, spare-roll and Gorgeous Moon transactions use source-plane logical state; actors/decorations are presentation only and never gate a transaction.",
+    "Current online rank values are qualified reports retrieved 2026-09-27 with applicability to locked v1.16.107 unverified; strike radius, Thunder Loop repeat delay, region shape and Moon beam count/timing remain labelled engineering fixtures per docs/contracts/global-strikes.md."
+  ]
+}

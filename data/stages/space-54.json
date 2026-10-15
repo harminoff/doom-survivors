@@ -1,0 +1,748 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Space_54 (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Musc_Musc, Moon_Duck, Moon_Rabbit, Space_Pickle, Space_Ant_Onion, ECMASlime, Gala_Invader, Sinistronz (retrieved 2026-09-29)",
+    "Map event pages (Invaders, Ex Duck Swarm, etc.) do not exist on the wiki; event amounts/durations are guesses",
+    "pickups, chest_rules and reaper reuse the Dairy Plant file content"
+  ],
+  "stage": {
+    "id": "SPACE54",
+    "name": "Space 54",
+    "duration_seconds": 1200,
+    "type": "Bonus stage (unlocked with 5 Gold Fingers); wiki stage id SPAZIE",
+    "spawn_type": "Standard: enemies appear from all four directions of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 40,
+      "player_speed": 1.25,
+      "enemy_speed": 1,
+      "projectile_speed": 1,
+      "greed": 1.3,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "10% (max 90%)",
+      "destructible_max": 16
+    },
+    "modifiers_note": "Wiki infobox gives player speed x1.25, greed +30%, destructible chance 10% (max 90%), max 16; starting_spawns and enemy_speed are not on the wiki (assumed 40 and 1). Hyper: player speed x1.9, greed x1.8, luck x1.1 (not needed).",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [
+        {
+          "item": "Candelabrador",
+          "count": 1
+        },
+        {
+          "item": "Empty Tome",
+          "count": 1
+        },
+        {
+          "item": "Phas3r (weapon)",
+          "count": 1
+        }
+      ],
+      "relics": [
+        {
+          "item": "Brave Story",
+          "position": "appears north or south of the player at 18:00"
+        }
+      ]
+    },
+    "layout": {
+      "shape": "open_field",
+      "size_note": "Not stated on the wiki; a platform exists to the north of the start. Distances unknown.",
+      "obstacles": "Unknown; a few platforms (wiki tip mentions one north of the start). Estimate: sparse.",
+      "theme": "Space/cosmic stage: dimensionally misaligned cosmos, disco and Phaser-engine references, moon and stars, aliens and space food.",
+      "special_mechanics": [
+        "Stage items: Candelabrador, Empty Tome and the Phas3r weapon are placed on the map.",
+        "Merchants appear on the map; Brave Story relic appears at 18:00.",
+        "Ducks, rabbits and Gala Invaders arrive as Fixed Direction map events rather than chasing.",
+        "ECMASlime: Extra Large splits into 2 Large on death, Large into 2 Normal.",
+        "Reaper at 20:00 (stage end)."
+      ]
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "ECTO1"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 3,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "EX_DUCK_SWARM"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 3,
+      "events": [
+        {
+          "type": "swarm",
+          "at": "1:00",
+          "enemy": "EX_DUCK_SWARM",
+          "amount": 30,
+          "duration_s": 20,
+          "repeats": 3,
+          "repeat_delay_s": 8,
+          "wiki_event": "Ex Duck Swarm",
+          "note": "amount/duration guessed; wiki gives no event data"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "ECTO1",
+        "ECTO2",
+        "SPACE_PICKLE"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 4,
+      "events": [
+        {
+          "type": "bat_swarm",
+          "at": "2:00",
+          "enemy": "EX_BATSPACE_D",
+          "amount": 40,
+          "duration_s": 20,
+          "chance_pct": 80,
+          "repeats": 3,
+          "repeat_delay_s": 8,
+          "wiki_event": "Ex Batspace Swarm",
+          "note": "Gala Invader swarm, crosses like a bat swarm; amount/duration guessed"
+        }
+      ],
+      "bosses": [
+        "ECMASLIME_3"
+      ],
+      "notes": "Wiki lists Musc Musc, Big Musc Musc, Space Pickle."
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "ECTO1",
+        "ECTO2",
+        "SPACE_PICKLE"
+      ],
+      "enemy_min": 60,
+      "spawn_interval_s": 4,
+      "events": [
+        {
+          "type": "bat_swarm",
+          "at": "3:00",
+          "enemy": "EX_BATSPACE_D",
+          "amount": 40,
+          "duration_s": 20,
+          "chance_pct": 80,
+          "repeats": 3,
+          "repeat_delay_s": 8,
+          "wiki_event": "Ex Batspace Swarm",
+          "note": "Gala Invader swarm, crosses like a bat swarm; amount/duration guessed"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "EX_DUCK_SWARM",
+        "EX_RABBIT_SWARM"
+      ],
+      "enemy_min": 110,
+      "spawn_interval_s": 4,
+      "events": [
+        {
+          "type": "swarm",
+          "at": "4:04",
+          "enemy": "EX_RABBIT_SWARM",
+          "amount": 30,
+          "duration_s": 20,
+          "wiki_event": "Ex Rabbit Swarm",
+          "note": "wiki delay steps of 4000ms alternating rabbit/duck, chance 0 (guaranteed), repeat 0; amount/duration guessed"
+        },
+        {
+          "type": "swarm",
+          "at": "4:08",
+          "enemy": "EX_DUCK_SWARM",
+          "amount": 30,
+          "duration_s": 20,
+          "wiki_event": "Ex Duck Swarm",
+          "note": "wiki delay steps of 4000ms alternating rabbit/duck, chance 0 (guaranteed), repeat 0; amount/duration guessed"
+        },
+        {
+          "type": "swarm",
+          "at": "4:12",
+          "enemy": "EX_RABBIT_SWARM",
+          "amount": 30,
+          "duration_s": 20,
+          "wiki_event": "Ex Rabbit Swarm",
+          "note": "wiki delay steps of 4000ms alternating rabbit/duck, chance 0 (guaranteed), repeat 0; amount/duration guessed"
+        },
+        {
+          "type": "swarm",
+          "at": "4:16",
+          "enemy": "EX_DUCK_SWARM",
+          "amount": 30,
+          "duration_s": 20,
+          "wiki_event": "Ex Duck Swarm",
+          "note": "wiki delay steps of 4000ms alternating rabbit/duck, chance 0 (guaranteed), repeat 0; amount/duration guessed"
+        },
+        {
+          "type": "swarm",
+          "at": "4:20",
+          "enemy": "EX_RABBIT_SWARM",
+          "amount": 30,
+          "duration_s": 20,
+          "wiki_event": "Ex Rabbit Swarm",
+          "note": "wiki delay steps of 4000ms alternating rabbit/duck, chance 0 (guaranteed), repeat 0; amount/duration guessed"
+        },
+        {
+          "type": "swarm",
+          "at": "4:24",
+          "enemy": "EX_DUCK_SWARM",
+          "amount": 30,
+          "duration_s": 20,
+          "wiki_event": "Ex Duck Swarm",
+          "note": "wiki delay steps of 4000ms alternating rabbit/duck, chance 0 (guaranteed), repeat 0; amount/duration guessed"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "ECTO2",
+        "SPACE_PICKLE"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 4,
+      "events": [
+        {
+          "type": "medusa_swarm",
+          "at": "5:00",
+          "enemy": "MEDUSA1",
+          "amount": 30,
+          "duration_s": 20,
+          "chance_pct": 80,
+          "wiki_event": "Medusa Swarm",
+          "note": "amount/duration guessed"
+        }
+      ],
+      "bosses": [
+        "ECMASLIME_3"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "ECTO2",
+        "ECTO1",
+        "SPACE_ANT_ONION"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 2,
+      "events": [
+        {
+          "type": "medusa_swarm",
+          "at": "6:00",
+          "enemy": "MEDUSA1",
+          "amount": 30,
+          "duration_s": 20,
+          "chance_pct": 80,
+          "repeats": 2,
+          "repeat_delay_s": 8,
+          "wiki_event": "Medusa Swarm",
+          "note": "amount/duration guessed"
+        }
+      ],
+      "bosses": [
+        "ECMASLIME_3"
+      ]
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "ECTO2",
+        "SPACE_ANT_ONION"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 2,
+      "events": [
+        {
+          "type": "medusa_swarm",
+          "at": "7:00",
+          "enemy": "MEDUSA1",
+          "amount": 30,
+          "duration_s": 20,
+          "chance_pct": 80,
+          "repeats": 3,
+          "repeat_delay_s": 8,
+          "wiki_event": "Medusa Swarm",
+          "note": "amount/duration guessed"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "SPACE_ANT_ONION",
+        "SPACE_ANT_ONION_2"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [
+        "ECMASLIME_3"
+      ],
+      "notes": "Wiki sprite list shows two Space Ant Onion sprites (normal and big-brained) -> SPACE_ANT_ONION + SPACE_ANT_ONION_2."
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "SPACE_ANT_ONION",
+        "SPACE_ANT_ONION_2",
+        "ECTO2"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki sprite list shows two Space Ant Onion sprites (normal and big-brained) -> SPACE_ANT_ONION + SPACE_ANT_ONION_2."
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "ECMASLIME_1"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "ECMASLIME_1"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 3,
+      "events": [],
+      "bosses": [
+        "ECMASLIME_3"
+      ]
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "ECMASLIME_1"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 2,
+      "events": [],
+      "bosses": [
+        "ECMASLIME_3"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "SPACE_ANT_ONION",
+        "SPACE_ANT_ONION_2",
+        "SPACE_PICKLE",
+        "ECTO2"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 1,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki sprite list shows two Space Ant Onion sprites (normal and big-brained) -> SPACE_ANT_ONION + SPACE_ANT_ONION_2."
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "SPACE_ANT_ONION",
+        "SPACE_ANT_ONION_2",
+        "SPACE_PICKLE"
+      ],
+      "enemy_min": 110,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "ECMASLIME_3"
+      ],
+      "notes": "Wiki sprite list shows two Space Ant Onion sprites (normal and big-brained) -> SPACE_ANT_ONION + SPACE_ANT_ONION_2."
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "EX_BATSPACE_D"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 4,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "ECMASLIME_1",
+        "ECMASLIME_2"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki lists three ECMASlime sprites (sizes not distinguished): approximated as normal + large."
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "ECMASLIME_1"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "ECMASLIME_3"
+      ]
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "EX_CUBE_HITS_STERILE"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "EX_CUBE_HITS_STERILE"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "EX_CUBE_HITS_STERILE"
+      ],
+      "enemy_min": 300,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [],
+      "notes": "Wiki boss column: The Reaper at 20:00 (stage end); handled by the reaper block."
+    }
+  ],
+  "map_events": {
+    "map_events_note": "Ex Duck/Rabbit Swarm mapped to 'swarm' (fixed-direction crossing), Ex Batspace Swarm to bat_swarm, Medusa Swarm to medusa_swarm. Amounts (30/40) and durations (20 s) are guesses; wiki has no event pages. Wiki 'delay' values are milliseconds (8000 = 8 s)."
+  },
+  "unsupported_events": [
+    {
+      "type": "invaders",
+      "minute": 0,
+      "at": "0:00",
+      "wiki_event": "Invaders",
+      "chance_pct": 100,
+      "wiki_description": "Wiki table: Map event 'Invaders', chance 0 (guaranteed), repeat 0, no enemy listed; no event page exists. Presumably a Space Invaders style formation. Unknown data."
+    },
+    {
+      "type": "invaders",
+      "minute": 10,
+      "at": "10:00",
+      "wiki_event": "Invaders",
+      "chance_pct": 100,
+      "wiki_description": "Wiki table: Map event 'Invaders', chance 0 (guaranteed), repeat 0, no enemy listed; no event page exists. Presumably a Space Invaders style formation. Unknown data."
+    },
+    {
+      "type": "invaders",
+      "minute": 15,
+      "at": "15:00",
+      "wiki_event": "Invaders",
+      "chance_pct": 100,
+      "wiki_description": "Wiki table: Map event 'Invaders', chance 0 (guaranteed), repeat 0, no enemy listed; no event page exists. Presumably a Space Invaders style formation. Unknown data."
+    },
+    {
+      "type": "monster_dance",
+      "minute": 8,
+      "at": "8:00",
+      "wiki_event": "Monster Dance",
+      "chance_pct": 100,
+      "wiki_description": "Wiki table: Map event 'Monster Dance', chance 0, repeat 0; no event page exists; behaviour unknown."
+    },
+    {
+      "type": "monster_dance",
+      "minute": 9,
+      "at": "9:00",
+      "wiki_event": "Monster Dance",
+      "chance_pct": 100,
+      "wiki_description": "Wiki table: Map event 'Monster Dance', chance 0, repeat 0; no event page exists; behaviour unknown."
+    },
+    {
+      "type": "diamond_maze",
+      "minute": 11,
+      "at": "11:00",
+      "wiki_event": "Diamond Maze",
+      "chance_pct": 100,
+      "wiki_description": "Wiki table: Map event 'Diamond Maze', chance 0, repeat 0; no event page exists; behaviour unknown."
+    }
+  ],
+  "unsupported_events_note": "Invaders, Monster Dance and Diamond Maze have no wiki pages or enemy data.",
+  "bosses": [
+    {
+      "minute": 2,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest": {
+        "fallback_level": 1,
+        "evo": false,
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest": {
+        "fallback_level": 1,
+        "evo": false,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 6,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest_note": "Wiki table lists no Treasure for this boss."
+    },
+    {
+      "minute": 8,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest_note": "Wiki table lists no Treasure for this boss."
+    },
+    {
+      "minute": 12,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest_note": "Wiki table lists no Treasure for this boss."
+    },
+    {
+      "minute": 14,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest_note": "Wiki table lists no Treasure for this boss."
+    },
+    {
+      "minute": 17,
+      "enemy": "ECMASLIME_3",
+      "name": "Extra Large ECMASlime",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "20:00 (stage end; wiki boss column lists The Reaper at 20:00), then one additional Reaper each minute afterwards",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

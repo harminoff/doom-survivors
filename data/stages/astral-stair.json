@@ -1,0 +1,879 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Astral_Stair (?action=raw wikitext, retrieved 2026-09-29)",
+    "Enemy pages: Astral Elemental, Undead Stars, Lord Ghost, Astral Curtain, Cosmic Egg, Mummy, Big Mummy, Mudman, Big Golem, Skullino, Blood Moss, Shooting Star (Statbox Enemy)",
+    "light_sources, pickups, chest_rules copied from Dairy Plant; reaper from Bone Zone"
+  ],
+  "stage": {
+    "id": "ASTRAL",
+    "name": "Astral Stair",
+    "duration_seconds": 1200,
+    "type": "Challenge stage (fifth; unlocked by reaching level 80 in Inverse Inlaid Library, or the Forbidden Scrolls of Morbane spell 'recyclethelibrary')",
+    "spawn_type": "Mapped (wiki: enemies appear from unknown positions)",
+    "modifiers_normal_mode": {
+      "starting_spawns": 50,
+      "player_speed": 1.25,
+      "enemy_speed": 1.25,
+      "projectile_speed": 1,
+      "greed": 1.3,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "7% (max 70%)",
+      "destructible_max": 12
+    },
+    "modifiers": {
+      "enemy_health_per_minute": 0.1,
+      "enemy_speed_per_minute": 0.001,
+      "no_item_drops": false,
+      "scaling_note": "Infobox: enemy health +0.1 and enemy speed +0.1 per minute (additive). The effects text says '+10% Max Health and +0.1% Movement Speed every minute'; the infobox +0.1 speed/min is used here. Stacks with Inverse Mode.",
+      "effects": [
+        "Enemies grow stronger over time.",
+        "Enemies pulse red or blue with the music and can only be damaged by weapons of the matching colour (purple weapons hit both)."
+      ],
+      "speed_scaling_choice": "Project choice: +0.1%/minute from the effects text; the infobox 0.1 would triple enemy speed by 20:00."
+    },
+    "modifiers_note": "Hyper: starting spawns 50, player/enemy speed x1.9, projectile speed x1.15, greed x1.8, luck x1.1. Not needed here.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "stage_items": {
+      "passives": [],
+      "pickups": [
+        {
+          "item": "Phiera Der Tuphello",
+          "position": "upper middle room"
+        },
+        {
+          "item": "Eight The Sparrow",
+          "position": "lower middle room"
+        },
+        {
+          "item": "Gold Finger",
+          "position": "five total, one on each row of rooms"
+        }
+      ],
+      "relics": [
+        {
+          "item": "Trisection",
+          "position": "bottom room"
+        },
+        {
+          "item": "Chaos Rosalia",
+          "position": "top room"
+        },
+        {
+          "item": "Astral Stair Map",
+          "position": "middle room"
+        }
+      ]
+    },
+    "destructibles": "Light sources; 7% spawn chance (max 70%), max 12.",
+    "layout": {
+      "shape": "other",
+      "size_note": "Static hub-and-rooms map (dimensions not on the wiki): one long vertical hallway (main hub) with a teleport door at its very top and very bottom, plus doors along its left and right walls leading to small side rooms in rows (5 rows; about 2-3 rooms deep each side, one relic or stage item at the end of some chains).",
+      "obstacles": "Solid walls between hallway and rooms; paired teleport 'doors' (dark wood panels facing the camera) are the only connections. Terrain can be destroyed (e.g. Je-Ne-Viv) to walk freely. Otherwise open floor inside rooms.",
+      "theme": "Cosmic castle-in-the-void: an astral highway between dimensions, drifting starry abyss background with spinning portraits, red/blue pulsing enemies (Symphony of the Night reference).",
+      "special_mechanics": "Teleport doors: walking up into a door teleports to its fixed partner door (any two doors only link to each other). Top and bottom hallway doors jump to the opposite end of the hallway; side doors jump into/out of the side rooms. Start: player begins on a floating platform, cutscene fall into the hallway. Enemies grow stronger over time (+0.1 health and +0.1 speed multiplier per minute). Enemies alternate red/blue with the music beat and only take damage from same-colour weapons (purple weapons hit both). Cosmic Egg bosses (15:00, 18:00, plus 19:00 minimum-2 wave) cast Infinite Corridor, halving player health per cast. Reaper at 20:00."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "STARDUST_ELEMENTAL"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "STARDUST_ELEMENTAL"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.3,
+      "events": [
+        {
+          "type": "shade_bomb",
+          "minute": 1,
+          "at": "1:00",
+          "enemy": "SHADERED",
+          "amount": 1,
+          "repeat_delay_s": 0.1,
+          "source_note": "wiki 'Shade Bomb Red'; enemy id SHADERED assumed from Inlaid Library precedent"
+        }
+      ],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "STARDUST_ELEMENTAL",
+        "HEMO"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [
+        {
+          "type": "medusa_wall",
+          "minute": 2,
+          "at": "2:00",
+          "enemy": "MEDUSA1_FAST",
+          "amount": 12,
+          "source_note": "wiki 'Medusa Wall'; enemy/amount assumed from Inlaid Library precedent"
+        },
+        {
+          "type": "medusa_swarm",
+          "minute": 2,
+          "at": "2:00",
+          "enemy": "MEDUSA1",
+          "amount": 12,
+          "chance_pct": 70,
+          "repeats": 4,
+          "repeat_delay_s": 5,
+          "source_note": "wiki 'Medusa Swarm' chance 70 repeat 4 delay 5000ms; enemy/amount assumed from Inlaid Library precedent"
+        }
+      ],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "STARDUST_MUD",
+        "STARDUST_HEAD"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "BOSS_XLMUMMY"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "STARDUST_MUMMY",
+        "STARDUST_MUD",
+        "STARDUST_HEAD"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "STARDUST_MUMMY"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [
+        {
+          "type": "medusa_wall",
+          "minute": 5,
+          "at": "5:00",
+          "enemy": "MEDUSA1_FAST",
+          "amount": 12,
+          "source_note": "wiki 'Medusa Wall'; enemy/amount assumed from Inlaid Library precedent"
+        },
+        {
+          "type": "medusa_swarm",
+          "minute": 5,
+          "at": "5:00",
+          "enemy": "MEDUSA1",
+          "amount": 12,
+          "chance_pct": 70,
+          "repeats": 5,
+          "repeat_delay_s": 5,
+          "source_note": "wiki 'Medusa Swarm' chance 70 repeat 5 delay 5000ms; enemy/amount assumed from Inlaid Library precedent"
+        }
+      ],
+      "bosses": [
+        "BOSS_XLMUMMY",
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "STARDUST_GHOUL"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "STARDUST_GHOUL",
+        "STARDUST_SKULL"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "STARDUST_SKULL"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "STARDUST_SKULL",
+        "STARDUST_MUD",
+        "STARDUST_HEAD"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [
+        {
+          "type": "shade_bomb",
+          "minute": 9,
+          "at": "9:00",
+          "enemy": "SHADERED",
+          "amount": 1,
+          "repeat_delay_s": 0.1,
+          "source_note": "wiki 'Shade Bomb Red'; enemy id SHADERED assumed from Inlaid Library precedent"
+        },
+        {
+          "type": "shade_bomb",
+          "minute": 9,
+          "at": "9:00",
+          "enemy": "SHADERED",
+          "amount": 2,
+          "chance_pct": 80,
+          "repeats": 3,
+          "repeat_delay_s": 10,
+          "source_note": "wiki 'Shade Bomb Red'; enemy id SHADERED assumed from Inlaid Library precedent"
+        }
+      ],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "STARDUST_EYES"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "STARDUST_EYES",
+        "STARDUST_EYES"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "STARDUST_EYES",
+        "STARDUST_MUD",
+        "STARDUST_HEAD"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "STARDUST_MUD",
+        "STARDUST_HEAD"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.3,
+      "events": [
+        {
+          "type": "shade_bomb",
+          "minute": 13,
+          "at": "13:00",
+          "enemy": "SHADERED",
+          "amount": 2,
+          "chance_pct": 50,
+          "repeats": 25,
+          "repeat_delay_s": 2,
+          "source_note": "wiki 'Shade Bomb Red'; enemy id SHADERED assumed from Inlaid Library precedent"
+        }
+      ],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "STARDUST_MUD",
+        "STARDUST_HEAD",
+        "STARDUST_GOLEM"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "STARDUST_GOLEM"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "COSMIC_EGG"
+      ]
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "STARDUST_XLMUMMY",
+        "STARDUST_MUMMY",
+        "STARDUST_EYES",
+        "STARDUST_SKULL",
+        "STARDUST_ELEMENTAL",
+        "STARDUST_GOLEM"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "STARDUST_JOE"
+      ]
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "STARDUST_CLOAK",
+        "STARDUST_XLMUMMY"
+      ],
+      "enemy_min": 100,
+      "spawn_interval_s": 0.3,
+      "events": [
+        {
+          "type": "shade_bomb",
+          "minute": 17,
+          "at": "17:00",
+          "enemy": "SHADERED",
+          "amount": 2,
+          "chance_pct": 50,
+          "repeats": 25,
+          "repeat_delay_s": 2,
+          "source_note": "wiki 'Shade Bomb Red'; enemy id SHADERED assumed from Inlaid Library precedent"
+        }
+      ],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "STARDUST_MUD",
+        "STARDUST_HEAD",
+        "STARDUST_EYES"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 0.3,
+      "events": [],
+      "bosses": [
+        "COSMIC_EGG"
+      ]
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "COSMIC_EGG"
+      ],
+      "enemy_min": 2,
+      "spawn_interval_s": 5.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [],
+      "enemy_min": 1,
+      "spawn_interval_s": 10,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "20:00: The Reaper spawns."
+    }
+  ],
+  "bosses": [
+    {
+      "minute": 1,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost"
+    },
+    {
+      "minute": 2,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost"
+    },
+    {
+      "minute": 3,
+      "enemy": "BOSS_XLMUMMY",
+      "name": "Big Mummy (boss)",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "BOSS_XLMUMMY",
+      "name": "Big Mummy (boss)"
+    },
+    {
+      "minute": 5,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        },
+        "evo": true
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 6,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 7,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost"
+    },
+    {
+      "minute": 9,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        },
+        "evo": true
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 12,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 13,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost"
+    },
+    {
+      "minute": 15,
+      "enemy": "COSMIC_EGG",
+      "name": "Cosmic Egg",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "STARDUST_JOE",
+      "name": "Lord Ghost"
+    },
+    {
+      "minute": 18,
+      "enemy": "COSMIC_EGG",
+      "name": "Cosmic Egg",
+      "chest": {
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1,
+        "evo": true
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLDEATH",
+      "name": "The Reaper"
+    }
+  ],
+  "unsupported_events": [
+    {
+      "type": "shooting_star",
+      "minute": 4,
+      "at": "4:00",
+      "variant": "Shooting Star",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 4,
+      "at": "4:00",
+      "variant": "Shooting Star2",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 6,
+      "at": "6:00",
+      "variant": "Shooting Star",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 6,
+      "at": "6:00",
+      "variant": "Shooting Star2",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 8,
+      "at": "8:00",
+      "variant": "Shooting Star",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 8,
+      "at": "8:00",
+      "variant": "Shooting Star2",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 12,
+      "at": "12:00",
+      "variant": "Shooting Star",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 12,
+      "at": "12:00",
+      "variant": "Shooting Star2",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 14,
+      "at": "14:00",
+      "variant": "Shooting Star",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 14,
+      "at": "14:00",
+      "variant": "Shooting Star2",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 16,
+      "at": "16:00",
+      "variant": "Shooting Star",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 16,
+      "at": "16:00",
+      "variant": "Shooting Star2",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 18,
+      "at": "18:00",
+      "variant": "Shooting Star",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 18,
+      "at": "18:00",
+      "variant": "Shooting Star2",
+      "delay_s": 5,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 10,
+      "at": "10:00",
+      "variant": "Shooting Star",
+      "delay_s": 1,
+      "chance_pct": 90,
+      "repeats": 25,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    },
+    {
+      "type": "shooting_star",
+      "minute": 10,
+      "at": "10:00",
+      "variant": "Shooting Star2",
+      "delay_s": 1,
+      "chance_pct": 90,
+      "repeats": 25,
+      "wiki_description": "Shooting Star: stars land 2 s after a marker near the player, 30 damage in area. Wiki wave row gives no amount/interval/range/enemy."
+    }
+  ],
+  "unsupported_events_note": "Shooting Star / Shooting Star2 rows have no enemy id or amount on the wiki; delay converted from ms (5000 -> 5 s). Chance 0 = guaranteed. Shade Bomb Red mapped as shade_bomb with SHADERED; Medusa Wall/Swarm mapped to existing kinds with MEDUSA1_FAST/MEDUSA1 x12 (Inlaid Library precedent; wiki gives no amounts). Boss chest tiers: tier3->5_item, tier2->3_item, tier1->1_item; '?' tiers on Arcana chests replaced by arcana type.",
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "20% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  },
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  }
+}

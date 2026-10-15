@@ -1,0 +1,608 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Moongolow (?action=raw wikitext, retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Jellyfish, Sneaky_Head, Serpentvine, Non-Giant_Enemy_Crab, Sig.ra_Blu, Merman, Ghost, Nightshade, Garlic_(enemy), Moongolow_Atlanteans (Statbox Enemy templates, retrieved 2026-09-29)",
+    "pickups, chest_rules and reaper blocks reuse the Dairy Plant / Mad Forest file content"
+  ],
+  "stage": {
+    "id": "MOONGOLOW",
+    "name": "Moongolow",
+    "duration_seconds": 900,
+    "spawn_type": "Standard: enemies approach from all four sides of the player",
+    "modifiers_normal_mode": {
+      "starting_spawns": 50,
+      "player_speed": 1.35,
+      "enemy_speed": 1.35,
+      "projectile_speed": 1,
+      "greed": 1,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "30% (max 60%)",
+      "destructible_max": 10
+    },
+    "modifiers_note": "Bonus stage (unlocked via hyper mode on four normal stages), 15:00 limit. Wiki infobox: luck shown as '-' (treated as x1). enemy_speed 1.35 is a multiplier not applied to enemy file speeds. Wiki stage id is SINKING; this project uses MOONGOLOW. Hyper mode not needed.",
+    "enemy_cap_rule": "Periodic spawning stops while 300 or more enemies are alive; only bosses and map-event enemies can still spawn (Map event page).",
+    "spawn_rule": "Each minute's wave has a minimum enemy count and a spawn interval. If alive count < minimum, spawn until the quota is filled; otherwise spawn one of each enemy type in the wave per interval. Bosses are teleported back onto screen rather than despawned.",
+    "map_event_chance_rule": "Event chance is divided by player Luck (chanceWithLuck = eventChance / totalLuck); evaluated per repeat; no chance or 0 means guaranteed.",
+    "eclipse_note": "The wiki lists Eclipse wave variants at 12:00-14:00 (Small Eyeball / Eyeball / Giant Eyeball, Moon Trinacria boss, Cry event with 120 eyes) that only occur for eligible characters. Not modelled; the Normal variant rows are used for waves and bosses.",
+    "stage_items": {
+      "passives": [
+        {
+          "group": "southwest of start",
+          "items": [
+            "Hollow Heart",
+            "Pummarola",
+            "Armor",
+            "Wings"
+          ]
+        },
+        {
+          "group": "northeast of start",
+          "items": [
+            "Spinach",
+            "Bracer",
+            "Spellbinder",
+            "Candelabrador"
+          ]
+        },
+        {
+          "group": "southeast of start",
+          "items": [
+            "Empty Tome",
+            "Duplicator",
+            "Tiragisu",
+            "Attractorb"
+          ]
+        },
+        {
+          "group": "northwest of start",
+          "items": [
+            "Clover",
+            "Crown",
+            "Stone Mask",
+            "Skull O'Maniac"
+          ]
+        }
+      ],
+      "passives_note": "16 unique non-DLC passives (all except Torrona's Box, Parm Aegis, Karoma's Mana), one of each guaranteed, on the floor around the spawn; Milky Way Map shows them.",
+      "hidden_with_yellow_sign": [
+        {
+          "item": "Silver Ring",
+          "position": "north"
+        },
+        {
+          "item": "Metaglio Right",
+          "position": "east"
+        },
+        {
+          "item": "Gold Ring",
+          "position": "south"
+        },
+        {
+          "item": "Metaglio Left",
+          "position": "west"
+        }
+      ],
+      "relics": [
+        {
+          "item": "Glass Vizard",
+          "position": "sold by the Merchant"
+        },
+        {
+          "item": "Emerald Disk",
+          "position": "sold by Xanthia (DLC only)"
+        },
+        {
+          "item": "Joker Disk",
+          "position": "sold by Xanthia (DLC only)"
+        }
+      ],
+      "npcs": [
+        "Merchant (always spawns here)",
+        "Healer",
+        "Eggman",
+        "Xanthia (DLC only, left side)"
+      ]
+    },
+    "destructibles": "Moon Anforas (see special_mechanics) plus standard light sources (30% chance, max 10).",
+    "layout": {
+      "shape": "open_field",
+      "size_note": "Not stated on the wiki. Sunken-city ruins; the four passive-item clusters sit NE/SE/SW/NW of the start, the four Yellow Sign relics N/E/S/W further out. Distances unknown.",
+      "obstacles": "Sparse: ruined walls/pillars of a drowned city with mostly open ground (details not on the wiki; estimate).",
+      "theme": "Sunken city under a full moon: pale blue sea-ruins, drowned stone streets, moonlit water tones; background turns red during the Lunar Eclipse variant.",
+      "special_mechanics": [
+        "Extra stage items: 16 passive items (4 clusters of 4 around the start: SW Hollow Heart/Pummarola/Armor/Wings; NE Spinach/Bracer/Spellbinder/Candelabrador; SE Empty Tome/Duplicator/Tiragisu/Attractorb; NW Clover/Crown/Stone Mask/Skull O'Maniac), one of each guaranteed.",
+        "Merchant always present (sells Glass Vizard); Healer and Eggman NPCs present; Xanthia only with DLC.",
+        "Moon Anfora clusters: every 10 s up to 18 amphoras (6 x Luck) spawn just off screen; each drops a Gold Coin auto-collected; despawn cap 100, teleported back to screen edge when far.",
+        "Jellyfish and Sneaky Heads are Fixed Direction: they cross the screen (jellyfish vertically, heads horizontally) in wavy patterns instead of chasing.",
+        "Moon Guardians (14:00) drop a Golden Egg; Reaper at 15:00, then one more per minute."
+      ]
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "MOON_JELLYFISH"
+      ],
+      "enemy_min": 50,
+      "spawn_interval_s": 3.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "MEDUSA1_MOON"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 4.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "MOON_SNEK"
+      ],
+      "enemy_min": 90,
+      "spawn_interval_s": 4.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "MEDUSA1_MOON"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 4.0,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_CRABBINO"
+      ]
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "MOON_JELLYFISH",
+        "MEDUSA1_MOON"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 4.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "MOON_SNEK"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 4.0,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_CRABBINO"
+      ]
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "MOON_GHOST"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 2.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "MOON_GHOST",
+        "SIGRA_BLU"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 2.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "MOON_FISHMAN"
+      ],
+      "enemy_min": 80,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_CRABBINO"
+      ]
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "MOON_SNEK_GREEN"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "MOON_CRABBINO"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_CRABBINO"
+      ]
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "MOON_NIGHTSHADE",
+        "MOON_GARLIC"
+      ],
+      "enemy_min": 120,
+      "spawn_interval_s": 2.0,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_NIGHTSHADE",
+        "MOON_BOSS_GARLIC"
+      ]
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "MOON_SNEK_GREEN"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_GARLIC"
+      ]
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "MOON_SNEK_GREEN",
+        "MOON_SNEK_RED"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.5,
+      "events": [],
+      "bosses": [
+        "MOON_BOSS_GARLIC"
+      ]
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "MOON_SNEK_RED"
+      ],
+      "enemy_min": 200,
+      "spawn_interval_s": 0.1,
+      "events": [],
+      "bosses": [
+        "MOON_MASK1",
+        "MOON_MASK1",
+        "MOON_MASK1"
+      ]
+    }
+  ],
+  "map_events": {
+    "map_events_note": "Moongolow has no periodic map events in the Normal wave table; only the Eclipse-only Cry event exists (120 Unknown 1S eyes circling the player at 14:00)."
+  },
+  "unsupported_events": [
+    {
+      "type": "cry",
+      "variant": "eclipse_only",
+      "minute": 14,
+      "at": "14:00",
+      "enemy": "Unknown 1S",
+      "amount": 120,
+      "wiki_description": "Cry: large amount of eyes circling the player at a set distance plus Moon Trinacria; defeating Moon Trinacria transports the player to Holy Forbidden. Only for Lunar Eclipse characters; not used."
+    }
+  ],
+  "unsupported_events_note": "Only the eclipse-variant Cry event; ignored.",
+  "bosses": [
+    {
+      "minute": 3,
+      "enemy": "MOON_BOSS_CRABBINO",
+      "name": "Giant Crabbino",
+      "chest": {
+        "fallback_level": 1,
+        "chance_pct": {
+          "5_item": 0.1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 5,
+      "enemy": "MOON_BOSS_CRABBINO",
+      "name": "Giant Crabbino",
+      "chest": {
+        "fallback_level": 1,
+        "reward": "weapon",
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 5,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 8,
+      "enemy": "MOON_BOSS_CRABBINO",
+      "name": "Giant Crabbino",
+      "chest": {
+        "fallback_level": 2,
+        "reward": "weapon",
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 50
+        }
+      }
+    },
+    {
+      "minute": 10,
+      "enemy": "MOON_BOSS_CRABBINO",
+      "name": "Giant Crabbino",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "MOON_BOSS_NIGHTSHADE",
+      "name": "Colossal Moon Nightshade",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 11,
+      "enemy": "MOON_BOSS_GARLIC",
+      "name": "Colossal Moon Garlic (Arcana holder)",
+      "chest": {
+        "type": "arcana",
+        "chance_pct": {
+          "1_item": 100
+        }
+      },
+      "arcana_only": true
+    },
+    {
+      "minute": 12,
+      "enemy": "MOON_BOSS_GARLIC",
+      "name": "Colossal Moon Garlic",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 13,
+      "enemy": "MOON_BOSS_GARLIC",
+      "name": "Colossal Moon Garlic",
+      "chest": {
+        "fallback_level": 1,
+        "evo": true,
+        "chance_pct": {
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
+        }
+      }
+    },
+    {
+      "minute": 14,
+      "enemy": "MOON_MASK1",
+      "name": "Moon Guardian",
+      "chest": null,
+      "note": "no chest; drops a Golden Egg on death"
+    },
+    {
+      "minute": 14,
+      "enemy": "MOON_MASK1",
+      "name": "Moon Guardian",
+      "chest": null,
+      "note": "no chest; drops a Golden Egg on death"
+    },
+    {
+      "minute": 14,
+      "enemy": "MOON_MASK1",
+      "name": "Moon Guardian",
+      "chest": null,
+      "note": "no chest; drops a Golden Egg on death"
+    }
+  ],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "15:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 10,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "30% base (stage), multiplied by Luck, capped at 60%",
+    "spawn_location": "predetermined possible spawn locations in this stage (Light source page); Mad Forest spawns them in an oval around the player",
+    "cap_behaviour": "when at cap, a new spawn appears nearest the player and the oldest despawns",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAGMAX",
+        "name": "Rich Coin Bag",
+        "weight": 1,
+        "min_player_level": 5
+      },
+      {
+        "pickup": "ROSARY",
+        "weight": 1,
+        "min_player_level": 8
+      },
+      {
+        "pickup": "NFT",
+        "name": "Nduja Fritta Tanto",
+        "weight": 1,
+        "min_player_level": 0,
+        "available_in_mad_forest": "not listed in the availability columns for other stages; Mad Forest availability not explicit on wiki (unknown)"
+      },
+      {
+        "pickup": "OROLOGION",
+        "weight": 2,
+        "min_player_level": 4
+      },
+      {
+        "pickup": "VACUUM",
+        "weight": 2,
+        "min_player_level": 12
+      },
+      {
+        "pickup": "ROAST",
+        "name": "Floor Chicken",
+        "weight": 12,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "GILDEDCLOVER",
+        "name": "Gilded Clover",
+        "weight": 1,
+        "min_player_level": 30,
+        "note": "column availability listed only for special stages; unclear for Mad Forest"
+      },
+      {
+        "pickup": "CLOVER",
+        "name": "Little Clover",
+        "weight": 1,
+        "min_player_level": 0,
+        "wiki_rarity_field": 0.5,
+        "note": "table weight 1 vs pickup infobox rarity 0.5"
+      }
+    ],
+    "luck_note": "Luck increases chance of pickups other than Gold Coin and Coin Bag.",
+    "drops_note": "Drop table copied from the Mad Forest file (Light source page table); per-stage availability for the Library not verified beyond that table."
+  },
+  "pickups": {
+    "floor_chicken": {
+      "id": "ROAST",
+      "effect": "heal 30 HP",
+      "weight": 12
+    },
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    },
+    "rich_coin_bag": {
+      "id": "COINBAGMAX",
+      "gold": 100,
+      "greed_multiplied": true
+    },
+    "rosary": {
+      "id": "ROSARY",
+      "effect": "kills all enemies (on screen) that are not immune to instant kill; bosses/Reaper resistant",
+      "min_level": 8,
+      "weight": 1
+    },
+    "orologion": {
+      "id": "OROLOGION",
+      "effect": "freezes all enemies for 10 seconds; frozen enemies do not move or damage the player and can be pushed by walking into them; newly spawned enemies also freeze",
+      "duration_s": 10,
+      "min_level": 4,
+      "weight": 2
+    },
+    "vacuum": {
+      "id": "VACUUM",
+      "effect": "pulls all Experience Gems on the ground to the player; ignores other pickups; takes time to arrive",
+      "min_level": 12,
+      "weight": 2
+    },
+    "little_clover": {
+      "id": "CLOVER",
+      "effect": "+10% Luck"
+    },
+    "nduja": {
+      "id": "NFT",
+      "effect": "player breathes fire in facing direction for 10 s (damage 30, cooldown 0.5s, interval 0.04s per weapon table)"
+    }
+  }
+}

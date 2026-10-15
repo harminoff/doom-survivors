@@ -1,0 +1,19 @@
+{
+  "fixture_id": "P025-ATTACKS-001",
+  "classification": "SYNTHETIC_ENGINEERING_RUNTIME_HARNESS",
+  "map_name": "MAP11",
+  "purpose": "Run concurrent automatic attack scheduling, hit transactions, status hooks and generation-safe cleanup",
+  "room": [[-768,-512],[-768,512],[768,512],[768,-512]],
+  "landmark": [[-128,-128],[128,-128],[128,128],[-128,128]],
+  "floor": 0,
+  "ceiling": 192,
+  "light": 224,
+  "player": {"x": 0, "y": 0, "angle": 0},
+  "presentation_fixture_ownership": "NONE",
+  "presentation_fixtures": [],
+  "source_parity": "OPEN_SYNTHETIC_ENGINEERING_HARNESS",
+  "notes": [
+    "Timings, damage and status payloads are engineering fixtures for shared ownership and ordering.",
+    "The packaged runtime calls DSP024SpatialIndex for candidate discovery and keeps exact hit eligibility in P025."
+  ]
+}

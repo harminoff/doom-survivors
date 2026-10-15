@@ -1,0 +1,594 @@
+{
+ "1": {
+  "name": "Whip",
+  "kind": "weapon",
+  "text": "Slashes in front and behind alternately"
+ },
+ "2": {
+  "name": "Spinach",
+  "kind": "passive",
+  "text": "+10% Might per level"
+ },
+ "3": {
+  "name": "Armor",
+  "kind": "passive",
+  "text": "-1 damage taken per level"
+ },
+ "5": {
+  "name": "Hollow Heart",
+  "kind": "passive",
+  "text": "+20% max health per level"
+ },
+ "6": {
+  "name": "Bloody Tear",
+  "kind": "weapon",
+  "text": "Whip evolution: wider slashes; crits heal you"
+ },
+ "7": {
+  "name": "Empty Tome",
+  "kind": "passive",
+  "text": "-8% weapon cooldown per level"
+ },
+ "8": {
+  "name": "Pummarola",
+  "kind": "passive",
+  "text": "+0.2 health regen per level"
+ },
+ "9": {
+  "name": "Duplicator",
+  "kind": "passive",
+  "text": "+1 projectile per weapon per level"
+ },
+ "10": {
+  "name": "Crown",
+  "kind": "passive",
+  "text": "+8% experience gain per level"
+ },
+ "34": {
+  "name": "Magic Wand",
+  "kind": "weapon",
+  "text": "Fires at the nearest enemy"
+ },
+ "35": {
+  "name": "Holy Wand",
+  "kind": "weapon",
+  "text": "Wand evolution: fires at the nearest with no delay"
+ },
+ "36": {
+  "name": "Knife",
+  "kind": "weapon",
+  "text": "Throws fast knives in the facing direction"
+ },
+ "37": {
+  "name": "Thousand Edge",
+  "kind": "weapon",
+  "text": "Knife evolution: a constant stream of piercing blades"
+ },
+ "38": {
+  "name": "Axe",
+  "kind": "weapon",
+  "text": "Throws axes in a high arc that fall back, piercing"
+ },
+ "39": {
+  "name": "Death Spiral",
+  "kind": "weapon",
+  "text": "Axe evolution: huge piercing axes that spiral outward"
+ },
+ "40": {
+  "name": "Fire Wand",
+  "kind": "weapon",
+  "text": "Spits fireballs at a random enemy"
+ },
+ "41": {
+  "name": "Hellfire",
+  "kind": "weapon",
+  "text": "Fire Wand evolution: huge fireballs pierce everything"
+ },
+ "42": {
+  "name": "Cross",
+  "kind": "weapon",
+  "text": "Boomerang that flies out and comes back"
+ },
+ "43": {
+  "name": "Heaven Sword",
+  "kind": "weapon",
+  "text": "Cross evolution: faster, bigger, can crit"
+ },
+ "44": {
+  "name": "King Bible",
+  "kind": "weapon",
+  "text": "Books orbit you and hit nearby enemies"
+ },
+ "45": {
+  "name": "Unholy Vespers",
+  "kind": "weapon",
+  "text": "Bible evolution: faster orbit, books last forever"
+ },
+ "46": {
+  "name": "Santa Water",
+  "kind": "weapon",
+  "text": "Lobs flasks that leave damaging fire pools"
+ },
+ "47": {
+  "name": "La Borra",
+  "kind": "weapon",
+  "text": "Water evolution: huge pools that follow you"
+ },
+ "48": {
+  "name": "Garlic",
+  "kind": "weapon",
+  "text": "Aura that damages and pushes back nearby enemies"
+ },
+ "49": {
+  "name": "Soul Eater",
+  "kind": "weapon",
+  "text": "Garlic evolution: bigger aura; kills drop healing hearts"
+ },
+ "50": {
+  "name": "Lightning Ring",
+  "kind": "weapon",
+  "text": "Lightning strikes random enemies"
+ },
+ "51": {
+  "name": "Thunder Loop",
+  "kind": "weapon",
+  "text": "Ring evolution: lightning strikes twice in a row"
+ },
+ "52": {
+  "name": "Pentagram",
+  "kind": "weapon",
+  "text": "Erases all enemies around you, then recharges"
+ },
+ "53": {
+  "name": "Gorgeous Moon",
+  "kind": "weapon",
+  "text": "Pentagram evolution: wipes enemies, gathers all gems"
+ },
+ "54": {
+  "name": "Runetracer",
+  "kind": "weapon",
+  "text": "Bouncing rune that rebounds off the walls around you"
+ },
+ "55": {
+  "name": "No Future",
+  "kind": "weapon",
+  "text": "Runetracer evolution: explodes on bounces and when hurt"
+ },
+ "56": {
+  "name": "Bone",
+  "kind": "weapon",
+  "text": "Bones bounce off walls and enemies"
+ },
+ "57": {
+  "name": "Cherry Bomb",
+  "kind": "weapon",
+  "text": "Bomb bounces, slows down, may burst into smaller bombs"
+ },
+ "58": {
+  "name": "Carr\u00e9llo",
+  "kind": "weapon",
+  "text": "Cart charges at enemies near you and bounces once"
+ },
+ "59": {
+  "name": "Peachone",
+  "kind": "weapon",
+  "text": "Birds circle you and bomb the ground around you"
+ },
+ "60": {
+  "name": "Ebony Wings",
+  "kind": "weapon",
+  "text": "Dark birds circle the other way and bomb the ground"
+ },
+ "61": {
+  "name": "Vandalier",
+  "kind": "weapon",
+  "text": "Union: peachone and ebony wings fly together"
+ },
+ "62": {
+  "name": "Phiera Der Tuphello",
+  "kind": "weapon",
+  "text": "Red gun fires in a shifting diagonal pattern"
+ },
+ "63": {
+  "name": "Eight The Sparrow",
+  "kind": "weapon",
+  "text": "White gun fires in a shifting diagonal pattern"
+ },
+ "64": {
+  "name": "Phieraggi",
+  "kind": "weapon",
+  "text": "Union: four rotating beams that pierce everything"
+ },
+ "65": {
+  "name": "Vento Sacro",
+  "kind": "weapon",
+  "text": "Slashes ahead; stronger the longer you keep moving"
+ },
+ "66": {
+  "name": "Fuwalafuwaloo",
+  "kind": "weapon",
+  "text": "Union: wind and blood slashes; crits drain health"
+ },
+ "67": {
+  "name": "Bracelet",
+  "kind": "weapon",
+  "text": "Fires bursts of shots at the nearest enemy"
+ },
+ "68": {
+  "name": "Bi-Bracelet",
+  "kind": "weapon",
+  "text": "Bracelet evolution: more bursts, each hits harder"
+ },
+ "69": {
+  "name": "Tri-Bracelet",
+  "kind": "weapon",
+  "text": "Bi-Bracelet evolution: bursts split on impact"
+ },
+ "70": {
+  "name": "Tirajisu",
+  "kind": "passive",
+  "text": "+1 revival per level"
+ },
+ "71": {
+  "name": "Attractorb",
+  "kind": "passive",
+  "text": "+50% pickup range, then +25% per level"
+ },
+ "72": {
+  "name": "Candelabrador",
+  "kind": "passive",
+  "text": "+10% area per level"
+ },
+ "73": {
+  "name": "Clover",
+  "kind": "passive",
+  "text": "+10% luck per level"
+ },
+ "74": {
+  "name": "Bracer",
+  "kind": "passive",
+  "text": "+10% projectile speed per level"
+ },
+ "75": {
+  "name": "Spellbinder",
+  "kind": "passive",
+  "text": "+10% effect duration per level"
+ },
+ "76": {
+  "name": "Gatti Amari",
+  "kind": "weapon",
+  "text": "Summons cats that roam and claw nearby enemies"
+ },
+ "77": {
+  "name": "Vicious Hunger",
+  "kind": "weapon",
+  "text": "Gatti Amari evolution: cats can turn foes into gold"
+ },
+ "78": {
+  "name": "Song of Mana",
+  "kind": "weapon",
+  "text": "Columns of light drop from the sky near you"
+ },
+ "79": {
+  "name": "Mannajja",
+  "kind": "weapon",
+  "text": "Mana song evolution: wider beams that slow foes"
+ },
+ "80": {
+  "name": "Shadow Pinion",
+  "kind": "weapon",
+  "text": "Leaves a damaging trail as you move, bursts on stop"
+ },
+ "81": {
+  "name": "Valkyrie Turner",
+  "kind": "weapon",
+  "text": "Pinion evolution: a longer, bigger trail and burst"
+ },
+ "82": {
+  "name": "Clock Lancet",
+  "kind": "weapon",
+  "text": "No damage, can freeze enemies in time"
+ },
+ "83": {
+  "name": "Infinite Corridor",
+  "kind": "weapon",
+  "text": "Lancet evolution: halves the health of hit enemies"
+ },
+ "84": {
+  "name": "Laurel",
+  "kind": "weapon",
+  "text": "Shield blocks all damage briefly, then recharges"
+ },
+ "85": {
+  "name": "Crimson Shroud",
+  "kind": "weapon",
+  "text": "Laurel evolution: caps damage taken and retaliates"
+ },
+ "86": {
+  "name": "Celestial Dusting",
+  "kind": "weapon",
+  "text": "Bouncing shot, faster cooldown as you move"
+ },
+ "87": {
+  "name": "Profusione D'Amore",
+  "kind": "weapon",
+  "text": "Dusting evolution: bounces and chain explosions"
+ },
+ "88": {
+  "name": "La Robba",
+  "kind": "weapon",
+  "text": "Fires many bouncing projectiles around the area"
+ },
+ "89": {
+  "name": "Greatest Jubilee",
+  "kind": "weapon",
+  "text": "Holy blasts rain down at random around you"
+ },
+ "90": {
+  "name": "Candybox",
+  "kind": "weapon",
+  "text": "Grants an extra weapon draft to pick from"
+ },
+ "91": {
+  "name": "Victory Sword",
+  "kind": "weapon",
+  "text": "Sword slashes fly at the nearest enemy"
+ },
+ "92": {
+  "name": "Flames of Misspell",
+  "kind": "weapon",
+  "text": "Sweeping cones of flame from your position"
+ },
+ "93": {
+  "name": "Ashes of Muspell",
+  "kind": "weapon",
+  "text": "Flames evolution: grows with every enemy killed"
+ },
+ "94": {
+  "name": "Pako Battiliar",
+  "kind": "weapon",
+  "text": "Retaliates with an attack when you are hurt"
+ },
+ "95": {
+  "name": "Mazo Familiar",
+  "kind": "weapon",
+  "text": "Pako evolution: damage and amount scale with max health"
+ },
+ "96": {
+  "name": "Ammo Appalate",
+  "kind": "weapon",
+  "text": "Fires forward and stockpiles shots until enemies appear"
+ },
+ "97": {
+  "name": "Gunastrophe",
+  "kind": "weapon",
+  "text": "Ammo evolution: fires at any enemy in line of sight"
+ },
+ "98": {
+  "name": "Unearthly Bolt",
+  "kind": "weapon",
+  "text": "Crits by any weapon leave damage zones"
+ },
+ "99": {
+  "name": "Spirit Disturbance",
+  "kind": "weapon",
+  "text": "Bolt evolution: zones always deal critical hits"
+ },
+ "102": {
+  "name": "Glass Fandango",
+  "kind": "weapon",
+  "text": "Aimed shot; scales with Speed, hits frozen foes harder"
+ },
+ "103": {
+  "name": "Celestial Voulge",
+  "kind": "weapon",
+  "text": "Fandango evolution: crits and freezes what it hits"
+ },
+ "104": {
+  "name": "Penshin Fatcha",
+  "kind": "weapon",
+  "text": "Tuna weapon: gains a random tuna form each level"
+ },
+ "105": {
+  "name": "Tonno Subito",
+  "kind": "weapon",
+  "text": "Tuna form: speed-focused upgrades"
+ },
+ "106": {
+  "name": "Tonnado",
+  "kind": "weapon",
+  "text": "Tuna form: duration-focused upgrades"
+ },
+ "107": {
+  "name": "Tonn'omoto",
+  "kind": "weapon",
+  "text": "Tuna form: cooldown-focused upgrades"
+ },
+ "108": {
+  "name": "Tonn'oddeeo",
+  "kind": "weapon",
+  "text": "Tuna form: amount-focused upgrades"
+ },
+ "109": {
+  "name": "Tonne",
+  "kind": "weapon",
+  "text": "Tuna form: area-focused upgrades"
+ },
+ "110": {
+  "name": "Unsurpassed",
+  "kind": "weapon",
+  "text": "Tuna form: might-focused upgrades"
+ },
+ "111": {
+  "name": "Miracle of Multiplication",
+  "kind": "weapon",
+  "text": "Tuna finale: all tuna forms fire at once"
+ },
+ "112": {
+  "name": "Santa Javelin",
+  "kind": "weapon",
+  "text": "Throws javelins that can crit"
+ },
+ "113": {
+  "name": "Seraphic Cry",
+  "kind": "weapon",
+  "text": "Javelin evolution: bigger crits that scale with luck"
+ },
+ "114": {
+  "name": "Gaze of Gaea",
+  "kind": "weapon",
+  "text": "Damage zones land on nearby enemies"
+ },
+ "115": {
+  "name": "Embrace of Gaea",
+  "kind": "weapon",
+  "text": "Gaze evolution: double damage while invulnerable"
+ },
+ "116": {
+  "name": "Magi-Stone",
+  "kind": "weapon",
+  "text": "Fixed damage that grows with weapon level"
+ },
+ "117": {
+  "name": "Kyra-Stones",
+  "kind": "weapon",
+  "text": "Magi-Stone evolution: hits more with more enemies on screen"
+ },
+ "118": {
+  "name": "Phas3r",
+  "kind": "weapon",
+  "text": "Thin laser zones on nearby enemies; more with Amount"
+ },
+ "119": {
+  "name": "Photonstorm",
+  "kind": "weapon",
+  "text": "Phas3r evolution: many more beams, scaling with luck"
+ },
+ "120": {
+  "name": "Chaos Rune",
+  "kind": "weapon",
+  "text": "Wild magic zones, speed and duration add hits"
+ },
+ "121": {
+  "name": "Wicked Ruler",
+  "kind": "weapon",
+  "text": "Chaos Rune evolution: tighter control of wild magic"
+ },
+ "122": {
+  "name": "Arma Dio",
+  "kind": "weapon",
+  "text": "Grants an extra passive item choice"
+ },
+ "123": {
+  "name": "Anima of Mortaccio",
+  "kind": "weapon",
+  "text": "Bone evolution: bones speed up with each bounce"
+ },
+ "124": {
+  "name": "Yatta Daikarin",
+  "kind": "weapon",
+  "text": "Cherry Bomb evolution: extra explosions that can crit"
+ },
+ "125": {
+  "name": "Carrozza!",
+  "kind": "weapon",
+  "text": "Carrello evolution: duration, speed, area boost damage"
+ },
+ "126": {
+  "name": "Stone Mask",
+  "kind": "passive",
+  "text": "+10% coin gain per level"
+ },
+ "127": {
+  "name": "Skull O'Maniac",
+  "kind": "passive",
+  "text": "+10% curse per level: tougher, more enemies"
+ },
+ "128": {
+  "name": "Wings",
+  "kind": "passive",
+  "text": "+10% move speed per level"
+ },
+ "129": {
+  "name": "Silver Ring",
+  "kind": "passive",
+  "text": "+5% duration and area per level"
+ },
+ "130": {
+  "name": "Metaglio Left",
+  "kind": "passive",
+  "text": "+0.1 regen and +5% max health per level"
+ },
+ "131": {
+  "name": "Metaglio Right",
+  "kind": "passive",
+  "text": "+5% curse per level"
+ },
+ "132": {
+  "name": "Chaos Altemanna",
+  "kind": "weapon",
+  "text": "Relic: lets Celestial Dusting morph at level 80"
+ },
+ "133": {
+  "name": "Torrona's Box",
+  "kind": "passive",
+  "text": "+4% might, speed, duration, area per level"
+ },
+ "134": {
+  "name": "Parm Aegis",
+  "kind": "passive",
+  "text": "+50 ms invulnerability after a hit per level"
+ },
+ "135": {
+  "name": "Karoma's Mana",
+  "kind": "passive",
+  "text": "+10 charm and +10% Gold Fever per level"
+ },
+ "136": {
+  "name": "Chaos Malachite",
+  "kind": "weapon",
+  "text": "Relic: lets Bone morph at level 80"
+ },
+ "137": {
+  "name": "Chaos Rosalia",
+  "kind": "weapon",
+  "text": "Relic: lets Cherry Bomb morph at level 80"
+ },
+ "138": {
+  "name": "Chaos Lazulia",
+  "kind": "weapon",
+  "text": "Relic: lets Carrello morph at level 80"
+ },
+ "unverified": [
+  3,
+  6,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  52,
+  53,
+  56,
+  59,
+  60,
+  61,
+  62,
+  63,
+  64,
+  65,
+  66,
+  67,
+  68,
+  69,
+  76,
+  77,
+  132,
+  136,
+  137,
+  138,
+  96,
+  97
+ ]
+}

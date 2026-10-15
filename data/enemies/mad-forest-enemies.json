@@ -1,0 +1,57 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Pipeestrello",
+    "https://vampire.survivors.wiki/w/Zombie",
+    "https://vampire.survivors.wiki/w/Skeleton",
+    "https://vampire.survivors.wiki/w/Ghost",
+    "https://vampire.survivors.wiki/w/Mudman",
+    "https://vampire.survivors.wiki/w/Mantichana",
+    "https://vampire.survivors.wiki/w/Werewolf",
+    "https://vampire.survivors.wiki/w/Giant_Bat",
+    "https://vampire.survivors.wiki/w/Big_Mummy",
+    "https://vampire.survivors.wiki/w/Flower_Wall",
+    "https://vampire.survivors.wiki/w/Venus",
+    "https://vampire.survivors.wiki/w/The_Reaper",
+    "retrieved 2026-09-28 via api.php?action=parse wikitext"
+  ],
+  "field_notes": {
+    "hp": "max health at spawn before stage multiplier (Mad Forest enemy_health = 1.0)",
+    "power": "contact damage before player Armor",
+    "speed": "wiki MoveSpeed units (player base speed unit is not stated on these pages; treat as relative)",
+    "knockback": "multiplier on weapon knockback (0 = wiki lists 0, i.e. described as semi/fully resistant depending on page text; negative = pulled toward player)",
+    "knockback_max": "wiki 'knockback-max' field",
+    "hp_x_level": "true means health is multiplied by the player's level at spawn time"
+  },
+  "enemies": {
+    "BAT1": {"name": "Pipeestrello 1 (Little Pipeestrello)", "hp": 1, "power": 5, "speed": 140, "knockback": 1, "knockback_max": 3, "xp": 1, "special": "chases player; wiki lists freeze/kill/debuff resistance 0"},
+    "BAT2": {"name": "Pipeestrello 2 (Red-Eyed Pipeestrello 1)", "hp": 5, "power": 5, "speed": 140, "knockback": 1, "knockback_max": 3, "xp": 1, "special": "chases player"},
+    "BAT3": {"name": "Pipeestrello 3 (Red-Eyed Pipeestrello 2)", "hp": 5, "power": 5, "speed": 140, "knockback": 1, "knockback_max": 3, "xp": 1, "special": "chases player"},
+    "BAT4": {"name": "Pipeestrello 4 (Glowing Bat)", "hp": 50, "power": 10, "speed": 140, "knockback": 1, "knockback_max": 3, "xp": 30, "hp_x_level": true, "special": "boss; HP x player level; Arcana-holder variant spawns at 11:00 and 21:00 only when Arcanas enabled; also appears as a regular enemy in minutes 28-29"},
+    "BAT5": {"name": "Pipeestrello 5 (Silver Bat)", "hp": 50, "power": 10, "speed": 140, "knockback": 1, "knockback_max": 3, "xp": 30, "hp_x_level": true, "special": "boss; HP x player level; also regular enemy in minute 29"},
+    "BATSWARM": {"name": "Pipeestrello (swarm)", "hp": 1, "power": 1, "speed": 700, "knockback": 1, "knockback_max": 3, "xp": 1, "special": "Fixed Direction: moves in a straight line, does not target the player, pushes other enemies; immune to defang"},
+    "ZOMBIE": {"name": "Zombie", "hp": 10, "power": 10, "speed": 100, "knockback": 0.8, "knockback_max": 3, "xp": 1, "special": "reduced knockback; three colour variants, same stats"},
+    "SKELETON": {"name": "Skeleton", "hp": 15, "power": 10, "speed": 100, "knockback": 1, "knockback_max": 3, "xp": 2, "special": "variants SKELETON..SKELETON4 (same stats); no ranged behaviour listed"},
+    "GHOST": {"name": "Ghost 1", "hp": 10, "power": 5, "speed": 200, "knockback": 0, "knockback_max": 3, "xp": 1.5, "special": "page text: semi-resistant to knockback; spawns 2 units at a time in minute 13"},
+    "GHOSTSWARM": {"name": "Ghost (swarm)", "hp": 10, "power": 5, "speed": 700, "knockback": 0, "knockback_max": 3, "xp": 1.5, "special": "Fixed Direction: straight line, pushes other enemies"},
+    "MUDMAN1": {"name": "Mudman 1 (Gray Mudman)", "hp": 70, "power": 10, "speed": 100, "knockback": 0.3, "knockback_max": 3, "xp": 2.5, "special": "reduced knockback"},
+    "MUDMAN2": {"name": "Mudman 2 (Green Mudman)", "hp": 150, "power": 10, "speed": 100, "knockback": 0.3, "knockback_max": 3, "xp": 2.5, "special": "reduced knockback"},
+    "WEREWOLF": {"name": "Werewolf", "hp": 180, "power": 14, "speed": 130, "knockback": 0.8, "knockback_max": 3, "xp": 2, "special": "reduced knockback"},
+    "BOSS_WEREWOLF": {"name": "Werewolf 1 boss (Giant Werewolf)", "hp": 200, "power": 20, "speed": 130, "knockback": 0.1, "knockback_max": 1, "xp": 2, "hp_x_level": true, "scale": 1.5, "special": "boss, 1.5x size, HP x player level"},
+    "XLBAT": {"name": "Giant Bat", "hp": 270, "power": 10, "speed": 140, "knockback": 0.1, "knockback_max": 3, "xp": 2.5, "special": "semi-resistant to knockback; upper wing area has no collision (passes partly through walls/enemies); wiki gives no internal id for the normal variant (id null); the 8:00 boss instance uses the same statbox (boss-specific stats unknown)", "id_note": "internal id unknown"},
+    "XLMANTIS": {"name": "Mantichana", "hp": 500, "power": 20, "speed": 80, "knockback": 0, "knockback_max": 3, "xp": 3, "special": "semi-resistant to knockback; used as the 5:00 boss with these normal stats (wiki lists no separate boss stats for that instance) and as a regular enemy at 16:00"},
+    "BOSS_XLMANTIS": {"name": "Mantichana (boss) (Giant Mantichana)", "hp": 150, "power": 20, "speed": 160, "knockback": 0, "knockback_max": 1, "xp": 50, "hp_x_level": true, "scale": 1.5, "resist_freeze": 1.1, "special": "boss, HP x player level, partially resistant to freeze"},
+    "XLMUMMY": {"name": "Big Mummy", "hp": 500, "power": 20, "speed": 80, "knockback": 0, "knockback_max": 3, "xp": 3, "special": "semi-resistant to knockback; same statline as Mantichana and Venus"},
+    "BOSS_XLMUMMY": {"name": "Big Mummy (boss) (Giant Mummy)", "hp": 250, "power": 20, "speed": 80, "knockback": 0, "knockback_max": 1, "xp": 25, "hp_x_level": true, "scale": 1.5, "resist_freeze": 1.1, "special": "boss, HP x player level"},
+    "FLOWER": {"name": "Flower Wall", "hp": 30, "power": 1, "speed": 20, "knockback": 1, "knockback_max": 3, "xp": 2, "hp_x_level": true, "special": "very slow; HP x player level; page text says reduced knockback; used in the Flower Wall ring event and as a regular enemy minutes 21-24, 26"},
+    "XLFLOWER": {"name": "Venus", "hp": 500, "power": 20, "speed": 80, "knockback": 0, "knockback_max": 3, "xp": 3, "special": "semi-resistant to knockback; 21:00 and 24:00 boss instances use these stats (no separate boss stats listed); regular enemy 25-26"},
+    "BOSS_XLFLOWER": {"name": "Giant Blue Venus", "hp": 150, "power": 30, "speed": 160, "knockback": 0, "knockback_max": 1, "xp": 50, "hp_x_level": true, "scale": 1.5, "resist_freeze": 1.1, "special": "boss, HP x player level; first kill unlocks Hyper Mad Forest"},
+    "BOSS_XLDEATH": {"name": "The Reaper", "hp": 655350, "power": 65535, "speed": 1200, "knockback": -0.5, "knockback_max": 0, "xp": 0, "hp_x_level": true, "resist_freeze": 1, "resist_kill": 1, "resist_debuff": 1, "resist_defang": 1, "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"}
+  },
+  "unknowns": [
+    "Wiki gives HP x Level as a multiplier but not the exact formula for how level maps (assumed hp * playerLevel per the Map event page 'multiplies the enemy's health based on the player's level').",
+    "Speed unit vs player MoveSpeed unit not stated.",
+    "Giant Bat has no internal id on the wiki; boss instance at 8:00 stats not separately listed.",
+    "Mantichana/Big Mummy/Venus 'boss' entries at 5:00, 21:00, 24:00 use the normal statbox per wiki wording ('first appears as a boss').",
+    "Boss enemies' xp values are given per the wiki; boss gem drop behaviour not detailed."
+  ]
+}

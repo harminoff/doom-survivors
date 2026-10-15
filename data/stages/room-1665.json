@@ -1,0 +1,534 @@
+{
+  "sources": [
+    "https://vampire.survivors.wiki/w/Room_1665 (?action=raw wikitext, retrieved 2026-09-29)",
+    "https://vampire.survivors.wiki/w/Darkasso",
+    "Enemy pages: Ska'sa Ka'sos, Juda R'kasso, Foo'Ori Darkasso, Shendi Darkasso, Sphon'Dato Darkasso, Eh'Lleve-Teh Darkasso, Levatee Darkasso, Levarsee Darkasso",
+    "GAP: the wiki has no wave table, boss table or map events for Room 1665; waves here are a placeholder progression. pickups, chest_rules and reaper reuse other-stage file content."
+  ],
+  "stage": {
+    "id": "ROOM1665",
+    "name": "Room 1665",
+    "duration_seconds": 1800,
+    "type": "Hidden stage (unlocked by casting the spell 'forbiddenbox'); wiki id DEVILROOM",
+    "spawn_type": "Standard-style spawns, but enemies do NOT despawn when outrun or off-screen",
+    "modifiers_normal_mode": {
+      "starting_spawns": 0,
+      "player_speed": 1.9,
+      "enemy_speed": 1.9,
+      "projectile_speed": 1.15,
+      "greed": 1.5,
+      "luck": 1,
+      "xp": 1,
+      "enemy_health": 1,
+      "enemy_min_multiplier": 1,
+      "destructible_chance": "50% (max 80%)",
+      "destructible_max": 20
+    },
+    "modifiers": {
+      "enemy_health_per_level": 1.0,
+      "health_scaling_note": "Enemies carry 'HP x Level': health multiplier = player level (1 + 1.0*(level-1)). The wiki lists per-enemy hp as ranges (e.g. Ska'sa Ka'sos 5-50) without explaining them; treated as base hp x player level."
+    },
+    "modifiers_note": "Wiki infobox: player-speed x1.9, enemy-speed x1.9, projectile-speed x1.15, greed x1.5, luck x1, enemy-health x1, enemy-min 20, starting spawns 0, dchance 50% (max 80%), dmax 20. All modifiers except Arcanas and Limit Break are disabled; Curse, Charm and Power Creep options are disabled. enemy_min_multiplier is 1 here; the infobox enemy-min 20 is the base minimum used in waves.",
+    "enemy_cap_rule": "Not documented for this stage.",
+    "spawn_rule": "Wave data not on the wiki. Enemy types change depending on rooms unlocked and time elapsed; bosses have less health than non-boss enemies.",
+    "map_event_chance_rule": "No map events documented.",
+    "stage_items": {
+      "passives": [],
+      "pickups": [],
+      "relics": [
+        {
+          "item": "Darkasso",
+          "position": "center of the last (16th) room, due south; unlocked after 1665 total kills"
+        }
+      ],
+      "hidden_with_yellow_sign": []
+    },
+    "destructibles": "Light sources (blue brazier) at predictable fixed positions, ~11-12 per corridor between rooms; slowly respawn.",
+    "layout": {
+      "shape": "vertical_corridor",
+      "size_note": "16 rooms including the spawn room, stacked southward and linked by corridors; player starts in a small locked room. Room dimensions not given on the wiki.",
+      "obstacles": "Solid walls and locked doors; rooms and corridors are closed. Braziers (light sources) line the corridors (~11-12 each).",
+      "theme": "Infernal, bottomless haunted halls in a huge contraption; darkens progressively with each unlocked room and lights up fully when the final room opens. Blood drips from the top of the screen after enough kills; occasional flashes of a large wall eye, arm shadows reaching up, and a toothy mouth outside the room. Music: Call of the Bloodmoon.",
+      "special_mechanics": "Enemy health scales with player level: enemy HP multiplier = player level (HP x Level, i.e. 1 + 1.0*(level-1)). +90% move speed (player and enemy x1.9), +50% gold (greed x1.5). Door progression by TOTAL KILLS: rooms unlock at 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400 and 1665 kills (15 unlocks -> 16 rooms). Starts locked in the small spawn room. No Arcana pick at start: the Arcana chest lies in the room unlocked at 100 kills. Enemies never despawn when outrun. Stage gets darker each room unlocked; fully lit at the final room. Darkasso relic in the final room ends the point of the run (wiki: little point continuing after 1665 kills). Only Arcanas and Limit Break modifiers apply; Curse/Charm/Power Creep off. Bosses exist but no boss table is documented."
+    }
+  },
+  "waves": [
+    {
+      "minute": 0,
+      "pool": [
+        "DEVIL_HP_1"
+      ],
+      "enemy_min": 20,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": [],
+      "notes": "PLACEHOLDER: wiki gives no wave table for Room 1665; pool/enemy_min invented as a rising-difficulty progression from enemy hp/damage ranges. Real game varies types by rooms unlocked and elapsed time."
+    },
+    {
+      "minute": 1,
+      "pool": [
+        "DEVIL_HP_1"
+      ],
+      "enemy_min": 21,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 2,
+      "pool": [
+        "DEVIL_HP_1"
+      ],
+      "enemy_min": 22,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 3,
+      "pool": [
+        "DEVIL_HP_1"
+      ],
+      "enemy_min": 23,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 4,
+      "pool": [
+        "DEVIL_HP_1"
+      ],
+      "enemy_min": 24,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 5,
+      "pool": [
+        "DEVIL_HP_1",
+        "DEVIL_HP_7"
+      ],
+      "enemy_min": 25,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 6,
+      "pool": [
+        "DEVIL_HP_1",
+        "DEVIL_HP_7"
+      ],
+      "enemy_min": 26,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 7,
+      "pool": [
+        "DEVIL_HP_1",
+        "DEVIL_HP_7"
+      ],
+      "enemy_min": 27,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 8,
+      "pool": [
+        "DEVIL_HP_1",
+        "DEVIL_HP_7"
+      ],
+      "enemy_min": 28,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 9,
+      "pool": [
+        "DEVIL_HP_1",
+        "DEVIL_HP_7"
+      ],
+      "enemy_min": 29,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 10,
+      "pool": [
+        "DEVIL_HP_7",
+        "DEVIL_HP_11",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE"
+      ],
+      "enemy_min": 30,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 11,
+      "pool": [
+        "DEVIL_HP_7",
+        "DEVIL_HP_11",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE"
+      ],
+      "enemy_min": 31,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 12,
+      "pool": [
+        "DEVIL_HP_7",
+        "DEVIL_HP_11",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE"
+      ],
+      "enemy_min": 32,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 13,
+      "pool": [
+        "DEVIL_HP_7",
+        "DEVIL_HP_11",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE"
+      ],
+      "enemy_min": 33,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 14,
+      "pool": [
+        "DEVIL_HP_7",
+        "DEVIL_HP_11",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE"
+      ],
+      "enemy_min": 34,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 15,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 35,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 16,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 36,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 17,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 37,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 18,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 38,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 19,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 39,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 20,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 40,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 21,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 41,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 22,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 42,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 23,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 43,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 24,
+      "pool": [
+        "DEVIL_HP_11",
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 44,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 25,
+      "pool": [
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 45,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 26,
+      "pool": [
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 46,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 27,
+      "pool": [
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 47,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 28,
+      "pool": [
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 48,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 29,
+      "pool": [
+        "DARKASSO_SHENDI",
+        "DARKASSO_SPHONDATO",
+        "DARKASSO_ELLEVETEH",
+        "DARKASSO_LEVATEE",
+        "DARKASSO_LEVARSEE"
+      ],
+      "enemy_min": 49,
+      "spawn_interval_s": 1.0,
+      "events": [],
+      "bosses": []
+    },
+    {
+      "minute": 30,
+      "pool": [],
+      "enemy_min": 0,
+      "spawn_interval_s": 0,
+      "events": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
+      "notes": "30:00+: The Reaper (same as other stages; not explicitly documented for this stage)."
+    }
+  ],
+  "map_events": {
+    "map_events_note": "None documented for Room 1665."
+  },
+  "unsupported_events": [],
+  "unsupported_events_note": "No map events documented on the wiki.",
+  "bosses": [],
+  "chest_rules": {
+    "roll_order": "5-item chance first, then 3-item, then 1-item; each chance is multiplied by player Luck; compared to a random 0-100 per roll; fallback_level is the chest tier if all fail.",
+    "items_per_tier": [
+      1,
+      3,
+      5
+    ],
+    "gold_base_range": {
+      "1_item": [
+        100,
+        200
+      ],
+      "3_item": [
+        300,
+        600
+      ],
+      "5_item": [
+        500,
+        1000
+      ],
+      "note": "multiplied by Greed"
+    },
+    "evo": "If an evolution is available, evo-flagged chests can evolve a weapon (generally one per chest); the wiki table's evo flag meaning is inferred from the treasure template.",
+    "reward_flags_note": "reward1/reward4/reward5 flags exist in the treasure template; their exact meaning is not documented on the pages read (unknown).",
+    "wiki_table_parse_note": "First-minute-of-stage values: '1:00 ... evo=1' etc. copied verbatim; a blank evo means not evolving.",
+    "fractional_chance_note": "Minute 3 Giant Mummy chest lists a 0.1% 5-item chance; code that int()s the chance reads it as 0."
+  },
+  "reaper": {
+    "id": "BOSS_XLDEATH",
+    "spawn": "30:00 (all on-screen enemies cleared), then one additional Reaper each minute afterwards (unless endless mode)",
+    "hp": 655350,
+    "hp_note": "multiplied by player level when spawned (HP x Level)",
+    "power": 65535,
+    "speed": 1200,
+    "knockback": -0.5,
+    "knockback_note": "negative: hits drag it toward the player",
+    "resist_instant_kill": 1,
+    "resist_freeze": 1,
+    "resist_debuff": 1,
+    "resist_defang": 1,
+    "behaviour": "Rushes the player and deals 65,535 damage, ending the run. Surviving to the end rewards 500 gold (revive bonuses stack +100 each up to +400). Orologion/other freeze can freeze it per wiki text (wiki lists freeze resistance 1 but the text says freezing is possible - contradictory; Orologion freeze goes through freeze resistance)."
+  },
+  "light_sources": {
+    "hp": 10,
+    "max_destructibles_normal_mode": 20,
+    "spawn_attempt_interval_s": 1,
+    "spawn_chance": "50% base (max 80%), times Luck",
+    "spawn_location": "predetermined braziers in corridors, ~11-12 per corridor; slowly respawn",
+    "drops": [
+      {
+        "pickup": "COIN",
+        "weight": 50,
+        "min_player_level": 0
+      },
+      {
+        "pickup": "COINBAG1",
+        "weight": 10,
+        "min_player_level": 0
+      }
+    ],
+    "drops_note": "Drop table not documented for this stage; assumed coins and small coin bags (placeholder)."
+  },
+  "pickups": {
+    "gold_coin": {
+      "id": "COIN",
+      "gold": 1,
+      "greed_multiplied": true
+    },
+    "coin_bag": {
+      "id": "COINBAG1",
+      "gold": 10,
+      "greed_multiplied": true
+    }
+  }
+}
