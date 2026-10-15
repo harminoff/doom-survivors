@@ -65,6 +65,15 @@ How the source is organised:
 - `tools/audio/` is the sound and music pipeline. It's optional, and needs a separate
   Stable Audio 3 environment. See `tools/audio/sa3_generate.py`.
 
+## License
+
+**Public domain ([CC0 1.0](LICENSE)).** Use, copy, change, sell or remix any of it (code,
+maps, art, music and sound effects) for any purpose, with no permission or credit needed.
+
+The one exception is the engine bundled in the release zip, UZDoom, which is GPL-3.0 (see
+below). CC0 also grants no trademark rights: the names *Vampire Survivors* and *Doom*
+belong to their owners.
+
 ## Credits and notes
 
 - This is a **fan project**. It isn't affiliated with or endorsed by poncle, the makers of

@@ -4,7 +4,7 @@
 
 Produces in dist/:
   DoomSurvivors-<version>-win64.zip   the game: DoomSurvivors.exe (launcher), doom-survivors.ipk3,
-                                      engine/ (UZDoom, GPL-3.0), README.txt, THIRD_PARTY.txt
+                                      engine/ (UZDoom, GPL-3.0), README.txt, LICENSE.txt, THIRD_PARTY.txt
   doom-survivors-<version>.ipk3       the game data on its own (one IWAD; run it with any
                                       UZDoom 5.x: uzdoom -iwad doom-survivors.ipk3)
 Needs the pinned UZDoom runtime (python tools/bootstrap/bootstrap.py) and, for the icon,
@@ -37,6 +37,9 @@ Play: double-click DoomSurvivors.exe.
 Controls: WASD to move, mouse to look, Esc for the menu. Weapons fire on their own.
 Your settings and progress are kept in the "userdata" folder next to the exe.
 
+License: the game (doom-survivors.ipk3 and DoomSurvivors.exe) is public domain (CC0 1.0,
+see LICENSE.txt). The engine in engine/ is UZDoom, GPL-3.0 (see THIRD_PARTY.txt).
+
 Source, issues and updates: https://github.com/harminoff/doom-survivors
 """
 
@@ -48,7 +51,8 @@ engine/ is UZDoom {engine_version}, licensed under the GNU General Public Licens
 Corresponding source code: {source_url} at commit {commit}
   https://github.com/UZDoom/UZDoom/tree/{commit}
 
-The game data (doom-survivors.ipk3) and the launcher are the Doom Survivors project:
+The game data (doom-survivors.ipk3) and the launcher are the Doom Survivors project,
+dedicated to the public domain under CC0 1.0 (LICENSE.txt):
 https://github.com/harminoff/doom-survivors
 """
 
@@ -99,6 +103,7 @@ def main() -> int:
             shutil.copy2(item, folder / "engine" / item.name)
     shutil.copy2(package, folder / "doom-survivors.ipk3")
     (folder / "README.txt").write_text(README_TXT.format(version=version), encoding="utf-8")
+    shutil.copy2(ROOT / "LICENSE", folder / "LICENSE.txt")
     src = engine_cfg["source"]
     (folder / "THIRD_PARTY.txt").write_text(THIRD_PARTY_TXT.format(
         engine_version=engine_cfg["version"], source_url=src["url"], commit=src["commit"]), encoding="utf-8")
