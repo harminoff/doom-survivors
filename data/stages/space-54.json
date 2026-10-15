@@ -78,10 +78,10 @@
     {
       "minute": 1,
       "pool": [
-        "EX_DUCK_SWARM"
+        "EX_DUCK_SWARM_H"
       ],
       "enemy_min": 40,
-      "spawn_interval_s": 3,
+      "spawn_interval_s": 3.0,
       "events": [
         {
           "type": "swarm",
@@ -102,10 +102,10 @@
       "pool": [
         "ECTO1",
         "ECTO2",
-        "SPACE_PICKLE"
+        "EX_PICKLE"
       ],
       "enemy_min": 50,
-      "spawn_interval_s": 4,
+      "spawn_interval_s": 4.0,
       "events": [
         {
           "type": "bat_swarm",
@@ -121,7 +121,7 @@
         }
       ],
       "bosses": [
-        "ECMASLIME_3"
+        "EX_PHALIEN_XL_BOSS"
       ],
       "notes": "Wiki lists Musc Musc, Big Musc Musc, Space Pickle."
     },
@@ -130,10 +130,10 @@
       "pool": [
         "ECTO1",
         "ECTO2",
-        "SPACE_PICKLE"
+        "EX_PICKLE"
       ],
       "enemy_min": 60,
-      "spawn_interval_s": 4,
+      "spawn_interval_s": 4.0,
       "events": [
         {
           "type": "bat_swarm",
@@ -153,11 +153,11 @@
     {
       "minute": 4,
       "pool": [
-        "EX_DUCK_SWARM",
-        "EX_RABBIT_SWARM"
+        "EX_DUCK_SWARM_H",
+        "EX_RABBIT_SWARM_H"
       ],
       "enemy_min": 110,
-      "spawn_interval_s": 4,
+      "spawn_interval_s": 4.0,
       "events": [
         {
           "type": "swarm",
@@ -219,11 +219,11 @@
     {
       "minute": 5,
       "pool": [
-        "ECTO2",
-        "SPACE_PICKLE"
+        "EX_BROCCOLI_SCALE",
+        "EX_PICKLE"
       ],
       "enemy_min": 100,
-      "spawn_interval_s": 4,
+      "spawn_interval_s": 4.0,
       "events": [
         {
           "type": "medusa_swarm",
@@ -237,7 +237,7 @@
         }
       ],
       "bosses": [
-        "ECMASLIME_3"
+        "EX_PHALIEN_XL_BOSS"
       ]
     },
     {
@@ -245,10 +245,10 @@
       "pool": [
         "ECTO2",
         "ECTO1",
-        "SPACE_ANT_ONION"
+        "EX_ANT"
       ],
       "enemy_min": 30,
-      "spawn_interval_s": 2,
+      "spawn_interval_s": 2.0,
       "events": [
         {
           "type": "medusa_swarm",
@@ -263,18 +263,16 @@
           "note": "amount/duration guessed"
         }
       ],
-      "bosses": [
-        "ECMASLIME_3"
-      ]
+      "bosses": []
     },
     {
       "minute": 7,
       "pool": [
-        "ECTO2",
-        "SPACE_ANT_ONION"
+        "EX_BROCCOLI_SCALE",
+        "EX_ANT"
       ],
       "enemy_min": 80,
-      "spawn_interval_s": 2,
+      "spawn_interval_s": 2.0,
       "events": [
         {
           "type": "medusa_swarm",
@@ -294,23 +292,23 @@
     {
       "minute": 8,
       "pool": [
-        "SPACE_ANT_ONION",
-        "SPACE_ANT_ONION_2"
+        "EX_ANTBRAIN",
+        "EX_ANT"
       ],
       "enemy_min": 80,
-      "spawn_interval_s": 1,
+      "spawn_interval_s": 1.0,
       "events": [],
       "bosses": [
-        "ECMASLIME_3"
+        "EX_PHALIEN_XL_BOSS"
       ],
       "notes": "Wiki sprite list shows two Space Ant Onion sprites (normal and big-brained) -> SPACE_ANT_ONION + SPACE_ANT_ONION_2."
     },
     {
       "minute": 9,
       "pool": [
-        "SPACE_ANT_ONION",
-        "SPACE_ANT_ONION_2",
-        "ECTO2"
+        "EX_ANTBRAIN",
+        "EX_ANT",
+        "EX_BROCCOLI_SCALE"
       ],
       "enemy_min": 200,
       "spawn_interval_s": 0.5,
@@ -321,7 +319,7 @@
     {
       "minute": 10,
       "pool": [
-        "ECMASLIME_1"
+        "EX_PHALIEN"
       ],
       "enemy_min": 200,
       "spawn_interval_s": 0.5,
@@ -331,37 +329,35 @@
     {
       "minute": 11,
       "pool": [
-        "ECMASLIME_1"
+        "EX_PHALIEN_L"
       ],
       "enemy_min": 50,
-      "spawn_interval_s": 3,
+      "spawn_interval_s": 3.0,
       "events": [],
-      "bosses": [
-        "ECMASLIME_3"
-      ]
+      "bosses": []
     },
     {
       "minute": 12,
       "pool": [
-        "ECMASLIME_1"
+        "EX_PHALIEN_XL"
       ],
       "enemy_min": 40,
-      "spawn_interval_s": 2,
+      "spawn_interval_s": 2.0,
       "events": [],
       "bosses": [
-        "ECMASLIME_3"
+        "EX_PHALIEN_XL_BOSS"
       ]
     },
     {
       "minute": 13,
       "pool": [
-        "SPACE_ANT_ONION",
-        "SPACE_ANT_ONION_2",
-        "SPACE_PICKLE",
-        "ECTO2"
+        "EX_ANT_SCALE",
+        "EX_ANTBRAIN_SCALE",
+        "EX_PICKLE_SCALE",
+        "EX_BROCCOLI_SCALE"
       ],
       "enemy_min": 120,
-      "spawn_interval_s": 1,
+      "spawn_interval_s": 1.0,
       "events": [],
       "bosses": [],
       "notes": "Wiki sprite list shows two Space Ant Onion sprites (normal and big-brained) -> SPACE_ANT_ONION + SPACE_ANT_ONION_2."
@@ -369,33 +365,34 @@
     {
       "minute": 14,
       "pool": [
-        "SPACE_ANT_ONION",
-        "SPACE_ANT_ONION_2",
-        "SPACE_PICKLE"
+        "EX_ANT_SCALE",
+        "EX_ANTBRAIN_SCALE",
+        "EX_PICKLE_SCALE"
       ],
       "enemy_min": 110,
       "spawn_interval_s": 0.1,
       "events": [],
       "bosses": [
-        "ECMASLIME_3"
+        "EX_PHALIEN_XL_BOSS"
       ],
       "notes": "Wiki sprite list shows two Space Ant Onion sprites (normal and big-brained) -> SPACE_ANT_ONION + SPACE_ANT_ONION_2."
     },
     {
       "minute": 15,
       "pool": [
-        "EX_BATSPACE_D"
+        "EX_BATSPACE_ALL4"
       ],
       "enemy_min": 300,
-      "spawn_interval_s": 4,
+      "spawn_interval_s": 4.0,
       "events": [],
       "bosses": []
     },
     {
       "minute": 16,
       "pool": [
-        "ECMASLIME_1",
-        "ECMASLIME_2"
+        "EX_PHALIEN",
+        "EX_PHALIEN_L",
+        "EX_PHALIEN_XL"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.5,
@@ -406,19 +403,19 @@
     {
       "minute": 17,
       "pool": [
-        "ECMASLIME_1"
+        "EX_PHALIEN_XL"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [
-        "ECMASLIME_3"
+        "EX_PHALIEN_XL_BOSS"
       ]
     },
     {
       "minute": 18,
       "pool": [
-        "EX_CUBE_HITS_STERILE"
+        "EX_CUBE_HITS_AGGRO"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.5,
@@ -428,7 +425,7 @@
     {
       "minute": 19,
       "pool": [
-        "EX_CUBE_HITS_STERILE"
+        "EX_CUBE_HITS_FACING"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.5,
@@ -443,7 +440,9 @@
       "enemy_min": 300,
       "spawn_interval_s": 0.1,
       "events": [],
-      "bosses": [],
+      "bosses": [
+        "BOSS_XLDEATH"
+      ],
       "notes": "Wiki boss column: The Reaper at 20:00 (stage end); handled by the reaper block."
     }
   ],
@@ -504,82 +503,93 @@
   "bosses": [
     {
       "minute": 2,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
+      "enemy": "EX_PHALIEN_XL_BOSS",
+      "name": "EX_PHALIEN_XL_BOSS",
       "chest": {
-        "fallback_level": 1,
-        "evo": false,
         "chance_pct": {
           "5_item": 0.1,
           "3_item": 5,
           "1_item": 100
-        }
+        },
+        "fallback_level": 1
       }
     },
     {
       "minute": 5,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
+      "enemy": "EX_PHALIEN_XL_BOSS",
+      "name": "EX_PHALIEN_XL_BOSS",
       "chest": {
-        "fallback_level": 1,
-        "evo": false,
         "chance_pct": {
           "5_item": 1,
           "3_item": 5,
           "1_item": 100
-        }
+        },
+        "fallback_level": 1
       }
-    },
-    {
-      "minute": 6,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
-      "chest_note": "Wiki table lists no Treasure for this boss."
     },
     {
       "minute": 8,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
+      "enemy": "EX_PHALIEN_XL_BOSS",
+      "name": "EX_PHALIEN_XL_BOSS",
       "chest": {
-        "fallback_level": 1,
-        "evo": true,
         "chance_pct": {
           "5_item": 1,
           "3_item": 5,
           "1_item": 100
-        }
+        },
+        "fallback_level": 1
       }
     },
     {
-      "minute": 11,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
-      "chest_note": "Wiki table lists no Treasure for this boss."
-    },
-    {
       "minute": 12,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
-      "chest_note": "Wiki table lists no Treasure for this boss."
+      "enemy": "EX_PHALIEN_XL_BOSS",
+      "name": "EX_PHALIEN_XL_BOSS",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 14,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
-      "chest_note": "Wiki table lists no Treasure for this boss."
+      "enemy": "EX_PHALIEN_XL_BOSS",
+      "name": "EX_PHALIEN_XL_BOSS",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 17,
-      "enemy": "ECMASLIME_3",
-      "name": "Extra Large ECMASlime",
+      "enemy": "EX_PHALIEN_XL_BOSS",
+      "name": "EX_PHALIEN_XL_BOSS",
       "chest": {
-        "fallback_level": 1,
-        "evo": true,
         "chance_pct": {
           "5_item": 1,
           "3_item": 5,
           "1_item": 100
-        }
+        },
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLDEATH",
+      "name": "BOSS_XLDEATH",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
       }
     }
   ],

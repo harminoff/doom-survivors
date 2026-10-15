@@ -416,6 +416,7 @@ mixin class DSP042Paired
         if (!DSP042ScaledDamage(damageMilli, mightMilli, amount))
         { dsp042RejectedHits++; return; }
         int healthBefore; int healthAfter; int killed;
+        arHitSystem = dsp042WeaponSystems[weaponIndex];   // which weapon hit (Arcana scope)
         if (!DSP025ApplyLogicalHit(slot, generation, stableId, amount,
                 healthBefore, healthAfter, killed))
         { dsp042RejectedHits++; return; }
@@ -739,6 +740,7 @@ mixin class DSP042Paired
                 dsp042GunMightMilli[gunIndex], amount))
         { dsp042RejectedHits++; return; }
         int healthBefore; int healthAfter; int killed;
+        arHitSystem = dsp042GunSystems[gunIndex];   // which weapon hit (Arcana scope)
         if (!DSP025ApplyLogicalHit(slot, generation, stableId, amount,
                 healthBefore, healthAfter, killed))
         { dsp042RejectedHits++; return; }
@@ -909,6 +911,7 @@ mixin class DSP042Paired
                 { dsp042RejectedHits++; continue; }
                 int totalAmount = amountBase + streakBonusMilli / 1000;
                 int hBefore; int hAfter; int killed;
+                arHitSystem = systemId;   // which weapon hit (Arcana scope)
                 if (!DSP025ApplyLogicalHit(slot, generation, stableId, totalAmount,
                         hBefore, hAfter, killed))
                 { dsp042RejectedHits++; continue; }

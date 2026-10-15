@@ -996,6 +996,7 @@ mixin class DSP035BallisticProjectileRuntime
                 && damageTenths <= 20000000;
             int damageMilli = validDamage ? damageTenths * 100 : 0;
             int before; int after; int killed;
+            arHitSystem = dsp035ProjectileSystems[index];   // which weapon hit (Arcana scope)
             bool applied = validDamage && DSP025ApplyLogicalHit(slot,
                 generation, stableId, damageMilli, before, after, killed);
             if (!applied)

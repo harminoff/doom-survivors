@@ -14,6 +14,9 @@ class DSCharacters
         CLERICI, DOMMARIO, KROCHI, CHRISTINE, PUGNALA, POPPEA, MORTACCIO,
         YATTA, BIANCA, OSOLE, ZIASSUNTA, AMBROJOE, EXDASH, TOASTIE,
         GIOVANNA, CONCETTA, IGUANA, DIVANO,
+        SMITH, MARRABBIO, MINNAH, LEDA, PEPPINO, BOROS, GYORUNTON, REDDEATH, TROUSER,
+        AVATAR, SIGMA, ROBBERT, ZIAPPUNTA, TROUBLER, SHEMOON, COOLIO, SANTA, GAZEBO,
+        CHULAREH, SPACEDUDE, BATS, ROSE, GYORUNTIN, SECRETINO, SPACEDETTE, RANDOM,
         NUM_CHARACTERS
     }
 
@@ -22,7 +25,8 @@ class DSCharacters
         "Lama", "Poe", "Clerici", "Dommario", "Krochi", "Christine",
         "Pugnala", "Poppea", "Mortaccio", "Yatta Cavallo", "Bianca Ramba",
         "O'Sole", "Zi'Assunta", "Sir Ambrojoe", "Exdash", "Toastie",
-        "Giovanna", "Concetta", "Iguana", "Divano"
+        "Giovanna", "Concetta", "Iguana", "Divano",
+        "Smith IV", "Marrabbio", "Minnah Mannarah", "Leda", "Peppino", "Gains Boros", "Gyorunton", "Red Death", "Trouser", "Avatar Infernas", "Queen Sigma", "Robbert", "Zi'Appunta", "Big Trouble", "She-Moon Eeta", "Coolio", "Santa Ladonna", "Gazebo", "Chula-Reh", "Space Dude", "Bats Bats", "Rose De Infernas", "Gyoruntin", "Secretino", "Space Dette", "Random"
     };
 
     // Short bonus text for the select screen.
@@ -51,9 +55,43 @@ class DSCharacters
         "So much potential",
         "+1% Speed every level",
         "+1% Area every level",
-        "1 extra level. +10% Growth every 5 levels",
-        "1 extra level. +1 Armor every 5 levels"
+        "1 extra level, 5 Rerolls, 5 Skips, +Growth",
+        "1 extra level. +1 Armor every 5 levels",
+        "Tiny but lucky; small gains every level",
+        "Fast and strong, little greed",
+        "+10% Might every 3 levels (to 21)",
+        "+100% Might, 5 Armor, slow",
+        "Starts with reduced Area that grows back",
+        "+2% Growth every level",
+        "+1% Curse every level, 2 Revivals",
+        "Very fast, +20% Might",
+        "+1% Greed every level, longer Gold Fever",
+        "Starts with Heart of Fire; grows every level",
+        "She owns everything",
+        "Heals and grows when near death",
+        "+20% Speed, Duration and Luck",
+        "+30% Greed",
+        "Freezes everything when near death",
+        "+30% Move and Duration",
+        "Temporary -70% Cooldown, 2 Armor",
+        "+50% Move Speed",
+        "+7% Move, Luck and Magnet, 7 Rerolls",
+        "+40% Move Speed",
+        "Fast, 2 Revivals",
+        "+100 enemies; Might grows back every 12 levels",
+        "+1% Curse every level, 3 Armor, fast",
+        "7 Rerolls, Skips and Banishes",
+        "+40% Move Speed",
+        "Starts with a random weapon"
     };
+
+    // Gold price to buy each character once unlocked (the original's).
+    static const int PRICES[] = {
+        0, 10, 100, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1000, 1000, 500, 500, 500, 500,
+        5000, 500, 777, 777, 1000, 1000, 2000, 2000, 7777, 666, 666, 666, 666, 666, 5000, 666,
+        5000, 666, 0, 100, 5000, 50000, 500, 153, 666, 5000, 777, 500, 5000, 5000, 5000, 50000, 5000, 5000
+    };
+    static int Price(int c) { return c >= 0 && c < NUM_CHARACTERS ? DSCharacters.PRICES[c] : 0; }
 
     static int Count() { return NUM_CHARACTERS; }
     static String Name(int c) { return c >= 0 && c < NUM_CHARACTERS ? DSCharacters.NAMES[c] : "Antonio"; }
@@ -61,8 +99,15 @@ class DSCharacters
 
     static int FromCVar(String value)
     {
+        String wanted = value.MakeLower();
+        wanted.Replace(" ", "");
         for (int c = 0; c < NUM_CHARACTERS; c++)
-            if (DSCharacters.NAMES[c].MakeLower() == value.MakeLower()) return c;
+        {
+            String lowered = DSCharacters.NAMES[c].MakeLower();
+            if (lowered == value.MakeLower()) return c;
+            lowered.Replace(" ", "");   // "spacedude" also finds "Space Dude"
+            if (lowered == wanted) return c;
+        }
         return ANTONIO;
     }
 
@@ -96,9 +141,38 @@ class DSCharacters
         case CONCETTA: return DSN2Catalog.ID_N3_SHADOW_PINION;
         case IGUANA: return DSN2Catalog.ID_N3_CLOCK_LANCET;
         case DIVANO: return DSN2Catalog.ID_N3_LAUREL;
+        case SMITH: return DSN2Catalog.ID_VANDALIER;
+        case MARRABBIO: return DSN2Catalog.ID_THOUSAND_EDGE;
+        case MINNAH: return DSN2Catalog.ID_BLOODY_TEAR;
+        case LEDA: return DSN2Catalog.ID_HOLY_WAND;
+        case PEPPINO: return DSN2Catalog.ID_SOUL_EATER;
+        case BOROS: return DSN2Catalog.ID_HEAVEN_SWORD;
+        case GYORUNTON: return DSN2Catalog.ID_BRACELET;
+        case REDDEATH: return DSN2Catalog.ID_DEATH_SPIRAL;
+        case TROUSER: return DSN2Catalog.ID_N3_CANDYBOX;
+        case AVATAR: return DSN2Catalog.ID_N3_FLAMES_OF_MISSPELL;
+        case SIGMA: return DSN2Catalog.ID_N3_VICTORY_SWORD;
+        case ROBBERT: return DSN2Catalog.ID_N3_PAKO_BATTILIAR;
+        case ZIAPPUNTA: return DSN2Catalog.ID_N3_AMMO_APPALATE;
+        case TROUBLER: return DSN2Catalog.ID_N3_UNEARTHLY_BOLT;
+        case SHEMOON: return DSN2Catalog.ID_N3_GLASS_FANDANGO;
+        case COOLIO: return DSN2Catalog.ID_N3_PENSHIN_FATCHA;
+        case SANTA: return DSN2Catalog.ID_N3_SANTA_JAVELIN;
+        case GAZEBO: return DSN2Catalog.ID_N3_GAZE_OF_GAEA;
+        case CHULAREH: return DSN2Catalog.ID_N3_MAGI_STONE;
+        case SPACEDUDE: return DSN2Catalog.ID_N3_PHAS3R;
+        case BATS: return DSN2Catalog.ID_N3_MAZO_FAMILIAR;
+        case ROSE: return DSN2Catalog.ID_FUWALAFUWALOO;
+        case GYORUNTIN: return DSN2Catalog.ID_NO_FUTURE;
+        case SECRETINO: return DSN2Catalog.ID_N3_KYRA_STONES;
+        case SPACEDETTE: return DSN2Catalog.ID_N3_PHOTONSTORM;
         }
         return DSN2Catalog.ID_WHIP;
     }
+    // Bats Bats, Gyoruntin and Space Dette: the starting weapon grows stronger
+    // every level (+1% Might for it per level, a guess).
+    static bool StarterGrows(int c) { return c == BATS || c == GYORUNTIN || c == SPACEDETTE; }
+
     static int SecondWeapon(int c) { return c == PUGNALA ? DSN2Catalog.ID_EIGHT : 0; }
 
     static bool Playable(int c)
@@ -118,12 +192,40 @@ class DSCharacters
         case CHRISTINE: return 50;
         case EXDASH: return 77;
         case TOASTIE: return 1;
+        case SMITH: return 7;
+        case MARRABBIO: return 120;
+        case MINNAH: return 150;
+        case PEPPINO: return 120;
+        case GYORUNTON: return 300;
+        case REDDEATH: return 255;
+        case AVATAR: return 160;
+        case SIGMA: return 333;
+        case BATS: return 180;
+        case GYORUNTIN: return 130;
         }
         return 100;
     }
 
     // Starting level-up charges (wiki): Divano begins with +10 Banish.
-    static int StartBanish(int c) { return c == DIVANO ? 10 : 0; }
+    static int StartBanish(int c)
+    {
+        if (c == DIVANO) return 10;
+        if (c == SIGMA) return 108;
+        return c == SECRETINO ? 7 : 0;
+    }
+    static int StartReroll(int c)
+    {
+        if (c == IGUANA) return 5;
+        if (c == AVATAR) return 10;
+        if (c == SIGMA) return 108;
+        return c == CHULAREH || c == SECRETINO ? 7 : 0;
+    }
+    static int StartSkip(int c)
+    {
+        if (c == IGUANA) return 5;
+        if (c == SIGMA) return 108;
+        return c == SECRETINO ? 7 : 0;
+    }
 
     static bool ExtraLevel(int c) { return c == CHRISTINE || c == IGUANA || c == DIVANO; }
 
@@ -207,10 +309,97 @@ class DSCharacters
             s.recovery += 1000; s.luck += 300; s.greed -= 500;
             s.armor += min(level / 5, 5);
             break;
+        case SMITH:
+            s.move += 200; s.might -= 100; s.cooldown += 100; s.area -= 100; s.speed -= 500;
+            s.duration -= 100; s.luck += 1000;
+            s.recovery += 10 * level; s.might += 7 * level; s.speed += 7 * level;
+            s.duration += 7 * level; s.area += 7 * level; s.cooldown -= 25 * level / 10; s.luck += 10 * level;
+            break;
+        case MARRABBIO:
+            s.move += 300; s.might += 200; s.speed -= 100; s.greed -= 800; s.curse += 100;
+            break;
+        case MINNAH:
+            // The original also shuffles Might, Speed, Duration, Area and Cooldown every minute (not modelled).
+            s.recovery += 500; s.might -= 700; s.might += 100 * min(level / 3, 7);
+            break;
+        case LEDA:
+            s.armor += 5; s.move -= 200; s.might += 1000; s.cooldown -= 100; s.area += 100; s.greed -= 800;
+            break;
+        case PEPPINO:
+        {
+            s.armor += 2; s.magnet += 1000; s.area -= 600;
+            static const int PEPPINO_STEPS[] = { 2, 3, 5, 8, 13, 21 };
+            for (int i = 0; i < 6; i++) if (level >= PEPPINO_STEPS[i]) s.area += 100;
+            break;
+        }
+        case BOROS:
+            s.growth += 20 * level;
+            break;
+        case GYORUNTON:
+            s.might += 300; s.revival += 2; s.curse += 10 * level;
+            break;
+        case REDDEATH:
+            s.move += 1000; s.might += 200;
+            break;
+        case TROUSER:
+            s.move += 300; s.greed += 200 + 10 * level; s.feverPct += 50;
+            break;
+        case AVATAR:
+            s.might += 500 + 5 * level; s.luck += 500; s.magnet += 1000; s.revival += 1;
+            s.curse += 5 * level; s.move += 20 * level; s.cooldown -= 25 * level / 10;
+            break;
+        case SIGMA:
+            s.armor += 3; s.recovery += 3000; s.move += 500; s.might += 500 + 10 * level; s.cooldown -= 250;
+            s.duration += 500; s.amount += 1; s.luck += 500; s.curse += 100; s.magnet += 1000;
+            s.revival += 1; s.growth += 10 * level;
+            break;
+        case ROBBERT:
+            s.armor += 1; s.recovery += 500; s.move += 200;
+            break;
+        case ZIAPPUNTA:
+            s.move += 300; s.speed += 200; s.duration += 200; s.luck += 200; s.magnet += 300;
+            break;
+        case TROUBLER:
+            s.move += 200; s.greed += 300;
+            break;
+        case SHEMOON:
+            s.armor += 2; s.move += 200;
+            break;
+        case COOLIO:
+            s.move += 300; s.duration += 300;
+            break;
+        case SANTA:
+            s.armor += 2; s.luck += 300; s.cooldown -= max(100, 700 - 200 * (level - 1));
+            break;
+        case GAZEBO:
+            s.move += 500;
+            break;
+        case CHULAREH:
+            s.move += 70; s.luck += 70; s.magnet += 70;
+            break;
+        case SPACEDUDE: case SPACEDETTE:
+            s.move += 400;
+            break;
+        case BATS:
+            s.move += 800; s.revival += 2;
+            break;
+        case ROSE:
+        {
+            s.move += 200; s.might -= 900; s.growth -= 800; s.charm += 100;
+            int steps = min(level / 12, 9);
+            s.might += 100 * steps;
+            if (steps >= 3) s.growth += 100 * min(steps - 2, 5) + 150 * max(0, steps - 7);
+            break;
+        }
+        case GYORUNTIN:
+            s.armor += 3; s.move += 800; s.curse += 10 * level;
+            break;
         case EXDASH: case TOASTIE:
             s.move += c == EXDASH ? -100 : 200;
             s.might -= 100; s.speed -= 500; s.duration -= 100; s.area -= 100;
             s.cooldown += 100; s.luck += 1000;
+            // Exdash +10% and Toastie +20% Luck every 10 levels up to 50.
+            s.luck += (c == EXDASH ? 100 : 200) * min(level / 10, 5);
             break;
         }
     }

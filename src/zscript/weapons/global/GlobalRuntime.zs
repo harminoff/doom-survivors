@@ -588,7 +588,7 @@ mixin class DSP040Global
         }
         int period = DSP040GlobalMath.GateTicsAfterMultiplier(
             DSP040GlobalRows.PeriodTics(systemId, rank),
-            rsActive ? rsCooldownMilli : dsp040StrikeCooldownMultiplierMilli[index]);
+            RsCooldownFor(systemId, rsActive ? rsCooldownMilli : dsp040StrikeCooldownMultiplierMilli[index]));
         dsp040StrikeNextActivationTic[index] = tic + period;
         DSSound.Weapon(systemId);
         { if (!dsQuiet) Console.Printf("DS_P040_ACTIVATION accepted=1 kind=STRIKE weapon_id=%d system_id=%d rank=%d tic=%d strike_count=%d row_amount=%d resolved_amount=%d interval_tics=%d next_activation_tic=%d", dsp040StrikeId[index], systemId, rank, tic, strikeCount, rowAmount, resolvedAmount, interval, dsp040StrikeNextActivationTic[index]); }
@@ -656,6 +656,7 @@ mixin class DSP040Global
             bool checked = DSP025CheckedDamage(damageMilli, 0, mightMilli, scaledMilli)
                 && scaledMilli >= 0 && scaledMilli <= DSP040_MAX_SAFE_DAMAGE_MILLI;
             int before; int after; int killed;
+            arHitSystem = systemId;   // which weapon hit (Arcana scope)
             if (!checked || !DSP025ApplyLogicalHit(slot, generation, stableId,
                 scaledMilli, before, after, killed)) continue;
             int delta = before - after;
@@ -864,6 +865,7 @@ mixin class DSP040Global
             int stableId = dsp040CandidateIds[bestIndex];
             int currentHealth = health[slot];
             int before; int after; int killed;
+            arHitSystem = dsp040EraseSystem[index];   // which weapon hit (Arcana scope)
             if (DSP025ApplyLogicalHit(slot, generation, stableId, currentHealth,
                 before, after, killed) && killed != 0)
             {

@@ -77,6 +77,9 @@ mixin class DSP031InventoryDraftAuthority
     // separate, run-scope-only structure: it does not touch the persisted
     // "ds_p031_profile_seals" CVar or its byte-identical mask/hash format.
     Array<int> dsp031FullSealedIds;
+    // Items not yet unlocked in the profile (manual play only; SliceMeta.zs).
+    Array<int> dsp031LockedIds;
+    int dsp031WeaponCap;   // Mindbender's maximum weapons (6 = normal)
 
     void DSP031SetP033PassivesEnabled(bool enabled)
     {
@@ -100,9 +103,25 @@ mixin class DSP031InventoryDraftAuthority
     void DSP031CandidateUniverse(out Array<int> ids)
     {
         ids.Clear();
+        // Super Candybox II Turbo's pick: evolutions made in earlier runs and not
+        // owned now (no middle stages, morphs, gifts, Corridor, Shroud, Ashes).
+        if (dsp031FullCatalogEnabled && dsp031GiftKind == 3 && dsp031GiftDraft >= 0 && dsp031AppliedDrafts == dsp031GiftDraft)
+        {
+            Array<String> mk; Array<int> mv;
+            DSMeta.Load(mk, mv);
+            for (int e = 0; e < DSAchievementData.EVOLUTIONS.Size(); e++)
+            {
+                int evo = DSAchievementData.EVOLUTIONS[e];
+                if (DSP031OwnedIndex(evo) < 0 && DSMeta.Val(mk, mv, String.Format("seen:%d", evo)) > 0) ids.Push(evo);
+            }
+            return;
+        }
         if (dsp031FullCatalogEnabled)
         {
             DSN2Catalog.DraftableIds(ids);
+            for (int i = ids.Size() - 1; i >= 0; i--)
+                if (dsp031LockedIds.Find(ids[i]) != dsp031LockedIds.Size() && DSP031OwnedIndex(ids[i]) < 0)
+                    ids.Delete(i);
             return;
         }
         for (int id = DSP028_ID_WHIP; id <= DSP031CatalogMaxId(); id++) ids.Push(id);
@@ -412,6 +431,15 @@ mixin class DSP031InventoryDraftAuthority
         // Normal play starts with the chosen character's weapon(s)
         // (Characters.zs); fixture routes keep the Whip.
         int starter = rsActive ? DSCharacters.StartingWeapon(rsCharacter) : DSP028_ID_WHIP;
+        if (rsActive && rsCharacter == DSCharacters.RANDOM)
+        {
+            // Random: any draftable weapon.
+            Array<int> pool; Array<int> ids;
+            DSN2Catalog.DraftableIds(ids);
+            for (int i = 0; i < ids.Size(); i++)
+                if (DSN2Catalog.Category(ids[i]) == DSN2Catalog.CATEGORY_WEAPON) pool.Push(ids[i]);
+            if (pool.Size() > 0) starter = pool[Random[DSRunSeed](0, pool.Size() - 1)];
+        }
         // DSP028ResetProgression pre-arms the Whip; only an actual Whip
         // acquisition (starter or draft) arms it in normal play.
         if (rsActive) { whipRank = 0; inventoryWeaponLevel = 0; }
@@ -446,12 +474,14 @@ mixin class DSP031InventoryDraftAuthority
         if (dsp031GiftDraft >= 0 && dsp031AppliedDrafts == dsp031GiftDraft)
         {
             if (id == DSN2Catalog.ID_N3_CANDYBOX || id == DSN2Catalog.ID_N3_ARMA_DIO) return false;
+            if (dsp031GiftKind == 3) return DSP031OwnedIndex(id) < 0;   // an evolution, beyond the slot limit
             if (DSP031Category(id) != (dsp031GiftKind == 1 ? DSP031_CATEGORY_WEAPON : DSP031_CATEGORY_PASSIVE)) return false;
         }
         int owned = DSP031OwnedIndex(id);
         if (owned >= 0) return dsp031ItemRanks[owned] < DSP031MaxRank(id);
         int category = DSP031Category(id);
-        return DSP031OrdinaryCount(category) < DSP031_MAX_ORDINARY_SLOTS;
+        int cap = category == DSP031_CATEGORY_WEAPON && dsp031WeaponCap > 0 ? dsp031WeaponCap : DSP031_MAX_ORDINARY_SLOTS;
+        return DSP031OrdinaryCount(category) < cap;
     }
 
     bool DSP031HasAnyEligibleUpgrade()
@@ -466,11 +496,8 @@ mixin class DSP031InventoryDraftAuthority
     int DSP031RarityWeight(int id)
     {
         if (!DSP031Eligible(id)) return 0;
-        // The mutable community page reports rarity 100 for these identities;
-        // build-locked values remain unverified. Owned-item Luck scaling below
-        // is an explicit linear engineering approximation. Full-catalog mode
-        // reads the same labelled flat-100 fallback from DSN2Catalog since no
-        // data/verified/base/weapons/**/*.json infobox carries a rarity field.
+        // Full-catalog mode reads the original rarities from DSN2Catalog.
+        // Owned-item Luck scaling below is a linear approximation.
         int weight = dsp031FullCatalogEnabled ? DSN2Catalog.RarityWeight(id) : 100;
         if (weight <= 0) weight = 100;
         if (DSP031OwnedIndex(id) >= 0 && dsp031LuckMilli > 0)
@@ -657,9 +684,8 @@ mixin class DSP031InventoryDraftAuthority
     bool DSP031LimitBreakAllowed(int system, int stat)
     {
         int i = LbIndex(system);
-        // Whip ignores Speed and Pierce; Pierce also means nothing to weapons that do not shoot
-        // (stat offers for those are harmless but wasted, so only Whip is filtered).
-        if (system == DSP028_ID_WHIP && (stat == DSLimitBreak.STAT_SPEED || stat == DSLimitBreak.STAT_PIERCE)) return false;
+        // Only the stats the original offers for this weapon.
+        if ((DSLimitBreak.StatMask(system) & (1 << stat)) == 0) return false;
         if (i < 0) return true;
         if (stat == DSLimitBreak.STAT_AREA) return lbArea[i] + DSLimitBreak.AREA_STEP <= DSLimitBreak.AREA_CAP;
         if (stat == DSLimitBreak.STAT_SPEED) return lbSpeed[i] + DSLimitBreak.SPEED_STEP <= DSLimitBreak.SPEED_CAP;
@@ -742,6 +768,15 @@ mixin class DSP031InventoryDraftAuthority
             playerLevel++;
             crossed++;
             DSP031QueueDraft(playerLevel);
+            // Santa Ladonna: 5% of level-ups (a guess) come with a Candybox
+            // or Arma Dio gift draft.
+            if (rsActive && rsCharacter == DSCharacters.SANTA && dsp031GiftDraft < dsp031AppliedDrafts
+                && Random[DSRunSeed](0, 99) < 5)
+            {
+                dsp031GiftKind = Random[DSRunSeed](1, 2);
+                dsp031DraftLevels.Push(playerLevel);
+                dsp031GiftDraft = dsp031DraftLevels.Size() - 1;
+            }
             threshold = DSP031ThresholdForCurrentLevel(playerLevel);
         }
         { if (!dsQuiet) Console.Printf("DS_P031_XP_COLLECT amount=%d before_xp=%d after_xp=%d before_level=%d after_level=%d crossed=%d remainder_milliunits=%d authority=P031_DRAFT_EXPERIENCE progression=ONLINE_REPORTED milestone_bonus=0_ENGINEERING_APPROXIMATION", amount, beforeXp, experienceMilliunits, beforeLevel, playerLevel, crossed, experienceMilliunits); }
@@ -889,7 +924,8 @@ mixin class DSP031InventoryDraftAuthority
             return true;
         }
         if (!DSP031Eligible(id)) return false;
-        bool granted = DSP031Acquire(id, DSP031_ROUTE_LEVELUP, false);
+        bool giftPick = dsp031GiftKind == 3 && dsp031GiftDraft >= 0 && dsp031AppliedDrafts == dsp031GiftDraft;
+        bool granted = DSP031Acquire(id, giftPick ? DSP031_ROUTE_STAGE : DSP031_ROUTE_LEVELUP, false);
         if (!granted) return false;
         if (id == DSP028_ID_WHIP) { whipRank = DSP031Rank(id); inventoryWeaponLevel = whipRank; }
         else if (id == DSP028_ID_POWER) powerRank = DSP031Rank(id);

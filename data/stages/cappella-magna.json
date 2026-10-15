@@ -192,7 +192,7 @@
       "pool": [
         "KALI2",
         "TRAINEE_B",
-        "FANGEL2",
+        "TRAINEE_Y",
         "TRAINEE"
       ],
       "enemy_min": 50,
@@ -318,7 +318,7 @@
       "minute": 17,
       "pool": [
         "XLDEMON",
-        "DEMON"
+        "DEMON_FAST"
       ],
       "enemy_min": 40,
       "spawn_interval_s": 0.1,
@@ -329,10 +329,10 @@
       "minute": 18,
       "pool": [
         "XLDEMON",
-        "DEMON",
+        "DEMON_FAST",
         "TRAINEE_P"
       ],
-      "enemy_min": 80,
+      "enemy_min": 90,
       "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [
@@ -370,7 +370,7 @@
       "pool": [
         "STAGEKILLER"
       ],
-      "enemy_min": 60,
+      "enemy_min": 200,
       "spawn_interval_s": 0.02,
       "events": [],
       "bosses": [
@@ -457,7 +457,7 @@
       "pool": [
         "BOSS_FANGEL3",
         "BOSS_SUCCUBUS",
-        "XLARMOR_GREEN",
+        "BOSS_XLARMOR_GREEN",
         "BOSS_XLARCHDEMON"
       ],
       "enemy_min": 10,

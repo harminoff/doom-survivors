@@ -43,7 +43,7 @@ extend class DSP030VerticalSlice
         if (mfEnabled && MFValid(slot))
         {
             if (MFIsProp(mfTypes[slot]) || mfBoss[slot] > 0 || DSStage.IsReaperLike(mfTypes[slot])
-                || mfMotion[slot] != 0) return;
+                || mfMotion[slot] != 0 || MFResists(slot, MF_RESIST_KNOCKBACK)) return;
             resist = DSStage.KnockbackMilli(mfTypes[slot]);
         }
         if (resist == 0 || GwFrozen(slot)) return;

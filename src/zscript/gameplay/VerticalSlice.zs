@@ -496,6 +496,17 @@ class DSP030VerticalSlice : EventHandler
     // Meta progression (SliceMeta.zs).
     Array<int> metaTypeKills;
     int metaOro;
+    int metaLsrc;          // light sources destroyed this run
+    bool metaReaperKilled;
+    int metaGoldFingers; int metaTrainHits;
+    int mfCritReadyTic;    // Robbert / She-Moon near-death trigger cooldown
+    int rsBonusHealthMilli; // Robbert's extra Max Health this run
+    // Character specials: Minnah's per-minute stat swings (minute, five values),
+    // Gazebo's overheal bonuses (seven stats), the level Santa last checked.
+    int mnMinute; Array<int> mnSwing;
+    Array<int> gzBonus;
+    int metaMaxWeapons;    // most weapons / evolutions held at once this run
+    int metaMaxEvos;
     int metaVac;
     int metaRos;
     int metaChk;
@@ -602,6 +613,11 @@ class DSP030VerticalSlice : EventHandler
     Array<int> mfBoss;
     Array<double> mfVX;
     Array<double> mfVY;
+    // Original enemy traits per slot (SliceMadForest.zs): extra lives left,
+    // spawn health (restored per life) and a shooter's next shot tic.
+    Array<int> mfLives;
+    Array<int> mfSpawnHp;
+    Array<int> mfShotTic;
     Array<int> mfChestIds;
     Array<int> mfChestItems;
     // Arcana (gameplay/slice/SliceArcana.zs).
@@ -624,9 +640,13 @@ class DSP030VerticalSlice : EventHandler
     const MF_WINDOW_TYPE = 901;
     const MF_CART_TYPE = 902;
     const MF_BRAZIER_HP = 10000;
-    const MF_BRAZIER_MAX = 5;
-    const MF_BRAZIER_CHANCE_PCT = 10;
     const MF_ROSARY_RADIUS = 320.0;
+    const MF_SHOT_RANGE = 700.0;   // ranged enemies fire within this distance
+    const MF_SHOT_TICS = 350;      // bullets fly for 10 s
+    const MF_RESIST_ROSARY = 2;    // DSStage.ResistBits
+    const MF_RESIST_KNOCKBACK = 4;
+    const MF_RESIST_DEFANG = 8;
+    const MF_RESIST_DEBUFF = 16;
     const MF_FREEZE_TICS = 350;
     const MF_ITEM_COIN = 1;
     const MF_ITEM_COIN_BAG = 2;
@@ -640,7 +660,8 @@ class DSP030VerticalSlice : EventHandler
     const MF_ITEM_GILDED_CLOVER = 10;
     const MF_ITEM_REROLLO = 11;
     const MF_ITEM_SORBETTO = 12;
-    const MF_ITEM_LAST = 12;
+    const MF_ITEM_GOLD_FINGER = 13;
+    const MF_ITEM_LAST = 13;
     int mfGold;
     // HUD values the ui scope cannot compute itself (play functions).
     int hudHealthCap;
@@ -669,13 +690,26 @@ class DSP030VerticalSlice : EventHandler
     int deathFxTic; int deathFxCount;
     int metaClv;   // Little Clovers this run
     bool mfEnderAlive;
-    // Run mode (ds_mode): 0 normal, 1 Hyper, 2 Inverse. The wiki's exact
-    // numbers vary per stage; these are labelled approximations.
-    //   Hyper: player and enemy speed x1.5, Greed x1.7, Luck +10%, +50% spawns.
-    //   Inverse: enemy health x1.5, +50% spawns, XP and Greed x1.5, enemy speed x1.2.
+    // Run mode (ds_mode): 0 normal, 1 Hyper, 2 Inverse, with the original's
+    // per-stage values (DSStage.Hyper*/Inverse*): Hyper speeds up the player,
+    // enemies and projectiles and adds gold, Luck and sometimes enemy health;
+    // Inverse doubles gold and enemy health, adds +20% Luck and makes enemies
+    // tougher and faster every minute. Inverse maps are not mirrored.
     int rsMode;
+    // Run options from relics (manual play; read at run start).
+    bool rsEndless; bool rsHurry; bool rsRandomEvents; bool rsRandomLevelUp; bool rsArrows;
+    int mfEndlessCycle;   // Endless: how many times the stage has looped
     int mfClovers;            // Little Clovers collected this run (+10% Luck each)
     int mfFeverTics;          // Gold Fever time left
+    int mfGoldFingerUntil;    // Gold Finger: end tic (0 = off) and kills when it started
+    int mfGoldFingerKills;
+    // Sole Solution (Victory Sword's gift): owned, next galaxy, galaxy end.
+    bool rsSole; int soleNextTic; int soleUntilTic;
+    bool rsCandy2;   // a Super Candybox II Turbo was found this run
+    int gmApoplexyPlate;   // Bat Country's Apoplexy plate (-1 none yet)
+    // Holy Forbidden: pending eye marks, the Rosary item and the early end.
+    Array<double> hfMarkX; Array<double> hfMarkY; Array<int> hfMarkTic;
+    bool hfRosaryPlaced; int hfRosaryId; int hfEndTic;
     int mfBreathUntil;        // Nduja Fritta Tanto / Sorbetto temporary weapon
     int mfBreathKind;
     int mfBreathStart;
@@ -700,6 +734,7 @@ class DSP030VerticalSlice : EventHandler
     Array<Actor> geProxy;
     int hudXpNeed;
     int mfFreezeUntil;
+    int mfFreezeStart;
     bool mfVacuumActive;
     int mfLootRng;
     int mfItemSeq;
@@ -991,9 +1026,11 @@ class DSP030VerticalSlice : EventHandler
     ui int uiOffer0Id;
     ui int uiOffer1Id;
     ui int uiOffer2Id;
+    ui int uiOffer3Id;
     ui int uiOffer0Rank;
     ui int uiOffer1Rank;
     ui int uiOffer2Rank;
+    ui int uiOffer3Rank;
     ui int uiTargetLevel;
     ui int uiRerolls;
     ui int uiNextShot;
@@ -1128,11 +1165,27 @@ class DSP030VerticalSlice : EventHandler
 
     // Full-stage runs (ds_p030_duration_tics 63000) last the stage's own
     // time limit (15:00, 20:00 or 30:00); other runs keep survivalTics.
+    // The Whip's catalog id, or Bloody Tear's once it has evolved.
+    int ActiveWhipSystem()
+    {
+        return DSP032Rank(DSP032_ID_BLOODY_TEAR) > 0 ? DSN2Catalog.ID_BLOODY_TEAR : DSN2Catalog.ID_WHIP;
+    }
+
+    bool RunOption(String name)
+    {
+        CVar option = CVar.FindCVar(name);
+        return option != null && option.GetInt() != 0;
+    }
+
     clearscope int RunEndTic()
     {
         CVar endOverride = CVar.FindCVar("ds_mf_end_tics");
         if (endOverride != null && endOverride.GetInt() > 0 && mfEnabled) return endOverride.GetInt() + mfHeld;
-        return mfEnabled && survivalTics == MAD_FOREST_TICS ? DSStage.DurationTics(mfStage) + mfHeld : survivalTics;
+        // Hurry: the stage clock (MfT) runs twice as fast, so the run is half as long.
+        int stageTics = rsHurry ? DSStage.DurationTics(mfStage) / 2 : DSStage.DurationTics(mfStage);
+        // Holy Forbidden: the Rosary ends the stage 30 s after it is taken.
+        if (hfEndTic > 0 && mfEnabled && survivalTics == MAD_FOREST_TICS) return min(hfEndTic, stageTics + mfHeld);
+        return mfEnabled && survivalTics == MAD_FOREST_TICS ? stageTics + mfHeld : survivalTics;
     }
 
     // Stage speed modifiers are relative to Mad Forest (x1.1), which the
@@ -1140,8 +1193,9 @@ class DSP030VerticalSlice : EventHandler
     clearscope double StageEnemySpeedScale()
     {
         if (!rsActive) return 1.0;
-        double modeSpeed = rsMode == 1 ? 1.5 : (rsMode == 2 ? 1.2 : 1.0);
-        return modeSpeed * (DSStage.EnemySpeedMilli(mfStage) + DSStage.SpeedPerMinuteMilli(mfStage) * (MfT() / 2100)) / 1100.0;
+        double modeSpeed = rsMode == 1 ? 1.0 + DSStage.HyperEnemyMilli(mfStage) / 1000.0 : 1.0;
+        int perMinute = DSStage.SpeedPerMinuteMilli(mfStage) + (rsMode == 2 ? DSStage.InverseSpeedPerMinuteMilli(mfStage) : 0);
+        return min(3.0, modeSpeed * (DSStage.EnemySpeedMilli(mfStage) + perMinute * (MfT() / 2100)) / 1100.0);
     }
 
     void ApplyCameraPose()
@@ -1185,6 +1239,7 @@ class DSP030VerticalSlice : EventHandler
             eligibleCount++;
             if (eligibleSlot < 0) eligibleSlot = slot;
             int before; int after; int killed;
+            arHitSystem = ActiveWhipSystem();   // which weapon hit (Arcana scope)
             if (checked && DSP025ApplyLogicalHit(slot, generation, stable, checkedDamage, before, after, killed))
                 appliedDamage += before - after;
         }
@@ -1427,11 +1482,20 @@ class DSP030VerticalSlice : EventHandler
             if (mfEnabled && MFValid(slot))
             {
                 if (mfMotion[slot] == 2) continue;
-                if (tic < mfFreezeUntil && !DSStage.IsReaperLike(mfTypes[slot])) continue;
+                if (MFOrologionFrozen(slot)) continue;
                 if (slot < mfDefang.Size() && mfDefang[slot] != 0) continue;   // Defang
                 if (mfMotion[slot] == 1)
                 {
                     x[slot] += mfVX[slot]; y[slot] += mfVY[slot];
+                    continue;
+                }
+                if (mfMotion[slot] == 3)
+                {
+                    // Circles the point (mfVX, mfVY) it was spawned around.
+                    double ox = x[slot] - mfVX[slot]; double oy = y[slot] - mfVY[slot];
+                    double c = cos(1.2); double s = sin(1.2);
+                    x[slot] = mfVX[slot] + ox * c - oy * s;
+                    y[slot] = mfVY[slot] + ox * s + oy * c;
                     continue;
                 }
                 speed = DSStage.SpeedMilliPerTic(mfTypes[slot]) / 1000.0 * StageEnemySpeedScale();
@@ -1439,7 +1503,7 @@ class DSP030VerticalSlice : EventHandler
                 if (GwFrozen(slot)) continue;
             }
             if (KnockbackStep(slot)) continue;
-            if (GwSlowed(slot)) speed *= 0.5;
+            if (GwSlowed(slot) && !MFResists(slot, MF_RESIST_DEBUFF)) speed *= 0.5;
             double dx = playerX - x[slot]; double dy = playerY - y[slot];
             double distance = sqrt(dx * dx + dy * dy);
             // Far enemies close the gap faster (up to x2 beyond 900 units)
@@ -1458,6 +1522,13 @@ class DSP030VerticalSlice : EventHandler
                 double amount = speed < distance ? speed : distance;
                 x[slot] += dx / distance * amount;
                 y[slot] += dy / distance * amount;
+                // Medusa heads weave from side to side as they come.
+                if (mfEnabled && MFValid(slot) && DSStage.Waves(mfTypes[slot]) != 0)
+                {
+                    double weave = sin(tic * 6.0 + ids[slot] * 37.0) * speed * 0.9;
+                    x[slot] += -dy / distance * weave;
+                    y[slot] += dx / distance * weave;
+                }
             }
         }
     }
@@ -1475,7 +1546,7 @@ class DSP030VerticalSlice : EventHandler
             {
                 // Light sources never hurt; Orologion-frozen enemies cannot.
                 if (MFIsProp(mfTypes[slot])) continue;
-                if (tic < mfFreezeUntil && !DSStage.IsReaperLike(mfTypes[slot])) continue;
+                if (MFOrologionFrozen(slot)) continue;
                 baseDamage = DSStage.PowerMilli(mfTypes[slot]);
                 if (dgActive) baseDamage = baseDamage * (DG_POWER_MILLI + DG_DEPTH_POWER_MILLI * dgDepth) / 1000;
                 if (DSStage.IsBig(mfTypes[slot])) contactRadius = 22.0;
@@ -1497,6 +1568,7 @@ class DSP030VerticalSlice : EventHandler
             }
             int before = playerHealth;
             int contactDamage = baseDamage;
+            if (mfEnabled && GmMaddenerLethal(slot)) contactDamage = max(contactDamage, playerHealth + 1000000);
             int armorBonus = 0;
             if (p033RouteEnabled
                 && DSP033StatApplies(DSP033StatRules.STAT_ARMOR,
@@ -1519,6 +1591,13 @@ class DSP030VerticalSlice : EventHandler
             if (rsActive && rsArmor > 0)
                 contactDamage = DSP033StatRules.IncomingDamageMilliAfterArmor(contactDamage, rsArmor);
             if (rsActive) contactDamage = GwShroudIncoming(contactDamage);
+            if (rsActive && rsCharacter == DSCharacters.TROUBLER && mfGold > 0 && contactDamage > 0)
+            {
+                int soaked = min(mfGold, (contactDamage + 999) / 1000);
+                mfGoldMilli -= soaked * 1000; mfGold = mfGoldMilli / 1000;
+                contactDamage = max(0, contactDamage - soaked * 1000);
+                FxCount("gold_barrier");
+            }
             // Revival: a lethal hit leaves 1 milli-HP, then heals to half.
             bool reviving = rsActive && rsRevivalsUsed < rsRevivalsGranted
                 && contactDamage >= playerHealth && playerHealth > 1;
@@ -1527,6 +1606,9 @@ class DSP030VerticalSlice : EventHandler
             if (playerHealth < 0) playerHealth = 0;
             health[playerSlot] = playerHealth;
             timers[slot] = tic + CONTACT_COOLDOWN;
+            MFNearDeath();
+            // Heart of Fire: the character explodes when hurt (radius and damage are guesses).
+            if (rsActive && ArcanaOwned(DSArcana.HEART_OF_FIRE)) ArcanaExplode(playerX, playerY, 120.0, 30000);
             playerInvulnerableUntil = tic + INVULNERABLE_TICS + (rsActive ? rsInvulnTics : 0);
             contactHits++;
             { if (!dsQuiet) Console.Printf("DS_P030_CONTACT tic=%d enemy_id=%d accepted=1 damage=%d health_before=%d health_after=%d cooldown_until=%d invulnerable_until=%d", tic, ids[slot], contactDamage, before, playerHealth, timers[slot], playerInvulnerableUntil); }
@@ -1717,7 +1799,16 @@ class DSP030VerticalSlice : EventHandler
 
     void HandleEnemyDeath(int slot, int beforeHealth, int eventId)
     {
+        // Enemies with extra lives get back up with full health.
+        if (mfEnabled && MFValid(slot) && slot < mfLives.Size() && mfLives[slot] > 0)
+        {
+            mfLives[slot]--;
+            health[slot] = mfSpawnHp[slot];
+            FxCount("extra_life");
+            return;
+        }
         DeathSfx(slot);
+        if (mfEnabled && MFValid(slot) && mfTypes[slot] == DSStage.REAPER_TYPE) metaReaperKilled = true;
         int generation = generations[slot]; int stable = ids[slot];
         double deathX = x[slot]; double deathY = y[slot];
         int deathType = mfEnabled && MFValid(slot) ? mfTypes[slot] : 0;
@@ -1727,7 +1818,12 @@ class DSP030VerticalSlice : EventHandler
             int propType = mfTypes[slot];
             mfStable[slot] = 0;
             DestroyParts(slot, generation, stable);
-            if (propType == MF_BRAZIER_TYPE) MFDropLightSourceItem(deathX, deathY);
+            if (propType == MF_BRAZIER_TYPE)
+            {
+                MFDropLightSourceItem(deathX, deathY); metaLsrc++;
+                // Heart of Fire: light sources explode (radius and damage are guesses).
+                if (rsActive && ArcanaOwned(DSArcana.HEART_OF_FIRE)) ArcanaExplode(deathX, deathY, 96.0, 20000);
+            }
             else GmPropDied(propType, slot, deathX, deathY);
             return;
         }
@@ -1739,7 +1835,7 @@ class DSP030VerticalSlice : EventHandler
         String source = "BAT3";
         if (mfEnabled && MFValid(slot))
         {
-            xpValue = DSStage.XpMilli(mfTypes[slot]) * DSStage.StageXpMilli(mfStage) / 1000 * (rsMode == 2 ? 3 : 2) / 2;
+            xpValue = DSStage.XpMilli(mfTypes[slot]) * DSStage.StageXpMilli(mfStage) / 1000;
             bossIndex = mfBoss[slot];
             MetaCountKill(mfTypes[slot]);
             source = DSStage.TypeName(mfTypes[slot]);
@@ -1815,6 +1911,9 @@ class DSP030VerticalSlice : EventHandler
             SendInterfaceEvent(consoleplayer, "P030_OFFER0", ActiveDraftOfferId(0), ActiveDraftOfferRank(ActiveDraftOfferId(0)), ActiveDraftTargetLevel());
             SendInterfaceEvent(consoleplayer, "P030_OFFER1", ActiveDraftOfferId(1), ActiveDraftOfferRank(ActiveDraftOfferId(1)), ActiveDraftOfferCount());
             SendInterfaceEvent(consoleplayer, "P030_OFFER2", ActiveDraftOfferId(2), ActiveDraftOfferRank(ActiveDraftOfferId(2)), ActiveDraftQueueCount());
+            // The Luck-rolled fourth offer (DSP031_MAX_OFFERS).
+            SendInterfaceEvent(consoleplayer, "P030_OFFER3", ActiveDraftOfferCount() > 3 ? ActiveDraftOfferId(3) : 0,
+                ActiveDraftOfferCount() > 3 ? ActiveDraftOfferRank(ActiveDraftOfferId(3)) : 0, 0);
         }
     }
 
@@ -1907,6 +2006,7 @@ class DSP030VerticalSlice : EventHandler
             if (HitWasRecorded(currentEvent, slot, generation, stable)) continue;
             historyEvent.Push(currentEvent); historyTargetSlot.Push(slot); historyTargetGeneration.Push(generation); historyTargetId.Push(stable);
             int before; int after; int killed;
+            arHitSystem = ActiveWhipSystem();   // which weapon hit (Arcana scope)
             bool applied = checked && DSP025ApplyLogicalHit(slot, generation, stable, damageMilli, before, after, killed);
             if (!applied) continue;
             hitCount++; AddDamageDealt(before - after); Sfx(DSSfx.H_WHIP, 4);
@@ -1981,6 +2081,7 @@ class DSP030VerticalSlice : EventHandler
             historyEvent.Push(snapshot.eventId); historyTargetSlot.Push(slot);
             historyTargetGeneration.Push(generation); historyTargetId.Push(stable);
             int before; int after; int killed;
+            arHitSystem = DSN2Catalog.ID_BLOODY_TEAR;   // which weapon hit (Arcana scope)
             if (!checked || !DSP025ApplyLogicalHit(slot, generation, stable,
                 damageMilli, before, after, killed)) continue;
             hits++; AddDamageDealt(before - after); Sfx(DSSfx.H_WHIP, 4);
@@ -2086,6 +2187,7 @@ class DSP030VerticalSlice : EventHandler
                 if (HitWasRecorded(whipLingerEvent[k], slot, generation, stable)) continue;
                 historyEvent.Push(whipLingerEvent[k]); historyTargetSlot.Push(slot); historyTargetGeneration.Push(generation); historyTargetId.Push(stable);
                 int before; int after; int killed;
+                arHitSystem = ActiveWhipSystem();   // which weapon hit (Arcana scope)
                 if (!DSP025ApplyLogicalHit(slot, generation, stable, whipLingerDamage[k], before, after, killed)) continue;
                 AddDamageDealt(before - after);
                 if (killed != 0) HandleEnemyDeath(slot, before, whipLingerEvent[k]);
@@ -2494,12 +2596,22 @@ class DSP030VerticalSlice : EventHandler
         // its own dedicated Whip+Hollow Heart fixture inventory.
         if (n2ChestCadenceEnabled && !p032RouteEnabled) DSP032ResetInventory();
         rsRevivalsUsed = 0;
+        rsBonusHealthMilli = 0; mfCritReadyTic = 0;
+        hfMarkX.Clear(); hfMarkY.Clear(); hfMarkTic.Clear(); hfRosaryPlaced = false; hfRosaryId = 0; hfEndTic = 0;
+        mnMinute = -1; mnSwing.Clear(); gzBonus.Clear(); gzOverhealMilli = 0;
         LbReset();
         ArcanaReset();
         CVar limitBreak = CVar.FindCVar("ds_limit_break");
         // Limit Break is off for manual play unless switched on (L on the stage
         // screen); automated runs keep it on so the harnesses still reach it.
         lbEnabled = configuredMode != "manual" || (limitBreak != null && limitBreak.GetInt() != 0);
+        if (configuredMode == "manual" && lbEnabled)
+        {
+            // Limit Break needs the Great Gospel (the Ender's prize).
+            Array<String> gk; Array<int> gv;
+            DSMeta.Load(gk, gv);
+            lbEnabled = DSRelics.Owned(gk, gv, DSRelics.GOSPEL);
+        }
         GwReset();
         if (rsActive) { DSPowerUps.Load(rsPowerUpRanks); DSEggs.Load(rsEggs); RecomputeRunStats(); }
         if (p031RouteEnabled)
@@ -2514,8 +2626,8 @@ class DSP030VerticalSlice : EventHandler
             int banishCharges = banishes != null ? banishes.GetInt() : 0;
             if (rsActive)
             {
-                rerollCharges += DSPowerUps.Charges(rsPowerUpRanks, DSPowerUps.REROLL);
-                skipCharges += DSPowerUps.Charges(rsPowerUpRanks, DSPowerUps.SKIP);
+                rerollCharges += DSPowerUps.Charges(rsPowerUpRanks, DSPowerUps.REROLL) + DSCharacters.StartReroll(rsCharacter);
+                skipCharges += DSPowerUps.Charges(rsPowerUpRanks, DSPowerUps.SKIP) + DSCharacters.StartSkip(rsCharacter);
                 banishCharges += DSPowerUps.Charges(rsPowerUpRanks, DSPowerUps.BANISH) + DSCharacters.StartBanish(rsCharacter) + DSEggs.Charges(rsEggs, 18);
                 rerollCharges += DSEggs.Charges(rsEggs, 5);
                 skipCharges += DSEggs.Charges(rsEggs, 17);
@@ -2955,7 +3067,8 @@ class DSP030VerticalSlice : EventHandler
         N2ProfileEnd("TAIL");
         if (runState == STATE_ACTIVE && tic >= RunEndTic())
         {
-            if (mfEnabled && survivalTics == MAD_FOREST_TICS) MFMaintainReaper();
+            if (mfEnabled && survivalTics == MAD_FOREST_TICS && rsEndless) MFEndlessLoop();
+            else if (mfEnabled && survivalTics == MAD_FOREST_TICS) MFMaintainReaper();
             else EndRun("TIME_LIMIT");
         }
         if (runState == STATE_ACTIVE && (tic == 1 || tic % 35 == 0))
@@ -3031,6 +3144,33 @@ class DSP030VerticalSlice : EventHandler
         if (!DSCharacters.Playable(rsCharacter)) rsCharacter = DSCharacters.ANTONIO;
         CVar modeCVar = CVar.FindCVar("ds_mode");
         rsMode = rsActive && modeCVar != null ? clamp(modeCVar.GetInt(), 0, 2) : 0;
+        {
+            Array<String> rk; Array<int> rv;
+            DSMeta.Load(rk, rv);
+            bool manual = configuredMode == "manual";
+            if (manual && rsMode == 2 && !DSRelics.Owned(rk, rv, DSRelics.MIRROR)) rsMode = 0;
+            if (manual && rsMode == 1 && !DSUnlocks.HyperUnlocked(rk, rv, mfStage)) rsMode = 0;
+            // Inverse tints the whole stage in its colour (the original's
+            // per-stage tint). The map itself is not mirrored.
+            int tint = DSStage.InverseTint(mfStage);
+            if (rsMode == 2 && tint != 0)
+            {
+                Color tintColor = Color(255, (tint >> 16) & 255, (tint >> 8) & 255, tint & 255);
+                for (int si = 0; si < level.sectors.Size(); si++) level.sectors[si].SetColor(tintColor);
+            }
+            rsEndless = rsActive && RunOption("ds_endless") && (!manual || DSRelics.Owned(rk, rv, DSRelics.TRUMPET));
+            rsHurry = rsActive && RunOption("ds_hurry") && (!manual || DSRelics.Owned(rk, rv, DSRelics.TEARS));
+            rsRandomEvents = rsActive && RunOption("ds_random_events") && (!manual || DSRelics.Owned(rk, rv, DSRelics.TRISECTION));
+            rsRandomLevelUp = rsActive && RunOption("ds_random_levelup") && (!manual || DSRelics.Owned(rk, rv, DSRelics.BRAVE_STORY));
+            rsArrows = !manual || DSRelics.Owned(rk, rv, DSRelics.MILKY_WAY);
+            CVar maxWeapons = CVar.FindCVar("ds_max_weapons");
+            dsp031WeaponCap = manual && DSRelics.Owned(rk, rv, DSRelics.MINDBENDER) && maxWeapons != null
+                ? clamp(maxWeapons.GetInt(), 1, 6) : 6;
+            CVar music = CVar.FindCVar("ds_music");
+            if (manual && rsActive && music != null && music.GetString().Length() > 0 && DSRelics.Owned(rk, rv, DSRelics.BANGER))
+                S_ChangeMusic(music.GetString());
+            mfEndlessCycle = 0;
+        }
         n2EvolutionPassivesGranted = false;
         n2EvolutionBatchStage = 0;
         n2EvolutionBiBraceletReranked = false;
@@ -3240,6 +3380,7 @@ class DSP030VerticalSlice : EventHandler
         if (runState == STATE_LEVELUP || runState == STATE_RESULTS || runState == STATE_RESTARTING || runState == STATE_ENDING)
         {
             if (runState == STATE_LEVELUP) N2DraftBotTick();
+            if (runState == STATE_LEVELUP && rsRandomLevelUp) RandomLevelUpTick();
             ClearNativeInput(); SyncPresentation(); return;
         }
         int steps = logicalStepsPerWorldTick;

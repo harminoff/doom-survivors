@@ -154,6 +154,26 @@
       "knockback_max": 0,
       "xp": 0,
       "special": "boss-like; drops a Golden Egg on death; 3 spawn at 14:00 (wiki lists variants MOON_MASK1-5, all same stats; MASK1 used for all three)"
+    },
+    "MOON_MEDUSA1": {
+      "name": "MOON_MEDUSA1",
+      "hp": 1.0,
+      "power": 1,
+      "speed": 240,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "MOON_SHADEBLUE": {
+      "name": "MOON_SHADEBLUE",
+      "hp": 30.0,
+      "power": 5,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [

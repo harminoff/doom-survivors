@@ -5,8 +5,9 @@
 // Reroll, Skip and Banish give +2 level-up charges per rank (wiki). Charm
 // (+20 enemies per wave per rank), Defang (3% of enemies harmless per rank) and
 // Preserve (10% chance per rank to keep a used Reroll/Skip/Banish) are built;
-// their wiki unlock quests are ignored and Defang's price is a guess. The Seal
-// PowerUps are not built.
+// their wiki unlock quests are ignored. Prices follow the wiki. Seal I-IV
+// each add one seal per rank; sealed items (seal:<id> in ds_meta) never appear
+// in level-ups.
 //
 // Ranks live in the ds_powerups cvar ("might=2,armor=1,..."); gold lives in
 // the hashed ds_p030_profile_payload, rewritten here when gold is spent.
@@ -17,7 +18,7 @@ class DSPowerUps
     {
         MIGHT, ARMOR, MAX_HEALTH, RECOVERY, COOLDOWN, AREA, SPEED, DURATION,
         AMOUNT, MOVE, MAGNET, LUCK, GROWTH, GREED, CURSE, REVIVAL, OMNI,
-        REROLL, SKIP, BANISH, CHARM, DEFANG, PRESERVE,
+        REROLL, SKIP, BANISH, CHARM, DEFANG, PRESERVE, SEAL1, SEAL2, SEAL3, SEAL4,
         NUM_POWERUPS
     }
 
@@ -25,13 +26,15 @@ class DSPowerUps
         "Might", "Armor", "Max Health", "Recovery", "Cooldown", "Area",
         "Speed", "Duration", "Amount", "Move Speed", "Magnet", "Luck",
         "Growth", "Greed", "Curse", "Revival", "Omni",
-        "Reroll", "Skip", "Banish", "Charm", "Defang", "Preserve"
+        "Reroll", "Skip", "Banish", "Charm", "Defang", "Preserve",
+        "Seal I", "Seal II", "Seal III", "Seal IV"
     };
     static const String KEYS[] = {
         "might", "armor", "maxhealth", "recovery", "cooldown", "area",
         "speed", "duration", "amount", "move", "magnet", "luck",
         "growth", "greed", "curse", "revival", "omni",
-        "reroll", "skip", "banish", "charm", "defang", "preserve"
+        "reroll", "skip", "banish", "charm", "defang", "preserve",
+        "seal1", "seal2", "seal3", "seal4"
     };
     static const String EFFECTS[] = {
         "+5% damage per rank", "-1 incoming damage per rank", "+10% Max Health per rank",
@@ -42,10 +45,12 @@ class DSPowerUps
         "Revive once with 50% health", "+2% Might, Speed, Duration and Area per rank",
         "+2 level-up rerolls per rank", "+2 level-up skips per rank (skipping gives XP)",
         "+2 level-up banishes per rank", "+20 enemies per wave per rank",
-        "+3% of enemies cannot hurt you per rank", "+10% chance to keep a used Reroll/Skip/Banish per rank"
+        "+3% of enemies cannot hurt you per rank", "+10% chance to keep a used Reroll/Skip/Banish per rank",
+        "+1 Seal per rank (seal items in the Collection with S)", "+1 Seal per rank (seal items in the Collection with S)",
+        "+1 Seal per rank (seal items in the Collection with S)", "+1 Seal per rank (seal items in the Collection with S)"
     };
-    static const int MAX_RANKS[] = { 5, 3, 3, 5, 2, 2, 2, 2, 1, 2, 2, 3, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5 };
-    static const int PRICES[] = { 200, 600, 200, 200, 900, 300, 300, 300, 5000, 600, 300, 600, 900, 200, 1666, 10000, 1000, 1000, 100, 100, 10000, 1000, 500 };
+    static const int MAX_RANKS[] = { 5, 3, 3, 5, 2, 2, 2, 2, 1, 2, 2, 3, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 10, 10, 10, 10 };
+    static const int PRICES[] = { 200, 600, 200, 200, 900, 300, 300, 300, 5000, 600, 300, 600, 900, 200, 1666, 10000, 1000, 500, 100, 100, 10000, 10, 500, 2000, 4000, 6000, 8000 };
 
     static int Count() { return NUM_POWERUPS; }
     static String Name(int p) { return DSPowerUps.NAMES[p]; }
@@ -124,6 +129,12 @@ class DSPowerUps
         s.charm += 20 * ranks[CHARM];
         s.defang += 3 * ranks[DEFANG];
         s.preserve += 10 * ranks[PRESERVE];
+    }
+
+    // Seals bought (Seal I-IV, one per rank): how many items may be sealed.
+    static int SealCapacity(Array<int> ranks)
+    {
+        return ranks.Size() < NUM_POWERUPS ? 0 : ranks[SEAL1] + ranks[SEAL2] + ranks[SEAL3] + ranks[SEAL4];
     }
 
     // Level-up charges at run start: +2 per rank (wiki).

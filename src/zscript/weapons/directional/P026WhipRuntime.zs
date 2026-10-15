@@ -325,6 +325,7 @@ class DSP026WhipRuntime : EventHandler
                 int after = 0;
                 int killed = 0;
                 bool checked = DSP025CheckedMilliDamage(snapshotDamageBase[snapshotIndex], snapshotMultiplierMilli[snapshotIndex], amount);
+                arHitSystem = DSN2Catalog.ID_WHIP;   // which weapon hit (Arcana scope)
                 bool applied = checked && DSP025ApplyLogicalHit(slot, generation, stableId, amount, before, after, killed);
                 if (applied && amount > 0)
                 {

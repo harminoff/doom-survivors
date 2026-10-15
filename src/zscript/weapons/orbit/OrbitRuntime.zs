@@ -1096,6 +1096,7 @@ mixin class DSP037OrbitRuntime
                 && scaledDamageTenths <= 20000000;
             int damageMilli = checked ? scaledDamageTenths * 100 : 0;
             int before; int after; int killed;
+            arHitSystem = dsp037MemberSystemIds[memberIndex];   // which weapon hit (Arcana scope)
             bool accepted = checked && DSP025ApplyLogicalHit(slot,
                 generation, stableId, damageMilli, before, after, killed);
             if (!accepted)

@@ -146,6 +146,10 @@ class DSN2Catalog
     const ID_N3_CHAOS_MALACHITE = 136;
     const ID_N3_CHAOS_ROSALIA = 137;
     const ID_N3_CHAOS_LAZULIA = 138;
+    const ID_N3_GOLD_RING = 139;
+    // Gifts (no slot; SliceMadForest.zs): Victory Sword's and Candybox's.
+    const ID_N3_SOLE_SOLUTION = 140;
+    const ID_N3_CANDYBOX2 = 141;
 
     const FLAT_RARITY_WEIGHT = 100;
 
@@ -190,7 +194,8 @@ class DSN2Catalog
         ids.Push(ID_N3_SILVER_RING); ids.Push(ID_N3_METAGLIO_LEFT); ids.Push(ID_N3_METAGLIO_RIGHT);
         ids.Push(ID_N3_CHAOS_ALTEMANNA); ids.Push(ID_N3_TORRONA_S_BOX); ids.Push(ID_N3_PARM_AEGIS);
         ids.Push(ID_N3_KAROMA_S_MANA); ids.Push(ID_N3_CHAOS_MALACHITE); ids.Push(ID_N3_CHAOS_ROSALIA);
-        ids.Push(ID_N3_CHAOS_LAZULIA);
+        ids.Push(ID_N3_CHAOS_LAZULIA); ids.Push(ID_N3_GOLD_RING);
+        ids.Push(ID_N3_SOLE_SOLUTION); ids.Push(ID_N3_CANDYBOX2);
     }
 
     static void DraftableIds(out Array<int> ids)
@@ -214,6 +219,7 @@ class DSN2Catalog
         ids.Push(ID_N3_WINGS); ids.Push(ID_N3_STONE_MASK); ids.Push(ID_N3_SKULL_O_MANIAC);
         ids.Push(ID_N3_SILVER_RING); ids.Push(ID_N3_METAGLIO_LEFT); ids.Push(ID_N3_METAGLIO_RIGHT);
         ids.Push(ID_N3_TORRONA_S_BOX); ids.Push(ID_N3_PARM_AEGIS); ids.Push(ID_N3_KAROMA_S_MANA);
+        ids.Push(ID_N3_GOLD_RING);
         ids.Push(ID_N3_AMMO_APPALATE); ids.Push(ID_N3_ARMA_DIO); ids.Push(ID_N3_CANDYBOX);
         ids.Push(ID_N3_CELESTIAL_DUSTING); ids.Push(ID_N3_CHAOS_RUNE); ids.Push(ID_N3_CLOCK_LANCET);
         ids.Push(ID_N3_FLAMES_OF_MISSPELL); ids.Push(ID_N3_GATTI_AMARI); ids.Push(ID_N3_GAZE_OF_GAEA);
@@ -277,7 +283,7 @@ class DSN2Catalog
             || id == ID_N3_SILVER_RING || id == ID_N3_METAGLIO_LEFT || id == ID_N3_METAGLIO_RIGHT
             || id == ID_N3_CHAOS_ALTEMANNA || id == ID_N3_TORRONA_S_BOX || id == ID_N3_PARM_AEGIS
             || id == ID_N3_KAROMA_S_MANA || id == ID_N3_CHAOS_MALACHITE || id == ID_N3_CHAOS_ROSALIA
-            || id == ID_N3_CHAOS_LAZULIA;
+            || id == ID_N3_CHAOS_LAZULIA || id == ID_N3_GOLD_RING;
     }
 
     static int Category(int id)
@@ -300,12 +306,33 @@ class DSN2Catalog
         return Category(id) == CATEGORY_WEAPON ? id : 0;
     }
 
-    // Every rarity weight is the labelled flat-100 fallback: no infobox in
-    // data/verified/base/weapons/**/*.json carries a "rarity" value as of
-    // 2026-09-28 (confirmed by a full scan of that tree).
+    // Draft weights: the Vampire Survivors wiki's item rarity (100 = common); items
+    // not listed here are 100. Evolutions never enter the draft.
     static int RarityWeight(int id)
     {
-        return IsKnown(id) ? FLAT_RARITY_WEIGHT : 0;
+        if (!IsKnown(id)) return 0;
+        switch (id)
+        {
+        case ID_N3_CANDYBOX: return 2;
+        case ID_N3_SILVER_RING: case ID_N3_GOLD_RING:
+        case ID_N3_METAGLIO_LEFT: case ID_N3_METAGLIO_RIGHT: return 10;
+        case ID_N3_GREATEST_JUBILEE: return 20;
+        case ID_N3_ARMA_DIO: case ID_N3_FLAMES_OF_MISSPELL: case ID_N3_VICTORY_SWORD: return 30;
+        case ID_BRACELET: case ID_TIRAJISU: case ID_N3_SKULL_O_MANIAC: case ID_N3_TORRONA_S_BOX:
+        case ID_N3_PARM_AEGIS: case ID_N3_KAROMA_S_MANA: return 40;
+        case ID_PEACHONE: case ID_EBONY_WINGS: case ID_PHIERA: case ID_EIGHT: case ID_VENTO_SACRO:
+        case ID_EMPTY_TOME: case ID_DUPLICATOR: case ID_N3_GATTI_AMARI: case ID_N3_GAZE_OF_GAEA:
+        case ID_N3_GLASS_FANDANGO: case ID_N3_PENSHIN_FATCHA: case ID_N3_PHAS3R:
+        case ID_N3_SHADOW_PINION: case ID_N3_SONG_OF_MANA: case ID_N3_WINGS: return 50;
+        case ID_PENTAGRAM: case ID_N3_AMMO_APPALATE: case ID_N3_LAUREL: case ID_N3_MAGI_STONE:
+        case ID_N3_PAKO_BATTILIAR: case ID_N3_SANTA_JAVELIN: return 60;
+        case ID_GARLIC: case ID_CROWN: case ID_N3_CLOCK_LANCET: case ID_N3_UNEARTHLY_BOLT:
+        case ID_N3_STONE_MASK: return 70;
+        case ID_FIRE_WAND: case ID_CROSS: case ID_KING_BIBLE: case ID_LIGHTNING_RING:
+        case ID_RUNETRACER: return 80;
+        case ID_HOLLOW_HEART: case ID_PUMMAROLA: return 90;
+        }
+        return FLAT_RARITY_WEIGHT;
     }
 
     // True for the six passives with no modelled stat effect yet (N8 scope).
@@ -329,18 +356,18 @@ class DSN2Catalog
     static int MaxRank(int id)
     {
         if (id == ID_DUPLICATOR) return 2;
-        if (id == ID_TIRAJISU) return 1;
+        if (id == ID_TIRAJISU) return 2;   // original: two levels, +1 Revival each
         if (id == ID_SPINACH || id == ID_ARMOR || id == ID_HOLLOW_HEART
             || id == ID_EMPTY_TOME || id == ID_PUMMAROLA || id == ID_CROWN
             || id == ID_ATTRACTORB || id == ID_CANDELABRADOR || id == ID_CLOVER
             || id == ID_BRACER || id == ID_SPELLBINDER)
             return 5;
         if (id == ID_BRACELET || id == ID_BI_BRACELET || id == ID_TRI_BRACELET)
-            return 8;
+            return 6;   // original and DSP042Rows.RankCount: six levels
         // Stat passives' wiki max levels; the Chaos relics are single pickups.
         if (id == ID_N3_WINGS || id == ID_N3_STONE_MASK || id == ID_N3_SKULL_O_MANIAC
             || id == ID_N3_PARM_AEGIS || id == ID_N3_KAROMA_S_MANA) return 5;
-        if (id == ID_N3_SILVER_RING || id == ID_N3_METAGLIO_LEFT || id == ID_N3_METAGLIO_RIGHT
+        if (id == ID_N3_SILVER_RING || id == ID_N3_GOLD_RING || id == ID_N3_METAGLIO_LEFT || id == ID_N3_METAGLIO_RIGHT
             || id == ID_N3_TORRONA_S_BOX) return 9;
         if (IsN3Passive(id)) return 1;
         // N3 weapon max ranks mirror DSN3Rows.RankCount(system) verbatim
@@ -364,6 +391,7 @@ class DSN2Catalog
         if (id == ID_N3_GREATEST_JUBILEE) return 9;
         if (id == ID_N3_GUNASTROPHE) return 1;
         if (id == ID_N3_INFINITE_CORRIDOR) return 1;
+        if (id == ID_N3_SOLE_SOLUTION || id == ID_N3_CANDYBOX2) return 1;
         if (id == ID_N3_KYRA_STONES) return 1;
         if (id == ID_N3_LA_ROBBA) return 8;
         if (id == ID_N3_LAUREL) return 7;
@@ -503,6 +531,9 @@ class DSN2Catalog
         if (id == ID_N3_SKULL_O_MANIAC) return "Skull O'Maniac";
         if (id == ID_N3_WINGS) return "Wings";
         if (id == ID_N3_SILVER_RING) return "Silver Ring";
+        if (id == ID_N3_GOLD_RING) return "Gold Ring";
+        if (id == ID_N3_SOLE_SOLUTION) return "Sole Solution";
+        if (id == ID_N3_CANDYBOX2) return "Super Candybox II Turbo";
         if (id == ID_N3_METAGLIO_LEFT) return "Metaglio Left";
         if (id == ID_N3_METAGLIO_RIGHT) return "Metaglio Right";
         if (id == ID_N3_CHAOS_ALTEMANNA) return "Chaos Altemanna";

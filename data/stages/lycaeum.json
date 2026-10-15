@@ -116,7 +116,7 @@
       "minute": 1,
       "pool": [
         "EX_SEAANGEL",
-        "EX_SEAHAM"
+        "EX_SEAPIG"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 1.0,
@@ -126,7 +126,7 @@
     {
       "minute": 2,
       "pool": [
-        "EX_SEAHAM",
+        "EX_SEAPIG",
         "EX_SEASLUG"
       ],
       "enemy_min": 50,
@@ -144,7 +144,7 @@
       "spawn_interval_s": 0.25,
       "events": [],
       "bosses": [
-        "EX_BOSS_ENYPNASTYS"
+        "EX_BOSS_PINKJELLYFISH"
       ]
     },
     {
@@ -168,21 +168,19 @@
       "spawn_interval_s": 0.75,
       "events": [],
       "bosses": [
-        "EX_BOSS_ENYPNASTYS"
+        "EX_BOSS_PINKJELLYFISH"
       ]
     },
     {
       "minute": 6,
       "pool": [
         "EX_ICHTHYOCENTAUR_02",
-        "EX_SEAHAM"
+        "EX_SEAPIG"
       ],
       "enemy_min": 40,
       "spawn_interval_s": 0.5,
       "events": [],
-      "bosses": [
-        "EX_BOSS_ARCANA_SALMON"
-      ]
+      "bosses": []
     },
     {
       "minute": 7,
@@ -205,7 +203,7 @@
       "spawn_interval_s": 1.5,
       "events": [],
       "bosses": [
-        "EX_BOSS_ENYPNASTYS"
+        "EX_BOSS_PINKJELLYFISH"
       ]
     },
     {
@@ -225,13 +223,13 @@
       "pool": [
         "EX_ICHTHYOCENTAUR_05",
         "EX_AHUIZOTL",
-        "EX_SEAHAM"
+        "EX_SEAPIG"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [
-        "EX_BOSS_ENYPNASTYS"
+        "EX_BOSS_PINKJELLYFISH"
       ]
     },
     {
@@ -249,7 +247,7 @@
     {
       "minute": 12,
       "pool": [
-        "XLTRITON",
+        "EX_TRITONT_02",
         "EX_BUKAVAC",
         "EX_SEASLUG"
       ],
@@ -257,20 +255,19 @@
       "spawn_interval_s": 1.0,
       "events": [],
       "bosses": [
-        "EX_BOSS_ENYPNASTYS"
+        "EX_BOSS_PINKJELLYFISH"
       ]
     },
     {
       "minute": 13,
       "pool": [
-        "XLTRITON"
+        "EX_TRITONT_01",
+        "EX_TRITONT_02"
       ],
       "enemy_min": 120,
       "spawn_interval_s": 0.2,
       "events": [],
-      "bosses": [
-        "EX_BOSS_ARCANA_SALMON"
-      ]
+      "bosses": []
     },
     {
       "minute": 14,
@@ -299,7 +296,7 @@
     {
       "minute": 16,
       "pool": [
-        "EX_OLMO",
+        "EX_OLM",
         "EX_ICHTHYOCENTAUR_04"
       ],
       "enemy_min": 80,
@@ -310,7 +307,7 @@
     {
       "minute": 17,
       "pool": [
-        "EX_OLMO",
+        "EX_OLM",
         "EX_LEAFYSEAHORSE_02"
       ],
       "enemy_min": 40,
@@ -323,8 +320,8 @@
     {
       "minute": 18,
       "pool": [
-        "EX_OLMO",
-        "EX_ENYPNASTYS"
+        "EX_OLM",
+        "EX_BOSS_PINKJELLYFISH"
       ],
       "enemy_min": 90,
       "spawn_interval_s": 0.5,
@@ -334,7 +331,7 @@
     {
       "minute": 19,
       "pool": [
-        "EX_ICHTHYOCENTAUR_01"
+        "EX_BOSS_ICHTHYOCENTAUR"
       ],
       "enemy_min": 20,
       "spawn_interval_s": 0.5,
@@ -543,134 +540,107 @@
   "bosses": [
     {
       "minute": 3,
-      "enemy": "EX_BOSS_ENYPNASTYS",
-      "name": "Enypnastys",
+      "enemy": "EX_BOSS_PINKJELLYFISH",
+      "name": "EX_BOSS_PINKJELLYFISH",
       "chest": {
         "chance_pct": {
           "5_item": 1,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 5,
-      "enemy": "EX_BOSS_ENYPNASTYS",
-      "name": "Enypnastys",
+      "enemy": "EX_BOSS_PINKJELLYFISH",
+      "name": "EX_BOSS_PINKJELLYFISH",
       "chest": {
         "chance_pct": {
           "5_item": 1,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 8,
-      "enemy": "EX_BOSS_ENYPNASTYS",
-      "name": "Enypnastys",
+      "enemy": "EX_BOSS_PINKJELLYFISH",
+      "name": "EX_BOSS_PINKJELLYFISH",
       "chest": {
         "chance_pct": {
           "5_item": 1,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 10,
-      "enemy": "EX_BOSS_ENYPNASTYS",
-      "name": "Enypnastys",
+      "enemy": "EX_BOSS_PINKJELLYFISH",
+      "name": "EX_BOSS_PINKJELLYFISH",
       "chest": {
         "chance_pct": {
           "5_item": 1,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 12,
-      "enemy": "EX_BOSS_ENYPNASTYS",
-      "name": "Enypnastys",
+      "enemy": "EX_BOSS_PINKJELLYFISH",
+      "name": "EX_BOSS_PINKJELLYFISH",
       "chest": {
         "chance_pct": {
           "5_item": 1,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
-    },
-    {
-      "minute": 6,
-      "enemy": "EX_BOSS_ARCANA_SALMON",
-      "name": "Ex Arcana Salmon (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
-          "1_item": 100
-        }
-      },
-      "arcana_only": true,
-      "chest_raw": "level=1 evo=1 tier3=1 tier2=2 tier1=100 reward1=arcana"
-    },
-    {
-      "minute": 13,
-      "enemy": "EX_BOSS_ARCANA_SALMON",
-      "name": "Ex Arcana Salmon (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
-          "1_item": 100
-        }
-      },
-      "arcana_only": true,
-      "chest_raw": "level=1 evo=1 tier3=1 tier2=2 tier1=100 reward1=arcana"
     },
     {
       "minute": 15,
       "enemy": "EX_BOSS_SEASPHYNX",
-      "name": "Deep Sphynx",
+      "name": "EX_BOSS_SEASPHYNX",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 17,
       "enemy": "EX_BOSS_SEASPHYNX",
-      "name": "Deep Sphynx",
+      "name": "EX_BOSS_SEASPHYNX",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 20,
       "enemy": "BOSS_XLDEATH",
-      "name": "The Reaper",
-      "chest": null,
-      "note": "Wave table lists the Reaper at 20:00 with enemy minimum 1 and interval 10 s."
+      "name": "BOSS_XLDEATH",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     }
   ],
   "chest_rules": {

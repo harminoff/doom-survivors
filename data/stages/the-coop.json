@@ -26,6 +26,7 @@
     },
     "modifiers": {
       "xp_bonus_pct": -65,
+      "enemy_health_per_minute": 0.25,
       "scaling_note": "Wiki: the game and the stage's enemies speed up significantly as time increases (no numbers given); enemy move speed ranges are listed as min-max in the enemies file."
     },
     "modifiers_note": "Wiki infobox: XP x0.35 (-65% XP), player speed x1.35, starting spawns 50, destructibles 80% (max 90%, cap 8). Enemy speed/health/greed/luck blank = x1. Hyper: player x2, enemy speed x1.65, projectile x1.15, greed x1.25, enemy health x2 (not used).",
@@ -74,15 +75,17 @@
       "enemy_min": 100,
       "spawn_interval_s": 0.1,
       "events": [],
-      "bosses": []
+      "bosses": [
+        "COOP_CHICKEN_SPECIAL"
+      ]
     },
     {
       "minute": 1,
       "pool": [
-        "COOP_CHICKEN",
-        "COOP_COCK",
-        "COOP_CHIK",
-        "COOP_EGG"
+        "COOP_CHICKEN_H",
+        "COOP_COCK_H",
+        "COOP_CHIK_H",
+        "COOP_EGG_H"
       ],
       "enemy_min": 70,
       "spawn_interval_s": 0.5,
@@ -93,7 +96,7 @@
       "minute": 2,
       "pool": [
         "COOP_CHICKEN",
-        "COOP_CHIK"
+        "COOP_CHIK_H"
       ],
       "enemy_min": 200,
       "spawn_interval_s": 0.05,
@@ -116,8 +119,9 @@
     {
       "minute": 3,
       "pool": [
-        "COOP_CHICKEN",
-        "COOP_CHIK"
+        "COOP_CHICKEN_H",
+        "COOP_CHIK",
+        "COOP_CHICKEN"
       ],
       "enemy_min": 70,
       "spawn_interval_s": 0.4,
@@ -136,14 +140,14 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXAS"
+        "COOP_BOSS_ABRAXAS"
       ]
     },
     {
       "minute": 4,
       "pool": [
         "COOP_CHIK",
-        "COOP_EGG",
+        "COOP_EGG_H",
         "COOP_COCK"
       ],
       "enemy_min": 200,
@@ -181,7 +185,7 @@
       "pool": [
         "COOP_CHIK",
         "COOP_EGG",
-        "COOP_COCK"
+        "COOP_COCK_H"
       ],
       "enemy_min": 60,
       "spawn_interval_s": 0.25,
@@ -200,13 +204,13 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXAS"
+        "COOP_BOSS_ABRAXAS"
       ]
     },
     {
       "minute": 6,
       "pool": [
-        "COOP_EGG",
+        "COOP_EGG_H",
         "COOP_COCK",
         "COOP_CHICKEN"
       ],
@@ -227,30 +231,28 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXAS"
+        "COOP_BOSS_ABRAXAS"
       ]
     },
     {
       "minute": 7,
       "pool": [
-        "COOP_ROAST_CHICKEN",
+        "COOP_ROAST_CHICKEN_H",
         "COOP_CHICKEN",
         "COOP_COCK",
-        "COOP_EGG"
+        "COOP_EGG_H"
       ],
       "enemy_min": 70,
       "spawn_interval_s": 0.1,
       "events": [],
-      "bosses": [
-        "COOP_COCK"
-      ]
+      "bosses": []
     },
     {
       "minute": 8,
       "pool": [
         "COOP_ROAST_CHICKEN",
         "COOP_COCK",
-        "COOP_CHIK"
+        "COOP_CHIK_H"
       ],
       "enemy_min": 90,
       "spawn_interval_s": 0.05,
@@ -269,12 +271,13 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXAS"
+        "COOP_BOSS_ABRAXAS"
       ]
     },
     {
       "minute": 9,
       "pool": [
+        "COOP_CHICKEN_H",
         "COOP_CHICKEN"
       ],
       "enemy_min": 100,
@@ -310,8 +313,8 @@
     {
       "minute": 10,
       "pool": [
-        "COOP_EGG",
-        "COOP_CHIK",
+        "COOP_EGG_H",
+        "COOP_CHIK_H",
         "COOP_ABRAXAS"
       ],
       "enemy_min": 50,
@@ -331,14 +334,14 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXASCROWN"
+        "COOP_BOSS_ABRAXASCROWN"
       ]
     },
     {
       "minute": 11,
       "pool": [
         "COOP_ABRAXAS",
-        "COOP_CHICKEN",
+        "COOP_CHICKEN_H",
         "COOP_CHIK"
       ],
       "enemy_min": 80,
@@ -350,7 +353,7 @@
       "minute": 12,
       "pool": [
         "COOP_COCK",
-        "COOP_ROAST_CHICKEN"
+        "COOP_ROAST_CHICKEN_H"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 1.0,
@@ -369,7 +372,7 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXASCROWN"
+        "COOP_BOSS_ABRAXASCROWN"
       ]
     },
     {
@@ -382,13 +385,13 @@
       "spawn_interval_s": 0.8,
       "events": [],
       "bosses": [
-        "COOP_ABRAXASCROWN"
+        "COOP_BOSS_ABRAXASCROWN"
       ]
     },
     {
       "minute": 14,
       "pool": [
-        "COOP_ABRAXAS",
+        "COOP_ABRAXAS_H",
         "COOP_COCK"
       ],
       "enemy_min": 130,
@@ -419,14 +422,12 @@
           "wiki_name": "Coop Roast Chicken Swarm"
         }
       ],
-      "bosses": [
-        "COOP_COCK"
-      ]
+      "bosses": []
     },
     {
       "minute": 15,
       "pool": [
-        "COOP_CHICKEN",
+        "COOP_CHICKEN_H",
         "COOP_COCK"
       ],
       "enemy_min": 150,
@@ -458,29 +459,29 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXASHALO"
+        "COOP_BOSS_ABRAXASHALO"
       ]
     },
     {
       "minute": 16,
       "pool": [
         "COOP_ABRAXAS",
-        "COOP_COCK",
+        "COOP_COCK_H",
         "COOP_CHICKEN"
       ],
       "enemy_min": 160,
       "spawn_interval_s": 1.0,
       "events": [],
       "bosses": [
-        "COOP_ABRAXASCROWN"
+        "COOP_BOSS_ABRAXASCROWN"
       ]
     },
     {
       "minute": 17,
       "pool": [
-        "COOP_ABRAXAS",
+        "COOP_ABRAXAS_H",
         "COOP_COCK",
-        "COOP_ABRAXASCROWN"
+        "COOP_ABRAXASCROWN_H"
       ],
       "enemy_min": 90,
       "spawn_interval_s": 1.0,
@@ -511,7 +512,7 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXASHALO"
+        "COOP_BOSS_ABRAXASHALO"
       ]
     },
     {
@@ -519,7 +520,7 @@
       "pool": [
         "COOP_ABRAXAS",
         "COOP_ABRAXASCROWN",
-        "COOP_CHIK"
+        "COOP_CHIK_H"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.6,
@@ -550,15 +551,15 @@
         }
       ],
       "bosses": [
-        "COOP_ABRAXASHALO"
+        "COOP_BOSS_ABRAXASHALO"
       ]
     },
     {
       "minute": 19,
       "pool": [
-        "COOP_ABRAXAS",
-        "COOP_ABRAXASCROWN",
-        "COOP_ABRAXASHALO"
+        "COOP_ABRAXAS_H",
+        "COOP_ABRAXASCROWN_H",
+        "COOP_ABRAXASHALO_H"
       ],
       "enemy_min": 150,
       "spawn_interval_s": 1.0,
@@ -600,9 +601,22 @@
   "unsupported_events_note": "Only mapped swarms. The special start event (kill first Chickenfantry to start timer; Avatar of Gaea after 1 min) and the eastward fence opening are stage mechanics, not map events. The 4:00 Roast Chicken Swarm has repeat=0 on the wiki (treated as 1 occurrence).",
   "bosses": [
     {
+      "minute": 0,
+      "enemy": "COOP_CHICKEN_SPECIAL",
+      "name": "COOP_CHICKEN_SPECIAL",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
+    },
+    {
       "minute": 3,
-      "enemy": "COOP_ABRAXAS",
-      "name": "Abraxas",
+      "enemy": "COOP_BOSS_ABRAXAS",
+      "name": "COOP_BOSS_ABRAXAS",
       "chest": {
         "chance_pct": {
           "5_item": 0.1,
@@ -614,8 +628,8 @@
     },
     {
       "minute": 5,
-      "enemy": "COOP_ABRAXAS",
-      "name": "Abraxas",
+      "enemy": "COOP_BOSS_ABRAXAS",
+      "name": "COOP_BOSS_ABRAXAS",
       "chest": {
         "chance_pct": {
           "5_item": 0.1,
@@ -627,8 +641,8 @@
     },
     {
       "minute": 6,
-      "enemy": "COOP_ABRAXAS",
-      "name": "Abraxas",
+      "enemy": "COOP_BOSS_ABRAXAS",
+      "name": "COOP_BOSS_ABRAXAS",
       "chest": {
         "chance_pct": {
           "5_item": 0.1,
@@ -639,15 +653,9 @@
       }
     },
     {
-      "minute": 7,
-      "enemy": "COOP_COCK",
-      "name": "Cockreliutennant",
-      "chest_note": "wiki lists no treasure for this boss (no chest)"
-    },
-    {
       "minute": 8,
-      "enemy": "COOP_ABRAXAS",
-      "name": "Abraxas",
+      "enemy": "COOP_BOSS_ABRAXAS",
+      "name": "COOP_BOSS_ABRAXAS",
       "chest": {
         "chance_pct": {
           "5_item": 3,
@@ -659,112 +667,107 @@
     },
     {
       "minute": 10,
-      "enemy": "COOP_ABRAXASCROWN",
-      "name": "Abraxas Phronesis",
+      "enemy": "COOP_BOSS_ABRAXASCROWN",
+      "name": "COOP_BOSS_ABRAXASCROWN",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 12,
-      "enemy": "COOP_ABRAXASCROWN",
-      "name": "Abraxas Phronesis",
+      "enemy": "COOP_BOSS_ABRAXASCROWN",
+      "name": "COOP_BOSS_ABRAXASCROWN",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 13,
-      "enemy": "COOP_ABRAXASCROWN",
-      "name": "Abraxas Phronesis",
+      "enemy": "COOP_BOSS_ABRAXASCROWN",
+      "name": "COOP_BOSS_ABRAXASCROWN",
       "chest": {
         "chance_pct": {
           "5_item": 1,
           "3_item": 5,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
-      "minute": 14,
-      "enemy": "COOP_COCK",
-      "name": "Cockreliutennant",
-      "chest_note": "wiki lists no treasure for this boss (no chest)"
-    },
-    {
       "minute": 15,
-      "enemy": "COOP_ABRAXASHALO",
-      "name": "Abraxas Dynamis",
+      "enemy": "COOP_BOSS_ABRAXASHALO",
+      "name": "COOP_BOSS_ABRAXASHALO",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 16,
-      "enemy": "COOP_ABRAXASCROWN",
-      "name": "Abraxas Phronesis",
+      "enemy": "COOP_BOSS_ABRAXASCROWN",
+      "name": "COOP_BOSS_ABRAXASCROWN",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 17,
-      "enemy": "COOP_ABRAXASHALO",
-      "name": "Abraxas Dynamis",
+      "enemy": "COOP_BOSS_ABRAXASHALO",
+      "name": "COOP_BOSS_ABRAXASHALO",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 18,
-      "enemy": "COOP_ABRAXASHALO",
-      "name": "Abraxas Dynamis",
+      "enemy": "COOP_BOSS_ABRAXASHALO",
+      "name": "COOP_BOSS_ABRAXASHALO",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 20,
       "enemy": "BOSS_XLDEATH",
-      "name": "The Reaper"
+      "name": "BOSS_XLDEATH",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     }
   ],
   "chest_rules": {

@@ -12,7 +12,7 @@ extend class DSP030VerticalSlice
     {
         if (!uiP031Mode) return 3;
         if (uiOfferCount < 0) return 0;
-        return uiOfferCount > 3 ? 3 : uiOfferCount;
+        return uiOfferCount > 4 ? 4 : uiOfferCount;
     }
 
     // UiProcess receives GUI KeyChar values, so it accepts ASCII W/S here.
@@ -49,6 +49,9 @@ extend class DSP030VerticalSlice
     const LV_ROW_TOP = 88;
     const LV_ROW_STEP = 66;
     const LV_ROW_H = 60;
+    // Four choices (a Luck-rolled extra, or the Arcana pick) use tighter rows.
+    ui int UiRowStep() { return UiChoiceCount() > 3 ? 50 : LV_ROW_STEP; }
+    ui int UiRowH() { return UiChoiceCount() > 3 ? 46 : LV_ROW_H; }
     const LV_BTN_TOP = 290;
     const LV_BTN_W = 112;
     const LV_BTN_H = 22;
@@ -139,8 +142,8 @@ extend class DSP030VerticalSlice
         int count = UiChoiceCount();
         for (int index = 0; index < count; index++)
         {
-            int top = LV_ROW_TOP + index * LV_ROW_STEP;
-            if (vy >= top && vy < top + LV_ROW_H) return index;
+            int top = LV_ROW_TOP + index * UiRowStep();
+            if (vy >= top && vy < top + UiRowH()) return index;
         }
         return -1;
     }
@@ -277,6 +280,7 @@ extend class DSP030VerticalSlice
         else if (e.Name == "P030_OFFER0") { uiOffer0Id = e.Args[0]; uiOffer0Rank = e.Args[1]; uiTargetLevel = e.Args[2]; }
         else if (e.Name == "P030_OFFER1") { uiOffer1Id = e.Args[0]; uiOffer1Rank = e.Args[1]; uiOfferCount = e.Args[2]; }
         else if (e.Name == "P030_OFFER2") { uiOffer2Id = e.Args[0]; uiOffer2Rank = e.Args[1]; }
+        else if (e.Name == "P030_OFFER3") { uiOffer3Id = e.Args[0]; uiOffer3Rank = e.Args[1]; }
         else if (e.Name == "P031_MAP16_OFFER_COUNT") { uiOfferCount = e.Args[0]; }
         else if (e.Name == "P030_OPEN")
         {
@@ -473,7 +477,7 @@ extend class DSP030VerticalSlice
     ui void DrawPickupArrows()
     {
         CVar toggle = CVar.FindCVar("ds_arrows");
-        if (toggle != null && toggle.GetInt() == 0) return;
+        if ((toggle != null && toggle.GetInt() == 0) || !rsArrows) return;
         if (!mfEnabled || runState != STATE_ACTIVE) return;
         int count = 0;
         // The Depths: the way on (stairs or Amulet) once found, or the way out.
@@ -619,6 +623,7 @@ extend class DSP030VerticalSlice
         if (index == 0) return uiOffer0Id;
         if (index == 1) return uiOffer1Id;
         if (index == 2) return uiOffer2Id;
+        if (index == 3) return uiOffer3Id;
         return 0;
     }
 
@@ -627,6 +632,7 @@ extend class DSP030VerticalSlice
         if (index == 0) return uiOffer0Rank;
         if (index == 1) return uiOffer1Rank;
         if (index == 2) return uiOffer2Rank;
+        if (index == 3) return uiOffer3Rank;
         return 0;
     }
 
@@ -669,14 +675,14 @@ extend class DSP030VerticalSlice
         {
             int id = UiOfferId(index);
             int rank = UiOfferRank(index);
-            double left = LV_ROW_LEFT; double top = LV_ROW_TOP + index * LV_ROW_STEP;
+            double left = LV_ROW_LEFT; double top = LV_ROW_TOP + index * UiRowStep();
             double right = left + LV_ROW_W;
             bool focused = selectedOffer == index;
             bool known = DSN2Catalog.IsKnown(id);
             bool weapon = known && DSN2Catalog.Category(id) == DSP031_CATEGORY_WEAPON;
-            DSUi.Button(left, top, LV_ROW_W, LV_ROW_H, focused ? DSUi.BTN_FOCUS : DSUi.BTN_NORMAL);
-            if (focused) DrawCursor(left - 10, top + LV_ROW_H / 2);
-            DSShellMenu.Text(SmallFont, Font.CR_DARKGRAY, right - 10, top + LV_ROW_H - 13, String.Format("%d", index + 1), 0.9);
+            DSUi.Button(left, top, LV_ROW_W, UiRowH(), focused ? DSUi.BTN_FOCUS : DSUi.BTN_NORMAL);
+            if (focused) DrawCursor(left - 10, top + UiRowH() / 2);
+            DSShellMenu.Text(SmallFont, Font.CR_DARKGRAY, right - 10, top + UiRowH() - 13, String.Format("%d", index + 1), 0.9);
             double textLeft = left + 58;
             double textW = right - 10 - textLeft;
             if (DSArcana.IsOffer(id))

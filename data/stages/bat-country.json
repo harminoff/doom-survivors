@@ -25,7 +25,7 @@
     },
     "modifiers": {
       "no_item_drops": false,
-      "enemy_health_per_minute": 0.2,
+      "enemy_health_per_minute": 0.1,
       "enemy_speed_per_minute": 0.0125,
       "scaling_note": "DISCREPANCY on the wiki page: infobox says enemy-health per min +0.2 and enemy-speed per min +0.25; the Effects text says max health +10%/min and movement speed +1.25%/min. Used health +0.2 (infobox) and speed +0.0125 (text; the infobox +0.25 would give x6 speed by 20:00). Both likely need playtest tuning.",
       "effects": [
@@ -143,11 +143,11 @@
     {
       "minute": 6,
       "pool": [
-        "EX_SCALING_BAT3",
-        "EX_SCALING_BAT3"
+        "BAT3",
+        "BAT3"
       ],
       "enemy_min": 300,
-      "spawn_interval_s": 4,
+      "spawn_interval_s": 4.0,
       "events": [],
       "bosses": [
         "BAT4"
@@ -156,11 +156,11 @@
     {
       "minute": 7,
       "pool": [
-        "EX_SCALING_BAT3",
-        "EX_SCALING_BAT3"
+        "BAT3",
+        "BAT3"
       ],
       "enemy_min": 300,
-      "spawn_interval_s": 3,
+      "spawn_interval_s": 3.0,
       "events": [],
       "bosses": [
         "BAT4"
@@ -291,6 +291,7 @@
       "minute": 18,
       "pool": [
         "EX_SCALING_XLBAT",
+        "EX_SCALING_BAT3_PURPLE",
         "EX_SCALING_BAT3_PURPLE",
         "EX_SCALING_BAT3_GREEN",
         "EX_SCALING_BAT3"

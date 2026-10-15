@@ -117,6 +117,9 @@ class DSItemSpriteRegistry : Actor
         I136 A 1;
         I137 A 1;
         I138 A 1;
+        I139 A 1;
+        I140 A 1;
+        I141 A 1;
         Stop;
     }
 }

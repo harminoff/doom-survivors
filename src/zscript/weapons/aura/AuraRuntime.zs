@@ -559,7 +559,7 @@ mixin class DSP039Aura
             return;
         }
         int gateTics = DSP039AuraMath.GateTicsAfterCooldown(baseCooldownTics,
-            dsp039AuraCooldownMultiplierMilli[aura]);
+            RsCooldownFor(dsp039AuraSystem[aura], dsp039AuraCooldownMultiplierMilli[aura]));
         // Row damage plus the Soul Eater growth bonus (whole damage points,
         // converted to milli) is scaled by Might as a single checked
         // transaction, so a grown Soul Eater's accepted hit actually
@@ -599,6 +599,7 @@ mixin class DSP039Aura
                 dsp039AuraMightMilli[aura], scaledMilli)
                 && scaledMilli >= 0 && scaledMilli <= DSP039_MAX_SAFE_DAMAGE_MILLI;
             int before; int after; int killed;
+            arHitSystem = systemId;   // which weapon hit (Arcana scope)
             if (!checked || !DSP025ApplyLogicalHit(slot, generation, stableId,
                 scaledMilli, before, after, killed))
             {

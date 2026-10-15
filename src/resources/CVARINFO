@@ -254,6 +254,12 @@ nosave String ds_n2_grant_ids = "";
 server int ds_aim_assist = 1;   // facing-aimed weapons turn toward the nearest enemy
 server int ds_arrows = 1;   // HUD arrows toward chests and pickups
 server int ds_mode = 0;   // 0 normal, 1 hyper, 2 inverse
+server int ds_endless = 0;   // Seventh Trumpet: no Reaper, the stage loops harder
+server int ds_hurry = 0;   // Sorceress' Tears: the stage clock runs twice as fast
+server int ds_random_events = 0;   // Trisection: extra map events at random
+server int ds_random_levelup = 0;
+server int ds_max_weapons = 6;   // Mindbender: most weapons a run may hold
+server string ds_music = "";   // Magic Banger: stage music override (empty = the stage's own)   // Brave Story: level-ups pick at random
 server int ds_camera = 0;
 // Third-person camera tilt in degrees (0-56).
 server float ds_camera_pitch = 26.0;
@@ -271,5 +277,6 @@ nosave String ds_meta = "";
 server int ds_unlock_all = 0;
 // Automated runs only: open the shell menu on this page (1 character .. 5 bestiary).
 nosave int ds_shell_page = 0;
+nosave string ds_cast_spell = "";   // test aid: cast a spell when the shell opens
 // Automated runs only: screenshot the shell menu this many tics after it opens.
 nosave int ds_shell_shot = 0;

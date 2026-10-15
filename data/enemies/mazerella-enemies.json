@@ -195,6 +195,16 @@
       "knockback_max": 1,
       "xp": 3,
       "special": "Torino evolution (lv36 form); wiki ranges; charges the player."
+    },
+    "EX_HARPY2": {
+      "name": "EX_HARPY2",
+      "hp": 12.5,
+      "power": 1,
+      "speed": 180,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [

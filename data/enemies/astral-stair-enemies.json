@@ -201,6 +201,26 @@
       "resist_debuff": 1,
       "resist_defang": 1,
       "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    },
+    "STARDUST_HEMO": {
+      "name": "STARDUST_HEMO",
+      "hp": 5.0,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "STARDUST_GHOST": {
+      "name": "STARDUST_GHOST",
+      "hp": 100.0,
+      "power": 7,
+      "speed": 140,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [

@@ -80,8 +80,8 @@
     {
       "minute": 1,
       "pool": [
-        "EX_RACING_FISHMAN_1",
-        "BAT3"
+        "EX_RACING_BAT3",
+        "EX_RACING_FISHMAN_1"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 1.0,
@@ -116,7 +116,7 @@
       "minute": 3,
       "pool": [
         "EX_RACING_LIZARD1_2",
-        "IMP",
+        "EX_RACING_IMP",
         "EX_RACING_FISHMAN_1"
       ],
       "enemy_min": 40,
@@ -131,9 +131,9 @@
       "pool": [
         "EX_RACING_LIZARD1_2",
         "EX_RACING_FISHMAN_1",
-        "IMP"
+        "EX_RACING_IMP"
       ],
-      "enemy_min": 20,
+      "enemy_min": 25,
       "spawn_interval_s": 0.25,
       "events": [],
       "bosses": []
@@ -142,14 +142,13 @@
       "minute": 5,
       "pool": [
         "EX_RACING_LIZARD2_3",
-        "BAT3"
+        "EX_RACING_BAT3"
       ],
       "enemy_min": 10,
       "spawn_interval_s": 1.0,
       "events": [],
       "bosses": [
-        "EX_RACING_BOSS_MIGNO2_5",
-        "BAT4"
+        "EX_RACING_BOSS_MIGNO2_5"
       ]
     },
     {
@@ -166,9 +165,9 @@
     {
       "minute": 7,
       "pool": [
-        "EX_RACING_FISHMAN_1",
         "EX_RACING_MERMA1_3",
-        "EX_RACING_LIZARD1_2"
+        "EX_RACING_LIZARD1_2",
+        "EX_RACING_FISHMAN_1"
       ],
       "enemy_min": 60,
       "spawn_interval_s": 0.5,
@@ -181,7 +180,7 @@
       "minute": 8,
       "pool": [
         "EX_RACING_RETRO",
-        "BAT3"
+        "EX_RACING_BAT3"
       ],
       "enemy_min": 50,
       "spawn_interval_s": 1.5,
@@ -200,8 +199,8 @@
     {
       "minute": 9,
       "pool": [
-        "XLBAT",
-        "BAT3",
+        "EX_RACING_XLBAT",
+        "EX_RACING_BAT3",
         "EX_RACING_RETRO"
       ],
       "enemy_min": 30,
@@ -223,10 +222,10 @@
     {
       "minute": 10,
       "pool": [
-        "BUER",
-        "BAT3"
+        "EX_RACING_BUER",
+        "EX_RACING_BAT3"
       ],
-      "enemy_min": 30,
+      "enemy_min": 20,
       "spawn_interval_s": 0.5,
       "events": [
         {
@@ -239,16 +238,15 @@
         }
       ],
       "bosses": [
-        "EX_RACING_BOSS_MIGNO2_5",
-        "BAT4"
+        "EX_RACING_BOSS_MIGNO2_5"
       ]
     },
     {
       "minute": 11,
       "pool": [
-        "XLBAT",
-        "BAT3",
-        "BUER"
+        "EX_RACING_XLBAT",
+        "EX_RACING_BAT3",
+        "EX_RACING_BUER"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.5,
@@ -292,7 +290,7 @@
     {
       "minute": 14,
       "pool": [
-        "IMP",
+        "EX_RACING_IMP",
         "EX_RACING_PILE3"
       ],
       "enemy_min": 150,
@@ -332,164 +330,171 @@
     {
       "minute": 1,
       "enemy": "EX_RACING_LIZARD2_3",
-      "name": "Racing Lizard Rook",
+      "name": "EX_RACING_LIZARD2_3",
       "chest": {
         "chance_pct": {
           "5_item": 0,
           "3_item": 0,
           "1_item": 30
         },
-        "evo": true,
         "fallback_level": 1
       }
     },
     {
       "minute": 2,
       "enemy": "EX_RACING_RETRO",
-      "name": "Racing RetroBot",
-      "chest": null,
-      "chest_note": "wiki table lists no treasure for this boss"
+      "name": "EX_RACING_RETRO",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 3,
       "enemy": "EX_RACING_BOSS_MIGNO2_5",
-      "name": "Racing Minotaur Champion",
+      "name": "EX_RACING_BOSS_MIGNO2_5",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 20,
           "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 5,
       "enemy": "EX_RACING_BOSS_MIGNO2_5",
-      "name": "Racing Minotaur Champion",
+      "name": "EX_RACING_BOSS_MIGNO2_5",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
-    },
-    {
-      "minute": 5,
-      "enemy": "BAT4",
-      "name": "Glowing Bat (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
-          "5_item": 1,
-          "3_item": 3,
-          "1_item": 100
-        }
-      },
-      "arcana_only": true
     },
     {
       "minute": 7,
       "enemy": "EX_RACING_BOSS_MERMAN",
-      "name": "Racing Merman Boss",
+      "name": "EX_RACING_BOSS_MERMAN",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 20,
           "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 9,
       "enemy": "EX_RACING_BOSS_MIGNO2_5",
-      "name": "Racing Minotaur Champion",
+      "name": "EX_RACING_BOSS_MIGNO2_5",
       "chest": {
         "chance_pct": {
           "5_item": 3,
-          "3_item": 10,
+          "3_item": 20,
           "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 10,
       "enemy": "EX_RACING_BOSS_MIGNO2_5",
-      "name": "Racing Minotaur Champion",
+      "name": "EX_RACING_BOSS_MIGNO2_5",
       "chest": {
         "chance_pct": {
           "5_item": 3,
-          "3_item": 10,
+          "3_item": 20,
           "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
-    },
-    {
-      "minute": 10,
-      "enemy": "BAT4",
-      "name": "Glowing Bat (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
-          "5_item": 1,
-          "3_item": 3,
-          "1_item": 100
-        }
-      },
-      "arcana_only": true
     },
     {
       "minute": 12,
       "enemy": "EX_RACING_BOSS_PILE3",
-      "name": "Racing Giant Goat-Horned Shooter",
+      "name": "EX_RACING_BOSS_PILE3",
       "chest": {
         "chance_pct": {
           "5_item": 3,
-          "3_item": 10,
+          "3_item": 20,
           "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 14,
       "enemy": "EX_CART_TRICKSTER",
-      "name": "Cart Trickster",
-      "chest": null,
-      "chest_note": "wiki table lists no treasure for this boss"
+      "name": "EX_CART_TRICKSTER",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 14,
       "enemy": "EX_CART_STALKER",
-      "name": "Cart Stalker",
-      "chest": null,
-      "chest_note": "wiki table lists no treasure for this boss"
+      "name": "EX_CART_STALKER",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 14,
       "enemy": "EX_CART_DROWNER",
-      "name": "Cart Drowner",
-      "chest": null,
-      "chest_note": "wiki table lists no treasure for this boss"
+      "name": "EX_CART_DROWNER",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 14,
       "enemy": "EX_CART_MADDENER",
-      "name": "Cart Maddener",
-      "chest": null,
-      "chest_note": "wiki table lists no treasure for this boss"
+      "name": "EX_CART_MADDENER",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 15,
       "enemy": "BOSS_XLDEATH",
-      "name": "The Reaper",
-      "chest": null,
-      "chest_note": "wiki table lists no treasure for this boss"
+      "name": "BOSS_XLDEATH",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
+      }
     }
   ],
   "chest_rules": {

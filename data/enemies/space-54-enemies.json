@@ -138,6 +138,166 @@
       "knockback_max": 3,
       "xp": 1,
       "special": "Floaty + Fixed Direction; used by Medusa Swarm event (same as inlaid-library MEDUSA1)"
+    },
+    "EX_DUCK_SWARM_H": {
+      "name": "EX_DUCK_SWARM_H",
+      "hp": 10.0,
+      "power": 5,
+      "speed": 250,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1.5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_PICKLE": {
+      "name": "EX_PICKLE",
+      "hp": 15.0,
+      "power": 1,
+      "speed": 120,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_RABBIT_SWARM_H": {
+      "name": "EX_RABBIT_SWARM_H",
+      "hp": 10.0,
+      "power": 5,
+      "speed": 250,
+      "knockback": 0,
+      "knockback_max": 3,
+      "xp": 1.5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_BROCCOLI_SCALE": {
+      "name": "EX_BROCCOLI_SCALE",
+      "hp": 20.0,
+      "power": 4,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_ANT": {
+      "name": "EX_ANT",
+      "hp": 70.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_ANTBRAIN": {
+      "name": "EX_ANTBRAIN",
+      "hp": 150.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_PHALIEN": {
+      "name": "EX_PHALIEN",
+      "hp": 120.0,
+      "power": 5,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 2,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_PHALIEN_L": {
+      "name": "EX_PHALIEN_L",
+      "hp": 240.0,
+      "power": 10,
+      "speed": 120,
+      "knockback": 1,
+      "knockback_max": 2,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_PHALIEN_XL": {
+      "name": "EX_PHALIEN_XL",
+      "hp": 480.0,
+      "power": 20,
+      "speed": 80,
+      "knockback": 1,
+      "knockback_max": 2,
+      "xp": 3,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_ANT_SCALE": {
+      "name": "EX_ANT_SCALE",
+      "hp": 70.0,
+      "power": 10,
+      "speed": 140,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_ANTBRAIN_SCALE": {
+      "name": "EX_ANTBRAIN_SCALE",
+      "hp": 150.0,
+      "power": 10,
+      "speed": 140,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 2.5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_PICKLE_SCALE": {
+      "name": "EX_PICKLE_SCALE",
+      "hp": 20.0,
+      "power": 1,
+      "speed": 160,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_BATSPACE_ALL4": {
+      "name": "EX_BATSPACE_ALL4",
+      "hp": 5.0,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_CUBE_HITS_AGGRO": {
+      "name": "EX_CUBE_HITS_AGGRO",
+      "hp": 50.0,
+      "power": 10,
+      "speed": 160,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_CUBE_HITS_FACING": {
+      "name": "EX_CUBE_HITS_FACING",
+      "hp": 50.0,
+      "power": 10,
+      "speed": 160,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_PHALIEN_XL_BOSS": {
+      "name": "EX_PHALIEN_XL_BOSS",
+      "hp": 40.0,
+      "power": 20,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 2,
+      "xp": 3,
+      "special": "stats from the Vampire Survivors wiki"
     }
   }
 }

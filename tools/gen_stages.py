@@ -16,9 +16,12 @@ Run: python tools/gen_stages.py
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from enemy_traits import TRAITS  # noqa: E402
 OUT = ROOT / "src/zscript/gameplay/stages/StageTables.zs"
 # (data slug, id, name, map, spawn clamp x, spawn clamp y, stage-select blurb).
 # The list position is the stage index and episode number; it never shifts
@@ -143,9 +146,62 @@ EVENT_KIND = {"bat_swarm": 1, "ghost_swarm": 2, "flower_wall": 3, "medusa_wall":
               "pile_assault": 5, "stalker": 5,
               # Gallo Tower: dragon swarms and shooting stars cross like bat
               # swarms; dragon streams run along the hall.
-              "dragon_swarm": 1, "shooting_star": 1, "dragon_stream": 6}
-DEFAULT_EVENT_ENEMY = {"bat_swarm": "BATSWARM", "ghost_swarm": "GHOSTSWARM", "flower_wall": "FLOWER"}
-DEFAULT_EVENT_AMOUNT = {"bat_swarm": 50, "ghost_swarm": 20, "flower_wall": 40}
+              "dragon_swarm": 1, "shooting_star": 1, "dragon_stream": 6,
+              # Shapes from the wiki's map events (approximate geometry):
+              # 7 Monster Dance ring circling the player, 8 Diamond Road, 9
+              # Diamond Square, 10 Diamond Maze (stationary blockers), 11
+              # Invaders block marching in, 12 a lone boss visit (Drowner,
+              # Trickster). Monster Rain falls as a line; the Lycaeum swarms
+              # cross horizontally; Westwoods' gemstones form a still ring.
+              "monster_dance": 7, "diamond_road": 8, "diamond_square": 9, "diamond_maze": 10,
+              "invaders": 11, "drowner": 12, "trickster": 12, "maddener": 12, "monster_rain": 4,
+              "medusa_event_unspecified": 6, "gemstone_hits_static": 3,
+              # Trap events (no time of their own): only the trap plates start them.
+              "poltergeist_roulette": 1, "poltergeist_swarm": 1, "impefinger_swarm": 1,
+              "musc_musc_swarm": 1}
+DEFAULT_EVENT_ENEMY = {"bat_swarm": "BATSWARM", "ghost_swarm": "GHOSTSWARM", "flower_wall": "FLOWER",
+                       "diamond_road": "EX_DIAMOND", "diamond_square": "EX_DIAMOND",
+                       "diamond_maze": "EX_DIAMOND", "gemstone_hits_static": "EX_DIAMOND"}
+DEFAULT_EVENT_AMOUNT = {"bat_swarm": 50, "ghost_swarm": 20, "flower_wall": 40, "monster_dance": 24,
+                        "invaders": 32, "medusa_event_unspecified": 20, "gemstone_hits_static": 30}
+DEFAULT_EVENT_SECONDS_BY_KIND = {7: 10, 8: 30, 9: 30, 10: 60, 11: 30, 12: 60}
+TRAP_TIC = 0x7FFFFFF
+# Hyper and Inverse per stage, from the wiki's stage pages: Hyper adds
+# (player speed, enemy speed, projectile speed, gold, luck, enemy health);
+# Inverse doubles gold and enemy health, adds +20% Luck and grows enemy
+# health / speed every minute by the last two values.
+MODES = {
+    "FOREST": (0.9, 0.9, 0.25, 0.5, 0, 0, 0.05, 0.005),
+    "LIBRARY": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "PLANT": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "TOWER": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "CAPPELLA": (0.6, 0.6, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "ACRES": (0.65, 0.65, 0.15, 0.5, 0.1, 0.5, 0.05, 0.005),
+    "BONEZONE": (0.65, 0.65, 0.15, 0.5, 0, 0, 0.05, 0.005),
+    "MOLISE": (0.75, 0.75, 0.15, 0.5, 0.2, 0.6, 0.05, 0.005),
+    "MOONGOLOW": (0.65, 0.65, 0.15, 0.5, 0.2, 0.6, 0.05, 0.005),
+    "BOSSRASH": (0.65, 0.65, 0.15, 0.5, 0.1, 0.5, 0.05, 0.005),
+    "WHITEOUT": (0.65, 0.1, 0.15, 0.25, 0, 0, 0.1, 0.3),
+    "LYCAEUM": (1.0, 1.0, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "COOP": (0.65, 0.65, 0.15, 0.25, 0, 1, 0.1, 0.3),
+    "SPACE54": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "LABORRATORY": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "WESTWOODS": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "BATCOUNTRY": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "ASTRAL": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "MAZERELLA": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "TINYBRIDGE": (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005),
+    "CARLOCART": (0.25, 0.25, 0.1, 0.5, 0.1, 0, 0.05, 0.005),
+}
+MODE_DEFAULT = (0.65, 0.65, 0.15, 0.5, 0.1, 0, 0.05, 0.005)
+# Inverse mode's colour tint per stage (the original's), as 0xRRGGBB.
+INVERSE_TINT = {
+    "FOREST": 0x8888EE, "LIBRARY": 0xFFAAFF, "PLANT": 0xCCFFCC, "TOWER": 0xFF8888, "CAPPELLA": 0xAA88EE,
+    "ACRES": 0x88FFFF, "BONEZONE": 0xFFAAAA, "MOLISE": 0xFF8888, "MOONGOLOW": 0xFF6666, "BOSSRASH": 0x8888FF,
+    "WHITEOUT": 0xFF5151, "LYCAEUM": 0x5FB6F3, "COOP": 0xFF5151, "SPACE54": 0xFF88FF, "LABORRATORY": 0x5FB6F3,
+    "WESTWOODS": 0x8888EE, "BATCOUNTRY": 0xFFFF88, "ASTRAL": 0xFF88FF, "MAZERELLA": 0xFF88FF,
+    "TINYBRIDGE": 0xFF8888, "CARLOCART": 0xCCFFCC,
+}
 DEFAULT_EVENT_SECONDS = {"shade_bomb": 3}
 
 
@@ -173,7 +229,24 @@ def modifier(stage: dict, key: str) -> int:
 AUTO_SCROLL = {"CARLOCART": 1000}
 # Challenge rules the wiki states only in prose for some stages (the stage
 # file's stage.modifiers wins when it has the field).
-CHALLENGE_FALLBACK = {"BOSSRASH": {"enemy_health_per_minute": 0.1}}
+CHALLENGE_FALLBACK = {}
+# Light sources per stage, from the wiki's stage pages: spawn chance
+# per attempt (%), chance cap after Luck (%), how many may stand at once, and
+# the time between spawn attempts (ms). Stages not listed keep 10/50/5/1000.
+LIGHT_SOURCES = {
+    "FOREST": (10, 50, 10, 1000), "LIBRARY": (7.5, 50, 10, 1000),
+    "PLANT": (20, 60, 12, 1000), "TOWER": (7.5, 50, 10, 1000),
+    "CAPPELLA": (20, 80, 20, 1000), "ACRES": (10, 50, 10, 1000),
+    "BONEZONE": (40, 50, 10, 500), "MOLISE": (30, 60, 10, 1000),
+    "MOONGOLOW": (30, 60, 10, 1000), "BOSSRASH": (10, 50, 5, 1000),
+    "WHITEOUT": (80, 90, 10, 2000), "LYCAEUM": (80, 90, 16, 2000),
+    "COOP": (80, 90, 8, 2000), "SPACE54": (10, 90, 16, 500),
+    "LABORRATORY": (20, 60, 12, 1000), "WESTWOODS": (7.5, 50, 12, 1000),
+    "BATCOUNTRY": (1, 50, 10, 1000), "ASTRAL": (7, 70, 12, 500),
+    "MAZERELLA": (7, 70, 12, 500), "TINYBRIDGE": (7.5, 50, 10, 1000),
+    "CARLOCART": (20, 60, 12, 1000), "ROOM1665": (50, 80, 20, 1000),
+    "HOLYFORBIDDEN": (100, 100, 100, 100000), "EUDAIMONIA": (20, 80, 20, 1000),
+}
 
 
 def challenge(sid: str, stage: dict, key: str) -> int:
@@ -271,13 +344,23 @@ def main() -> None:
         for e in raw_events:
             etype = e.get("type")
             kind = EVENT_KIND.get(etype)
-            if kind is None or not e.get("at"):
+            trap = bool(e.get("trap")) and not e.get("at")
+            if kind is None or not (e.get("at") or trap):
                 continue
             enemy = e.get("enemy") or DEFAULT_EVENT_ENEMY.get(etype)
             if enemy not in type_of:
-                continue
+                # No usable enemy: take the first of that minute's wave pool.
+                minute = int(num(e.get("minute"), 0))
+                pool = waves.get(minute, {}).get("pool") or []
+                enemy = next((p for p in pool if p in type_of), None)
+                if enemy is None:
+                    continue
             amount = int(num(e.get("amount"), DEFAULT_EVENT_AMOUNT.get(etype, 10)))
-            seconds = float(e.get("duration_s") or DEFAULT_EVENT_SECONDS.get(etype, 30))
+            seconds = float(e.get("duration_s") or DEFAULT_EVENT_SECONDS.get(etype)
+                            or DEFAULT_EVENT_SECONDS_BY_KIND.get(kind, 30))
+            if trap:
+                events.append((TRAP_TIC, kind, tics(seconds), type_of[enemy], amount, 100))
+                continue
             chance = int(num(e.get("chance_pct"), 100))
             repeats = max(1, int(num(e.get("repeats"), 1)))
             # Mad Forest rows name it repeat_delay_s; the Library rows delay_s.
@@ -346,6 +429,21 @@ def main() -> None:
         per_stage("HealthPerLevelMilli", "int", "0", [(i, str(challenge(sid, st, "enemy_health_per_level"))) for i, _, sid, st, _ in loaded]),
         "    // Carlo Cart scrolls the player along +X (milli units per tic).\n",
         per_stage("AutoScrollMilli", "int", "0", [(i, str(AUTO_SCROLL[sid])) for i, _, sid, _, _ in loaded if sid in AUTO_SCROLL]),
+        "    // Light sources: chance per attempt (per mille), Luck cap (%), cap, attempt interval.\n",
+        per_stage("LightChancePermille", "int", "100", [(i, str(int(round(LIGHT_SOURCES[sid][0] * 10)))) for i, _, sid, _, _ in loaded if sid in LIGHT_SOURCES]),
+        per_stage("LightChanceMaxPct", "int", "50", [(i, str(LIGHT_SOURCES[sid][1])) for i, _, sid, _, _ in loaded if sid in LIGHT_SOURCES]),
+        per_stage("LightMax", "int", "5", [(i, str(LIGHT_SOURCES[sid][2])) for i, _, sid, _, _ in loaded if sid in LIGHT_SOURCES]),
+        per_stage("LightIntervalTics", "int", "35", [(i, str(max(1, round(LIGHT_SOURCES[sid][3] * 35 / 1000)))) for i, _, sid, _, _ in loaded if sid in LIGHT_SOURCES]),
+        "    // Hyper bonuses and Inverse growth per stage (milli; tools/gen_stages.py MODES).\n",
+        per_stage("HyperPlayerMilli", "int", "650", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[0] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("HyperEnemyMilli", "int", "650", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[1] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("HyperProjectileMilli", "int", "150", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[2] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("HyperGoldMilli", "int", "500", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[3] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("HyperLuckMilli", "int", "100", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[4] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("HyperHealthMilli", "int", "0", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[5] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("InverseHealthPerMinuteMilli", "int", "50", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[6] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("InverseSpeedPerMinuteMilli", "int", "5", [(i, str(int(round(MODES.get(sid, MODE_DEFAULT)[7] * 1000)))) for i, _, sid, _, _ in loaded]),
+        per_stage("InverseTint", "int", "0", [(i, str(INVERSE_TINT[sid])) for i, _, sid, _, _ in loaded if sid in INVERSE_TINT]),
         per_stage("CoinsOnly", "bool", "false", [(i, "true") for i, _, sid, st, _ in loaded if challenge(sid, st, "no_item_drops")]),
         "    static int ForMap(String map)\n    {\n"
         + "".join(f'        if (map == "{s[3]}") return {i};\n' for i, s in enumerate(STAGES))
@@ -402,6 +500,15 @@ def main() -> None:
         accessor("EventEnemy", "EVENT_ENEMY", "index", 0),
         accessor("EventAmount", "EVENT_AMOUNT", "index", 0),
         accessor("EventChancePct", "EVENT_CHANCE", "index", 100),
+        "    // Original enemy traits (tools/enemy_traits.py). Resist bits: 2 Rosary,\n"
+        "    // 4 knockback, 8 Defang, 16 debuffs. Freeze resistance divides freeze time\n"
+        "    // (milli, 0 = none, 100000 = immune). Shooters fire BulletType every FireTics.\n",
+        type_table("ResistBits", "TYPE_RESIST", "int", ["0"] + [str(sum(bit for key, bit in (("rosary", 2), ("knockback", 4), ("defang", 8), ("debuff", 16)) if TRAITS.get(e, {}).get(key))) for e in order], 0),
+        type_table("FreezeResistMilli", "TYPE_FREEZE_RES", "int", ["0"] + [str(int(round(TRAITS.get(e, {}).get("freeze", 0) * 1000))) for e in order], 0),
+        type_table("ExtraLives", "TYPE_LIVES", "int", ["0"] + [str(TRAITS.get(e, {}).get("lives", 0)) for e in order], 0),
+        type_table("BulletType", "TYPE_BULLET", "int", ["0"] + [str(type_of.get(TRAITS.get(e, {}).get("bullet", ""), 0)) for e in order], 0),
+        type_table("FireTics", "TYPE_FIRE", "int", ["0"] + [str(max(1, round(TRAITS.get(e, {}).get("fire_ms", 1000) * 35 / 1000))) for e in order], 35),
+        type_table("Waves", "TYPE_WAVE", "int", ["0"] + [str(TRAITS.get(e, {}).get("wave", 0)) for e in order], 0),
         type_table("TypeName", "TYPE_NAME", "String", ['""'] + [f'"{e}"' for e in order], '"UNKNOWN"'),
         type_table("TypeLabel", "TYPE_LABEL", "String", ['""'] + ['"' + enemies_all[e].get("name", e).split(" (")[0].replace("\\", "").replace('"', "'") + '"' for e in order], '"Unknown"'),
         "}",

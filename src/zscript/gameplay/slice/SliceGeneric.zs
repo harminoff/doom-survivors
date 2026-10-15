@@ -58,6 +58,13 @@ extend class DSP030VerticalSlice
     void GwFreeze(int slot, int untilTic)
     {
         while (gwFrozenUntil.Size() <= slot) gwFrozenUntil.Push(0);
+        // Freeze resistance shortens the freeze (100x = immune).
+        if (mfEnabled && MFValid(slot))
+        {
+            int resist = DSStage.FreezeResistMilli(mfTypes[slot]);
+            if (resist >= 100000) return;
+            if (resist > 1000 && untilTic > tic) untilTic = tic + (untilTic - tic) * 1000 / resist;
+        }
         bool fresh = gwFrozenUntil[slot] <= tic;
         if (gwFrozenUntil[slot] < untilTic) gwFrozenUntil[slot] = untilTic;
         if (fresh && ValidParts(slot, generations[slot], ids[slot])) ArcanaOnFreeze(x[slot], y[slot]);
@@ -131,6 +138,7 @@ extend class DSP030VerticalSlice
             && !(mfEnabled && MFValid(slot) && MFIsProp(mfTypes[slot])) && RollChance(30, true);
         if (gilded) damageMilli = max(damageMilli, health[slot]);
         int before; int after; int killed;
+        arHitSystem = system;   // which weapon hit (Arcana scope)
         if (!DSP025ApplyLogicalHit(slot, generations[slot], ids[slot], damageMilli, before, after, killed)) return false;
         gwAcceptedDamageMilli += before - after;
         GwCountHit(system);
@@ -410,7 +418,7 @@ extend class DSP030VerticalSlice
             int index = n2EngineIndex[i];
             if (index < 0 || index >= gwNextFire.Size() || tic < gwNextFire[index]) continue;
             int rank = n2Rank[i];
-            gwNextFire[index] = tic + max(1, DSGenericWeaponDefs.CooldownTics(system, rank) * rsCooldownMilli / 1000);
+            gwNextFire[index] = tic + max(1, DSGenericWeaponDefs.CooldownTics(system, rank) * RsCooldownFor(system, rsCooldownMilli) / 1000);
             int amount = DSGenericWeaponDefs.Amount(system, rank) + RsAmountFor(system);
             double speed = DSGenericWeaponDefs.BaseSpeed(system) * RsSpeedFor(system) / 1000.0;
             double radius = DSGenericWeaponDefs.BaseRadius(system) * RsAreaFor(system) / 1000.0;
@@ -445,7 +453,7 @@ extend class DSP030VerticalSlice
             int index = n2EngineIndex[i];
             if (index < 0 || index >= gwNextFire.Size() || tic < gwNextFire[index]) continue;
             int rank = n2Rank[i];
-            gwNextFire[index] = tic + max(1, DSGenericWeaponDefs.CooldownTics(system, rank) * rsCooldownMilli / 1000);
+            gwNextFire[index] = tic + max(1, DSGenericWeaponDefs.CooldownTics(system, rank) * RsCooldownFor(system, rsCooldownMilli) / 1000);
             double radius = DSGenericWeaponDefs.BaseRadius(system)
                 * DSGenericWeaponDefs.AreaMilli(system, rank) / 1000.0 * RsAreaFor(system) / 1000.0;
             int life = DSGenericWeaponDefs.DurationTics(system, rank) * RsDurationFor(system) / 1000;
@@ -479,7 +487,7 @@ extend class DSP030VerticalSlice
         }
         else if (!moving && gwPinionMoving[index] != 0 && tic >= gwPinionBurstReady[index])
         {
-            gwPinionBurstReady[index] = tic + max(1, DSGenericWeaponDefs.CooldownTics(system, rank) * rsCooldownMilli / 1000);
+            gwPinionBurstReady[index] = tic + max(1, DSGenericWeaponDefs.CooldownTics(system, rank) * RsCooldownFor(system, rsCooldownMilli) / 1000);
             WeaponSfx(system);
             GwBlast(playerX, playerY, radius * 1.6, damage * 2, system);
             GwSpawn(system, DSGenericWeaponDefs.MODE_FIELD_PLAYER, playerX, playerY, 0, 0, radius * 1.6, 0, 10, 0, 0);
@@ -522,16 +530,22 @@ extend class DSP030VerticalSlice
             if (fireMode == DSGenericWeaponDefs.MODE_FIELD_PLAYER) { GwPinionTick(system, n2Rank[i], index); continue; }
             if (tic < gwNextFire[index]) continue;
             int rank = n2Rank[i];
-            int cooldown = DSGenericWeaponDefs.CooldownTics(system, rank) * rsCooldownMilli / 1000;
+            int cooldown = DSGenericWeaponDefs.CooldownTics(system, rank) * RsCooldownFor(system, rsCooldownMilli) / 1000;
             if (system == DSN3Rows.SYSTEM_PENSHIN_FATCHA) cooldown = cooldown * (4 - GwTunaHas(rank, 2)) / 4;   // Tonn'omoto: -25%
             gwNextFire[index] = tic + max(1, cooldown);
             GwFire(system, rank);
+            // Space Dude: now and then a weapon fires twice (20%, a guess).
+            if (rsActive && rsCharacter == DSCharacters.SPACEDUDE && GwRandom(100) < 20)
+            {
+                GwFire(system, rank);
+                FxCount("double_fire");
+            }
         }
         for (int e = geSystem.Size() - 1; e >= 0 && runState == STATE_ACTIVE; e--)
         {
             if (tic >= geExpire[e])
             {
-                if (geDamage[e] > 0 && ArcanaOwned(DSArcana.TWILIGHT_REQUIEM)
+                if (geDamage[e] > 0 && ArcanaOwned(DSArcana.TWILIGHT_REQUIEM) && DSArcana.Lists(DSArcana.TWILIGHT_REQUIEM, geSystem[e])
                     && (geMode[e] == DSGenericWeaponDefs.MODE_PROJECTILE || geMode[e] == DSGenericWeaponDefs.MODE_FAN))
                     ArcanaExplode(geX[e], geY[e], 40.0, RequiemDamage());
                 GwRemove(e); continue;

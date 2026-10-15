@@ -3,8 +3,8 @@
 //
 // A run picks one Arcana at the start, and the Arcana-holder bosses (11:00
 // and 21:00 on 30-minute stages) drop an Arcana chest while the player has
-// fewer than 3. Each pick offers 3 random unowned Arcanas (the original
-// shows 4); Reroll and Skip charges work on the pick. Only Arcanas whose
+// fewer than 3. Each pick offers 4 random unowned Arcanas, as the original
+// does; Reroll and Skip charges work on the pick. Only Arcanas whose
 // effects are built are offered.
 
 class DSArcana
@@ -51,6 +51,58 @@ class DSArcana
         "Heart of Fire", "Silent Old Sanctuary", "Blood Astronomia", "Game Killer"
     };
 
+    // Each scoped Arcana's listed weapons (catalog ids), from the wiki's
+    // Arcana pages; passives in those lists are left out.
+    static const int LIST_GEMINI[] = { 59, 60, 61, 62, 63, 64, 76, 77, 96, 97, 112, 113 };
+    static const int LIST_REQUIEM[] = { 44, 45, 50, 51, 54, 56, 59, 60, 68, 69, 80, 86, 112, 113 };
+    static const int LIST_TRAGIC[] = { 46, 47, 48, 49, 50, 51, 58, 112, 113 };
+    static const int LIST_IRON_BLUE[] = { 36, 37, 38, 39, 58, 62, 63 };
+    static const int LIST_BLOODLINE[] = { 3, 5, 42, 44, 46, 48, 50, 65, 78, 91 };
+    static const int LIST_WALTZ[] = { 34, 35, 40, 41, 42, 43, 58 };
+    static const int LIST_JAIL[] = { 34, 35, 54, 55, 63, 67, 68, 69, 104 };
+    static const int LIST_SLASH[] = { 1, 6, 36, 37, 38, 39, 43, 65, 66, 91, 96, 97, 98, 99, 103, 112, 113 };
+    static const int LIST_HEART_FIRE[] = { 40, 41, 62, 69, 81, 92, 93, 96, 97 };
+    static const int LIST_ASTRONOMIA[] = { 48, 49, 52, 53, 71, 78, 79, 82, 84 };
+
+    static clearscope bool Lists(int arcana, int system)
+    {
+        if (system <= 0) return false;
+        switch (arcana)
+        {
+        case 1:
+            for (int i = 0; i < DSArcana.LIST_GEMINI.Size(); i++) if (DSArcana.LIST_GEMINI[i] == system) return true;
+            return false;
+        case 2:
+            for (int i = 0; i < DSArcana.LIST_REQUIEM.Size(); i++) if (DSArcana.LIST_REQUIEM[i] == system) return true;
+            return false;
+        case 3:
+            for (int i = 0; i < DSArcana.LIST_TRAGIC.Size(); i++) if (DSArcana.LIST_TRAGIC[i] == system) return true;
+            return false;
+        case 7:
+            for (int i = 0; i < DSArcana.LIST_IRON_BLUE.Size(); i++) if (DSArcana.LIST_IRON_BLUE[i] == system) return true;
+            return false;
+        case 9:
+            for (int i = 0; i < DSArcana.LIST_BLOODLINE.Size(); i++) if (DSArcana.LIST_BLOODLINE[i] == system) return true;
+            return false;
+        case 11:
+            for (int i = 0; i < DSArcana.LIST_WALTZ.Size(); i++) if (DSArcana.LIST_WALTZ[i] == system) return true;
+            return false;
+        case 14:
+            for (int i = 0; i < DSArcana.LIST_JAIL.Size(); i++) if (DSArcana.LIST_JAIL[i] == system) return true;
+            return false;
+        case 16:
+            for (int i = 0; i < DSArcana.LIST_SLASH.Size(); i++) if (DSArcana.LIST_SLASH[i] == system) return true;
+            return false;
+        case 19:
+            for (int i = 0; i < DSArcana.LIST_HEART_FIRE.Size(); i++) if (DSArcana.LIST_HEART_FIRE[i] == system) return true;
+            return false;
+        case 21:
+            for (int i = 0; i < DSArcana.LIST_ASTRONOMIA.Size(); i++) if (DSArcana.LIST_ASTRONOMIA[i] == system) return true;
+            return false;
+        }
+        return true;
+    }
+
     static clearscope int BuiltCount() { return DSArcana.BUILT.Size(); }
     static clearscope int BuiltAt(int i) { return DSArcana.BUILT[i]; }
     static clearscope bool IsOffer(int id) { return id > OFFER_BASE && id <= OFFER_BASE + 22; }
@@ -63,16 +115,16 @@ class DSArcana
         switch (n)
         {
         case TWILIGHT_REQUIEM: return "Projectiles burst when they expire; damage grows with Curse";
-        case IRON_BLUE_WILL: return "Projectiles pass through enemies (stand-in for bounce and wall pass)";
-        case DIVINE_BLOODLINE: return "+5 damage per Armor and +0.1 per missing HP. Touching enemies take 10 per Armor";
-        case WALTZ_OF_PEARLS: return "Projectiles hit 3 more targets (stand-in for 3 bounces)";
+        case IRON_BLUE_WILL: return "Listed projectiles pass through enemies (stand-in for bounce and wall pass)";
+        case DIVINE_BLOODLINE: return "Listed weapons +5 damage per Armor and +0.1 per missing HP. Touching enemies take 10 per Armor";
+        case WALTZ_OF_PEARLS: return "Listed projectiles hit 3 more targets (stand-in for 3 bounces)";
         case OUT_OF_BOUNDS: return "Freezing an enemy makes it explode. Orologions are twice as common";
         case GAME_KILLER: return "No XP from gems: they hurl themselves at enemies as bombs. Chests hold 3+ items";
-        case GEMINI: return "+1 Amount to all weapons (a stand-in for the counterpart copies)";
-        case TRAGIC_PRINCESS: return "-30% Cooldown while you are moving";
-        case JAIL_OF_CRYSTAL: return "Hits have an 8% chance to freeze the enemy for 1.5s";
-        case SLASH: return "Hits have a 10% chance to crit for triple damage";
-        case HEART_OF_FIRE: return "12% of hits explode, hurting nearby enemies";
+        case GEMINI: return "Listed weapons get +1 Amount (a stand-in for the counterpart copies)";
+        case TRAGIC_PRINCESS: return "Listed weapons -30% Cooldown while you are moving";
+        case JAIL_OF_CRYSTAL: return "Listed weapons have an 8% chance to freeze for 1.5s";
+        case SLASH: return "Listed weapons have a 10% chance to crit for triple damage";
+        case HEART_OF_FIRE: return "Listed weapons' hits may explode; light sources and you explode too";
         case BLOOD_ASTRONOMIA: return "A damaging zone around you hurts enemies, scaling with Amount and Magnet";
         case AWAKE: return "+3 Revivals. Each revival: +10% Max Health, +1 Armor, +5% Might/Area/Duration/Speed";
         case CHAOS_DARK_NIGHT: return "Speed swings x0.5-x1.5 every 10s. +1% Speed per level";
@@ -138,13 +190,12 @@ extend class DSP030VerticalSlice
     // Applied at the end of RecomputeRunStats.
     void ArcanaAdjustStats()
     {
+        arGemini = ArcanaOwned(DSArcana.GEMINI); arIronBlue = ArcanaOwned(DSArcana.IRON_BLUE_WILL);
+        arWaltz = ArcanaOwned(DSArcana.WALTZ_OF_PEARLS);
+        arTragicMoving = ArcanaOwned(DSArcana.TRAGIC_PRINCESS) && tic - arMoveTic < 8;
         if (arOwned.Size() == 0) return;
         arHitMask = (ArcanaOwned(DSArcana.SLASH) ? 1 : 0) | (ArcanaOwned(DSArcana.JAIL_OF_CRYSTAL) ? 2 : 0)
             | (ArcanaOwned(DSArcana.HEART_OF_FIRE) ? 4 : 0) | (ArcanaOwned(DSArcana.DIVINE_BLOODLINE) ? 8 : 0);
-        arPierceBonus = (ArcanaOwned(DSArcana.IRON_BLUE_WILL) ? 99 : 0) + (ArcanaOwned(DSArcana.WALTZ_OF_PEARLS) ? 3 : 0);
-        if (ArcanaOwned(DSArcana.GEMINI)) rsAmount += 1;
-        if (ArcanaOwned(DSArcana.TRAGIC_PRINCESS) && tic - arMoveTic < 8)
-            rsCooldownMilli = max(100, rsCooldownMilli * 7 / 10);
         if (ArcanaOwned(DSArcana.AWAKE))
         {
             rsRevivalsGranted += 3;
@@ -181,6 +232,14 @@ extend class DSP030VerticalSlice
         }
     }
 
+    // True while the player owns at least one of the Arcana's listed weapons.
+    bool ArcanaListOwned(int arcana)
+    {
+        for (int i = 0; i < lbOwnedSystems.Size(); i++)
+            if (DSArcana.Lists(arcana, lbOwnedSystems[i])) return true;
+        return false;
+    }
+
     // Revival from any source while Awake is owned grows its bonus.
     void ArcanaOnRevive()
     {
@@ -202,6 +261,9 @@ extend class DSP030VerticalSlice
     // tic 2 so their effects can be checked without the pick.
     void ArcanaDebugGrant()
     {
+        // Avatar Infernas starts with Heart of Fire.
+        if (rsActive && rsCharacter == DSCharacters.AVATAR && !ArcanaOwned(DSArcana.HEART_OF_FIRE))
+            ArcanaTake(DSArcana.HEART_OF_FIRE);
         if (configuredMode == "manual") return;
         CVar grant = CVar.FindCVar("ds_arcana_grant");
         String text = grant != null ? grant.GetString() : "";
@@ -327,12 +389,14 @@ extend class DSP030VerticalSlice
                 if (!alive) continue;
                 if (!dsQuiet) Console.Printf("DS_ARCANA_FX tic=%d kind=2 slot=%d", tic, slot);
                 if (!GwIsBoss(slot)) GwFreeze(slot, tic + 52);
+                FxCount("arcana_jail");
             }
             else
             {
                 // Heart of Fire: explodes where the hit landed, even on a kill.
                 if (!dsQuiet) Console.Printf("DS_ARCANA_FX tic=%d kind=4 slot=%d", tic, slot);
                 if (!alive) slot = -1;
+                FxCount("arcana_fire");
                 double ex = arFxX[i]; double ey = arFxY[i];
                 Array<int> near;
                 GwEnemiesNear(ex, ey, 48.0, near);
@@ -343,7 +407,7 @@ extend class DSP030VerticalSlice
             }
         }
         arFxSlot.Clear(); arFxKind.Clear(); arFxAmount.Clear(); arFxX.Clear(); arFxY.Clear();
-        if (ArcanaOwned(DSArcana.BLOOD_ASTRONOMIA) && tic % 18 == 0)
+        if (ArcanaOwned(DSArcana.BLOOD_ASTRONOMIA) && tic % 18 == 0 && ArcanaListOwned(DSArcana.BLOOD_ASTRONOMIA))
         {
             Array<int> zone;
             GwEnemiesNear(playerX, playerY, BloodAstronomiaRadius(), zone);
@@ -359,7 +423,7 @@ extend class DSP030VerticalSlice
         }
         // Twilight Requiem: stand-in for projectile expiry in engines with no
         // expiry hook; the generic engine explodes its own expiring shots.
-        if (ArcanaOwned(DSArcana.TWILIGHT_REQUIEM) && tic % 52 == 0)
+        if (ArcanaOwned(DSArcana.TWILIGHT_REQUIEM) && tic % 52 == 0 && ArcanaListOwned(DSArcana.TWILIGHT_REQUIEM))
         {
             Array<int> near;
             GwEnemiesNear(playerX, playerY, 300.0, near);
@@ -401,7 +465,7 @@ extend class DSP030VerticalSlice
         }
         if (pool.Size() == 0 && excludeCurrent) { ArcanaGenerateOffers(false); return; }
         arOffers.Clear();
-        while (arOffers.Size() < 3 && pool.Size() > 0)
+        while (arOffers.Size() < 4 && pool.Size() > 0)
         {
             arRng = DSP022StageGeometry.NextSpawnRng(arRng);
             int pick = (arRng & 0x7fffffff) % pool.Size();
@@ -416,6 +480,7 @@ extend class DSP030VerticalSlice
         SendInterfaceEvent(consoleplayer, "P030_OFFER0", count > 0 ? DSArcana.OFFER_BASE + arOffers[0] : 0, 0, 0);
         SendInterfaceEvent(consoleplayer, "P030_OFFER1", count > 1 ? DSArcana.OFFER_BASE + arOffers[1] : 0, 0, count);
         SendInterfaceEvent(consoleplayer, "P030_OFFER2", count > 2 ? DSArcana.OFFER_BASE + arOffers[2] : 0, 0, 0);
+        SendInterfaceEvent(consoleplayer, "P030_OFFER3", count > 3 ? DSArcana.OFFER_BASE + arOffers[3] : 0, 0, 0);
         SendInterfaceEvent(consoleplayer, "P031_MAP16_OFFER_COUNT", count, 0, 0);
     }
 
@@ -432,8 +497,9 @@ extend class DSP030VerticalSlice
         PublishArcanaOffers();
         PublishLevelUpCharges();
         SendInterfaceEvent(consoleplayer, "P030_OPEN", 0, 0, 0);
-        Console.Printf("DS_ARCANA_OPEN tic=%d reason=%s owned=%d offers=%d,%d,%d", tic, reason, arOwned.Size(),
-            arOffers.Size() > 0 ? arOffers[0] : 0, arOffers.Size() > 1 ? arOffers[1] : 0, arOffers.Size() > 2 ? arOffers[2] : 0);
+        Console.Printf("DS_ARCANA_OPEN tic=%d reason=%s owned=%d offers=%d,%d,%d,%d", tic, reason, arOwned.Size(),
+            arOffers.Size() > 0 ? arOffers[0] : 0, arOffers.Size() > 1 ? arOffers[1] : 0, arOffers.Size() > 2 ? arOffers[2] : 0,
+            arOffers.Size() > 3 ? arOffers[3] : 0);
     }
 
     void ArcanaTake(int n)

@@ -384,6 +384,16 @@
       "hp_x_level": true,
       "resist_freeze": 1.1,
       "special": "boss, HP x player level; first kill unlocks Hyper Inlaid Library"
+    },
+    "DULL2": {
+      "name": "DULL2",
+      "hp": 150.0,
+      "power": 8,
+      "speed": 100,
+      "knockback": 0.2,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [
