@@ -585,7 +585,7 @@ mixin class DSP038GroundFieldRuntime
         }
         int scaledCooldown = DSP033StatRules.CooldownAfterTome(
             dsp038WeaponSystem[weapon], cooldownMs,
-            dsp038WeaponCooldownMultiplierMilli[weapon]);
+            RsCooldownFor(dsp038WeaponSystem[weapon], dsp038WeaponCooldownMultiplierMilli[weapon]));
         int cooldownTics;
         if (!DSP038GroundMath.MillisecondsToTicsNearest(scaledCooldown,
             Thinker.TICRATE, cooldownTics) || cooldownTics < 1)
@@ -989,6 +989,7 @@ mixin class DSP038GroundFieldRuntime
                 && scaledTenths <= DSP038_MAX_SAFE_DAMAGE_TENTHS;
             int damageMilli = checked ? scaledTenths * 100 : 0;
             int before; int after; int killed;
+            arHitSystem = dsp038FieldSystem[field];   // which weapon hit (Arcana scope)
             if (!checked || !DSP025ApplyLogicalHit(slot, generation,
                 stableId, damageMilli, before, after, killed))
             { dsp038RejectedHits++; continue; }

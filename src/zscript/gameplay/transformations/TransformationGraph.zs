@@ -190,6 +190,7 @@ mixin class DSP032TransformationGraph
     const DSP032_ID_N3_CHAOS_MALACHITE = 136;
     const DSP032_ID_N3_CHAOS_ROSALIA = 137;
     const DSP032_ID_N3_CHAOS_LAZULIA = 138;
+    const DSP032_ID_N3_GOLD_RING = 139;
     const DSP032_FIXTURE_UNION_LEFT = 1001;
     const DSP032_FIXTURE_UNION_RIGHT = 1002;
     const DSP032_FIXTURE_UNION_RESULT = 1003;
@@ -240,7 +241,9 @@ mixin class DSP032TransformationGraph
     // recipes. Recipe 406 (whose input, Celestial Dusting, is also a batch-4
     // grant) happened to squeak through only because its own sync landed at
     // a lower item count that cycle.
-    const DSP032_MAX_ITEMS = 64;
+    // 96: the evolution fixture holds every passive gate (Gold Ring and
+    // Metaglio Right added two) plus each batch's weapons and outputs.
+    const DSP032_MAX_ITEMS = 96;
     const DSP032_MAX_TRANSACTIONS = 96;
     const DSP032_NORMAL_WEAPON_SLOTS = 6;
     const DSP032_NORMAL_PASSIVE_SLOTS = 6;
@@ -318,6 +321,29 @@ mixin class DSP032TransformationGraph
         // Clock Lancet and Laurel both cap at rank 7 per their infoboxes.
         if (id == DSP032_ID_N3_CLOCK_LANCET || id == DSP032_ID_N3_LAUREL) return 7;
         return 8;
+    }
+
+    // Rank the passive input must reach (original requiresMax); 0 = any rank.
+    int DSP032RecipePassiveMinRank(int recipeId)
+    {
+        if (recipeId == DSP032_RECIPE_N3_INFINITE_CORRIDOR
+            || recipeId == DSP032_RECIPE_N3_CRIMSON_SHROUD
+            || recipeId == DSP032_RECIPE_N3_ASHES_OF_MUSPELL) return 9;
+        if (recipeId == DSP032_RECIPE_N3_MAZO_FAMILIAR
+            || recipeId == DSP032_RECIPE_N3_GUNASTROPHE
+            || recipeId == DSP032_RECIPE_N3_CELESTIAL_VOULGE
+            || recipeId == DSP032_RECIPE_N3_SERAPHIC_CRY
+            || recipeId == DSP032_RECIPE_N3_PHOTONSTORM) return 5;
+        if (recipeId == DSP032_RECIPE_N3_SPIRIT_DISTURBANCE) return 2;
+        return 0;
+    }
+
+    // Second passive an evolution needs (at the same rank), never consumed.
+    int DSP032RecipeSecondPassive(int recipeId)
+    {
+        if (recipeId == DSP032_RECIPE_N3_INFINITE_CORRIDOR) return DSP032_ID_N3_GOLD_RING;
+        if (recipeId == DSP032_RECIPE_N3_CRIMSON_SHROUD) return DSP032_ID_N3_METAGLIO_RIGHT;
+        return 0;
     }
 
     // Passive gate required (rank >= 1, never consumed) for a P042 union.
@@ -622,6 +648,12 @@ mixin class DSP032TransformationGraph
         else if (chestSubtype != DSP032_GRAPH_CHEST_SILVER) return false;
         if (DSP032Rank(inputA) <= 0) return false;
         if (inputB > 0 && DSP032Rank(inputB) <= 0) return false;
+        // The original's requiresMax passives: some evolutions need their
+        // passive (and Infinite Corridor / Crimson Shroud a second one) maxed.
+        int passiveRank = DSP032RecipePassiveMinRank(recipeId);
+        if (passiveRank > 0 && DSP032Rank(inputB) < passiveRank) return false;
+        int secondPassive = DSP032RecipeSecondPassive(recipeId);
+        if (secondPassive > 0 && DSP032Rank(secondPassive) < passiveRank) return false;
         // N2-W5 standard evolutions (301-311): weapon input must be at max
         // rank, matching recipe 1's own dedicated rank check above.
         if (DSP032RecipeRequiresMaxRankInputA(recipeId)
@@ -633,7 +665,10 @@ mixin class DSP032TransformationGraph
         if (DSP032RecipeIsPositional(recipeId))
         {
             if (DSP032Rank(inputA) != DSP032MaxRankForItem(inputA)) return false;
-            if (inputB > 0 && DSP032Rank(inputB) != DSP032MaxRankForItem(inputB)) return false;
+            // The original only needs the first weapon maxed for Vandalier
+            // (Peachone) and Phieraggi (Phiera); the partner just has to be owned.
+            bool partnerAnyRank = recipeId == DSP032_RECIPE_UNION_VANDALIER || recipeId == DSP032_RECIPE_UNION_PHIERAGGI;
+            if (inputB > 0 && !partnerAnyRank && DSP032Rank(inputB) != DSP032MaxRankForItem(inputB)) return false;
             int requiredPassive = DSP032RecipeRequiredPassive(recipeId);
             if (requiredPassive > 0 && DSP032Rank(requiredPassive) < 1) return false;
         }

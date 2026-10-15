@@ -270,6 +270,36 @@
       "resist_debuff": 1,
       "resist_defang": 1,
       "special": "spawns 30:00 and each minute after; rushes player; contact deals lethal damage"
+    },
+    "SKELETON2": {
+      "name": "SKELETON2",
+      "hp": 15.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "SKELETON3": {
+      "name": "SKELETON3",
+      "hp": 15.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "SKELETON4": {
+      "name": "SKELETON4",
+      "hp": 15.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [

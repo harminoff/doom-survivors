@@ -899,6 +899,12 @@ extend class DSP030VerticalSlice
                 return true;
         }
         if (passiveId == DSP032_ID_TIRAJISU && DSP031Rank(DSP032_ID_PHIERA) > 0) return true;
+        for (int i = 0; i < recipes.Size(); i++)
+        {
+            int r = recipes[i];
+            if (DSP032RecipeSecondPassive(r) == passiveId && DSP031Rank(DSP032RecipeInputA(r)) > 0)
+                return true;
+        }
         return false;
     }
 
@@ -981,7 +987,10 @@ extend class DSP030VerticalSlice
         // Mana...): without these the graph never sees the passive and the
         // recipe can't apply. Re-syncing the ones above is harmless.
         for (int r = DSP032_RECIPE_N3_VICIOUS_HUNGER; r <= DSP032_RECIPE_N3_CARROZZA; r++)
+        {
             N2SyncPassiveIntoGraph(DSP032RecipeInputB(r));
+            N2SyncPassiveIntoGraph(DSP032RecipeSecondPassive(r));
+        }
     }
 
     void N2SyncChaosRelic(int relic, int weapon)
@@ -1206,9 +1215,17 @@ extend class DSP030VerticalSlice
         passives.Push(DSN2Catalog.ID_N3_TORRONA_S_BOX);
         passives.Push(DSN2Catalog.ID_N3_PARM_AEGIS);
         passives.Push(DSN2Catalog.ID_N3_KAROMA_S_MANA);
+        // Second passives of Infinite Corridor (404) and Crimson Shroud (405).
+        passives.Push(DSN2Catalog.ID_N3_GOLD_RING);
+        passives.Push(DSN2Catalog.ID_N3_METAGLIO_RIGHT);
         int accepted = 0;
         for (int i = 0; i < passives.Size(); i++)
             if (DSP031Acquire(passives[i], DSP031_ROUTE_STAGE, false)) accepted++;
+        // Some recipes need their passives maxed (the original's requiresMax).
+        for (int i = 0; i < passives.Size(); i++)
+            while (DSP031Rank(passives[i]) > 0
+                && DSP031Rank(passives[i]) < DSN2Catalog.MaxRank(passives[i])
+                && DSP031Acquire(passives[i], DSP031_ROUTE_STAGE, false)) {}
         Console.Printf("DS_N2_EVOLVE_FIXTURE_PASSIVES tic=%d requested=%d accepted=%d classification=N2_EVOLUTION_EVIDENCE_FIXTURE", tic, passives.Size(), accepted);
     }
 

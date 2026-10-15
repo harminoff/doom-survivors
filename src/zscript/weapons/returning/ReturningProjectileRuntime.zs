@@ -675,6 +675,7 @@ mixin class DSP036ReturningProjectileRuntime
                 && scaledTenths >= 0 && scaledTenths <= 20000000;
             int damageMilli = checkedDamage ? scaledTenths * 100 : 0;
             int before; int after; int killed;
+            arHitSystem = dsp036ProjectileSystems[projectileIndex];   // which weapon hit (Arcana scope)
             bool applied = checkedDamage && DSP025ApplyLogicalHit(slot,
                 generation, stableId, damageMilli, before, after, killed);
             if (!applied)

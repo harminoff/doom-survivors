@@ -103,6 +103,126 @@
       "resist_debuff": 1,
       "resist_defang": 1,
       "special": "spawns 20:00 in this stage and each minute after; rushes player; contact deals lethal damage"
+    },
+    "COOP_CHICKEN_H": {
+      "name": "COOP_CHICKEN_H",
+      "hp": 6.5,
+      "power": 7,
+      "speed": 600,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_COCK_H": {
+      "name": "COOP_COCK_H",
+      "hp": 14.0,
+      "power": 7,
+      "speed": 600,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_CHIK_H": {
+      "name": "COOP_CHIK_H",
+      "hp": 5.0,
+      "power": 4,
+      "speed": 450,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_EGG_H": {
+      "name": "COOP_EGG_H",
+      "hp": 3.0,
+      "power": 3,
+      "speed": 450,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_ROAST_CHICKEN_H": {
+      "name": "COOP_ROAST_CHICKEN_H",
+      "hp": 11.0,
+      "power": 9,
+      "speed": 330,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_ABRAXAS_H": {
+      "name": "COOP_ABRAXAS_H",
+      "hp": 70.0,
+      "power": 12,
+      "speed": 700,
+      "knockback": 0.5,
+      "knockback_max": 3,
+      "xp": 3,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_ABRAXASCROWN_H": {
+      "name": "COOP_ABRAXASCROWN_H",
+      "hp": 200.0,
+      "power": 16,
+      "speed": 700,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 5,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_ABRAXASHALO_H": {
+      "name": "COOP_ABRAXASHALO_H",
+      "hp": 250.0,
+      "power": 16,
+      "speed": 700,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 10,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_CHICKEN_SPECIAL": {
+      "name": "COOP_CHICKEN_SPECIAL",
+      "hp": 1.0,
+      "power": 5,
+      "speed": 500,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_BOSS_ABRAXAS": {
+      "name": "COOP_BOSS_ABRAXAS",
+      "hp": 50.0,
+      "power": 10,
+      "speed": 160,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 60,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_BOSS_ABRAXASCROWN": {
+      "name": "COOP_BOSS_ABRAXASCROWN",
+      "hp": 80.0,
+      "power": 12,
+      "speed": 160,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 60,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "COOP_BOSS_ABRAXASHALO": {
+      "name": "COOP_BOSS_ABRAXASHALO",
+      "hp": 120.0,
+      "power": 14,
+      "speed": 160,
+      "knockback": 0.5,
+      "knockback_max": 1,
+      "xp": 60,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [

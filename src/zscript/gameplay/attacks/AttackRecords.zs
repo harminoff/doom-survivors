@@ -72,7 +72,8 @@ mixin class DSP025AttackCore
     // is only ever non-zero in normal play (SliceArcana.zs). Effects that
     // need the world (freeze, explosions) are queued and run by ArcanaTick.
     int arHitMask;
-    int arFlatBonus;     // Divine Bloodline: flat damage (milli) added to every hit
+    int arFlatBonus;     // Divine Bloodline: flat damage (milli) added to every listed hit
+    int arHitSystem;     // the weapon (catalog id) behind the hit being applied, set at each hit site
     int arHitRng;
     bool arInFx;
     Array<int> arFxSlot;
@@ -88,11 +89,13 @@ mixin class DSP025AttackCore
         int roll = (arHitRng >>> 16) % 100;
         arHitRng = arHitRng * 1664525 + 1013904223;
         int roll2 = (arHitRng >>> 16) % 100;
-        if ((arHitMask & 1) != 0 && roll < 10 && amount < 600000000) amount *= 3;
-        if ((arHitMask & 8) != 0) amount += arFlatBonus;
-        if ((arHitMask & 2) != 0 && roll2 < 8 && arFxSlot.Size() < 64)
+        // Each effect only for its Arcana's listed weapons (DSArcana.Lists).
+        int s = arHitSystem;
+        if ((arHitMask & 1) != 0 && roll < 10 && amount < 600000000 && DSArcana.Lists(DSArcana.SLASH, s)) amount *= 3;
+        if ((arHitMask & 8) != 0 && DSArcana.Lists(DSArcana.DIVINE_BLOODLINE, s)) amount += arFlatBonus;
+        if ((arHitMask & 2) != 0 && roll2 < 8 && arFxSlot.Size() < 64 && DSArcana.Lists(DSArcana.JAIL_OF_CRYSTAL, s))
         { arFxSlot.Push(slot); arFxKind.Push(2); arFxAmount.Push(0); arFxX.Push(x[slot]); arFxY.Push(y[slot]); }
-        else if ((arHitMask & 4) != 0 && roll2 >= 88 && arFxSlot.Size() < 64)
+        else if ((arHitMask & 4) != 0 && roll2 >= 88 && arFxSlot.Size() < 64 && DSArcana.Lists(DSArcana.HEART_OF_FIRE, s))
         { arFxSlot.Push(slot); arFxKind.Push(4); arFxAmount.Push(amount); arFxX.Push(x[slot]); arFxY.Push(y[slot]); }
         return amount;
     }

@@ -257,7 +257,7 @@ class DSP042PairedRows
             return 1500; // ranks 7-8: +50% at L7
         }
         if (system == SYSTEM_VENTO) return 1000; // flat every rank
-        if (IsBracelet(system)) return 1000; // flat every rank, all three systems
+        if (IsBracelet(system)) return 1500; // flat every rank, all three systems (original 150%)
         return 0;
     }
 

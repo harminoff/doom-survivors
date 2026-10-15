@@ -207,7 +207,9 @@
       "minute": 8,
       "pool": [
         "SKELENIN1",
-        "SKELETON"
+        "SKELETON",
+        "SKELETON2",
+        "SKELETON3"
       ],
       "enemy_min": 50,
       "spawn_interval_s": 1.5,
@@ -246,7 +248,8 @@
       "minute": 11,
       "pool": [
         "SKELENIN1",
-        "SKELETON"
+        "SKELETON",
+        "SKELETON2"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.5,
@@ -337,7 +340,7 @@
         "ARMOR_6",
         "MIGNO3_5"
       ],
-      "enemy_min": 80,
+      "enemy_min": 90,
       "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [

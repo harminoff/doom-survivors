@@ -530,6 +530,26 @@
       "resist_kill": 0,
       "resist_debuff": 1,
       "special": "The Stalker map event: follows the player for the event duration; HP x player level"
+    },
+    "SKELETON2": {
+      "name": "SKELETON2",
+      "hp": 15.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "SKELETON3": {
+      "name": "SKELETON3",
+      "hp": 15.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [

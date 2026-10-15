@@ -19,7 +19,10 @@ extend class DSP030VerticalSlice
         mfBoss.Clear(); mfVX.Clear(); mfVY.Clear();
         mfChestIds.Clear(); mfChestItems.Clear();
         mfEnderAlive = false;
-        mfClovers = 0; mfFeverTics = 0; mfBreathUntil = 0; mfDefang.Clear();
+        mfClovers = 0; mfFeverTics = 0; mfGoldFingerUntil = 0;
+        rsSole = false; soleNextTic = 0; soleUntilTic = 0; rsCandy2 = false;
+        CVar debugSole = CVar.FindCVar("ds_debug_sole");
+        if (configuredMode != "manual" && debugSole != null && debugSole.GetInt() != 0) MFGrantSole(); mfBreathUntil = 0; mfDefang.Clear();
         mfGold = 0; mfGoldMilli = 0; mfFreezeUntil = 0; mfVacuumActive = false;
         mfLootRng = 7310529; mfItemSeq = 0;
         mfHeld = 0; mfCoopStarted = false;
@@ -78,8 +81,10 @@ extend class DSP030VerticalSlice
             hp = hp > 2000000000 / rsCurseMilli * 1000 ? 2000000000 : hp / 1000 * rsCurseMilli + hp % 1000 * rsCurseMilli / 1000;
         int stageHealth = DSStage.EnemyHealthMilli(mfStage) + DSStage.HealthPerMinuteMilli(mfStage) * (MfT() / 2100)
             + DSStage.HealthPerLevelMilli(mfStage) * max(0, playerLevel - 1);
-        if (rsMode == 2) stageHealth = stageHealth * 3 / 2;   // Inverse
+        if (rsMode == 1) stageHealth = stageHealth * (1000 + DSStage.HyperHealthMilli(mfStage)) / 1000;
+        if (rsMode == 2) stageHealth = stageHealth * 2 + DSStage.InverseHealthPerMinuteMilli(mfStage) * (MfT() / 2100);
         if (dgActive) stageHealth = stageHealth * (1000 + DG_DEPTH_HEALTH_MILLI * dgDepth) / 1000;
+        stageHealth *= 1 + mfEndlessCycle;   // Endless: every loop adds the base health again
         if (rsActive && !prop && stageHealth != 1000)
             hp = hp > 2000000000 / stageHealth * 1000 ? 2000000000 : hp / 1000 * stageHealth + hp % 1000 * stageHealth / 1000;
         if (bossIndex > 0 || DSStage.IsReaperLike(type))
@@ -97,9 +102,14 @@ extend class DSP030VerticalSlice
             mfStable.Push(0); mfTypes.Push(0); mfMotion.Push(0); mfExpire.Push(0);
             mfBoss.Push(0); mfVX.Push(0.0); mfVY.Push(0.0);
         }
+        while (mfLives.Size() <= slot) { mfLives.Push(0); mfSpawnHp.Push(0); mfShotTic.Push(0); }
+        mfLives[slot] = prop ? 0 : DSStage.ExtraLives(type);
+        mfSpawnHp[slot] = hp;
+        mfShotTic[slot] = 0;
         mfStable[slot] = ids[slot]; mfTypes[slot] = type; mfMotion[slot] = motion;
         mfDefang[slot] = 0;
-        if (rsActive && rsDefangPct > 0 && !prop && bossIndex == 0 && motion == 0 && !DSStage.IsReaperLike(type))
+        if (rsActive && rsDefangPct > 0 && !prop && bossIndex == 0 && motion == 0 && !DSStage.IsReaperLike(type)
+            && (DSStage.ResistBits(type) & MF_RESIST_DEFANG) == 0)
         {
             spawnRng = DSP022StageGeometry.NextSpawnRng(spawnRng);
             if ((spawnRng & 0x7fffffff) % 100 < rsDefangPct) mfDefang[slot] = 1;
@@ -115,7 +125,16 @@ extend class DSP030VerticalSlice
         // The Coop: the stage clock waits for the first kill.
         if (mfCoop && !mfCoopStarted) { if (kills > 0) { mfCoopStarted = true; Console.Printf("DS_COOP_START tic=%d held=%d", tic, mfHeld); } else mfHeld++; }
         if (tic >= RunEndTic()) return;
-        if (tic % 35 == 0) MFTrySpawnBrazier();
+        if (tic % DSStage.LightIntervalTics(mfStage) == 0) MFTrySpawnBrazier();
+        if (tic % 35 == 0) MetaTrackLoadout();
+        MFSoleTick();
+        if (mfGoldFingerUntil > 0 && tic >= mfGoldFingerUntil)
+        {
+            int prize = MFAddGold(max(0, kills - mfGoldFingerKills));
+            mfGoldFingerUntil = 0;
+            RecomputeRunStats();
+            GmShowToast(String.Format("Gold Finger prize: %d gold", prize));
+        }
         int minute = MfT() / 2100;
         while (mfNextBossIndex < DSStage.BossCount(mfStage)
             && MfT() >= DSStage.BossMinute(mfStage, mfNextBossIndex) * 2100)
@@ -126,6 +145,14 @@ extend class DSP030VerticalSlice
             Sfx(DSSfx.BOSS, 35);
             Console.Printf("DS_MF_BOSS tic=%d index=%d type=%s slot=%d hp=%d sprite=%s classification=WIKI_APPROXIMATION", tic, mfNextBossIndex, DSStage.TypeName(type), slot, slot >= 0 ? health[slot] : 0, EnemySpriteName(type));
             mfNextBossIndex++;
+        }
+        // Random Events (Trisection): halfway through each minute, a coin flip
+        // starts one of the stage's map events.
+        if (rsRandomEvents && MfT() % 2100 == 1050 && DSStage.EventCount(mfStage) > 0)
+        {
+            mfEventRng = DSP022StageGeometry.NextSpawnRng(mfEventRng);
+            if ((mfEventRng & 0x7fffffff) % 100 < 50)
+                MFStartEvent(((mfEventRng >>> 8) & 0x7fffff) % DSStage.EventCount(mfStage), true);
         }
         while (mfNextEventIndex < DSStage.EventCount(mfStage)
             && MfT() >= DSStage.EventTic(mfStage, mfNextEventIndex))
@@ -144,7 +171,6 @@ extend class DSP030VerticalSlice
         int wanted = DSStage.EnemyMin(mfStage, minute);
         if (rsActive) { budget = budget * rsCurseMilli / 1000; wanted = wanted * rsCurseMilli / 1000; }
         if (live + budget < wanted) budget = wanted - live;
-        if (rsMode != 0) budget = budget * 3 / 2;   // Hyper / Inverse: +50% spawns
         budget += rsCharm;   // Charm: flat extra enemies per wave, after Curse
         if (budget > MF_BURST_CAP) budget = MF_BURST_CAP;
         for (int n = 0; n < budget && live < MF_LIVE_CAP; n++)
@@ -183,6 +209,45 @@ extend class DSP030VerticalSlice
                 if (MFSpawn(type, playerX + cos(angle) * radius,
                     playerY + sin(angle) * radius, 0, 0.0, 0.0, expire, 0) >= 0) spawned++;
             }
+        }
+        else if (kind == 7)
+        {
+            // Monster Dance: a ring that circles the player's spot.
+            for (int i = 0; i < count; i++)
+            {
+                double angle = 360.0 * i / max(1, count);
+                if (MFSpawn(type, playerX + cos(angle) * 240.0, playerY + sin(angle) * 240.0,
+                    3, playerX, playerY, expire, 0) >= 0) spawned++;
+            }
+        }
+        else if (kind >= 8 && kind <= 10)
+        {
+            spawned = MFDiamonds(kind, type, expire);
+        }
+        else if (kind == 11)
+        {
+            // Invaders: a block of rows that marches in from one side.
+            mfEventRng = DSP022StageGeometry.NextSpawnRng(mfEventRng);
+            double heading = (mfEventRng & 0x7fffffff) % 4 * 90.0;
+            double fx = cos(heading); double fy = sin(heading);
+            double speed = clamp(DSStage.SpeedMilliPerTic(type) / 1000.0 * StageEnemySpeedScale(), 0.5, 1.5);
+            for (int i = 0; i < count; i++)
+            {
+                double lateral = (i % 8 - 3.5) * 44.0;
+                double back = 420.0 + (i / 8) * 40.0;
+                if (MFSpawn(type, playerX - fx * back - fy * lateral, playerY - fy * back + fx * lateral,
+                    1, fx * speed, fy * speed, expire, 0) >= 0) spawned++;
+            }
+        }
+        else if (kind == 12)
+        {
+            // A lone boss visit (the Drowner, the Trickster) that chases the
+            // player and leaves when the event ends.
+            mfEventRng = DSP022StageGeometry.NextSpawnRng(mfEventRng);
+            double angle = (mfEventRng & 0x7fffffff) % 360;
+            for (int i = 0; i < max(1, count); i++)
+                if (MFSpawn(type, playerX + cos(angle) * 420.0, playerY + sin(angle) * 420.0,
+                    0, 0.0, 0.0, expire, 0) >= 0) spawned++;
         }
         else if (kind == 5)
         {
@@ -234,6 +299,201 @@ extend class DSP030VerticalSlice
         Console.Printf("DS_MF_EVENT tic=%d kind=%d duration=%d spawned=%d classification=WIKI_APPROXIMATION", tic, kind, duration, spawned);
     }
 
+    // Robbert and She-Moon Eeta react when health falls below 20%: Robbert
+    // heals 25% and gains +32 Max Health (up to +665), She-Moon freezes every
+    // enemy for 10 seconds. The cooldowns (10 s / 60 s) are guesses.
+    void MFNearDeath()
+    {
+        if (!rsActive || playerHealth <= 0 || tic < mfCritReadyTic) return;
+        int cap = CurrentPlayerHealthCap();
+        if (playerHealth * 5 > cap) return;
+        if (rsCharacter == DSCharacters.ROBBERT)
+        {
+            rsBonusHealthMilli = min(665000, rsBonusHealthMilli + 32000);
+            RecomputeRunStats();
+            cap = CurrentPlayerHealthCap();
+            int healthAfter; int appliedMilli;
+            DSP039ApplyHeal(SOURCE_NEAR_DEATH, cap / 4, tic, runState == STATE_ACTIVE,
+                playerHealth, cap, healthAfter, appliedMilli);
+            playerHealth = healthAfter;
+            health[playerSlot] = playerHealth;
+            mfCritReadyTic = tic + 350;
+            FxCount("near_death_heal");
+        }
+        else if (rsCharacter == DSCharacters.SHEMOON)
+        {
+            Sfx(DSSfx.FREEZE);
+            mfFreezeStart = tic; mfFreezeUntil = max(mfFreezeUntil, tic + MF_FREEZE_TICS);
+            mfCritReadyTic = tic + 2100;
+            FxCount("near_death_freeze");
+        }
+    }
+
+    // Diamond Road (8), Square (9) and Maze (10): stationary blockers laid
+    // out around the player for the event's duration (approximate shapes).
+    int MFDiamonds(int kind, int type, int expire)
+    {
+        int spawned = 0;
+        double step = 48.0;
+        if (kind == 8)
+        {
+            // Two parallel lines through the player along a random axis.
+            mfEventRng = DSP022StageGeometry.NextSpawnRng(mfEventRng);
+            bool vertical = (mfEventRng & 1) != 0;
+            for (int side = -1; side <= 1; side += 2)
+                for (int i = -10; i <= 10; i++)
+                {
+                    double a = i * step; double b = side * 120.0;
+                    if (MFSpawn(type, playerX + (vertical ? b : a), playerY + (vertical ? a : b), 2, 0.0, 0.0, expire, 0) >= 0) spawned++;
+                }
+            return spawned;
+        }
+        // Square: one box; Maze: three boxes with gaps to slip through.
+        int boxes = kind == 9 ? 1 : 3;
+        for (int box = 0; box < boxes; box++)
+        {
+            double half = 240.0 + box * 160.0;
+            int perSide = int(half * 2 / step);
+            for (int s = 0; s < 4; s++)
+                for (int i = 0; i < perSide; i++)
+                {
+                    if (kind == 10 && (i + box * 3 + s * 5) % 7 < 2) continue;   // gaps
+                    double t = -half + i * step;
+                    double px = s == 0 ? t : (s == 1 ? half : (s == 2 ? -t : -half));
+                    double py = s == 0 ? -half : (s == 1 ? t : (s == 2 ? half : -t));
+                    if (MFSpawn(type, playerX + px, playerY + py, 2, 0.0, 0.0, expire, 0) >= 0) spawned++;
+                }
+        }
+        return spawned;
+    }
+
+    // Endless (Seventh Trumpet): no Reaper; the stage's timeline starts over
+    // with every enemy tougher (+100% health per loop).
+    void MFEndlessLoop()
+    {
+        mfEndlessCycle++;
+        mfHeld += RunEndTic() - mfHeld;
+        mfNextBossIndex = 0; mfNextEventIndex = 0; mfNextWaveTic = tic;
+        GmShowToast(String.Format("Endless: loop %d", mfEndlessCycle + 1));
+        Console.Printf("DS_MF_ENDLESS tic=%d cycle=%d", tic, mfEndlessCycle);
+    }
+
+    // Random Level-ups (Brave Story): the level-up picks one offer at random.
+    void RandomLevelUpTick()
+    {
+        if (arPickOpen || !modalPlayOpen || ActiveDraftQueueCount() <= 0) return;
+        int count = ActiveDraftOfferCount();
+        if (count <= 0) return;
+        mfEventRng = DSP022StageGeometry.NextSpawnRng(mfEventRng);
+        ApplyChoice((mfEventRng & 0x7fffffff) % count, "RANDOM_LEVELUP");
+    }
+
+    // Sole Solution: Victory Sword's gift once Victory Sword and Torrona's
+    // Box are maxed. It takes no slot. Every 20 s a galaxy covers the screen
+    // for 10 s, hitting every enemy for 10 (+1 per 5000 kills, Might only)
+    // every 0.1 s while the character is intangible.
+    bool MFTrySole()
+    {
+        if (rsSole) return false;
+        int sword = N2Find(DSN2Catalog.ID_N3_VICTORY_SWORD);
+        if (sword < 0 || n2Rank[sword] < DSN2Catalog.MaxRank(DSN2Catalog.ID_N3_VICTORY_SWORD)) return false;
+        if (DSP031Rank(DSN2Catalog.ID_N3_TORRONA_S_BOX) < 9) return false;
+        MFGrantSole();
+        return true;
+    }
+
+    void MFGrantSole()
+    {
+        rsSole = true; soleNextTic = tic + 105;
+        Sfx(DSSfx.E_EVOLUTION);
+        GmShowToast("Sole Solution: the gift of the Victory Sword");
+        Console.Printf("DS_GIFT tic=%d gift=SOLE_SOLUTION", tic);
+    }
+
+    void MFSoleTick()
+    {
+        if (!rsSole || runState != STATE_ACTIVE) return;
+        if (tic >= soleNextTic)
+        {
+            soleUntilTic = tic + 350; soleNextTic = tic + 700;
+            Sfx(DSSfx.E_EVOLUTION, 3);
+        }
+        if (tic >= soleUntilTic) return;
+        playerInvulnerableUntil = max(playerInvulnerableUntil, tic + 2);
+        if (tic % 4 != 0) return;
+        int damage = (10 + kills / 5000) * 1000 * rsMightMilli / 1000;
+        Array<int> screen;
+        GwEnemiesNear(playerX, playerY, 700.0, screen);
+        for (int i = 0; i < screen.Size(); i++) GwHit(screen[i], damage, DSN2Catalog.ID_N3_SOLE_SOLUTION);
+        FxCount("sole_hit", screen.Size());
+        if (tic % 20 == 0)
+            DSWeaponFx.Burst("WBLT", playerX, playerY, 30.0, 300.0, 50.0, false, Color(255, 190, 120, 255), 10);
+    }
+
+    // True while some owned weapon or passive can still level up.
+    bool N2CanRankUpAny()
+    {
+        if (whipRank > 0 && whipRank < 8) return true;
+        for (int i = 0; i < n2System.Size(); i++)
+            if (n2Rank[i] < DSP031MaxRank(n2System[i])) return true;
+        for (int i = 0; i < dsp031ItemIds.Size(); i++)
+            if (dsp031ItemRanks[i] < DSP031MaxRank(dsp031ItemIds[i])) return true;
+        return false;
+    }
+
+    // Super Candybox II Turbo: with Candybox taken this run and nothing left to
+    // level, a chest may hold it instead of gold (Luck-scaled 1%, guaranteed
+    // in a 5-item chest). It opens a pick of evolutions made in earlier runs.
+    void MFTryCandybox2(int items, bool maxedOut)
+    {
+        // (no gift draft may be pending; dsp031GiftDraft >= applied drafts means one is)
+        if (!maxedOut || dsp031GiftDraft >= dsp031AppliedDrafts || DSP031OwnedIndex(DSN2Catalog.ID_N3_CANDYBOX) < 0) return;
+        mfLootRng = DSP022StageGeometry.NextSpawnRng(mfLootRng);
+        int chance = items >= 5 ? 1000 : 10 * rsLuckMilli / 1000;
+        if ((mfLootRng & 0x7fffffff) % 1000 >= chance) return;
+        rsCandy2 = true;
+        dsp031GiftKind = 3;
+        dsp031DraftLevels.Push(playerLevel);
+        dsp031GiftDraft = dsp031DraftLevels.Size() - 1;
+        GmShowToast("Super Candybox II Turbo!");
+        Console.Printf("DS_GIFT tic=%d gift=CANDYBOX2", tic);
+    }
+
+    bool MFResists(int slot, int bit)
+    {
+        return mfEnabled && MFValid(slot) && (DSStage.ResistBits(mfTypes[slot]) & bit) != 0;
+    }
+
+    // Orologion freeze, shortened by the enemy's freeze resistance (the
+    // Reaper and fully resistant enemies keep moving).
+    bool MFOrologionFrozen(int slot)
+    {
+        if (tic >= mfFreezeUntil || DSStage.IsReaperLike(mfTypes[slot])) return false;
+        int resist = DSStage.FreezeResistMilli(mfTypes[slot]);
+        if (resist <= 1000) return true;
+        if (resist >= 100000) return false;
+        int length = mfFreezeUntil - mfFreezeStart;
+        if (length > 100000) return true;
+        return tic < mfFreezeStart + length * 1000 / resist;
+    }
+
+    // Ranged enemies fire their bullet (itself a fast enemy flying straight)
+    // at the player every few seconds while within range.
+    void MFShoot(int slot)
+    {
+        int bullet = DSStage.BulletType(mfTypes[slot]);
+        if (bullet <= 0 || slot >= mfShotTic.Size() || MFOrologionFrozen(slot) || GwFrozen(slot)) return;
+        if (mfShotTic[slot] == 0) { mfShotTic[slot] = tic + DSStage.FireTics(mfTypes[slot]); return; }
+        if (tic < mfShotTic[slot]) return;
+        mfShotTic[slot] = tic + DSStage.FireTics(mfTypes[slot]);
+        double dx = playerX - x[slot]; double dy = playerY - y[slot];
+        double d = sqrt(dx * dx + dy * dy);
+        if (d < 1.0 || d > MF_SHOT_RANGE) return;
+        double speed = DSStage.SpeedMilliPerTic(bullet) / 1000.0 * StageEnemySpeedScale();
+        int shot = MFSpawn(bullet, x[slot], y[slot], 1, dx / d * speed, dy / d * speed, tic + MF_SHOT_TICS, 0);
+        if (shot >= 0) FxCount("enemy_shot");
+    }
+
     // Expires timed event enemies (no XP) and leashes stragglers back into
     // the spawn band, as the original re-positions enemies left far behind.
     void MFMaintainEnemies()
@@ -248,6 +508,7 @@ extend class DSP030VerticalSlice
                 DestroyParts(slot, generations[slot], ids[slot]);
                 continue;
             }
+            MFShoot(slot);
             // The Depths keeps its own enemies (DgKeepEnemies).
             if (mfMotion[slot] != 0 || mfBoss[slot] > 0 || mfRoom || dgActive) continue;
             double dx = x[slot] - playerX; double dy = y[slot] - playerY;
@@ -404,23 +665,32 @@ extend class DSP030VerticalSlice
             // A chest that evolves a weapon plays the evolution stinger instead of the
             // chest sound (N2OpenInterimChest), so the two do not mask each other.
             int evolutionsBefore = n2EvolutionAppliedCount;
-            N2OpenInterimChest(chestId);
-            if (n2EvolutionAppliedCount == evolutionsBefore) Sfx(DSSfx.CHEST);
+            bool soleGift = MFTrySole();
+            if (!soleGift) N2OpenInterimChest(chestId);
+            if (n2EvolutionAppliedCount == evolutionsBefore && !soleGift) Sfx(DSSfx.CHEST);
+            bool maxedOut = false;
             for (int n = 1; n < items; n++)
             {
                 int system;
                 bool accepted = N2RankUpLowestWeapon(chestId, system);
+                if (!accepted) maxedOut = true;
                 Console.Printf("DS_MF_CHEST_EXTRA chest=%d item=%d system=%d accepted=%d", chestId, n + 1, system, accepted);
             }
+            if (items <= 1) maxedOut = !N2CanRankUpAny();
+            MFTryCandybox2(items, maxedOut);
         }
     }
 
-    // Wiki: one destructible spawn attempt per second, just off-screen; at
-    // the cap the oldest light source is replaced.
+    // One destructible spawn attempt per stage interval, just off-screen; the
+    // stage's chance is multiplied by Luck up to its cap. At the stage's
+    // light-source cap the oldest one is replaced.
     void MFTrySpawnBrazier()
     {
+        int luck = rsActive ? rsLuckMilli : 1000;
+        int chance = min(DSStage.LightChancePermille(mfStage) * luck / 1000,
+            DSStage.LightChanceMaxPct(mfStage) * 10);
         mfLootRng = DSP022StageGeometry.NextSpawnRng(mfLootRng);
-        if ((mfLootRng & 0x7fffffff) % 100 >= MF_BRAZIER_CHANCE_PCT) return;
+        if ((mfLootRng & 0x7fffffff) % 1000 >= chance) return;
         int count = 0; int oldest = -1;
         for (int slot = 0; slot < lifeStates.Size(); slot++)
         {
@@ -429,7 +699,7 @@ extend class DSP030VerticalSlice
             count++;
             if (oldest < 0 || ids[slot] < ids[oldest]) oldest = slot;
         }
-        if (count >= MF_BRAZIER_MAX && oldest >= 0)
+        if (count >= DSStage.LightMax(mfStage) && oldest >= 0)
         {
             mfStable[oldest] = 0;
             DestroyParts(oldest, generations[oldest], ids[oldest]);
@@ -453,13 +723,13 @@ extend class DSP030VerticalSlice
         if (kind == MF_ITEM_ROSARY) return level >= 8 ? 2 : 0;
         if (kind == MF_ITEM_OROLOGION) return level >= 4 ? 4 : 0;
         if (kind == MF_ITEM_VACUUM) return level >= 12 ? 4 : 0;
-        // Weights for the newer pickups are guesses (the wiki lists none).
+        // Wiki rarities x2 and player-level gates.
         if (kind == MF_ITEM_LITTLE_CLOVER) return 1;
         if (kind == MF_ITEM_NDUJA) return 2;
-        if (kind == MF_ITEM_GILDED_CLOVER) return 1;
-        if (kind == MF_ITEM_REROLLO) return level >= 5 ? 2 : 0;
+        if (kind == MF_ITEM_GILDED_CLOVER) return level >= 30 ? 2 : 0;
+        if (kind == MF_ITEM_REROLLO) return 2;
         if (kind == MF_ITEM_SORBETTO) return 0;   // only with Out of Bounds
-        return 0;
+        return 0;   // Gold Finger has its own rare roll (MFDropLightSourceItem)
     }
 
     static String MFItemName(int kind)
@@ -476,6 +746,7 @@ extend class DSP030VerticalSlice
         if (kind == MF_ITEM_GILDED_CLOVER) return "GILDED_CLOVER";
         if (kind == MF_ITEM_REROLLO) return "REROLLO";
         if (kind == MF_ITEM_SORBETTO) return "SORBETTO";
+        if (kind == MF_ITEM_GOLD_FINGER) return "GOLD_FINGER";
         return "UNKNOWN";
     }
 
@@ -491,6 +762,11 @@ extend class DSP030VerticalSlice
             roll -= MFStageLootWeight(kind);
             if (roll < 0) { chosen = kind; break; }
         }
+        // Gold Finger: the original's rarity 0.02 against ~80 for the rest,
+        // from player level 30 (no coins-only stages).
+        mfLootRng = DSP022StageGeometry.NextSpawnRng(mfLootRng);
+        if (playerLevel >= 30 && !DSStage.CoinsOnly(mfStage) && (mfLootRng & 0x7fffffff) % 100000 < 25)
+            chosen = MF_ITEM_GOLD_FINGER;
         mfItemSeq++;
         mfItemIds.Push(mfItemSeq); mfItemKinds.Push(chosen);
         mfItemX.Push(dropX); mfItemY.Push(dropY);
@@ -509,9 +785,11 @@ extend class DSP030VerticalSlice
     int MFStageLootWeight(int kind)
     {
         if (DSStage.CoinsOnly(mfStage) && kind != MF_ITEM_COIN && kind != MF_ITEM_COIN_BAG) return 0;
+        // Bat Country: no Orologion or Nduja Fritta from light sources.
+        if (mfStage == DSStage.BATCOUNTRY && (kind == MF_ITEM_OROLOGION || kind == MF_ITEM_NDUJA)) return 0;
         int w = MFLootWeight(kind, playerLevel);
         if (kind == MF_ITEM_OROLOGION && ArcanaOwned(DSArcana.OUT_OF_BOUNDS)) w *= 2;
-        if (kind == MF_ITEM_SORBETTO && ArcanaOwned(DSArcana.OUT_OF_BOUNDS)) w = 4;
+        if (kind == MF_ITEM_SORBETTO && ArcanaOwned(DSArcana.OUT_OF_BOUNDS)) w = 2;
         if (kind == MF_ITEM_NDUJA && ArcanaOwned(DSArcana.HEART_OF_FIRE)) w *= 4;
         return w;
     }
@@ -598,6 +876,12 @@ extend class DSP030VerticalSlice
         if (kind == MF_ITEM_COIN || kind == MF_ITEM_COIN_BAG || kind == MF_ITEM_RICH_BAG)
         {
             ArcanaOnGold(effect); Sfx(DSSfx.ForItem(kind), 2);
+            // Big Trouble: picking up gold fires his Unearthly Bolt.
+            if (rsActive && rsCharacter == DSCharacters.TROUBLER)
+            {
+                int bolt = N2Find(DSN2Catalog.ID_N3_UNEARTHLY_BOLT);
+                if (bolt >= 0) { GwFire(DSN2Catalog.ID_N3_UNEARTHLY_BOLT, n2Rank[bolt]); FxCount("gold_bolt"); }
+            }
             if (mfFeverTics > 0) mfFeverTics = min(350 * (100 + rsFeverPct) / 100, mfFeverTics + (kind == MF_ITEM_COIN ? 17 : (kind == MF_ITEM_COIN_BAG ? 175 : 350)));
         }
         else if (kind == MF_ITEM_CHICKEN)
@@ -613,15 +897,21 @@ extend class DSP030VerticalSlice
         }
         else if (kind == MF_ITEM_ROSARY)
         {
+            // Holy Forbidden's Rosary: the stage ends 30 s later.
+            if (id == hfRosaryId && hfRosaryId > 0 && hfEndTic == 0)
+            {
+                hfEndTic = tic + 1050;
+                GmShowToast("The Rosary glows. Hold on for 30 seconds!");
+            }
             // Kills every ordinary enemy on screen; bosses, the Reaper and
             // light sources are left alone (approximation of immunity).
             Sfx(DSSfx.I_ROSARY);
             for (int slot = 0; slot < lifeStates.Size(); slot++)
             {
                 if (lifeStates[slot] != STORE_ALIVE || kinds[slot] != KIND_ENEMY
-                    || !MFValid(slot) || mfBoss[slot] > 0
-                    || MFIsProp(mfTypes[slot])
-                    || DSStage.IsReaperLike(mfTypes[slot])) continue;
+                    || !MFValid(slot) || MFIsProp(mfTypes[slot])
+                    || DSStage.IsReaperLike(mfTypes[slot])
+                    || MFResists(slot, MF_RESIST_ROSARY)) continue;
                 double dx = x[slot] - playerX; double dy = y[slot] - playerY;
                 if (dx * dx + dy * dy > MF_ROSARY_RADIUS * MF_ROSARY_RADIUS) continue;
                 HandleEnemyDeath(slot, health[slot], 0);
@@ -631,7 +921,7 @@ extend class DSP030VerticalSlice
         else if (kind == MF_ITEM_OROLOGION)
         {
             Sfx(DSSfx.FREEZE);
-            mfFreezeUntil = tic + MF_FREEZE_TICS; effect = MF_FREEZE_TICS;
+            mfFreezeStart = tic; mfFreezeUntil = tic + MF_FREEZE_TICS; effect = MF_FREEZE_TICS;
             if (ArcanaOwned(DSArcana.OUT_OF_BOUNDS))
             {
                 Array<int> frozen;
@@ -657,6 +947,16 @@ extend class DSP030VerticalSlice
             mfBreathUntil = tic + int(350 * rsDurationMilli / 1000);
             effect = mfBreathUntil - tic;
             Sfx(kind == MF_ITEM_NDUJA ? DSSfx.I_NDUJA : DSSfx.I_SORBETTO, 4);
+        }
+        else if (kind == MF_ITEM_GOLD_FINGER)
+        {
+            // Gold Finger: 10 s of invulnerability and minimum Cooldown; every
+            // enemy defeated meanwhile pays 1 gold at the end (prize guessed).
+            mfGoldFingerUntil = tic + 350; mfGoldFingerKills = kills;
+            playerInvulnerableUntil = max(playerInvulnerableUntil, mfGoldFingerUntil);
+            RecomputeRunStats();
+            effect = 350; Sfx(DSSfx.I_GILDED_CLOVER);
+            GmShowToast("Gold Finger!");
         }
         else if (kind == MF_ITEM_GILDED_CLOVER)
         {
@@ -738,6 +1038,7 @@ extend class DSP030VerticalSlice
         if (kind == MF_ITEM_GILDED_CLOVER) return "IGLC";
         if (kind == MF_ITEM_REROLLO) return "IRRL";
         if (kind == MF_ITEM_SORBETTO) return "ISRB";
+        if (kind == MF_ITEM_GOLD_FINGER) return "IGLC";
         return "IVAC";
     }
 
@@ -755,6 +1056,7 @@ extend class DSP030VerticalSlice
         if (kind == MF_ITEM_GILDED_CLOVER) return Color(255, 255, 215, 70);
         if (kind == MF_ITEM_REROLLO) return Color(255, 90, 220, 255);
         if (kind == MF_ITEM_SORBETTO) return Color(255, 170, 225, 255);
+        if (kind == MF_ITEM_GOLD_FINGER) return Color(255, 255, 190, 20);
         return Color(255, 255, 255, 255);
     }
 
@@ -774,7 +1076,7 @@ extend class DSP030VerticalSlice
     }
 
     // Greed with the run mode's reward bonus (Hyper x1.7, Inverse x1.5).
-    int ModeGreedMilli() { return rsGreedMilli * (rsMode == 1 ? 17 : (rsMode == 2 ? 15 : 10)) / 10; }
+    int ModeGreedMilli() { return rsMode == 1 ? rsGreedMilli * (1000 + DSStage.HyperGoldMilli(mfStage)) / 1000 : (rsMode == 2 ? rsGreedMilli * 2 : rsGreedMilli); }
 
     // Adds picked-up gold with Greed, keeping the fractional part.
     int MFAddGold(int amount)

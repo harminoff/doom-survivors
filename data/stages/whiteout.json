@@ -76,7 +76,7 @@
     {
       "minute": 0,
       "pool": [
-        "MIRAGELLOS"
+        "EX_SPIRIT1"
       ],
       "enemy_min": 15,
       "spawn_interval_s": 1.0,
@@ -87,7 +87,8 @@
     {
       "minute": 1,
       "pool": [
-        "MIRAGELLOS"
+        "EX_SPIRIT1",
+        "EX_SNOWELEM"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 1.0,
@@ -97,8 +98,9 @@
     {
       "minute": 2,
       "pool": [
-        "MIRAGELLOS",
-        "MIRAGELLOS_2"
+        "EX_SPIRIT1",
+        "EX_SNOWELEM",
+        "EX_SNOWELEM2"
       ],
       "enemy_min": 50,
       "spawn_interval_s": 0.5,
@@ -109,7 +111,7 @@
     {
       "minute": 3,
       "pool": [
-        "MIRAGELLOS"
+        "EX_FROST"
       ],
       "enemy_min": 40,
       "spawn_interval_s": 0.25,
@@ -122,7 +124,7 @@
       "minute": 4,
       "pool": [
         "GHOST",
-        "MIRAGELLOS"
+        "EX_FROST"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 0.5,
@@ -132,7 +134,7 @@
     {
       "minute": 5,
       "pool": [
-        "MADDONNA"
+        "EX_ILLUSION2"
       ],
       "enemy_min": 10,
       "spawn_interval_s": 1.0,
@@ -142,8 +144,8 @@
     {
       "minute": 6,
       "pool": [
-        "MADDONNA",
-        "MIRAGELLOS"
+        "EX_ILLUSION2",
+        "EX_SNOWELEM"
       ],
       "enemy_min": 20,
       "spawn_interval_s": 0.5,
@@ -155,21 +157,19 @@
     {
       "minute": 7,
       "pool": [
-        "MADDONNA",
-        "MIRAGELLOS"
+        "EX_ILLUSION",
+        "EX_SPIRIT1"
       ],
       "enemy_min": 80,
       "spawn_interval_s": 0.5,
       "events": [],
-      "bosses": [
-        "BAT5"
-      ]
+      "bosses": []
     },
     {
       "minute": 8,
       "pool": [
-        "MIRAGELLOS",
-        "MIRAGELLOS_2"
+        "EX_SNOWELEM",
+        "EX_SNOWELEM2"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 1.5,
@@ -179,8 +179,8 @@
     {
       "minute": 9,
       "pool": [
-        "EX_GOLEM_SNOW",
-        "MIRAGELLOS_2"
+        "EX_GOLEM_ICE",
+        "EX_SNOWELEM2"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 0.5,
@@ -193,7 +193,8 @@
     {
       "minute": 10,
       "pool": [
-        "MADDONNA"
+        "EX_ILLUSION",
+        "EX_ILLUSION2"
       ],
       "enemy_min": 20,
       "spawn_interval_s": 1.0,
@@ -203,7 +204,7 @@
     {
       "minute": 11,
       "pool": [
-        "MIRAGELLOS"
+        "EX_FROST"
       ],
       "enemy_min": 300,
       "spawn_interval_s": 0.5,
@@ -215,7 +216,7 @@
       "pool": [
         "EX_GOLEM_SNOW",
         "GHOST",
-        "MIRAGELLOS"
+        "EX_FROST"
       ],
       "enemy_min": 20,
       "spawn_interval_s": 0.5,
@@ -243,33 +244,31 @@
       "enemy_min": 20,
       "spawn_interval_s": 0.5,
       "events": [],
-      "bosses": [
-        "BAT5"
-      ],
+      "bosses": [],
       "notes": "Wiki lists Menta Elemental twice; both variants (snow, ice) used."
     },
     {
       "minute": 15,
       "pool": [
-        "MIRAGELLOS"
+        "EX_FOXFIRE"
       ],
       "enemy_min": 60,
       "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [
-        "KIZZUNE"
+        "EX_BOSS_KITSUNE"
       ]
     },
     {
       "minute": 16,
       "pool": [
-        "MIRAGELLOS"
+        "EX_FOXFIRE"
       ],
       "enemy_min": 60,
       "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [
-        "KIZZUNE"
+        "EX_BOSS_KITSUNE"
       ]
     },
     {
@@ -397,7 +396,7 @@
     {
       "minute": 3,
       "enemy": "BAT5",
-      "name": "Pipeestrello 5 (Silver Bat)",
+      "name": "BAT5",
       "chest": {
         "chance_pct": {
           "5_item": 1,
@@ -410,7 +409,7 @@
     {
       "minute": 6,
       "enemy": "BAT5",
-      "name": "Pipeestrello 5 (Silver Bat)",
+      "name": "BAT5",
       "chest": {
         "chance_pct": {
           "5_item": 1,
@@ -421,22 +420,9 @@
       }
     },
     {
-      "minute": 7,
-      "enemy": "BAT5",
-      "name": "Pipeestrello 5 (Silver Bat) (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
-          "1_item": 100
-        },
-        "reward_flags_raw": "reward1=Arcana; tier chances listed as ?"
-      },
-      "arcana_only": true
-    },
-    {
       "minute": 9,
       "enemy": "BAT5",
-      "name": "Pipeestrello 5 (Silver Bat)",
+      "name": "BAT5",
       "chest": {
         "chance_pct": {
           "5_item": 3,
@@ -449,79 +435,66 @@
     {
       "minute": 12,
       "enemy": "BAT5",
-      "name": "Pipeestrello 5 (Silver Bat)",
+      "name": "BAT5",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
-      "minute": 14,
-      "enemy": "BAT5",
-      "name": "Pipeestrello 5 (Silver Bat) (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
-          "1_item": 100
-        },
-        "reward_flags_raw": "reward1=Arcana; tier chances listed as ?"
-      },
-      "arcana_only": true
-    },
-    {
       "minute": 15,
-      "enemy": "KIZZUNE",
-      "name": "Kizzune",
+      "enemy": "EX_BOSS_KITSUNE",
+      "name": "EX_BOSS_KITSUNE",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 16,
-      "enemy": "KIZZUNE",
-      "name": "Kizzune",
+      "enemy": "EX_BOSS_KITSUNE",
+      "name": "EX_BOSS_KITSUNE",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 18,
       "enemy": "BAT5",
-      "name": "Pipeestrello 5 (Silver Bat)",
+      "name": "BAT5",
       "chest": {
         "chance_pct": {
           "5_item": 3,
           "3_item": 10,
           "1_item": 100
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 20,
       "enemy": "BOSS_XLDEATH",
-      "name": "The Reaper",
+      "name": "BOSS_XLDEATH",
       "chest": {
-        "chance_pct": {},
-        "note": "Reaper at 20:00 (wave table Bosses column); no treasure"
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
       }
     }
   ],

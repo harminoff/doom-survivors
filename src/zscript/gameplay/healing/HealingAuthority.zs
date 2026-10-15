@@ -13,11 +13,13 @@ mixin class DSP039Healing
     const SOURCE_FLOOR_CHICKEN = 4;
     const SOURCE_REVIVAL = 5;
     const SOURCE_ARCANA_GOLD = 6;
+    const SOURCE_NEAR_DEATH = 7;   // Robbert's near-death heal
     const SOURCE_FIXTURE = 9;
 
     int dsp039HealTransactions;
     int dsp039HealRequestedMilli;
     int dsp039HealAppliedMilli;
+    int gzOverhealMilli;   // healing past full health, for Gazebo (a run stat, not authority state)
     int dsp039HealRejected;
     int dsp039RecoveryNextTic;
     int dsp039DrainReadyTic;
@@ -69,6 +71,7 @@ mixin class DSP039Healing
             dsp039HealRejected++;
         }
         dsp039HealAppliedMilli += appliedMilli;
+        if (requestedMilli > appliedMilli) gzOverhealMilli += requestedMilli - appliedMilli;
 
         Console.Printf("DS_P039_HEAL tic=%d source=%d requested_milli=%d applied_milli=%d health_before=%d health_after=%d max_health=%d accepted=%d reason=%s", tic, source, requestedMilli, appliedMilli, healthBefore, healthAfter, maxHealth, accepted ? 1 : 0, reason);
         return accepted;

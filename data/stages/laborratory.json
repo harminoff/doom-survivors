@@ -181,8 +181,7 @@
     {
       "minute": 1,
       "pool": [
-        "FISHMAN_1",
-        "EX_FISHMAN_1GREEN"
+        "FISHMAN_1"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 1.0,
@@ -215,7 +214,8 @@
       "minute": 2,
       "pool": [
         "FISHMAN_1",
-        "LIZARD1_2"
+        "LIZARD1_2",
+        "EX_FISHMAN_1GREEN"
       ],
       "enemy_min": 40,
       "spawn_interval_s": 0.5,
@@ -338,8 +338,8 @@
         "LIZARD1_2",
         "FISHMAN_1"
       ],
-      "enemy_min": 30,
-      "spawn_interval_s": 1.0,
+      "enemy_min": 60,
+      "spawn_interval_s": 0.5,
       "events": [
         {
           "type": "jellyfish_wall",
@@ -611,7 +611,7 @@
       "pool": [
         "EX_BOSSGYORUNTIN_SOLID"
       ],
-      "enemy_min": 30,
+      "enemy_min": 20,
       "spawn_interval_s": 0.5,
       "events": [
         {

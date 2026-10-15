@@ -165,7 +165,7 @@
   "text": "Bomb bounces, slows down, may burst into smaller bombs"
  },
  "58": {
-  "name": "Carr\u00e9llo",
+  "name": "Carréllo",
   "kind": "weapon",
   "text": "Cart charges at enemies near you and bounces once"
  },
@@ -512,17 +512,17 @@
  "129": {
   "name": "Silver Ring",
   "kind": "passive",
-  "text": "+5% duration and area per level"
+  "text": "+5% duration and area per level from level 2"
  },
  "130": {
   "name": "Metaglio Left",
   "kind": "passive",
-  "text": "+0.1 regen and +5% max health per level"
+  "text": "+0.1 regen and +5% max health per level from level 2"
  },
  "131": {
   "name": "Metaglio Right",
   "kind": "passive",
-  "text": "+5% curse per level"
+  "text": "+5% curse per level from level 2"
  },
  "132": {
   "name": "Chaos Altemanna",
@@ -532,7 +532,7 @@
  "133": {
   "name": "Torrona's Box",
   "kind": "passive",
-  "text": "+4% might, speed, duration, area per level"
+  "text": "+4% might, speed, duration, area, then +3% per level"
  },
  "134": {
   "name": "Parm Aegis",
@@ -590,5 +590,20 @@
   138,
   96,
   97
- ]
+ ],
+ "139": {
+  "name": "Gold Ring",
+  "kind": "passive",
+  "text": "+5% curse per level from level 2"
+ },
+ "140": {
+  "name": "Sole Solution",
+  "kind": "weapon",
+  "text": "Gift of Victory Sword: a galaxy hits everything on screen; grows with kills"
+ },
+ "141": {
+  "name": "Super Candybox II Turbo",
+  "kind": "weapon",
+  "text": "Gift of Candybox: pick an evolution you have made before"
+ }
 }

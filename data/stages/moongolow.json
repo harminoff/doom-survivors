@@ -135,10 +135,10 @@
     {
       "minute": 1,
       "pool": [
-        "MEDUSA1_MOON"
+        "MOON_MEDUSA1"
       ],
       "enemy_min": 80,
-      "spawn_interval_s": 4.0,
+      "spawn_interval_s": 3.0,
       "events": [],
       "bosses": []
     },
@@ -155,7 +155,7 @@
     {
       "minute": 3,
       "pool": [
-        "MEDUSA1_MOON"
+        "MOON_MEDUSA1"
       ],
       "enemy_min": 120,
       "spawn_interval_s": 4.0,
@@ -168,7 +168,7 @@
       "minute": 4,
       "pool": [
         "MOON_JELLYFISH",
-        "MEDUSA1_MOON"
+        "MOON_MEDUSA1"
       ],
       "enemy_min": 120,
       "spawn_interval_s": 4.0,
@@ -201,7 +201,7 @@
       "minute": 7,
       "pool": [
         "MOON_GHOST",
-        "SIGRA_BLU"
+        "MOON_SHADEBLUE"
       ],
       "enemy_min": 80,
       "spawn_interval_s": 2.0,
@@ -259,7 +259,7 @@
     {
       "minute": 12,
       "pool": [
-        "MOON_SNEK_GREEN"
+        "MOON_EYE1"
       ],
       "enemy_min": 200,
       "spawn_interval_s": 1.0,
@@ -271,10 +271,10 @@
     {
       "minute": 13,
       "pool": [
-        "MOON_SNEK_GREEN",
-        "MOON_SNEK_RED"
+        "MOON_EYE2",
+        "MOON_EYE1"
       ],
-      "enemy_min": 200,
+      "enemy_min": 120,
       "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [

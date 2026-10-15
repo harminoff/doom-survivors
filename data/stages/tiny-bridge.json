@@ -26,8 +26,8 @@
       "destructible_max": 10
     },
     "modifiers": {
-      "enemy_health_per_minute": 0.2,
-      "enemy_speed_per_minute": 0.025,
+      "enemy_health_per_minute": 0.1,
+      "enemy_speed_per_minute": 0.0125,
       "no_item_drops": false,
       "scaling_note": "Effects text: enemy health multiplier +0.2 per minute and enemy speed multiplier +0.025 per minute (additive). The infobox reads 'enemy-speed per min = +0.25', which contradicts the effects text; 0.025 used as the more plausible value.",
       "effects": [
@@ -107,7 +107,7 @@
       "minute": 2,
       "pool": [
         "IMP",
-        "BRIDGE_TRAINEE"
+        "SKULLINO"
       ],
       "enemy_min": 50,
       "spawn_interval_s": 0.3,
@@ -144,7 +144,7 @@
     {
       "minute": 5,
       "pool": [
-        "GHOST",
+        "GHOST2",
         "SKULL2_EASY"
       ],
       "enemy_min": 50,
@@ -158,7 +158,7 @@
     {
       "minute": 6,
       "pool": [
-        "GHOST",
+        "GHOST2",
         "HARPY"
       ],
       "enemy_min": 50,

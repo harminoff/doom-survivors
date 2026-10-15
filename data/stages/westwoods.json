@@ -70,7 +70,7 @@
       "minute": 0,
       "pool": [
         "EX_BARM",
-        "EX_SQUILLERS"
+        "EX_SQUILLER_1"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 2.5,
@@ -94,8 +94,8 @@
       "minute": 1,
       "pool": [
         "EX_BARM",
-        "EX_GOLDIE",
-        "EX_SQUILLERS"
+        "EX_CLUBBIE",
+        "EX_SQUILLER_2"
       ],
       "enemy_min": 25,
       "spawn_interval_s": 0.8,
@@ -120,9 +120,9 @@
     {
       "minute": 2,
       "pool": [
-        "EX_GOLDIE",
+        "EX_CLUBBIE",
         "HARPY",
-        "EX_SQUILLERS"
+        "EX_SQUILLER_2"
       ],
       "enemy_min": 20,
       "spawn_interval_s": 1.1,
@@ -171,7 +171,7 @@
       "minute": 4,
       "pool": [
         "HARPY",
-        "EX_GOLDIE"
+        "EX_CLUBBIE"
       ],
       "enemy_min": 25,
       "spawn_interval_s": 0.25,
@@ -188,16 +188,15 @@
       "spawn_interval_s": 0.8,
       "events": [],
       "bosses": [
-        "EX_DANDYBRINE",
-        "EX_MUSHROULETTE"
+        "EX_DANDYBRINE"
       ]
     },
     {
       "minute": 6,
       "pool": [
-        "EX_GOLDIE",
+        "EX_CLUBBIE",
         "EX_GAMBLIN",
-        "EX_SQUILLERS"
+        "EX_SQUILLER_2"
       ],
       "enemy_min": 70,
       "spawn_interval_s": 1.0,
@@ -221,7 +220,7 @@
       "minute": 7,
       "pool": [
         "DEVIL1",
-        "EX_GHOULETTE"
+        "EX_CASINOGHOUL"
       ],
       "enemy_min": 60,
       "spawn_interval_s": 0.5,
@@ -283,7 +282,7 @@
     {
       "minute": 10,
       "pool": [
-        "EX_TOLL",
+        "EX_TOLL2",
         "EX_BARM",
         "EX_CARDSHARP"
       ],
@@ -303,9 +302,7 @@
           "note": "wiki: Squiller 1, repeat=5, delay=5000ms. Event contents are not documented on the wiki; enemy Squillers, amount and duration are ASSUMED. Mapped to swarm (fixed-direction fast crossers)."
         }
       ],
-      "bosses": [
-        "EX_MUSHROULETTE"
-      ]
+      "bosses": []
     },
     {
       "minute": 11,
@@ -337,8 +334,8 @@
     {
       "minute": 12,
       "pool": [
-        "EX_GHOULETTE",
-        "EX_TOLL"
+        "EX_CASINOGHOUL",
+        "EX_TOLL2"
       ],
       "enemy_min": 40,
       "spawn_interval_s": 0.8,
@@ -375,7 +372,7 @@
     {
       "minute": 14,
       "pool": [
-        "EX_TOLL"
+        "EX_TOLL2"
       ],
       "enemy_min": 150,
       "spawn_interval_s": 0.5,
@@ -387,7 +384,7 @@
       "pool": [
         "EX_GAMBERGAR",
         "EX_GAMBLIN",
-        "EX_GHOULETTE"
+        "EX_CASINOGHOUL"
       ],
       "enemy_min": 80,
       "spawn_interval_s": 0.3,
@@ -410,14 +407,15 @@
     {
       "minute": 16,
       "pool": [
-        "EX_GHOULETTE",
+        "EX_CASINOGHOUL",
         "DEVIL1"
       ],
       "enemy_min": 80,
       "spawn_interval_s": 0.6,
       "events": [],
       "bosses": [
-        "EX_KNIGHT_SPADES"
+        "EX_BOSS_SPADEKNIGHT",
+        "EX_BOSS_SPADEKNIGHT2"
       ]
     },
     {
@@ -425,7 +423,7 @@
       "pool": [
         "EX_DANDYBRINE",
         "EX_GAMBERGAR",
-        "EX_SQUILLERS"
+        "EX_SQUILLER_COMBO"
       ],
       "enemy_min": 30,
       "spawn_interval_s": 0.2,
@@ -451,7 +449,7 @@
       "pool": [
         "EX_VALENTINE",
         "DEVIL1",
-        "EX_SQUILLERS"
+        "EX_SQUILLER_COMBO"
       ],
       "enemy_min": 90,
       "spawn_interval_s": 0.5,
@@ -464,7 +462,9 @@
       "enemy_min": 1,
       "spawn_interval_s": 10.0,
       "events": [],
-      "bosses": []
+      "bosses": [
+        "BOSS_XLDEATH"
+      ]
     }
   ],
   "map_events": {
@@ -649,143 +649,144 @@
     {
       "minute": 1,
       "enemy": "EX_DANDYBRINE",
-      "name": "Dandybrine",
+      "name": "EX_DANDYBRINE",
       "chest": {
         "chance_pct": {
           "5_item": 0.5,
-          "3_item": 1.0,
-          "1_item": 60.0
+          "3_item": 1,
+          "1_item": 60
         },
-        "fallback_level": 1,
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 3,
       "enemy": "EX_DANDYBRINE",
-      "name": "Dandybrine",
+      "name": "EX_DANDYBRINE",
       "chest": {
         "chance_pct": {
-          "5_item": 1.0,
-          "3_item": 10.0,
-          "1_item": 100.0
+          "5_item": 1,
+          "3_item": 10,
+          "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 5,
       "enemy": "EX_DANDYBRINE",
-      "name": "Dandybrine",
+      "name": "EX_DANDYBRINE",
       "chest": {
         "chance_pct": {
-          "5_item": 3.0,
-          "3_item": 10.0,
-          "1_item": 100.0
-        },
-        "evo": true
-      }
-    },
-    {
-      "minute": 5,
-      "enemy": "EX_MUSHROULETTE",
-      "name": "Mushroulette (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
           "1_item": 100
-        }
-      },
-      "arcana_only": true
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 7,
       "enemy": "EX_DAIMON",
-      "name": "Daimon",
+      "name": "EX_DAIMON",
       "chest": {
         "chance_pct": {
-          "5_item": 3.0,
-          "3_item": 20.0,
-          "1_item": 100.0
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 9,
       "enemy": "EX_DAIMON",
-      "name": "Daimon",
+      "name": "EX_DAIMON",
       "chest": {
         "chance_pct": {
-          "5_item": 3.0,
-          "3_item": 20.0,
-          "1_item": 100.0
-        },
-        "evo": true
-      }
-    },
-    {
-      "minute": 10,
-      "enemy": "EX_MUSHROULETTE",
-      "name": "Mushroulette (Arcana holder)",
-      "chest": {
-        "type": "arcana",
-        "chance_pct": {
+          "5_item": 3,
+          "3_item": 20,
           "1_item": 100
-        }
-      },
-      "arcana_only": true
+        },
+        "fallback_level": 1
+      }
     },
     {
       "minute": 11,
       "enemy": "EX_DAIMON",
-      "name": "Daimon",
+      "name": "EX_DAIMON",
       "chest": {
         "chance_pct": {
-          "5_item": 3.0,
-          "3_item": 20.0,
-          "1_item": 100.0
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 12,
       "enemy": "EX_DAIMON",
-      "name": "Daimon",
+      "name": "EX_DAIMON",
       "chest": {
         "chance_pct": {
-          "5_item": 3.0,
-          "3_item": 20.0,
-          "1_item": 100.0
+          "5_item": 3,
+          "3_item": 20,
+          "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
       }
     },
     {
       "minute": 16,
-      "enemy": "EX_KNIGHT_SPADES",
-      "name": "Knight of Spades",
+      "enemy": "EX_BOSS_SPADEKNIGHT",
+      "name": "EX_BOSS_SPADEKNIGHT",
       "chest": {
         "chance_pct": {
-          "5_item": 3.0,
-          "3_item": 10.0,
-          "1_item": 100.0
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 16,
+      "enemy": "EX_BOSS_SPADEKNIGHT2",
+      "name": "EX_BOSS_SPADEKNIGHT2",
+      "chest": {
+        "chance_pct": {
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
+        },
+        "fallback_level": 1
       }
     },
     {
       "minute": 18,
       "enemy": "EX_VALENTINE",
-      "name": "Valentine",
+      "name": "EX_VALENTINE",
       "chest": {
         "chance_pct": {
-          "5_item": 3.0,
-          "3_item": 10.0,
-          "1_item": 100.0
+          "5_item": 3,
+          "3_item": 10,
+          "1_item": 100
         },
-        "evo": true
+        "fallback_level": 1
+      }
+    },
+    {
+      "minute": 20,
+      "enemy": "BOSS_XLDEATH",
+      "name": "BOSS_XLDEATH",
+      "chest": {
+        "chance_pct": {
+          "5_item": 0,
+          "3_item": 0,
+          "1_item": 100
+        },
+        "fallback_level": 1
       }
     }
   ],

@@ -9,13 +9,15 @@
 
 class DSShellMenu : ListMenu
 {
-    enum EScreen { SCREEN_MAIN, SCREEN_CHARACTER, SCREEN_STAGE, SCREEN_POWERUPS, SCREEN_COLLECTION, SCREEN_BESTIARY, SCREEN_ACHIEVEMENTS }
+    enum EScreen { SCREEN_MAIN, SCREEN_CHARACTER, SCREEN_STAGE, SCREEN_POWERUPS, SCREEN_COLLECTION, SCREEN_BESTIARY, SCREEN_ACHIEVEMENTS, SCREEN_SECRETS }
 
     int page;
     int cursor;
     int characterIndex;
     int hoverIndex;
     String notice;
+    String spellText;   // Secrets page: the spell being typed
+    static const String MUSIC_TRACKS[] = { "DSFOREST", "DSLIBRA", "DSDAIRY", "DSGALLO", "DSGOTHC", "DSFIELD", "DSNIGHT", "DSFROST", "DSCOSMC", "DSBATTL", "DSDEPTH", "DSTITLE" };
     // Meta profile snapshot (gameplay/meta/Meta.zs) and the lists built from it.
     Array<String> mKeys;
     Array<int> mVals;
@@ -33,10 +35,18 @@ class DSShellMenu : ListMenu
         hoverIndex = -1;
         if (!InRun()) S_ChangeMusic("DSTITLE");
         MetaRefresh();
+        // Test aid: ds_cast_spell casts a Forbidden Scrolls spell when the menu opens.
+        CVar castSpell = CVar.FindCVar("ds_cast_spell");
+        if (castSpell != null && castSpell.GetString().Length() > 0)
+        {
+            Console.Printf("DS_SPELL spell=%s result=%s", castSpell.GetString(), DSSecrets.Cast(mKeys, mVals, castSpell.GetString()));
+            castSpell.SetString("");
+            MetaRefresh();
+        }
         CVar startPage = CVar.FindCVar("ds_shell_page");
         if (startPage != null && startPage.GetInt() > 0) page = startPage.GetInt();
-        // ds_shell_page 7 (screenshot aid): the Collection page's Arcana view.
-        if (page == 7) { page = SCREEN_COLLECTION; collectionArcana = true; }
+        // ds_shell_page 20 (screenshot aid): the Collection page's Arcana view.
+        if (page == 20) { page = SCREEN_COLLECTION; collectionArcana = true; }
     }
 
     void MetaRefresh()
@@ -52,7 +62,7 @@ class DSShellMenu : ListMenu
 
     // ---- data --------------------------------------------------------------
 
-    int MainCount() { return InRun() ? 8 : 7; }
+    int MainCount() { return InRun() ? 9 : 8; }
     String MainLabel(int index)
     {
         if (InRun())
@@ -65,12 +75,31 @@ class DSShellMenu : ListMenu
         if (index == 2) return "Collection";
         if (index == 3) return "Bestiary";
         if (index == 4) return "Achievements";
-        if (index == 5) return "Options";
+        if (index == 5) return "Secrets";
+        if (index == 6) return "Options";
         return "Quit";
     }
-    bool MainEnabled(int index) { return true; }
+    bool MainEnabled(int index)
+    {
+        if (MainLabel(index) == "Bestiary") return DSRelics.Owned(mKeys, mVals, DSRelics.GOUDA);   // needs the Ars Gouda
+        if (MainLabel(index) == "Secrets") return DSRelics.Owned(mKeys, mVals, DSRelics.SCROLLS);   // needs the Forbidden Scrolls
+        return true;
+    }
 
     int CharacterCount() { return DSCharacters.Count(); }
+    // Free characters, ones bought, and ones played before prices existed.
+    bool CharacterBought(int c)
+    {
+        return DSCharacters.Price(c) <= 0 || DSUnlocks.All()
+            || DSMeta.Val(mKeys, mVals, String.Format("bought:%d", c)) > 0
+            || DSMeta.Val(mKeys, mVals, String.Format("chl:%d", c)) > 0;
+    }
+    const CHAR_ROWS = 6;
+    int CharFirstRow()
+    {
+        int rows = (CharacterCount() + 4) / 5;
+        return clamp(cursor / 5 - CHAR_ROWS / 2, 0, max(0, rows - CHAR_ROWS));
+    }
     bool CharacterEnabled(int index) { return DSCharacters.Playable(index) && DSUnlocks.CharacterUnlocked(mKeys, mVals, index); }
     String WeaponText(int c)
     {
@@ -100,7 +129,8 @@ class DSShellMenu : ListMenu
         if (page == SCREEN_POWERUPS) return PowerUpItemCount();
         if (page == SCREEN_COLLECTION) return collectionArcana ? 22 : collectionIds.Size();
         if (page == SCREEN_BESTIARY) return max(1, beastTypes.Size());
-        if (page == SCREEN_ACHIEVEMENTS) return DSAchievements.COUNT;
+        if (page == SCREEN_ACHIEVEMENTS) return DSAchievementData.COUNT;
+        if (page == SCREEN_SECRETS) return 0;
         return MainCount();
     }
     bool ItemEnabled(int index)
@@ -138,12 +168,30 @@ class DSShellMenu : ListMenu
             if (label == "Collection") { MetaRefresh(); collectionArcana = false; Go(SCREEN_COLLECTION); return; }
             if (label == "Bestiary") { MetaRefresh(); Go(SCREEN_BESTIARY); return; }
             if (label == "Achievements") { MetaRefresh(); Go(SCREEN_ACHIEVEMENTS); return; }
+            if (label == "Secrets") { MetaRefresh(); Go(SCREEN_SECRETS); spellText = ""; return; }
             if (label == "Options") { Menu.SetMenu('OptionsMenu'); return; }
             if (label == "Quit") { Menu.SetMenu('QuitMenu'); return; }
             return;
         }
         if (page == SCREEN_CHARACTER)
         {
+            // Unlocked characters are bought once with gold (the original's prices).
+            if (!CharacterBought(index))
+            {
+                int price = DSCharacters.Price(index);
+                if (!DSPowerUps.AddGold(-price))
+                {
+                    notice = String.Format("%s costs %d gold", DSCharacters.Name(index), price);
+                    MenuSound("menu/invalid");
+                    return;
+                }
+                DSMeta.SetVal(mKeys, mVals, String.Format("bought:%d", index), 1);
+                DSMeta.Store(mKeys, mVals);
+                CVar.SaveConfig();
+                notice = String.Format("Bought %s for %d gold", DSCharacters.Name(index), price);
+                MenuSound("menu/change");
+                return;
+            }
             characterIndex = index;
             Go(SCREEN_STAGE);
             return;
@@ -154,6 +202,12 @@ class DSShellMenu : ListMenu
             {
                 int refunded = DSPowerUps.Refund();
                 notice = refunded > 0 ? String.Format("Refunded %d gold", refunded) : "Nothing to refund";
+                return;
+            }
+            if (!DSUnlocks.PowerUpUnlocked(mKeys, mVals, index))
+            {
+                notice = "Locked: " .. DSUnlocks.PowerUpCondition(mKeys, mVals, index);
+                MenuSound("menu/invalid");
                 return;
             }
             Array<int> ranks;
@@ -183,7 +237,7 @@ class DSShellMenu : ListMenu
     bool Back()
     {
         if (page == SCREEN_STAGE) { Go(SCREEN_CHARACTER); cursor = characterIndex; MenuSound("menu/backup"); return true; }
-        if (page == SCREEN_CHARACTER || page == SCREEN_POWERUPS || page == SCREEN_COLLECTION || page == SCREEN_BESTIARY || page == SCREEN_ACHIEVEMENTS) { Go(SCREEN_MAIN); MenuSound("menu/backup"); return true; }
+        if (page == SCREEN_CHARACTER || page == SCREEN_POWERUPS || page == SCREEN_COLLECTION || page == SCREEN_BESTIARY || page == SCREEN_ACHIEVEMENTS || page == SCREEN_SECRETS) { Go(SCREEN_MAIN); MenuSound("menu/backup"); return true; }
         // The title screen has nothing behind the main menu.
         if (!InRun()) return true;
         Close();
@@ -196,7 +250,7 @@ class DSShellMenu : ListMenu
     int Columns()
     {
         if (page == SCREEN_CHARACTER) return 5;
-        if (page == SCREEN_POWERUPS) return 4;
+        if (page == SCREEN_POWERUPS) return 5;
         if (page == SCREEN_STAGE) return 4;
         if (page == SCREEN_COLLECTION) return collectionArcana ? 1 : 17;
         return 1;
@@ -237,11 +291,56 @@ class DSShellMenu : ListMenu
     // On the stage screen, L toggles Limit Break and A toggles Arcana.
     override bool OnUIEvent(UIEvent ev)
     {
+        // Secrets page: type a spell, Enter casts it, Backspace deletes.
+        if (page == SCREEN_SECRETS && ev.Type == UIEvent.Type_Char)
+        {
+            if (spellText.Length() < 80 && ev.KeyChar >= 32 && ev.KeyChar < 127 && ev.KeyChar != 32)
+                spellText.AppendCharacter(ev.KeyChar);
+            return true;
+        }
+        if (page == SCREEN_SECRETS && ev.Type == UIEvent.Type_KeyDown)
+        {
+            if (ev.KeyChar == UIEvent.Key_Backspace)
+            {
+                if (spellText.Length() > 0) spellText.DeleteLastCharacter();
+                return true;
+            }
+            if (ev.KeyChar == UIEvent.Key_Return)
+            {
+                String done = DSSecrets.Cast(mKeys, mVals, spellText);
+                notice = done.Length() > 0 ? "Unlocked: " .. done : "Nothing happens.";
+                MenuSound(done.Length() > 0 ? "menu/change" : "menu/invalid");
+                spellText = "";
+                MetaRefresh();
+                return true;
+            }
+        }
         if (page == SCREEN_MAIN && ev.Type == UIEvent.Type_KeyDown && (ev.KeyChar == 85 || ev.KeyChar == 117))
         {
             CVar all = CVar.FindCVar("ds_unlock_all");
             if (all != null) all.SetInt(all.GetInt() != 0 ? 0 : 1);
             MetaRefresh();
+            MenuSound("menu/change");
+            return true;
+        }
+        // Seals (Seal I-IV PowerUps): S seals or unseals the focused item, which
+        // then never appears in level-ups.
+        if (page == SCREEN_COLLECTION && !collectionArcana && ev.Type == UIEvent.Type_KeyDown
+            && (ev.KeyChar == 83 || ev.KeyChar == 115) && collectionIds.Size() > 0)
+        {
+            int id = collectionIds[clamp(cursor, 0, collectionIds.Size() - 1)];
+            String key = String.Format("seal:%d", id);
+            bool wasSealed = DSMeta.Val(mKeys, mVals, key) > 0;
+            if (!wasSealed && SealsUsed() >= SealCapacity())
+            {
+                notice = SealCapacity() == 0 ? "Buy Seal PowerUps to seal items" : "No seals left";
+                MenuSound("menu/invalid");
+                return true;
+            }
+            DSMeta.SetVal(mKeys, mVals, key, wasSealed ? 0 : 1);
+            DSMeta.Store(mKeys, mVals);
+            MetaRefresh();
+            notice = String.Format("%s %s", DSN2Catalog.DisplayName(id), wasSealed ? "unsealed" : "sealed");
             MenuSound("menu/change");
             return true;
         }
@@ -252,18 +351,48 @@ class DSShellMenu : ListMenu
             MenuSound("menu/change");
             return true;
         }
+        // Mindbender: W on character select cycles the maximum weapons (1-6).
+        if (page == SCREEN_CHARACTER && ev.Type == UIEvent.Type_KeyDown && (ev.KeyChar == 87 || ev.KeyChar == 119)
+            && DSRelics.Owned(mKeys, mVals, DSRelics.MINDBENDER))
+        {
+            CVar maxWeapons = CVar.FindCVar("ds_max_weapons");
+            if (maxWeapons != null) maxWeapons.SetInt(maxWeapons.GetInt() >= 6 ? 1 : maxWeapons.GetInt() + 1);
+            MenuSound("menu/change");
+            return true;
+        }
+        // Magic Banger: B on stage select cycles the music.
+        if (page == SCREEN_STAGE && ev.Type == UIEvent.Type_KeyDown && (ev.KeyChar == 66 || ev.KeyChar == 98)
+            && DSRelics.Owned(mKeys, mVals, DSRelics.BANGER))
+        {
+            CVar music = CVar.FindCVar("ds_music");
+            if (music != null)
+            {
+                int at = -1;
+                for (int t = 0; t < MUSIC_TRACKS.Size(); t++) if (MUSIC_TRACKS[t] == music.GetString()) at = t;
+                music.SetString(at + 1 < MUSIC_TRACKS.Size() ? MUSIC_TRACKS[at + 1] : "");
+            }
+            MenuSound("menu/change");
+            return true;
+        }
         if (page == SCREEN_STAGE && ev.Type == UIEvent.Type_KeyDown)
         {
             String cvarName = "";
-            if (ev.KeyChar == 76 || ev.KeyChar == 108) cvarName = "ds_limit_break";
+            if (ev.KeyChar == 76 || ev.KeyChar == 108) cvarName = RelicOption(DSRelics.GOSPEL, "ds_limit_break");
             else if (ev.KeyChar == 65 || ev.KeyChar == 97) cvarName = "ds_arcana";
             else if (ev.KeyChar == 67 || ev.KeyChar == 99) cvarName = "ds_camera";
-            else if (ev.KeyChar == 82 || ev.KeyChar == 114) cvarName = "ds_arrows";
+            else if (ev.KeyChar == 82 || ev.KeyChar == 114) cvarName = RelicOption(DSRelics.MILKY_WAY, "ds_arrows");
+            else if (ev.KeyChar == 69 || ev.KeyChar == 101) cvarName = RelicOption(DSRelics.TRUMPET, "ds_endless");
+            else if (ev.KeyChar == 72 || ev.KeyChar == 104) cvarName = RelicOption(DSRelics.TEARS, "ds_hurry");
+            else if (ev.KeyChar == 86 || ev.KeyChar == 118) cvarName = RelicOption(DSRelics.TRISECTION, "ds_random_events");
+            else if (ev.KeyChar == 85 || ev.KeyChar == 117) cvarName = RelicOption(DSRelics.BRAVE_STORY, "ds_random_levelup");
             else if (ev.KeyChar == 84 || ev.KeyChar == 116) cvarName = "ds_aim_assist";
             else if (ev.KeyChar == 77 || ev.KeyChar == 109)
             {
                 CVar mode = CVar.FindCVar("ds_mode");
-                if (mode != null) mode.SetInt((mode.GetInt() + 1) % 3);
+                // Inverse needs Gracia's Mirror.
+                int next = mode != null ? (mode.GetInt() + 1) % 3 : 0;
+                if (next == 2 && !DSRelics.Owned(mKeys, mVals, DSRelics.MIRROR)) next = 0;
+                if (mode != null) mode.SetInt(next);
                 MenuSound("menu/change");
                 return true;
             }
@@ -277,6 +406,33 @@ class DSShellMenu : ListMenu
         }
         return Super.OnUIEvent(ev);
     }
+
+    // A stage option that needs a relic: empty (no toggle) until it is found.
+    String RelicOption(int relic, String cvarName)
+    {
+        return DSRelics.Owned(mKeys, mVals, relic) ? cvarName : "";
+    }
+
+    // A relic option's chip text: the option, or which relic it needs.
+    String RelicChip(int relic, String key, String label, String cvarName)
+    {
+        if (!DSRelics.Owned(mKeys, mVals, relic)) return key .. ": " .. label .. " locked";
+        return key .. ": " .. label .. (ToggleOn(cvarName) ? " ON" : " OFF");
+    }
+
+    bool RelicOn(int relic, String cvarName)
+    {
+        return DSRelics.Owned(mKeys, mVals, relic) && ToggleOn(cvarName);
+    }
+
+    int SealCapacity()
+    {
+        Array<int> ranks;
+        DSPowerUps.Load(ranks);
+        return DSPowerUps.SealCapacity(ranks);
+    }
+
+    int SealsUsed() { return DSMeta.KeyedTotal(mKeys, mVals, "seal:"); }
 
     bool ToggleOn(String cvarName)
     {
@@ -342,14 +498,18 @@ class DSShellMenu : ListMenu
     {
         if (page == SCREEN_CHARACTER)
         {
-            w = 96; h = 46;   // five columns to the right of the portrait bar
-            x = 140 + (index % 5) * 100; y = 58 + (index / 5) * 50;
+            // Five columns to the right of the portrait bar; six rows show at a
+            // time and scroll with the cursor (hidden items get no size).
+            int row = index / 5 - CharFirstRow();
+            w = 96; h = 46;
+            x = 140 + (index % 5) * 100; y = 58 + row * 50;
+            if (row < 0 || row >= CHAR_ROWS) { w = 0; h = 0; }
             return;
         }
         if (page == SCREEN_POWERUPS)
         {
-            w = 144; h = 44;
-            x = 24 + (index % 4) * 150; y = 56 + (index / 4) * 48;
+            w = 116; h = 44;
+            x = 24 + (index % 5) * 120; y = 56 + (index / 5) * 48;
             return;
         }
         if (page == SCREEN_COLLECTION && collectionArcana)
@@ -381,7 +541,7 @@ class DSShellMenu : ListMenu
         // With the title artwork behind the menu the buttons start below the logo.
         bool art = !InRun();
         w = 260; h = art ? 24 : 28;
-        x = (VW - w) / 2; y = art ? 172 + index * 26 : (MainCount() > 6 ? 140 : 166) + index * (MainCount() > 6 ? 29 : 33);
+        x = (VW - w) / 2; y = art ? 168 + index * 26 : 134 + index * 27;
     }
 
     int HitTest(int mx, int my)
@@ -408,6 +568,7 @@ class DSShellMenu : ListMenu
         else if (page == SCREEN_COLLECTION) DrawCollection();
         else if (page == SCREEN_BESTIARY) DrawBestiary();
         else if (page == SCREEN_ACHIEVEMENTS) DrawAchievements();
+        else if (page == SCREEN_SECRETS) DrawSecrets();
         else DrawMain();
     }
 
@@ -451,13 +612,16 @@ class DSShellMenu : ListMenu
         {
             double x, y, w, h;
             ItemRect(i, x, y, w, h);
+            if (w <= 0) continue;
             bool enabled = CharacterEnabled(i);
             bool focused = i == cursor;
             // Locked characters show a dim button (the left bar says how to unlock).
             DSUi.Button(x, y, w, h, focused ? DSUi.BTN_FOCUS : (enabled ? DSUi.BTN_NORMAL : DSUi.BTN_OFF));
             FitText(SmallFont, enabled ? (focused ? Font.CR_GOLD : Font.CR_WHITE) : Font.CR_DARKGRAY, x + 6, y + 7, DSCharacters.Name(i), w - 38);
             DrawIcon(DSCharacters.StartingWeapon(i), x + w - 28, y + 5, 22, enabled);
-            FitText(SmallFont, enabled ? Font.CR_CYAN : Font.CR_DARKGRAY, x + 6, y + 27, enabled ? DSN2Catalog.DisplayName(DSCharacters.StartingWeapon(i)) : "Locked", w - 12);
+            String under = !enabled ? "Locked" : (CharacterBought(i) ? DSN2Catalog.DisplayName(DSCharacters.StartingWeapon(i))
+                : String.Format("%d gold", DSCharacters.Price(i)));
+            FitText(SmallFont, enabled ? (CharacterBought(i) ? Font.CR_CYAN : Font.CR_GOLD) : Font.CR_DARKGRAY, x + 6, y + 27, under, w - 12);
         }
         // Left bar: portrait and details of the focused character.
         int c = cursor;
@@ -471,6 +635,11 @@ class DSShellMenu : ListMenu
                 DTA_Desaturate, open ? 0 : 255);
         }
         FitText(SmallFont, Font.CR_GOLD, 30, 166, DSCharacters.Name(c), 96, 1.3);
+        if (DSRelics.Owned(mKeys, mVals, DSRelics.MINDBENDER))
+        {
+            CVar maxWeapons = CVar.FindCVar("ds_max_weapons");
+            FitText(SmallFont, Font.CR_GOLD, 30, 352, String.Format("W: Max weapons %d", maxWeapons != null ? clamp(maxWeapons.GetInt(), 1, 6) : 6), 96);
+        }
         FitText(SmallFont, Font.CR_WHITE, 30, 182, String.Format("Max Health %d", DSCharacters.MaxHealth(c)), 92);
         DrawIcon(DSCharacters.StartingWeapon(c), 30, 196, 18, open);
         FitText(SmallFont, Font.CR_CYAN, 52, 200, DSN2Catalog.DisplayName(DSCharacters.StartingWeapon(c)), 76);
@@ -487,7 +656,9 @@ class DSShellMenu : ListMenu
                     Text(SmallFont, Font.CR_ORANGE, 30, 288 + l * 12, cond.StringAt(l));
             }
         }
-        DSUi.Hints(384, "Arrows|Browse;Enter|Choose;Esc|Back");
+        if (notice.Length() > 0) Text(SmallFont, Font.CR_GREEN, 140, 370, notice);
+        DSUi.Hints(384, String.Format("Arrows|Browse (%d / %d);Enter|%s;Esc|Back", cursor + 1, CharacterCount(),
+            CharacterEnabled(cursor) && !CharacterBought(cursor) ? "Buy" : "Choose"));
     }
 
     void DrawPowerUps()
@@ -510,17 +681,21 @@ class DSShellMenu : ListMenu
                 continue;
             }
             bool maxed = ranks[i] >= DSPowerUps.MaxRank(i);
-            Text(SmallFont, focused ? Font.CR_GOLD : Font.CR_WHITE, x + 8, y + 6, DSPowerUps.Name(i), 1.2);
+            bool locked = !DSUnlocks.PowerUpUnlocked(mKeys, mVals, i);
+            Text(SmallFont, locked ? Font.CR_DARKGRAY : (focused ? Font.CR_GOLD : Font.CR_WHITE), x + 8, y + 6, DSPowerUps.Name(i), 1.2);
             // Rank pips.
+            int pip = DSPowerUps.MaxRank(i) > 5 ? 6 : 12;
             for (int r = 0; r < DSPowerUps.MaxRank(i); r++)
             {
-                Box(Color(0, 0, 0), 1.0, x + 8 + r * 12, y + 26, 9, 9);
-                Box(r < ranks[i] ? Color(255, 170, 50) : Color(60, 50, 50), 1.0, x + 9 + r * 12, y + 27, 7, 7);
+                Box(Color(0, 0, 0), 1.0, x + 8 + r * pip, y + 26, pip - 3, 9);
+                Box(r < ranks[i] ? Color(255, 170, 50) : Color(60, 50, 50), 1.0, x + 9 + r * pip, y + 27, pip - 5, 7);
             }
-            String price = maxed ? "MAX" : String.Format("%d", DSPowerUps.Price(ranks, i));
-            Text(SmallFont, maxed ? Font.CR_GREEN : Font.CR_GOLD, x + w - 8 - SmallFont.StringWidth(price), y + 26, price);
+            String price = locked ? "LOCKED" : (maxed ? "MAX" : String.Format("%d", DSPowerUps.Price(ranks, i)));
+            Text(SmallFont, locked ? Font.CR_DARKGRAY : (maxed ? Font.CR_GREEN : Font.CR_GOLD), x + w - 8 - SmallFont.StringWidth(price), y + 26, price);
         }
         String detail = cursor < DSPowerUps.Count() ? DSPowerUps.Effect(cursor) : "Return all spent gold";
+        if (cursor < DSPowerUps.Count() && !DSUnlocks.PowerUpUnlocked(mKeys, mVals, cursor))
+            detail = "Locked: " .. DSUnlocks.PowerUpCondition(mKeys, mVals, cursor);
         Text(SmallFont, Font.CR_WHITE, 24, 358, detail, 1.2);
         if (notice.Length() > 0) Text(SmallFont, Font.CR_GREEN, 24, 374, notice);
         DSUi.Hints(384, "Enter|Buy;Esc|Back", 520);
@@ -586,6 +761,8 @@ class DSShellMenu : ListMenu
             if (focused) DSUi.Button(x - 1, y - 1, w + 2, h + 2, DSUi.BTN_FOCUS);
             else DSUi.Slot(x, y, w, seen && DSMeta.Val(mKeys, mVals, String.Format("rank:%d", id)) >= DSN2Catalog.MaxRank(id));
             DrawIcon(id, x + 4, y + 4, w - 8, seen);
+            if (DSMeta.Val(mKeys, mVals, String.Format("seal:%d", id)) > 0)
+                Text(SmallFont, Font.CR_RED, x + w - 10, y + 1, "x", 1.2);
         }
         int c = clamp(cursor, 0, max(0, collectionIds.Size() - 1));
         DSUi.Panel(24, 306, 592, 60);
@@ -595,19 +772,41 @@ class DSShellMenu : ListMenu
             bool seen = DSMeta.Val(mKeys, mVals, String.Format("seen:%d", id)) > 0;
             Text(SmallFont, seen ? Font.CR_GOLD : Font.CR_DARKGRAY, 36, 312, seen ? DSN2Catalog.DisplayName(id) : "???", 1.5);
             String kind = DSN2Catalog.Category(id) == DSN2Catalog.CATEGORY_WEAPON ? "Weapon" : "Passive";
-            Text(SmallFont, Font.CR_WHITE, 36, 334, seen ? String.Format("%s   best level %d of %d", kind, DSMeta.Val(mKeys, mVals, String.Format("rank:%d", id)), DSN2Catalog.MaxRank(id)) : "Not found yet");
+            Text(SmallFont, Font.CR_WHITE, 36, 334, seen ? String.Format("%s   best level %d of %d", kind, DSMeta.Val(mKeys, mVals, String.Format("rank:%d", id)), DSN2Catalog.MaxRank(id)) : (DSUnlocks.ItemUnlocked(mKeys, mVals, id) ? "Not found yet" : "Locked: " .. DSUnlocks.ItemCondition(mKeys, mVals, id)));
+            // Grim Grimoire: the recipe of a discovered evolution, or what an item helps make.
+            if (seen && DSRelics.Owned(mKeys, mVals, DSRelics.GRIMOIRE))
+            {
+                String recipe = DSRecipeBook.Recipe(id);
+                int usedIn = DSRecipeBook.UsedIn(id);
+                if (recipe.Length() > 0) FitText(SmallFont, Font.CR_CYAN, 36, 348, "Recipe: " .. recipe, 560);
+                else if (usedIn > 0) FitText(SmallFont, Font.CR_CYAN, 36, 348, "Helps make: " .. (DSMeta.Val(mKeys, mVals, String.Format("seen:%d", usedIn)) > 0 ? DSN2Catalog.DisplayName(usedIn) : "???"), 560);
+            }
         }
-        DSUi.Hints(384, "Arrows|Browse;A|Arcana;Esc|Back");
+        if (notice.Length() > 0) Text(SmallFont, Font.CR_GREEN, 36, 372, notice);
+        DSUi.Hints(384, String.Format("Arrows|Browse;S|Seal (%d / %d);A|Arcana;Esc|Back", SealsUsed(), SealCapacity()));
+    }
+
+    void DrawSecrets()
+    {
+        DSUi.Header(14, "FORBIDDEN SCROLLS", Font.CR_GOLD, 1.1, 220);
+        DSUi.Panel(80, 70, 480, 220);
+        CenterText(SmallFont, Font.CR_WHITE, 96, "Type a spell and press Enter.", 1.3);
+        DSUi.Button(120, 140, 400, 32, DSUi.BTN_FOCUS);
+        String shown = spellText .. ((MenuTime() / 15) % 2 == 0 ? "_" : " ");
+        FitText(SmallFont, Font.CR_GOLD, 132, 150, shown, 376, 1.4);
+        if (notice.Length() > 0) CenterText(SmallFont, Font.CR_GREEN, 196, notice, 1.2);
+        CenterText(SmallFont, Font.CR_DARKGRAY, 250, String.Format("Spells cast: %d", DSSecrets.CastCount(mKeys, mVals)), 1.1);
+        DSUi.Hints(384, "Type|Spell;Enter|Cast;Esc|Back");
     }
 
     void DrawAchievements()
     {
         DSUi.Header(14, "ACHIEVEMENTS", Font.CR_GOLD, 1.1, 200);
-        String progress = String.Format("%d / %d", DSAchievements.DoneCount(mKeys, mVals), DSAchievements.COUNT);
+        String progress = String.Format("%d / %d", DSAchievements.DoneCount(mKeys, mVals), DSAchievementData.COUNT);
         Text(SmallFont, Font.CR_GOLD, VW - 24 - SmallFont.StringWidth(progress) * 1.4, 20, progress, 1.4);
         int rows = 15;
-        int start = clamp(cursor - rows / 2, 0, max(0, DSAchievements.COUNT - rows));
-        for (int r = 0; r < rows && start + r < DSAchievements.COUNT; r++)
+        int start = clamp(cursor - rows / 2, 0, max(0, DSAchievementData.COUNT - rows));
+        for (int r = 0; r < rows && start + r < DSAchievementData.COUNT; r++)
         {
             int index = start + r;
             double y = 50 + r * 21;
@@ -619,7 +818,7 @@ class DSShellMenu : ListMenu
             String goal = DSAchievements.Goal(index);
             Text(SmallFont, done ? Font.CR_GREEN : Font.CR_DARKGRAY, 604 - SmallFont.StringWidth(goal) * 1.0, y + 5, goal, 1.0);
         }
-        DSUi.Hints(384, String.Format("Up/Down|Scroll (%d / %d);Esc|Back", cursor + 1, DSAchievements.COUNT));
+        DSUi.Hints(384, String.Format("Up/Down|Scroll (%d / %d);Esc|Back", cursor + 1, DSAchievementData.COUNT));
     }
 
     void DrawBestiary()
@@ -694,16 +893,31 @@ class DSShellMenu : ListMenu
                 Text(SmallFont, Font.CR_ORANGE, 30, 150 + l * 12, cond.StringAt(l));
         }
         FitText(SmallFont, Font.CR_DARKGRAY, 30, 352, "As " .. DSCharacters.Name(characterIndex), 96);
+        if (DSRelics.Owned(mKeys, mVals, DSRelics.BANGER))
+        {
+            CVar music = CVar.FindCVar("ds_music");
+            String track = music != null && music.GetString().Length() > 0 ? music.GetString() : "stage's own";
+            FitText(SmallFont, Font.CR_GOLD, 30, 338, "B: Music " .. track, 96);
+        }
 
         // Run options under the grid.
         CVar modeCvar = CVar.FindCVar("ds_mode");
         int modeNow = modeCvar != null ? modeCvar.GetInt() : 0;
-        StageChip(140, 326, 160, modeNow == 1 ? "M: Mode HYPER" : (modeNow == 2 ? "M: Mode INVERSE" : "M: Mode Normal"), modeNow != 0, Font.CR_RED);
-        StageChip(304, 326, 160, ToggleOn("ds_camera") ? "C: Camera 3rd person" : "C: Camera 1st person", ToggleOn("ds_camera"), Font.CR_CYAN);
-        StageChip(468, 326, 164, ToggleOn("ds_arcana") ? "A: Arcana ON" : "A: Arcana OFF", ToggleOn("ds_arcana"), Font.CR_PURPLE);
-        StageChip(140, 348, 160, ToggleOn("ds_arrows") ? "R: Pickup arrows ON" : "R: Pickup arrows OFF", ToggleOn("ds_arrows"), Font.CR_GREEN);
-        StageChip(468, 348, 164, ToggleOn("ds_aim_assist") ? "T: Aim assist ON" : "T: Aim assist OFF", ToggleOn("ds_aim_assist"), Font.CR_CYAN);
-        StageChip(304, 348, 160, ToggleOn("ds_limit_break") ? "L: Limit Break ON" : "L: Limit Break OFF", ToggleOn("ds_limit_break"), Font.CR_ORANGE);
+        // Two rows of five chips; relic options say which relic they need.
+        // Hyper is unlocked per stage; the chip says so for the focused one.
+        bool hyperHere = DSUnlocks.HyperUnlocked(mKeys, mVals, clamp(cursor, 0, max(0, StageCount() - 1)));
+        StageChip(140, 326, 96, modeNow == 1 ? (hyperHere ? "M: HYPER" : "M: HYPER locked") : (modeNow == 2 ? "M: INVERSE" : "M: Normal"), modeNow != 0 && (modeNow != 1 || hyperHere), Font.CR_RED);
+        if (modeNow == 1 && !hyperHere)
+            FitText(SmallFont, Font.CR_ORANGE, 140, 314, "Hyper here: " .. DSUnlocks.HyperCondition(clamp(cursor, 0, max(0, StageCount() - 1))), 480);
+        StageChip(239, 326, 96, ToggleOn("ds_camera") ? "C: 3rd person" : "C: 1st person", ToggleOn("ds_camera"), Font.CR_CYAN);
+        StageChip(338, 326, 96, ToggleOn("ds_arcana") ? "A: Arcana ON" : "A: Arcana OFF", ToggleOn("ds_arcana"), Font.CR_PURPLE);
+        StageChip(437, 326, 96, RelicChip(DSRelics.GOSPEL, "L", "Limit Brk", "ds_limit_break"), RelicOn(DSRelics.GOSPEL, "ds_limit_break"), Font.CR_ORANGE);
+        StageChip(536, 326, 96, ToggleOn("ds_aim_assist") ? "T: Aim ON" : "T: Aim OFF", ToggleOn("ds_aim_assist"), Font.CR_CYAN);
+        StageChip(140, 348, 96, RelicChip(DSRelics.MILKY_WAY, "R", "Arrows", "ds_arrows"), RelicOn(DSRelics.MILKY_WAY, "ds_arrows"), Font.CR_GREEN);
+        StageChip(239, 348, 96, RelicChip(DSRelics.TRUMPET, "E", "Endless", "ds_endless"), RelicOn(DSRelics.TRUMPET, "ds_endless"), Font.CR_RED);
+        StageChip(338, 348, 96, RelicChip(DSRelics.TEARS, "H", "Hurry", "ds_hurry"), RelicOn(DSRelics.TEARS, "ds_hurry"), Font.CR_ORANGE);
+        StageChip(437, 348, 96, RelicChip(DSRelics.TRISECTION, "V", "Events", "ds_random_events"), RelicOn(DSRelics.TRISECTION, "ds_random_events"), Font.CR_GOLD);
+        StageChip(536, 348, 96, RelicChip(DSRelics.BRAVE_STORY, "U", "Rnd Lv-up", "ds_random_levelup"), RelicOn(DSRelics.BRAVE_STORY, "ds_random_levelup"), Font.CR_GOLD);
         DSUi.Hints(384, "Arrows|Browse;Enter|Start run;Esc|Back");
     }
 }

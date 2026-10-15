@@ -123,6 +123,86 @@
       "knockback_max": 3,
       "xp": 1.5,
       "special": "page text: semi-resistant to knockback; spawns 2 units at a time in minute 13"
+    },
+    "EX_SPIRIT1": {
+      "name": "EX_SPIRIT1",
+      "hp": 5.0,
+      "power": 5,
+      "speed": 140,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_SNOWELEM": {
+      "name": "EX_SNOWELEM",
+      "hp": 10.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.8,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_SNOWELEM2": {
+      "name": "EX_SNOWELEM2",
+      "hp": 10.0,
+      "power": 10,
+      "speed": 120,
+      "knockback": 0.8,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_FROST": {
+      "name": "EX_FROST",
+      "hp": 15.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 1,
+      "knockback_max": 3,
+      "xp": 2,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_ILLUSION2": {
+      "name": "EX_ILLUSION2",
+      "hp": 150.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_ILLUSION": {
+      "name": "EX_ILLUSION",
+      "hp": 70.0,
+      "power": 10,
+      "speed": 100,
+      "knockback": 0.3,
+      "knockback_max": 3,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_FOXFIRE": {
+      "name": "EX_FOXFIRE",
+      "hp": 10.0,
+      "power": 10,
+      "speed": 400,
+      "knockback": 0,
+      "knockback_max": 0,
+      "xp": 1,
+      "special": "stats from the Vampire Survivors wiki"
+    },
+    "EX_BOSS_KITSUNE": {
+      "name": "EX_BOSS_KITSUNE",
+      "hp": 600.0,
+      "power": 20,
+      "speed": 100,
+      "knockback": 0,
+      "knockback_max": 1,
+      "xp": 50,
+      "special": "stats from the Vampire Survivors wiki"
     }
   },
   "unknowns": [

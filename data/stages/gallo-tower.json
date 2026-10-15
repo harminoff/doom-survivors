@@ -317,7 +317,7 @@
         "XLDRAGON2"
       ],
       "enemy_min": 60,
-      "spawn_interval_s": 0.1,
+      "spawn_interval_s": 0.5,
       "events": [],
       "bosses": [
         "BOSS_XLARMOR2"
@@ -363,11 +363,11 @@
     {
       "minute": 22,
       "pool": [
-        "XLARMOR1",
-        "XLARMOR2"
+        "XLARMOR2",
+        "XLARMOR1"
       ],
       "enemy_min": 80,
-      "spawn_interval_s": 1,
+      "spawn_interval_s": 1.0,
       "events": [],
       "bosses": [
         "DEVIL3"

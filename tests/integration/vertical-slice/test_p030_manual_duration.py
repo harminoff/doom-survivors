@@ -20,7 +20,8 @@ def test_manual_duration_is_opt_in_and_defaults_to_full_mad_forest():
     assert "survivalTics != MIN_SURVIVAL_TICS && survivalTics != MAX_SURVIVAL_TICS" in source
     assert 'CVar.FindCVar("ds_p030_duration_tics")' in source
     assert "tic >= RunEndTic()" in source
-    assert "mfEnabled && survivalTics == MAD_FOREST_TICS ? DSStage.DurationTics(mfStage) + mfHeld : survivalTics" in source
+    assert "mfEnabled && survivalTics == MAD_FOREST_TICS ? stageTics + mfHeld : survivalTics" in source
+    assert "int stageTics = rsHurry ? DSStage.DurationTics(mfStage) / 2 : DSStage.DurationTics(mfStage);" in source
     assert "duration_tics=%d duration_seconds=%d" in source
     assert "nosave int ds_p030_duration_tics = 10500;" in cvarinfo
 

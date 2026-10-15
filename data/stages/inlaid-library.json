@@ -161,7 +161,7 @@
     {
       "minute": 6,
       "pool": [
-        "DULL0",
+        "DULL1",
         "ECTO1"
       ],
       "enemy_min": 30,
@@ -172,7 +172,7 @@
     {
       "minute": 7,
       "pool": [
-        "DULL0",
+        "DULL1",
         "ECTO1",
         "ECTO2"
       ],
@@ -236,7 +236,7 @@
       "minute": 12,
       "pool": [
         "MEDUSA2",
-        "DULL0"
+        "DULL1"
       ],
       "enemy_min": 80,
       "spawn_interval_s": 1.0,
@@ -249,7 +249,7 @@
       "minute": 13,
       "pool": [
         "MUMMY",
-        "DULL0"
+        "DULL1"
       ],
       "enemy_min": 120,
       "spawn_interval_s": 0.5,
@@ -289,8 +289,8 @@
       "minute": 16,
       "pool": [
         "WITCH1",
-        "DULL0",
-        "DULL1"
+        "DULL1",
+        "DULL2"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 1.0,
@@ -328,7 +328,7 @@
       "minute": 19,
       "pool": [
         "WITCH1",
-        "DULL1"
+        "DULL2"
       ],
       "enemy_min": 120,
       "spawn_interval_s": 0.5,
@@ -339,7 +339,7 @@
       "minute": 20,
       "pool": [
         "BUER",
-        "DULL1"
+        "DULL2"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.1,
@@ -377,8 +377,8 @@
     {
       "minute": 23,
       "pool": [
-        "DULL0",
         "DULL1",
+        "DULL2",
         "WITCH2"
       ],
       "enemy_min": 120,

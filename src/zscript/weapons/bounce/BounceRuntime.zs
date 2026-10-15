@@ -277,7 +277,7 @@ mixin class DSP041Bounce
         int amount = DSP041BounceRows.Amount(systemId, rank);
         int cooldownTics = DSP041BounceRows.CooldownTics(systemId, rank);
         int adjustedCooldown = DSP033StatRules.CooldownAfterTome(systemId,
-            cooldownTics * 1000 / Thinker.TICRATE, cooldownMultiplierMilli)
+            cooldownTics * 1000 / Thinker.TICRATE, RsCooldownFor(systemId, cooldownMultiplierMilli))
             * Thinker.TICRATE / 1000;
         // Celestial Dusting / Profusione D'Amore: half cooldown while moving.
         if (rsActive && (systemId == DSN3Rows.SYSTEM_CELESTIAL_DUSTING || systemId == DSN3Rows.SYSTEM_PROFUSIONE_DAMORE)
@@ -670,6 +670,7 @@ mixin class DSP041Bounce
         if (dsp041Systems[index] == DSN3Rows.SYSTEM_PROFUSIONE_DAMORE)
             DSP041QueueExplosion(index, x[slot], y[slot], 28, dsp041DamageMilli[index] / 2, "PROFUSIONE");
         int healthBefore; int healthAfter; int killed;
+        arHitSystem = dsp041Systems[index];   // which weapon hit (Arcana scope)
         if (!DSP025ApplyLogicalHit(slot, generation, stableId, amount,
                 healthBefore, healthAfter, killed))
         { dsp041RejectedHits++; return; }
@@ -712,6 +713,7 @@ mixin class DSP041Bounce
             double reach = collisionRadii[slot] + double(radiusUnits);
             if (dx * dx + dy * dy > reach * reach) continue;
             int healthBefore; int healthAfter; int killed;
+            arHitSystem = dsp041Systems[index];   // which weapon hit (Arcana scope)
             if (!DSP025ApplyLogicalHit(slot, generation, stableId, amount,
                     healthBefore, healthAfter, killed)) continue;
             dsp041AcceptedHits++;

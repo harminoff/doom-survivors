@@ -162,7 +162,7 @@
     {
       "minute": 3,
       "pool": [
-        "HARPY"
+        "EX_HARPY2"
       ],
       "enemy_min": 45,
       "spawn_interval_s": 0.5,
@@ -198,7 +198,7 @@
     {
       "minute": 5,
       "pool": [
-        "MILK"
+        "MILK2"
       ],
       "enemy_min": 50,
       "spawn_interval_s": 0.3,
@@ -262,7 +262,7 @@
     {
       "minute": 8,
       "pool": [
-        "MILK"
+        "MILK2"
       ],
       "enemy_min": 80,
       "spawn_interval_s": 0.8,
@@ -286,7 +286,7 @@
       "minute": 9,
       "pool": [
         "MEDUSA2",
-        "HARPY"
+        "EX_HARPY2"
       ],
       "enemy_min": 40,
       "spawn_interval_s": 0.4,
@@ -323,8 +323,8 @@
     {
       "minute": 11,
       "pool": [
-        "HARPY",
-        "MILK"
+        "EX_HARPY2",
+        "MILK2"
       ],
       "enemy_min": 60,
       "spawn_interval_s": 0.4,
@@ -360,8 +360,8 @@
     {
       "minute": 13,
       "pool": [
-        "HARPY",
-        "MILK"
+        "HARPYV",
+        "MILK2"
       ],
       "enemy_min": 60,
       "spawn_interval_s": 0.3,
@@ -373,7 +373,7 @@
     {
       "minute": 14,
       "pool": [
-        "HARPY",
+        "EX_HARPY2",
         "EX_JOYATAURO"
       ],
       "enemy_min": 40,
@@ -422,7 +422,7 @@
       "minute": 16,
       "pool": [
         "EX_MEANATAUR",
-        "HARPY",
+        "HARPYV",
         "MEDUSA1"
       ],
       "enemy_min": 50,
@@ -437,7 +437,7 @@
       "minute": 17,
       "pool": [
         "MIGNO1_5",
-        "MILK"
+        "MILK2"
       ],
       "enemy_min": 100,
       "spawn_interval_s": 0.3,

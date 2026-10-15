@@ -26,8 +26,8 @@
     },
     "modifiers": {
       "no_item_drops": true,
-      "enemy_health_per_minute": 0.3,
-      "enemy_speed_per_minute": 0.05,
+      "enemy_health_per_minute": 0.15,
+      "enemy_speed_per_minute": 0.025,
       "scaling_note": "Every minute enemy health and speed multipliers increase by +0.3 and +0.05 respectively (additive), without a cap; additive with Inverse Mode.",
       "effects": [
         "No item drops (light sources only drop Gold Coins, Small Coin Bags and Survarots).",
@@ -219,6 +219,9 @@
       "minute": 7,
       "pool": [
         "SKELETON",
+        "SKELETON2",
+        "SKELETON3",
+        "SKELETON4",
         "PILE2"
       ],
       "enemy_min": 120,
@@ -241,6 +244,9 @@
       "minute": 8,
       "pool": [
         "SKELETON",
+        "SKELETON2",
+        "SKELETON3",
+        "SKELETON4",
         "SKELEPANTHER"
       ],
       "enemy_min": 40,
@@ -285,6 +291,9 @@
       "minute": 10,
       "pool": [
         "SKELETON",
+        "SKELETON2",
+        "SKELETON3",
+        "SKELETON4",
         "SKELENIN_ZONE"
       ],
       "enemy_min": 80,
@@ -348,7 +357,7 @@
         "SKULLNOAURA",
         "SKELEPANTHER"
       ],
-      "enemy_min": 150,
+      "enemy_min": 100,
       "spawn_interval_s": 0.5,
       "events": [
         {
@@ -541,7 +550,7 @@
       "minute": 18,
       "pool": [
         "SKULLNOAURA",
-        "SKULOROSSO"
+        "SKELEWING_ZONE"
       ],
       "enemy_min": 150,
       "spawn_interval_s": 0.5,
@@ -725,7 +734,8 @@
     {
       "minute": 25,
       "pool": [
-        "SKELEWING_ZONE"
+        "SKELEWING_ZONE",
+        "SKELENIN_ZONE"
       ],
       "enemy_min": 150,
       "spawn_interval_s": 1.0,
@@ -788,8 +798,8 @@
       "pool": [
         "SKELETONE"
       ],
-      "enemy_min": 200,
-      "spawn_interval_s": 1.0,
+      "enemy_min": 150,
+      "spawn_interval_s": 0.05,
       "events": [],
       "bosses": []
     },

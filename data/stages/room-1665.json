@@ -59,7 +59,7 @@
         "DEVIL_HP_1"
       ],
       "enemy_min": 20,
-      "spawn_interval_s": 1.0,
+      "spawn_interval_s": 0.1,
       "events": [],
       "bosses": [],
       "notes": "PLACEHOLDER: wiki gives no wave table for Room 1665; pool/enemy_min invented as a rising-difficulty progression from enemy hp/damage ranges. Real game varies types by rooms unlocked and elapsed time."

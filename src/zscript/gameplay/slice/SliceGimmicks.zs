@@ -81,7 +81,7 @@ extend class DSP030VerticalSlice
     // ---- stage rules -------------------------------------------------------
 
     // The stage clock, which stops while The Coop waits for its first kill.
-    clearscope int MfT() { return tic - mfHeld; }
+    clearscope int MfT() { return rsHurry ? (tic - mfHeld) * 2 : tic - mfHeld; }
 
     bool MoliseOccupied(double tx, double ty)
     {
@@ -211,7 +211,13 @@ extend class DSP030VerticalSlice
                 Array<String> ck; Array<int> cv;
                 DSMeta.Load(ck, cv);
                 if (DSMeta.Val(ck, cv, String.Format("coffin:%d", DSStageGimmicks.PLATE_TX[i])) > 0) gmPlateReady[gmPlateReady.Size() - 1] = 1000000000;
-                if (DSStageGimmicks.PLATE_KIND[i] == 9 && DSMeta.Val(ck, cv, String.Format("relic:%d", DSStageGimmicks.PLATE_TX[i])) > 0) gmPlateReady[gmPlateReady.Size() - 1] = 1000000000;
+            }
+            // A relic already found does not come back.
+            if (DSStageGimmicks.PLATE_KIND[i] == 9)
+            {
+                Array<String> rk; Array<int> rv;
+                DSMeta.Load(rk, rv);
+                if (DSMeta.Val(rk, rv, String.Format("relic:%d", DSStageGimmicks.PLATE_TX[i])) > 0) gmPlateReady[gmPlateReady.Size() - 1] = 1000000000;
             }
         }
         for (int i = 0; i < DSStageGimmicks.PropCount(); i++)
@@ -222,6 +228,17 @@ extend class DSP030VerticalSlice
             gmPropTX.Push(DSStageGimmicks.PROP_TX[i]); gmPropTY.Push(DSStageGimmicks.PROP_TY[i]);
             gmPropSlot.Push(-1); gmPropId.Push(0); gmPropReady.Push(0);
         }
+        // Glass Vizard: the Merchant visits every stage (near the start).
+        {
+            Array<String> vk; Array<int> vv;
+            DSMeta.Load(vk, vv);
+            if (DSRelics.Owned(vk, vv, DSRelics.GLASS_VIZARD) && gmPlateKind.Find(6) == gmPlateKind.Size() && !dgActive)
+            {
+                gmPlateX.Push(260); gmPlateY.Push(260); gmPlateKind.Push(6); gmPlateReady.Push(0);
+                gmPlateTX.Push(0); gmPlateTY.Push(0);
+            }
+        }
+        gmApoplexyPlate = -1;
         Console.Printf("DS_GM_INIT map=%d items=%d plates=%d props=%d", map, gmItemId.Size(), gmPlateX.Size(), gmPropKind.Size());
     }
 
@@ -240,6 +257,8 @@ extend class DSP030VerticalSlice
     {
         if (!mfEnabled || !rsActive || runState != STATE_ACTIVE) return;
         if (mfCoop || mfWoods || mfRoom) BarrierTick();
+        GmApoplexyTick();
+        GmHolyTick();
         CVar dbg = CVar.FindCVar("ds_gm_debug");
         if (dbg != null && dbg.GetInt() != 0 && tic >= 100 && tic % 40 == 0)
         {
@@ -307,7 +326,13 @@ extend class DSP030VerticalSlice
             DSMeta.Store(mk, mv);
             Sfx(DSSfx.E_COFFIN);
             if (!already) GmShowToast(String.Format("The coffin opens: %s joins you!", GmCoffinName(coffin)));
-            else GmShowToast("An empty coffin");
+            else
+            {
+                // Looking under a coffin opened before unlocks Random.
+                DSMeta.SetVal(mk, mv, "coffinagain", 1);
+                DSMeta.Store(mk, mv);
+                GmShowToast("An empty coffin... something is underneath.");
+            }
             return;
         }
         if (kind == 9)
@@ -320,13 +345,14 @@ extend class DSP030VerticalSlice
             DSMeta.Store(rk, rv);
             Sfx(DSSfx.E_RELIC);
             Console.Printf("DS_GM_RELIC tic=%d relic=%d already=%d", tic, int(gmPlateTX[i]), had);
-            bool randomazzo = int(gmPlateTX[i]) == 2;
-            if (randomazzo) GmShowToast(had ? "You already carry the Randomazzo." : "You found the Randomazzo. Sarabande of Healing is yours.");
-            else GmShowToast(had ? "The Yellow Sign hums. You already carry it." : "You found the Yellow Sign. The Ender will come for you.");
+            int relic = int(gmPlateTX[i]);
+            GmShowToast(had ? String.Format("You already carry %s.", DSRelics.Name(relic))
+                : String.Format("You found %s. %s", DSRelics.Name(relic), DSRelics.Gift(relic)));
             return;
         }
         if (kind == 6) { GmMerchant(i); return; }
         if (kind == 7) { GmWheel(i); return; }
+        if (kind == 10) { GmLeverSwarm(i); return; }
         if (kind == 3)
         {
             gmPlateReady[i] = tic + 1000000;
@@ -364,6 +390,7 @@ extend class DSP030VerticalSlice
             }
             for (int bx = -1500; bx <= 1500; bx += 150)
                 DSWeaponFx.Burst("WBLT", playerX + bx, py, 24.0, 60.0, 60.0, false, Color(255, 200, 120), 8);
+            metaTrainHits += hit;
             Console.Printf("DS_GM_PLATE tic=%d kind=2 hit=%d", tic, hit);
             return;
         }
@@ -415,9 +442,111 @@ extend class DSP030VerticalSlice
     // Moongolow's merchant sells rare weapons for gold (wiki: Bone, Cherry
     // Bomb, Carrello, Celestial Dusting... 1,000 each); the next offer in
     // rotation is bought when you stand on him with enough gold.
+    // Laborratory swarm lever: one of the room's swarms bursts in around the
+    // player (the original's lever outcomes; sizes are guesses).
+    void GmLeverSwarm(int i)
+    {
+        gmPlateReady[i] = tic + 700;
+        static const String CENTRAL[] = { "TRAINEE_Y", "TRINACRIA", "ANGEL2" };
+        static const String ROOMS[] = { "JELLYFISH2_SWARM", "MUD", "ECTO2" };
+        gmRng = DSP022StageGeometry.NextSpawnRng(gmRng);
+        int pick = (gmRng & 0x7fffffff) % 3;
+        String name = int(gmPlateTX[i]) == 0 ? CENTRAL[pick] : ROOMS[pick];
+        int type = 0;
+        for (int t = 1; t <= DSStage.ENEMY_TYPE_COUNT; t++) if (DSStage.TypeName(t) == name) type = t;
+        if (type <= 0) return;
+        int count = name == "TRINACRIA" ? 1 : 20;
+        for (int n = 0; n < count; n++)
+        {
+            double angle = 360.0 * n / count;
+            MFSpawn(type, playerX + cos(angle) * 260.0, playerY + sin(angle) * 260.0, 0, 0.0, 0.0, tic + 1050, 0);
+        }
+        Sfx(DSSfx.E_PLATE);
+        GmShowToast("A lever clanks: " .. DSStage.TypeLabel(type));
+    }
+
+    // Holy Forbidden's script (stage time 2:00): from 1:12 to 1:27 the
+    // Maddener marks spots that burst a second later (15 damage); from 1:35
+    // its touch kills outright; the Rosary at the corridor's end clears the
+    // hall and ends the stage 30 s later.
+    void GmHolyTick()
+    {
+        if (mfStage != DSStage.HOLYFORBIDDEN || dgActive || runState != STATE_ACTIVE) return;
+        int t = MfT();
+        if (t >= 72 * 35 && t < 87 * 35 && t % 18 == 0)
+        {
+            gmRng = DSP022StageGeometry.NextSpawnRng(gmRng);
+            double ox = ((gmRng & 0xff) - 128) * 0.8; double oy = (((gmRng >> 8) & 0xff) - 128) * 0.8;
+            hfMarkX.Push(playerX + ox); hfMarkY.Push(playerY + oy); hfMarkTic.Push(tic + 35);
+            DSWeaponFx.Burst("WBLT", playerX + ox, playerY + oy, 6.0, 30.0, 35.0, true, Color(255, 255, 60, 60), 4);
+        }
+        for (int m = hfMarkTic.Size() - 1; m >= 0; m--)
+        {
+            if (tic < hfMarkTic[m]) continue;
+            DSWeaponFx.Burst("WFLM", hfMarkX[m], hfMarkY[m], 20.0, 48.0, 60.0, false, Color(255, 255, 120, 60), 8);
+            double dx = playerX - hfMarkX[m]; double dy = playerY - hfMarkY[m];
+            if (dx * dx + dy * dy <= 48.0 * 48.0 && playerInvulnerableUntil <= tic && playerHealth > 0)
+            {
+                playerHealth = max(0, playerHealth - 15000);
+                health[playerSlot] = playerHealth;
+            }
+            hfMarkX.Delete(m); hfMarkY.Delete(m); hfMarkTic.Delete(m);
+        }
+        if (!hfRosaryPlaced)
+        {
+            // The Rosary waits at the far end of the hall.
+            hfRosaryPlaced = true;
+            mfItemSeq++;
+            mfItemIds.Push(mfItemSeq); mfItemKinds.Push(MF_ITEM_ROSARY);
+            mfItemX.Push(1850.0); mfItemY.Push(300.0);
+            hfRosaryId = mfItemSeq;
+        }
+    }
+
+    // The Maddener's chase from 1:35: contact is lethal.
+    bool GmMaddenerLethal(int slot)
+    {
+        return mfStage == DSStage.HOLYFORBIDDEN && MFValid(slot) && MfT() >= 95 * 35
+            && DSStage.TypeName(mfTypes[slot]).IndexOf("MADDENER") >= 0;
+    }
+
+    void GmApoplexyTick()
+    {
+        if (mfStage != DSStage.BATCOUNTRY || dgActive) return;
+        int t = MfT();
+        if (gmApoplexyPlate < 0 && t >= 9 * 2100 && t < 9 * 2100 + 35)
+        {
+            Array<String> ak; Array<int> av;
+            DSMeta.Load(ak, av);
+            if (DSRelics.Owned(ak, av, DSRelics.APOPLEXY)) { gmApoplexyPlate = 1000000; return; }
+            gmPlateX.Push(playerX + 300); gmPlateY.Push(playerY + 200); gmPlateKind.Push(9);
+            gmPlateReady.Push(0); gmPlateTX.Push(DSRelics.APOPLEXY); gmPlateTY.Push(0);
+            gmApoplexyPlate = gmPlateX.Size() - 1;
+            GmShowToast("Something glints nearby...");
+        }
+        if (gmApoplexyPlate >= 0 && gmApoplexyPlate < gmPlateReady.Size() && t >= 10 * 2100)
+            gmPlateReady[gmApoplexyPlate] = 1000000000;   // gone after a minute
+    }
+
     void GmMerchant(int i)
     {
         gmPlateReady[i] = tic + 105;
+        // Moongolow's Merchant sells the Glass Vizard first (10000 gold).
+        if (mfStage == DSStage.MOONGOLOW)
+        {
+            Array<String> vk; Array<int> vv;
+            DSMeta.Load(vk, vv);
+            if (!DSRelics.Owned(vk, vv, DSRelics.GLASS_VIZARD))
+            {
+                if (mfGold < 10000) { GmShowToast("Merchant: the Glass Vizard for 10000 gold"); return; }
+                mfGold -= 10000; mfGoldMilli = mfGold * 1000;
+                DSMeta.SetVal(vk, vv, String.Format("relic:%d", DSRelics.GLASS_VIZARD), 1);
+                DSMeta.Store(vk, vv);
+                Sfx(DSSfx.E_RELIC);
+                GmShowToast("You bought the Glass Vizard. " .. DSRelics.Gift(DSRelics.GLASS_VIZARD));
+                return;
+            }
+        }
         if (gmShopCount % 2 == 1)
         {
             // Every other offer is a Golden Egg: a permanent +small boost to a

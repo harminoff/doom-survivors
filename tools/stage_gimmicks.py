@@ -25,10 +25,20 @@ ITEMS = {
     "dairy-plant": [
         ("Attractorb", -3, 3, 100), ("Armor", 1.5, 1.5, 100), ("Wings", -1.5, -1.5, 100),
         ("Candelabrador", 3, -3, 100),
+        ("Silver Ring", 0, 7, 100), ("Metaglio Right", 7, 0, 100),
+        ("Gold Ring", 0, -7, 100), ("Metaglio Left", -7, 0, 100),
     ],
-    "gallo-tower": [("Bracer", 0, 6, 100), ("Spellbinder", 0, -6, 100)],
+    "gallo-tower": [("Bracer", 0, 6, 100), ("Spellbinder", 0, -6, 100),
+                    ("Silver Ring", -0.4, 8, 100), ("Metaglio Left", 0.4, 8, 100),
+                    ("Gold Ring", -0.4, -8, 100), ("Metaglio Right", 0.4, -8, 100)],
     "cappella-magna": [
         ("Crown", -0.3, 6, 100), ("Tirajisu", 0.3, 6, 100), ("Duplicator", 1.2, -7, 100),
+        ("Metaglio Left", -6, 0.3, 100), ("Metaglio Right", -6, -0.3, 100),
+        ("Silver Ring", 6, 0.3, 100), ("Gold Ring", 6, -0.3, 100),
+    ],
+    "bone-zone": [
+        ("Silver Ring", 0, 5, 100), ("Metaglio Right", 5, 0, 100),
+        ("Gold Ring", 0, -5, 100), ("Metaglio Left", -5, 0, 100),
     ],
     "moongolow": [
         ("Hollow Heart", -5, -5, 100), ("Pummarola", -4.8, -5, 100), ("Armor", -5, -4.7, 100), ("Wings", -4.7, -4.8, 100),
@@ -63,22 +73,34 @@ RANDOM_ITEMS = {
 #   3 button: a crab boss (Lycaeum)      4 zone: the Drowner (Lycaeum, once)
 #   5 door: teleports to the target      6 merchant (buys weapons with gold)
 #   7 wheel (Spin the Wheel!, Westwoods)
+#   10 lever: a swarm bursts in (Laborratory)
 PLATES = {
-    "dairy-plant": [(1500, -1500, 8, 2, 0), (1800, 1800, 1, 0, 0), (-1800, -1200, 1, 0, 0), (0, 3300, 1, 0, 0), (3600, 0, 1, 0, 0),
-                    (-3800, 400, 1, 0, 0), (2400, -2800, 1, 0, 0), (-2200, -3600, 1, 0, 0), (500, -4800, 1, 0, 0)],
     "boss-rash": [(600, 0, 1, 0, 0), (-600, 0, 1, 0, 0), (0, 700, 1, 0, 0), (0, -700, 1, 0, 0)],
-    "gallo-tower": [(700, 9000, 9, 2, 0), (-700, -11000, 8, 3, 0), (0, -9000, 1, 0, 0), (0, -4200, 1, 0, 0), (0, 2600, 1, 0, 0), (0, 6000, 1, 0, 0), (0, 9500, 1, 0, 0)],
-    "laborratory": [(2500, 1500, 2, 0, 0), (-2500, 1500, 2, 0, 0), (2500, -1500, 2, 0, 0), (-2500, -1500, 2, 0, 0)],
+    "gallo-tower": [(700, 9000, 9, 2, 0), (-700, -11000, 8, 3, 0), (-700, -4900, 9, 6, 0), (0, -9000, 1, 0, 0), (0, -4200, 1, 0, 0), (0, 2600, 1, 0, 0), (0, 6000, 1, 0, 0), (0, 9500, 1, 0, 0)],
+    # Laborratory: four train levers plus swarm levers (kind 10; the fourth
+    # number picks the room's swarm list: 0 central, 1 Danger/Electricity).
+    "laborratory": [(2500, 1500, 2, 0, 0), (-2500, 1500, 2, 0, 0), (2500, -1500, 2, 0, 0), (-2500, -1500, 2, 0, 0),
+                    (0, 2600, 10, 0, 0), (-3600, 0, 10, 1, 0), (3600, 0, 10, 1, 0)],
     "lycaeum": [(0, -1500, 3, 0, 0), (-2700, -1500, 3, 0, 0), (2700, -1500, 3, 0, 0), (0, -3200, 4, 0, 0)],
     "moongolow": [(900, -700, 6, 0, 0)],
     # coffins (kind 8): the last number is the coffin index (Meta.zs)
     "mad-forest": [(3000, 3000, 8, 0, 0)],
-    "inlaid-library": [(-6200, -300, 8, 1, 0)],
     "westwoods": [(1100, -300, 7, 0, 0)],
     "cappella-magna": [(0, -5000, 8, 4, 0)],
-    # relics (kind 9): the fourth number is the relic id (1 = Yellow Sign)
+    # relics (kind 9): the fourth number is the relic id (DSRelics in Meta.zs;
+    # 1 = Yellow Sign). Positions follow the wiki's directions (approximate).
     "holy-forbidden": [(1500, 0, 9, 1, 0)],
-    "astral-stair": [(0, 9800, 5, 0, -9500), (0, -9800, 5, 0, 9500), (-1350, 6500, 5, 1350, 2500),
+    "inlaid-library": [(-6200, -300, 8, 1, 0), (-2800, 0, 9, 3, 0)],
+    "dairy-plant": [(1500, -1500, 8, 2, 0), (1800, 1800, 1, 0, 0), (-1800, -1200, 1, 0, 0), (0, 3300, 1, 0, 0), (3600, 0, 1, 0, 0),
+                    (-3800, 400, 1, 0, 0), (2400, -2800, 1, 0, 0), (-2200, -3600, 1, 0, 0), (500, -4800, 1, 0, 0),
+                    (0, -2100, 9, 4, 0), (300, -4200, 9, 5, 0)],
+    "green-acres": [(2800, 2800, 9, 7, 0)],
+    "bone-zone": [(0, -3500, 9, 9, 0)],
+    "space-54": [(0, 2800, 9, 10, 0)],
+    "eudaimonia-machine": [(1400, 0, 9, 11, 0), (-1400, 0, 9, 12, 0)],
+    "whiteout": [(0, -3500, 9, 17, 0)],
+    "mazerella": [(3600, 0, 9, 18, 0)],
+    "astral-stair": [(0, -9300, 9, 8, 0), (0, 9800, 5, 0, -9500), (0, -9800, 5, 0, 9500), (-1350, 6500, 5, 1350, 2500),
                      (1350, 2500, 5, -1350, 6500), (1350, 6500, 5, -1350, -3000), (-1350, -3000, 5, 1350, 6500)],
 }
 
